@@ -43,8 +43,20 @@
     "championship": "Départementale masculine U13 (DMU13), poule D",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005377211",
     "trainings": [
-      "Lundi 18h00 – 19h30",
-      "Mercredi 16h00 – 17h30"
+      {
+        "time": "Lundi 18h00 – 19h30",
+        "alternate": {
+          "from": "2026-09-21",
+          "places": [
+            "Gymnase De Gaulle, Marans",
+            "Gymnase intercommunal Bel Air, Marans"
+          ]
+        }
+      },
+      {
+        "time": "Mercredi 16h00 – 17h30",
+        "place": "Gymnase intercommunal Bel Air, Marans"
+      }
     ],
     "players": [],
     "ffbbId": "200000005377211",
@@ -133,8 +145,20 @@
     "championship": "Départementale féminine U15 (DFU15), poule B",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005377820",
     "trainings": [
-      "Lundi 19h00 – 20h30",
-      "Mercredi 17h30 – 19h00"
+      {
+        "time": "Lundi 19h00 – 20h30",
+        "alternate": {
+          "from": "2026-09-21",
+          "places": [
+            "Gymnase De Gaulle, Marans",
+            "Gymnase intercommunal Bel Air, Marans"
+          ]
+        }
+      },
+      {
+        "time": "Mercredi 17h30 – 19h00",
+        "place": "Gymnase De Gaulle, Marans"
+      }
     ],
     "players": [],
     "ffbbId": "200000005377820",
@@ -223,8 +247,20 @@
     "championship": "Départementale masculine seniors - Division 2 (DM2), poule A",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005335854",
     "trainings": [
-      "Lundi 20h30 – 22h00",
-      "Mercredi 19h00 – 20h30"
+      {
+        "time": "Lundi 20h30 – 22h00",
+        "alternate": {
+          "from": "2026-09-21",
+          "places": [
+            "Gymnase De Gaulle, Marans",
+            "Gymnase intercommunal Bel Air, Marans"
+          ]
+        }
+      },
+      {
+        "time": "Mercredi 19h00 – 20h30",
+        "place": "Gymnase De Gaulle, Marans"
+      }
     ],
     "players": [],
     "ffbbId": "200000005335854",
@@ -379,6 +415,7 @@
     "trainings": [
       "Mercredi 20h00 – 21h30"
     ],
+    "trainingVenue": "Gymnase de Courçon",
     "players": [],
     "coach": "Christophe"
   }

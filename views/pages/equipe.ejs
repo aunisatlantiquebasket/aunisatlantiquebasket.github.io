@@ -40,9 +40,31 @@
           <p class="muted">Horaires bientôt disponibles.</p>
           <a href="/contact?sujet=Renseignements" class="link-arrow">Nous demander les horaires <%- icon('arrow') %></a>
         <% } else { %>
-          <ul class="check-list"><% for (const t of team.trainings) { %><li><%- icon('check') %><%= t %></li><% } %></ul>
-          <% const venue = team.trainingVenue || club.gym; %>
-          <a class="training-venue" href="<%= mapsUrl(venue) %>" target="_blank" rel="noopener"><%- icon('pin') %><%= venue %></a>
+          <% const shortPlace = (p) => p.split(',')[0]; %>
+          <% const ownPlaces = trainings.some((t) => t.place || t.alternate); %>
+          <ul class="check-list trainings">
+            <% for (const t of trainings) { %>
+              <li>
+                <%- icon('check') %>
+                <div>
+                  <span><%= t.time %></span>
+                  <% if (t.alternate) { %>
+                    <small class="training-where">
+                      En alternance : <%= t.alternate.places.map(shortPlace).join(' / ') %><br>
+                      <a href="<%= mapsUrl(t.alternate.next.place) %>" target="_blank" rel="noopener"><%- icon('pin') %><span class="capitalize"><%= t.alternate.next.label %></span> : <strong><%= shortPlace(t.alternate.next.place) %></strong></a>
+                    </small>
+                  <% } else if (t.place) { %>
+                    <small class="training-where"><a href="<%= mapsUrl(t.place) %>" target="_blank" rel="noopener"><%- icon('pin') %><%= t.place %></a></small>
+                  <% } %>
+                  <% if (t.note) { %><small class="training-where"><%= t.note %></small><% } %>
+                </div>
+              </li>
+            <% } %>
+          </ul>
+          <% if (!ownPlaces) { %>
+            <% const venue = team.trainingVenue || club.gym; %>
+            <a class="training-venue" href="<%= mapsUrl(venue) %>" target="_blank" rel="noopener"><%- icon('pin') %><%= venue %></a>
+          <% } %>
         <% } %>
         <% if (team.coach) { %><p class="coach-line"><%= team.coach.includes(',') ? 'Coachs' : 'Coach' %> : <strong><%= team.coach %></strong></p><% } %>
       </div>

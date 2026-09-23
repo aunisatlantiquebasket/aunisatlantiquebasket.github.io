@@ -12,7 +12,7 @@ import {
   getUpcomingMatches,
   readJson,
 } from "./data/repository.js";
-import type { Match } from "./data/types.js";
+import type { Match, Team } from "./data/types.js";
 import { startFfbbAutoSync } from "./ffbb/scheduler.js";
 import { STATUS_FILE, type SyncStatus } from "./ffbb/sync.js";
 
@@ -85,6 +85,43 @@ function lastWeekend(results: Match[]): { title: string; matches: Match[] } {
   return { title, matches };
 }
 
+const nextSlotFormat = fmt({ weekday: "long", day: "numeric", month: "short" });
+const WEEKDAYS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+
+interface TrainingView {
+  time: string;
+  place?: string;
+  note?: string;
+  alternate?: { places: string[]; next: { label: string; place: string } };
+}
+
+/**
+ * Prépare les créneaux d'entraînement pour l'affichage. Pour un lieu en alternance,
+ * calcule le lieu du prochain créneau (le site est régénéré régulièrement, l'info reste à jour).
+ */
+function describeTrainings(trainings: Team["trainings"]): TrainingView[] {
+  const today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  const mondayOf = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate() - ((d.getDay() + 6) % 7));
+
+  return trainings.map((t) => {
+    if (typeof t === "string") return { time: t };
+    const view: TrainingView = { time: t.time, place: t.place, note: t.note };
+    const weekday = WEEKDAYS.indexOf(t.time.split(" ")[0].toLowerCase());
+    if (t.alternate && t.alternate.places.length > 0 && weekday >= 0) {
+      const next = new Date(today);
+      next.setDate(today.getDate() + ((weekday - today.getDay() + 7) % 7));
+      const [y, m, d] = t.alternate.from.split("-").map(Number);
+      const weeks = Math.round((mondayOf(next).getTime() - mondayOf(new Date(y, m - 1, d)).getTime()) / (7 * 86_400_000));
+      const n = t.alternate.places.length;
+      view.alternate = {
+        places: t.alternate.places,
+        next: { label: nextSlotFormat.format(next), place: t.alternate.places[((weeks % n) + n) % n] },
+      };
+    }
+    return view;
+  });
+}
+
 /** Regroupe des matchs par mois ("octobre 2026" → [...]) en gardant l'ordre */
 function groupByMonth(matches: Match[]): { month: string; matches: Match[] }[] {
   const groups = new Map<string, Match[]>();
@@ -148,6 +185,7 @@ app.get("/equipes/:slug", async (req, res, next) => {
     team,
     upcoming,
     results,
+    trainings: describeTrainings(team.trainings),
     nextId: upcoming[0]?.id,
     competition: team.championship.match(/\(([A-Z0-9]+)\)/)?.[1],
     poule: team.championship.match(/poule \w+/i)?.[0],

@@ -593,3 +593,11 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 /* ---------- Accueil : blocs « résultats du week-end » / « ce week-end » ---------- */
 .home-block + .home-block { margin-top: 28px; }
 .col-title { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+
+/* ---------- Entraînements : lieu par créneau ---------- */
+.check-list.trainings li { align-items: flex-start; }
+.check-list.trainings li > .icon { margin-top: 4px; }
+.training-where { display: block; font-size: .85rem; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.training-where a { color: var(--green-text); }
+.training-where .icon { width: 13px; height: 13px; vertical-align: -2px; margin-right: 3px; }
+.training-where .capitalize { display: inline-block; }

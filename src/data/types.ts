@@ -4,7 +4,7 @@ export interface Team {
   category: string;
   coach?: string;
   championship: string;
-  trainings: string[];
+  trainings: (string | Training)[]; // "Mardi 17h00 – 18h30", ou un créneau avec son propre lieu
   trainingVenue?: string; // lieu des entraînements, si différent de la salle du club (config.gym)
   players: Player[];
   // Champs mis à jour automatiquement par la synchronisation FFBB (npm run sync-ffbb)
@@ -28,6 +28,18 @@ export interface StandingRow {
   conceded: number;
   diff: number;
   isUs: boolean;
+}
+
+/** Créneau d'entraînement avec un lieu propre (lien d'itinéraire) et/ou une précision */
+export interface Training {
+  time: string; // "Lundi 18h00 – 19h30"
+  place?: string; // "Gymnase intercommunal Bel Air, Marans"
+  note?: string; // précision libre
+  /**
+   * Lieu en alternance d'une semaine sur l'autre : la semaine de `from` a lieu à places[0],
+   * la suivante à places[1], etc. Le site affiche le lieu du prochain créneau.
+   */
+  alternate?: { from: string; places: string[] };
 }
 
 export interface Player {
