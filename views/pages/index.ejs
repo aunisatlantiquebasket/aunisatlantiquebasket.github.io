@@ -87,19 +87,22 @@
       </div>
       <a href="/calendrier" class="link-arrow">Tout le calendrier <%- icon('arrow') %></a>
     </div>
-    <%
-      // Ordre chronologique : derniers résultats, prochain match (surligné), puis la suite
-      const fixtures = [...results].reverse().concat(nextMatch ? [nextMatch] : [], upcoming);
-      const teamNameOf = (m) => teams.find(t => t.slug === m.teamSlug)?.name;
-    %>
-    <div class="fixtures-card">
-      <div class="fx-list">
-        <% if (fixtures.length === 0) { %><p class="empty">Aucun match programmé pour le moment.</p><% } %>
-        <% for (const match of fixtures) { %>
-          <%- include('../partials/fixture-row', { match, nextId: nextMatch?.id, teamName: teamNameOf(match) }) %>
-        <% } %>
+    <% const teamNameOf = (m) => teams.find(t => t.slug === m.teamSlug)?.name; %>
+    <% if (!lastResults.matches.length && !nextMatches.matches.length) { %>
+      <p class="empty">Aucun match programmé pour le moment.</p>
+    <% } %>
+    <% for (const block of [lastResults, nextMatches]) { if (!block.matches.length) continue; %>
+      <div class="home-block">
+        <h3 class="col-title capitalize"><%= block.title %></h3>
+        <div class="fixtures-card">
+          <div class="fx-list">
+            <% for (const match of block.matches) { %>
+              <%- include('../partials/fixture-row', { match, nextId: nextMatch?.id, teamName: teamNameOf(match) }) %>
+            <% } %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% } %>
   </div>
 </section>
 

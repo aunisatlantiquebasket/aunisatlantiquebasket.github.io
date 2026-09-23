@@ -589,3 +589,7 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
   .contact-panel { padding: 22px; }
   .contact-actions .btn { width: 100%; }
 }
+
+/* ---------- Accueil : blocs « résultats du week-end » / « ce week-end » ---------- */
+.home-block + .home-block { margin-top: 28px; }
+.col-title { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; font-weight: 600; }

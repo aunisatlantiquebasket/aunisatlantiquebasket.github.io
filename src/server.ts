@@ -69,6 +69,22 @@ function nextWeekend(upcoming: Match[]): { title: string; matches: Match[] } {
   return { title, matches };
 }
 
+/** Matchs du dernier week-end joué (ordre chronologique), avec un titre ("Résultats du week-end dernier"…) */
+function lastWeekend(results: Match[]): { title: string; matches: Match[] } {
+  if (results.length === 0) return { title: "Derniers résultats", matches: [] };
+  const last = matchWindow(results[0].date); // results : du plus récent au plus ancien
+  const matches = results.filter((m) => matchWindow(m.date).key === last.key).reverse();
+  const today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  const daysAgo = Math.round((today.getTime() - (last.saturday ?? last.day).getTime()) / 86_400_000);
+
+  let title: string;
+  if (!last.saturday) title = `Résultats du ${dayFormat.format(last.day)}`;
+  else if (daysAgo <= 1) title = "Résultats de ce week-end";
+  else if (daysAgo <= 8) title = "Résultats du week-end dernier";
+  else title = `Résultats du week-end du ${weekendFormat.format(last.saturday)}`;
+  return { title, matches };
+}
+
 /** Regroupe des matchs par mois ("octobre 2026" → [...]) en gardant l'ordre */
 function groupByMonth(matches: Match[]): { month: string; matches: Match[] }[] {
   const groups = new Map<string, Match[]>();
@@ -98,16 +114,18 @@ app.get("/", async (_req, res) => {
   const [teams, upcoming, results, articles] = await Promise.all([
     getTeams(),
     getUpcomingMatches(),
-    getPastMatches(3),
+    getPastMatches(),
     getArticles(),
   ]);
+  const hero = nextWeekend(upcoming); // carrousel de la bannière : matchs du week-end qui arrive
   res.render("pages/index", {
     title: "Accueil",
     teams,
     nextMatch: upcoming[0],
-    hero: nextWeekend(upcoming), // carrousel de la bannière : matchs du week-end qui arrive
-    upcoming: upcoming.slice(1, 4),
-    results,
+    hero,
+    // Liste « Matchs et résultats » : dernier week-end joué, puis prochain week-end (ordre chronologique)
+    lastResults: lastWeekend(results),
+    nextMatches: { title: hero.title, matches: [...hero.matches].sort((a, b) => a.date.localeCompare(b.date)) },
     articles: articles.slice(0, 3),
   });
 });
