@@ -24,7 +24,7 @@ génération du site statique → publication sur GitHub Pages.
 - En cas d'échec de la FFBB, le site est publié quand même avec les données précédentes (avertissement dans Actions).
 
 Le site étant statique, les filtres du calendrier et des équipes s'appliquent dans la page (`public/js/filters.js`)
-et la page Contact propose un e-mail prérempli et le téléphone (pas de formulaire).
+et la page Contact propose un e-mail prérempli (pas de formulaire, pas de téléphone).
 
 ## Synchronisation avec la FFBB
 

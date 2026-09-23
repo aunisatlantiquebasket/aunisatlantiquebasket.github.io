@@ -9,10 +9,6 @@
         <span class="ql-icon"><%- icon('mail') %></span>
         <span><small>E-mail</small><strong><%= club.email %></strong></span>
       </a>
-      <a class="contact-card" href="tel:<%= club.phone.replace(/\s/g, '') %>">
-        <span class="ql-icon"><%- icon('phone') %></span>
-        <span><small>Téléphone</small><strong><%= club.phone %></strong></span>
-      </a>
       <a class="contact-card" href="<%= mapsUrl(club.gym) %>" target="_blank" rel="noopener">
         <span class="ql-icon"><%- icon('route') %></span>
         <span><small>Salle (itinéraire)</small><strong><%= club.gym %></strong></span>
@@ -28,7 +24,7 @@
     </aside>
 
     <%
-      // Pas de formulaire (site statique) : un e-mail prérempli selon le sujet, ou un appel
+      // Pas de formulaire (site statique) : un e-mail prérempli selon le sujet
       const subjects = {
         Inscription: "Bonjour,\n\nJe souhaite m'inscrire (ou inscrire mon enfant) au club.\nNom et prénom du joueur :\nDate de naissance :\nÉquipe souhaitée (si vous la connaissez) :\n\nMerci !",
         Renseignements: "Bonjour,\n\n",
@@ -38,7 +34,7 @@
       const mailto = (s) => `mailto:${club.email}?subject=${encodeURIComponent(`${s} - ${club.name}`)}&body=${encodeURIComponent(subjects[s])}`;
     %>
     <div class="panel contact-panel" data-contact>
-      <h2>Écrivez-nous ou appelez-nous</h2>
+      <h2>Écrivez-nous</h2>
       <p class="muted">Choisissez le sujet : votre messagerie s'ouvre avec un e-mail prêt à compléter.</p>
       <div class="subject-picker" role="group" aria-label="Sujet">
         <% for (const s of Object.keys(subjects)) { %>
@@ -47,7 +43,6 @@
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary btn-lg" href="<%= mailto('Inscription') %>" data-mail-link><%- icon('mail') %> Envoyer un e-mail</a>
-        <a class="btn btn-outline btn-lg" href="tel:<%= club.phone.replace(/\s/g, '') %>"><%- icon('phone') %> Appeler le <%= club.phone %></a>
       </div>
       <p class="contact-hint">Pas de messagerie sur cet appareil ? Écrivez-nous à <a href="mailto:<%= club.email %>"><%= club.email %></a>.</p>
     </div>

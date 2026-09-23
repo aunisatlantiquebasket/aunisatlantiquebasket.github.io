@@ -5,7 +5,6 @@ export const club = {
   foundedYear: 2023,
   address: "16 rue du Docteur Quoy, 17170 Saint-Jean-de-Liversay",
   email: "contact@aunisatlantiquebasket.com",
-  phone: "06 65 06 86 85",
   gym: "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans",
   social: {
     facebook: "https://www.facebook.com/aunisatlantiquebasket/",
