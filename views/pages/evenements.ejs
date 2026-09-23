@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { eyebrow: 'Vie du club', heading: 'Les', accent: 'événements', subtitle: 'Fêtes, stages, lotos, assemblées… Retrouvez tous les rendez-vous du club en dehors des matchs.' }) %>
+<section class="section">
+  <div class="container">
+    <div class="section-head"><div><p class="eyebrow">À venir</p><h2>Prochains rendez-vous</h2></div></div>
+    <% if (upcoming.length === 0) { %>
+      <p class="empty">Aucun événement programmé pour le moment. Suivez-nous sur <a href="<%= club.social.facebook %>" target="_blank" rel="noopener">Facebook</a> pour ne rien manquer.</p>
+    <% } else { %>
+      <div class="events-grid"><% for (const event of upcoming) { %><%- include('../partials/event-card', { event }) %><% } %></div>
+    <% } %>
+
+    <% if (past.length) { %>
+      <div class="section-head events-past-head"><div><p class="eyebrow">Déjà passés</p><h2>Ils ont eu lieu</h2></div></div>
+      <div class="events-grid"><% for (const event of past) { %><%- include('../partials/event-card', { event, isPast: true }) %><% } %></div>
+    <% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

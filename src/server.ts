@@ -5,6 +5,8 @@ import { club, port } from "./config.js";
 import {
   getArticle,
   getArticles,
+  getEvent,
+  getEvents,
   getPastMatches,
   getTeam,
   getTeams,
@@ -12,7 +14,7 @@ import {
   getUpcomingMatches,
   readJson,
 } from "./data/repository.js";
-import type { Match, Team } from "./data/types.js";
+import type { ClubEvent, Match, Team } from "./data/types.js";
 import { startFfbbAutoSync } from "./ffbb/scheduler.js";
 import { STATUS_FILE, type SyncStatus } from "./ffbb/sync.js";
 
@@ -122,6 +124,35 @@ function describeTrainings(trainings: Team["trainings"]): TrainingView[] {
   });
 }
 
+const eventDayFormat = fmt({ weekday: "long", day: "numeric", month: "long", year: "numeric" });
+const eventMonthFormat = fmt({ month: "short" });
+const localDate = (iso: string) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); };
+
+/** « samedi 17 octobre 2026 » ou « du 24 au 26 octobre 2026 » */
+function formatEventDate(e: ClubEvent): string {
+  if (!e.endDate || e.endDate === e.date) return eventDayFormat.format(localDate(e.date));
+  const [start, end] = [localDate(e.date), localDate(e.endDate)];
+  const sameMonth = start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
+  return sameMonth
+    ? `du ${start.getDate()} au ${fmt({ day: "numeric", month: "long", year: "numeric" }).format(end)}`
+    : `du ${fmt({ day: "numeric", month: "long" }).format(start)} au ${fmt({ day: "numeric", month: "long", year: "numeric" }).format(end)}`;
+}
+
+/** Lien « Ajouter à mon agenda » (Google Agenda, journée entière) */
+function calendarUrl(e: ClubEvent): string {
+  const ymd = (d: Date) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
+  const end = localDate(e.endDate ?? e.date);
+  end.setDate(end.getDate() + 1); // date de fin exclue
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `${e.title} - ${club.name}`,
+    dates: `${ymd(localDate(e.date))}/${ymd(end)}`,
+    details: [e.time, e.summary].filter(Boolean).join(" · "),
+    location: e.place ?? "",
+  });
+  return `https://calendar.google.com/calendar/render?${params}`;
+}
+
 /** Regroupe des matchs par mois ("octobre 2026" → [...]) en gardant l'ordre */
 function groupByMonth(matches: Match[]): { month: string; matches: Match[] }[] {
   const groups = new Map<string, Match[]>();
@@ -143,16 +174,21 @@ app.use((req, res, next) => {
   res.locals.formatMonth = (iso: string) => monthFormat.format(new Date(iso)).replace(".", "");
   res.locals.formatTime = (iso: string) => timeFormat.format(new Date(iso)).replace(":", "h");
   res.locals.formatDayMonth = (iso: string) => dayMonthFormat.format(new Date(iso));
+  res.locals.formatEventDate = formatEventDate;
+  res.locals.eventDay = (e: ClubEvent) => localDate(e.date).getDate();
+  res.locals.eventMonth = (e: ClubEvent) => eventMonthFormat.format(localDate(e.date)).replace(".", "");
+  res.locals.calendarUrl = calendarUrl;
   res.locals.mapsUrl = (place: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
   next();
 });
 
 app.get("/", async (_req, res) => {
-  const [teams, upcoming, results, articles] = await Promise.all([
+  const [teams, upcoming, results, articles, events] = await Promise.all([
     getTeams(),
     getUpcomingMatches(),
     getPastMatches(),
     getArticles(),
+    getEvents(),
   ]);
   const hero = nextWeekend(upcoming); // carrousel de la bannière : matchs du week-end qui arrive
   res.render("pages/index", {
@@ -164,6 +200,7 @@ app.get("/", async (_req, res) => {
     lastResults: lastWeekend(results),
     nextMatches: { title: hero.title, matches: [...hero.matches].sort((a, b) => a.date.localeCompare(b.date)) },
     articles: articles.slice(0, 3),
+    events: events.upcoming.slice(0, 3),
   });
 });
 
@@ -217,6 +254,16 @@ app.get("/calendrier", async (_req, res) => {
     nextId: upcoming[0]?.id,
     lastSync: syncStatus?.lastSuccess,
   });
+});
+
+app.get("/evenements", async (_req, res) => {
+  res.render("pages/evenements", { title: "Événements", ...(await getEvents()) });
+});
+
+app.get("/evenements/:slug", async (req, res, next) => {
+  const event = await getEvent(req.params.slug);
+  if (!event) return next();
+  res.render("pages/evenement", { title: event.title, event });
 });
 
 app.get("/trombinoscope", async (_req, res) => {

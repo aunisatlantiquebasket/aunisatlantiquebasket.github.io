@@ -1,0 +1,15 @@
+<a href="/evenements/<%= event.slug %>" class="card event-card <%= typeof isPast !== 'undefined' && isPast ? 'is-past' : '' %>">
+  <div class="event-date" aria-hidden="true">
+    <span class="d"><%= eventDay(event) %></span>
+    <span class="m"><%= eventMonth(event) %></span>
+  </div>
+  <div class="event-body">
+    <% if (event.kind) { %><span class="tag tag-team"><%= event.kind %></span><% } %>
+    <h3><%= event.title %></h3>
+    <p class="event-when">
+      <%- include('icon', { name: 'calendar' }) %><span class="capitalize"><%= formatEventDate(event) %></span><% if (event.time) { %> · <%= event.time %><% } %>
+    </p>
+    <% if (event.place) { %><p class="event-when"><%- include('icon', { name: 'pin' }) %><%= event.place %></p><% } %>
+    <p class="muted"><%= event.summary %></p>
+  </div>
+</a>

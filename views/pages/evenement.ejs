@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<% const icon = (name) => include('../partials/icon', { name }); %>
+<%- include('../partials/page-header', { back: { href: '/evenements', label: 'Tous les événements' }, eyebrow: event.kind || 'Événement', heading: event.title }) %>
+<section class="section">
+  <div class="container event-page">
+    <article class="prose">
+      <p class="lead"><%= event.summary %></p>
+      <% for (const paragraph of event.description ?? []) { %><p><%= paragraph %></p><% } %>
+    </article>
+    <aside class="panel event-info">
+      <% if (event.past) { %><p class="tag tag-away">Événement passé</p><% } %>
+      <ul class="event-facts">
+        <li><%- icon('calendar') %><span class="capitalize"><%= formatEventDate(event) %></span></li>
+        <% if (event.time) { %><li><%- icon('clock') %><span><%= event.time %></span></li><% } %>
+        <% if (event.place) { %><li><%- icon('pin') %><a href="<%= mapsUrl(event.place) %>" target="_blank" rel="noopener"><%= event.place %></a></li><% } %>
+      </ul>
+      <% if (!event.past) { %>
+        <a class="btn btn-primary" href="<%= calendarUrl(event) %>" target="_blank" rel="noopener"><%- icon('calendar') %> Ajouter à mon agenda</a>
+      <% } %>
+      <a class="link-arrow" href="/contact?sujet=Renseignements">Une question ? Écrivez-nous <%- icon('arrow') %></a>
+    </aside>
+  </div>
+</section>
+<%- include('../partials/footer') %>

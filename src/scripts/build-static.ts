@@ -18,14 +18,14 @@ const BASE = (process.env.BASE_PATH ?? "").replace(/\/+$/, "");
 const withBase = (html: string) => (BASE ? html.replace(/\b(href|src)="\/(?!\/)/g, `$1="${BASE}/`) : html);
 
 const { app } = await import("../server.js");
-const { getArticles, getTeams } = await import("../data/repository.js");
+const { getArticles, getEvents, getTeams } = await import("../data/repository.js");
 
 const server = app.listen(0);
 await new Promise<void>((resolve) => server.once("listening", () => resolve()));
 const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
 
 try {
-  const [teams, articles] = await Promise.all([getTeams(), getArticles()]);
+  const [teams, articles, events] = await Promise.all([getTeams(), getArticles(), getEvents()]);
   const pages = [
     "/",
     "/equipes",
@@ -33,6 +33,8 @@ try {
     "/calendrier",
     "/actualites",
     ...articles.map((a) => `/actualites/${a.slug}`),
+    "/evenements",
+    ...[...events.upcoming, ...events.past].map((e) => `/evenements/${e.slug}`),
     "/trombinoscope",
     "/contact",
   ];

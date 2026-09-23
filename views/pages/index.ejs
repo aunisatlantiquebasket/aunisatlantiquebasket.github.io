@@ -106,7 +106,22 @@
   </div>
 </section>
 
+<% if (events.length) { %>
 <section class="section section-tint">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Hors terrain</p>
+        <h2>Prochains événements</h2>
+      </div>
+      <a href="/evenements" class="link-arrow">Tous les événements <%- icon('arrow') %></a>
+    </div>
+    <div class="events-grid"><% for (const event of events) { %><%- include('../partials/event-card', { event }) %><% } %></div>
+  </div>
+</section>
+<% } %>
+
+<section class="section <%= events.length ? '' : 'section-tint' %>">
   <div class="container">
     <div class="section-head">
       <div>

@@ -91,6 +91,14 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
 - **Match amical / hors championnat** : ajouter une entrée dans `data/matches.json` avec `"source": "manual"` ;
   après le match, ajouter `"score": { "us": 80, "them": 72 }`
 - **Nouvelle actualité** : ajouter une entrée dans `data/articles.json` (le `slug` sert d'URL)
+- **Événement hors matchs** (loto, AG, stage, fête…) : ajouter une entrée dans `data/evenements.json` :
+  ```json
+  { "slug": "loto-2026", "title": "Loto du club", "kind": "Vie du club", "date": "2026-11-21",
+    "endDate": "2026-11-22", "time": "19h00", "place": "Salle des fêtes, Saint-Jean-de-Liversay",
+    "summary": "Phrase courte pour la liste.", "description": ["Paragraphe 1", "Paragraphe 2"] }
+  ```
+  `endDate`, `time`, `place`, `kind` et `description` sont facultatifs. L'événement passe tout seul dans
+  « Déjà passés » le lendemain de son dernier jour ; les 3 prochains s'affichent sur l'accueil.
 - **Trombinoscope** (`/trombinoscope`) :
   - les **coachs** sont repris automatiquement du champ `coach` de chaque équipe (`data/teams.json`, plusieurs noms séparés par des virgules) ;
   - le **bureau**, le **comité directeur** et les **bénévoles** se complètent dans `data/trombinoscope.json`

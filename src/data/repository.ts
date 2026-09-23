@@ -1,6 +1,6 @@
 import { readdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { Article, Match, Person, Team } from "./types.js";
+import type { Article, ClubEvent, Match, Person, Team } from "./types.js";
 
 const dataDir = path.resolve("data");
 
@@ -108,6 +108,24 @@ export async function getUpcomingMatches(limit?: number): Promise<Match[]> {
 export async function getPastMatches(limit?: number): Promise<Match[]> {
   const past = (await getMatches()).filter(isPlayed).reverse();
   return limit ? past.slice(0, limit) : past;
+}
+
+// ---------- Événements (data/evenements.json) ----------
+
+/** Un événement reste « à venir » jusqu'à la fin de son dernier jour */
+const isEventPast = (e: ClubEvent) => {
+  const [y, m, d] = (e.endDate ?? e.date).split("-").map(Number);
+  return new Date(y, m - 1, d + 1).getTime() <= Date.now();
+};
+
+export async function getEvents(): Promise<{ upcoming: ClubEvent[]; past: ClubEvent[] }> {
+  const events = (await readJson<ClubEvent[]>("evenements.json", [])).sort((a, b) => a.date.localeCompare(b.date));
+  return { upcoming: events.filter((e) => !isEventPast(e)), past: events.filter(isEventPast).reverse() };
+}
+
+export async function getEvent(slug: string): Promise<(ClubEvent & { past: boolean }) | undefined> {
+  const event = (await readJson<ClubEvent[]>("evenements.json", [])).find((e) => e.slug === slug);
+  return event && { ...event, past: isEventPast(event) };
 }
 
 export async function getArticles(): Promise<Article[]> {

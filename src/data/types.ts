@@ -71,6 +71,19 @@ export interface Person {
   photo?: string; // URL de la photo si un fichier existe dans public/img/trombi/
 }
 
+/** Événement de la vie du club, hors matchs (loto, assemblée générale, stage, fête du club…) */
+export interface ClubEvent {
+  slug: string; // sert d'adresse : /evenements/loto-2026
+  title: string;
+  kind?: string; // type affiché en étiquette : "Vie du club", "Assemblée générale", "Stage"…
+  date: string; // jour de début, "2026-10-17"
+  endDate?: string; // dernier jour, pour un événement sur plusieurs jours
+  time?: string; // "19h00", "14h00 – 18h00"
+  place?: string; // "Salle des fêtes, Saint-Jean-de-Liversay" (lien d'itinéraire)
+  summary: string; // phrase courte pour la liste
+  description?: string[]; // paragraphes de la page de l'événement
+}
+
 export interface Article {
   slug: string;
   title: string;

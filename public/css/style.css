@@ -601,3 +601,27 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .training-where a { color: var(--green-text); }
 .training-where .icon { width: 13px; height: 13px; vertical-align: -2px; margin-right: 3px; }
 .training-where .capitalize { display: inline-block; }
+
+/* ---------- Événements ---------- */
+.events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.event-card { flex-direction: row; gap: 18px; padding: 20px; align-items: flex-start; }
+.event-card.is-past { opacity: .75; }
+.event-date {
+  flex-shrink: 0; width: 64px; padding: 10px 0; border-radius: 14px; text-align: center;
+  background: var(--slate-900); color: #fff; display: flex; flex-direction: column; line-height: 1.1;
+}
+.event-date .d { font-family: var(--font-display); font-weight: 800; font-size: 1.7rem; color: var(--green-light); }
+.event-date .m { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: #b7c2c9; }
+.event-body { min-width: 0; }
+.event-body h3 { margin: 8px 0 6px; }
+.event-when { display: flex; align-items: flex-start; gap: 6px; margin: 0 0 4px; font-size: .88rem; color: var(--slate-700); }
+.event-when .icon { width: 14px; height: 14px; margin-top: 3px; color: var(--green-text); }
+.event-body .muted { margin: 8px 0 0; font-size: .9rem; }
+.events-past-head { margin-top: 56px; }
+.event-page { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 40px; align-items: start; }
+.event-info { display: grid; gap: 16px; }
+.event-info .tag { justify-self: start; margin: 0; }
+.event-facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.event-facts li { display: flex; gap: 10px; align-items: flex-start; }
+.event-facts .icon { color: var(--green-text); margin-top: 3px; }
+@media (max-width: 900px) { .event-page { grid-template-columns: 1fr; } }

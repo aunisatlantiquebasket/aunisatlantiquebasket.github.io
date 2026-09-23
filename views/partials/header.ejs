@@ -27,7 +27,7 @@
       </label>
       <nav class="main-nav" aria-label="Navigation principale">
         <%# L'accueil est accessible par le logo, le contact par « Nous rejoindre » et le pied de page %>
-        <% const links = [["/equipes", "Équipes"], ["/calendrier", "Calendrier"], ["/actualites", "Actualités"], ["/trombinoscope", "Le club"]]; %>
+        <% const links = [["/equipes", "Équipes"], ["/calendrier", "Calendrier"], ["/evenements", "Événements"], ["/actualites", "Actualités"], ["/trombinoscope", "Le club"]]; %>
         <% for (const [href, label] of links) { %>
           <% const active = currentPath.startsWith(href); %>
           <a href="<%= href %>" class="<%= active ? 'active' : '' %>" <%- active ? 'aria-current="page"' : '' %>><%= label %></a>
