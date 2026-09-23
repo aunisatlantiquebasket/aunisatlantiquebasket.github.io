@@ -43,7 +43,8 @@ jobs:
 
       - name: Synchroniser avec la FFBB
         # En cas d'échec (FFBB indisponible…), on publie quand même avec les données précédentes
-        run: npm run sync-ffbb || echo "::warning::Synchronisation FFBB en échec : publication avec les données précédentes"
+        run: |
+          npm run sync-ffbb || echo "::warning::Synchronisation FFBB en échec, publication avec les données précédentes"
 
       - name: Enregistrer les données mises à jour
         run: |
