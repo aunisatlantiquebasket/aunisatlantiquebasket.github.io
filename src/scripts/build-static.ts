@@ -11,6 +11,12 @@ import path from "node:path";
 
 const OUT = path.resolve("site");
 
+// Chemin de base du site en ligne : "/site" pour https://aunisatlantiquebasket.github.io/site/,
+// "" une fois le nom de domaine branché. Fourni par le robot de publication (GitHub Pages).
+const BASE = (process.env.BASE_PATH ?? "").replace(/\/+$/, "");
+/** Préfixe les liens internes (href="/…", src="/…") par le chemin de base */
+const withBase = (html: string) => (BASE ? html.replace(/\b(href|src)="\/(?!\/)/g, `$1="${BASE}/`) : html);
+
 const { app } = await import("../server.js");
 const { getArticles, getTeams } = await import("../data/repository.js");
 
@@ -40,14 +46,14 @@ try {
     // /equipes/u13-masculins → site/equipes/u13-masculins/index.html (adresse sans .html)
     const file = path.join(OUT, page, "index.html");
     await mkdir(path.dirname(file), { recursive: true });
-    await writeFile(file, await res.text());
+    await writeFile(file, withBase(await res.text()));
   }
 
   // Page d'erreur servie par l'hébergeur pour les adresses inconnues
   const notFound = await fetch(`${base}/__page-inexistante__`);
-  await writeFile(path.join(OUT, "404.html"), await notFound.text());
+  await writeFile(path.join(OUT, "404.html"), withBase(await notFound.text()));
 
-  console.log(`Site statique généré dans site/ : ${pages.length} pages + 404.html`);
+  console.log(`Site statique généré dans site/ : ${pages.length} pages + 404.html${BASE ? ` (chemin de base ${BASE})` : ""}`);
 } finally {
   server.close();
 }
