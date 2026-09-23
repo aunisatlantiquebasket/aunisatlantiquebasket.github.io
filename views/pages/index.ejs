@@ -31,10 +31,7 @@
             <% const team = teams.find(t => t.slug === m.teamSlug); %>
             <% const initials = m.opponent.split(/[\s-]+/).filter(w => /^[A-ZÀ-Ý0-9]/.test(w)).slice(0, 2).map(w => w[0]).join(''); %>
             <article class="carousel-slide <%= m.home ? 'is-home' : 'is-away' %>" role="group" aria-roledescription="diapositive" aria-label="<%= i + 1 %> sur <%= hero.matches.length %> : <%= m.home ? 'à domicile' : 'à l\'extérieur' %>">
-              <div class="slide-top">
-                <p class="next-match-team"><%= team ? team.name : '' %><% if (m.round) { %> <span>· Journée <%= m.round %></span><% } %></p>
-                <span class="place-pill <%= m.home ? 'home' : 'away' %>"><%- icon(m.home ? 'home' : 'plane') %><%= m.home ? 'À domicile' : 'À l\'extérieur' %></span>
-              </div>
+              <p class="next-match-team"><%= team ? team.name : '' %><% if (m.round) { %> <span>· Journée <%= m.round %></span><% } %></p>
               <%
                 // Comme sur une affiche : l'équipe qui reçoit à gauche
                 const usSide = { us: true, name: club.shortName, logo: '/img/logo-rond.svg' };
@@ -55,6 +52,7 @@
                 <% }) %>
               </div>
               <ul class="next-match-info">
+                <li><%- icon(m.home ? 'home' : 'plane') %> <span><%= m.home ? 'À domicile' : 'À l\'extérieur' %></span></li>
                 <li><%- icon('calendar') %> <span class="capitalize"><%= formatDate(m.date) %></span></li>
                 <li><%- icon('pin') %> <a href="<%= mapsUrl(m.venue) %>" target="_blank" rel="noopener"><%= m.venue %></a></li>
               </ul>
