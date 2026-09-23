@@ -1,0 +1,15 @@
+<% const catIcon = { Seniors: 'trophy', Jeunes: 'ball', Loisirs: 'heart' }[team.category] || 'users'; %>
+<a href="/equipes/<%= team.slug %>" class="card team-card cat-<%= team.category.toLowerCase() %>">
+  <div class="team-card-icon"><%- include('icon', { name: catIcon }) %></div>
+  <div class="card-body">
+    <div class="team-card-tags">
+      <span class="tag tag-team"><%= team.category %></span>
+      <% if (team.ranking && team.ranking.played > 0) { %>
+        <span class="tag tag-rank"><%= team.ranking.position %><%= team.ranking.position === 1 ? 'er' : 'e' %> de la poule</span>
+      <% } %>
+    </div>
+    <h3><%= team.name %></h3>
+    <p class="muted"><%= team.championship %></p>
+    <span class="link-arrow">Voir l'équipe <%- include('icon', { name: 'arrow' }) %></span>
+  </div>
+</a>

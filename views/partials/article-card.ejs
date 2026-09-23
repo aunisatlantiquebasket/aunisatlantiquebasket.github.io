@@ -1,0 +1,11 @@
+<a href="/actualites/<%= article.slug %>" class="card article-card">
+  <div class="article-card-top">
+    <%- include('icon', { name: 'news' }) %>
+    <time datetime="<%= article.date %>"><%= formatShortDate(article.date) %></time>
+  </div>
+  <div class="card-body">
+    <h3><%= article.title %></h3>
+    <p><%= article.summary %></p>
+    <span class="link-arrow">Lire l'article <%- include('icon', { name: 'arrow' }) %></span>
+  </div>
+</a>

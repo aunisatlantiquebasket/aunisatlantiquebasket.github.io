@@ -1,0 +1,70 @@
+<%- include('../partials/header') %>
+<% const icon = (name) => include('../partials/icon', { name }); %>
+<% const [nameStart, ...nameEnd] = team.name.split(' '); %>
+<%- include('../partials/page-header', { back: { href: '/equipes', label: 'Toutes les équipes' }, eyebrow: team.category, heading: nameStart, accent: nameEnd.join(' '), subtitle: team.championship }) %>
+<% const hasMatches = upcoming.length > 0 || results.length > 0; %>
+
+<section class="section">
+  <div class="container team-page <%= hasMatches ? '' : 'no-matches' %>">
+
+    <% if (hasMatches) { %>
+    <%# Saison dans l'ordre chronologique (résultats puis matchs à venir), filtrée dans la page (public/js/filters.js) %>
+    <div class="fixtures-card" data-filter-scope data-default-view="tous">
+      <div class="fixtures-head">
+        <h2 class="fixtures-title">Calendrier</h2>
+        <div class="tabs" role="group" aria-label="Filtrer les matchs">
+          <button type="button" data-set="view" data-value="tous" class="active">Tous les matchs</button>
+          <button type="button" data-set="view" data-value="a-venir">À venir <span class="count" data-count="a-venir"><%= upcoming.length %></span></button>
+          <button type="button" data-set="view" data-value="resultats">Résultats <span class="count" data-count="resultats"><%= results.length %></span></button>
+        </div>
+      </div>
+      <div class="fx-list">
+        <% for (const match of [...results].reverse()) { %><%- include('../partials/fixture-row', { match, nextId, listView: 'resultats' }) %><% } %>
+        <% for (const match of upcoming) { %><%- include('../partials/fixture-row', { match, nextId, listView: 'a-venir' }) %><% } %>
+        <p class="empty" data-empty hidden>Aucun match dans cette sélection pour le moment.</p>
+      </div>
+    </div>
+    <% } %>
+
+    <aside class="team-aside">
+      <% if (results.length > 0) { %>
+        <%- include('../partials/team-stats', { stats, competition }) %>
+      <% } %>
+      <% if (team.standings && team.standings.length) { %>
+        <%- include('../partials/standings', { team, poule }) %>
+      <% } %>
+
+      <div class="panel">
+        <h2 class="panel-title"><%- icon('clock') %> Entraînements</h2>
+        <% if (team.trainings.length === 0) { %>
+          <p class="muted">Horaires bientôt disponibles.</p>
+          <a href="/contact?sujet=Renseignements" class="link-arrow">Nous demander les horaires <%- icon('arrow') %></a>
+        <% } else { %>
+          <ul class="check-list"><% for (const t of team.trainings) { %><li><%- icon('check') %><%= t %></li><% } %></ul>
+          <% const venue = team.trainingVenue || club.gym; %>
+          <a class="training-venue" href="<%= mapsUrl(venue) %>" target="_blank" rel="noopener"><%- icon('pin') %><%= venue %></a>
+        <% } %>
+        <% if (team.coach) { %><p class="coach-line"><%= team.coach.includes(',') ? 'Coachs' : 'Coach' %> : <strong><%= team.coach %></strong></p><% } %>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title"><%- icon('users') %> Effectif</h2>
+        <% if (team.players.length === 0) { %>
+          <p class="muted">Effectif en cours de constitution.</p>
+        <% } else { %>
+          <ul class="roster">
+            <% for (const p of team.players) { %>
+              <li><span class="jersey"><%= p.number %></span><span><strong><%= p.firstName %> <%= p.lastName %></strong><small><%= p.position %></small></span></li>
+            <% } %>
+          </ul>
+        <% } %>
+      </div>
+      <div class="panel panel-accent">
+        <h2 class="panel-title"><%- icon('ball') %> Rejoindre l'équipe</h2>
+        <p>Envie d'essayer ? Contactez-nous, on vous dira quand venir.</p>
+        <a href="/contact?sujet=Inscription" class="btn btn-primary">Nous contacter</a>
+      </div>
+    </aside>
+  </div>
+</section>
+<% if (hasMatches) { %><script src="/js/filters.js" defer></script><% } %>
+<%- include('../partials/footer') %>

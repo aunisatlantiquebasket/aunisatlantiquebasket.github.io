@@ -1,0 +1,41 @@
+<%
+  // Ligne de match façon "feuille de calendrier" FFBB, aux couleurs du club.
+  // Le score se lit comme à la FFBB : équipe qui reçoit à gauche, visiteur à droite ; notre score est coloré.
+  const played = !!match.score;
+  const win = played && match.score.us > match.score.them;
+  const homeScore = played ? (match.home ? match.score.us : match.score.them) : null;
+  const awayScore = played ? (match.home ? match.score.them : match.score.us) : null;
+  const usClass = played ? (win ? 'us win' : 'us loss') : '';
+  const initials = match.opponent.split(/[\s-]+/).filter(w => /^[A-ZÀ-Ý0-9]/.test(w)).slice(0, 2).map(w => w[0]).join('');
+  const isNext = typeof nextId !== 'undefined' && nextId === match.id;
+  const showTeam = typeof teamName !== 'undefined' && teamName;
+%>
+<%
+  // Données lues par les filtres de la page (public/js/filters.js)
+  const rowView = typeof listView !== 'undefined' && listView ? listView : (played ? 'resultats' : 'a-venir');
+%>
+<article class="fx <%= played ? (win ? 'is-win' : 'is-loss') : 'is-upcoming' %> <%= isNext ? 'is-next' : '' %>" data-team="<%= match.teamSlug %>" data-place="<%= match.home ? 'domicile' : 'exterieur' %>" data-view="<%= rowView %>">
+  <span class="fx-round">
+    <% if (match.round) { %><small>Journée</small><b><%= match.round %></b>
+    <% } else if (match.source !== 'ffbb') { %><small>Amical</small><% } %>
+  </span>
+  <span class="fx-date"><%= formatDayMonth(match.date) %> <b><%= formatTime(match.date) %></b></span>
+  <span class="fx-place <%= match.home ? 'home' : 'away' %>" role="img" aria-label="<%= match.home ? 'Domicile' : 'Extérieur' %>" title="<%= match.home ? 'Domicile' : 'Extérieur' %>"><%- include('icon', { name: match.home ? 'home' : 'plane' }) %></span>
+  <div class="fx-opp">
+    <% if (match.opponentLogo) { %>
+      <img src="<%= match.opponentLogo %>" alt="" width="36" height="36" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'fx-avatar',textContent:'<%= initials %>'}))">
+    <% } else { %>
+      <span class="fx-avatar"><%= initials %></span>
+    <% } %>
+    <div class="fx-opp-text">
+      <% if (showTeam) { %><span class="fx-team"><%= teamName %></span><% } %>
+      <strong><%= match.opponent %></strong>
+      <a class="fx-venue" href="<%= mapsUrl(match.venue) %>" target="_blank" rel="noopener"><%- include('icon', { name: 'pin' }) %><%= match.venue %></a>
+    </div>
+  </div>
+  <div class="fx-score" aria-label="<%= played ? (win ? 'Victoire ' : 'Défaite ') + match.score.us + ' à ' + match.score.them : (isNext ? 'Prochain match' : 'À venir') %>">
+    <span class="box <%= match.home ? usClass : '' %>"><%= played ? homeScore : '' %></span>
+    <span class="vs">VS</span>
+    <span class="box <%= match.home ? '' : usClass %>"><%= played ? awayScore : '' %></span>
+  </div>
+</article>

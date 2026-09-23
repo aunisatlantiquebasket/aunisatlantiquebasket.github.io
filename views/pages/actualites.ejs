@@ -1,0 +1,8 @@
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { eyebrow: 'Actualités', heading: 'La vie', accent: 'du club', subtitle: 'Résultats, événements et informations : suivez ce qui se passe au club.' }) %>
+<section class="section">
+  <div class="container grid-3">
+    <% for (const article of articles) { %><%- include('../partials/article-card', { article }) %><% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

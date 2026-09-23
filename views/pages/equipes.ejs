@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { eyebrow: 'Saison 2026-2027', heading: 'Nos', accent: 'équipes', subtitle: 'Compétition ou loisir, jeunes ou adultes : trouvez l\'équipe qui vous correspond.' }) %>
+<section class="section">
+  <div class="container grid-4">
+    <% for (const team of teams) { %>
+      <%- include('../partials/team-card', { team }) %>
+    <% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

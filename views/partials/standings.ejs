@@ -1,0 +1,50 @@
+<%
+  // Encart classement : le top 4, puis notre équipe si elle n'y est pas (comme sur le site FFBB),
+  // et le classement complet dépliable.
+  const rows = team.standings || [];
+  const us = rows.find(r => r.isUs);
+  const top = rows.slice(0, 4);
+  const shortList = us && !top.includes(us) ? [...top, us] : top;
+  const logo = (r) => r.isUs ? '/img/logo-rond.svg' : r.logo;
+%>
+<section class="side-card standings-card">
+  <h2 class="side-card-title">Classement officiel<% if (poule) { %> · <%= poule %><% } %></h2>
+  <ol class="rank-list">
+    <% shortList.forEach((r, i) => { %>
+      <% if (i > 0 && r.position - shortList[i - 1].position > 1) { %><li class="rank-gap" aria-hidden="true">···</li><% } %>
+      <li class="rank-row <%= r.isUs ? 'is-us' : '' %>">
+        <span class="rank-pos"><%= r.position %></span>
+        <% if (logo(r)) { %><img src="<%= logo(r) %>" alt="" width="32" height="32" loading="lazy"><% } else { %><span class="rank-logo-empty"></span><% } %>
+        <span class="rank-name"><%= r.name %></span>
+        <span class="rank-pts"><%= r.points %> <small>pt<%= r.points > 1 ? 's' : '' %></small></span>
+      </li>
+    <% }) %>
+  </ol>
+  <details class="rank-details">
+    <summary>Voir le classement complet</summary>
+    <div class="table-scroll">
+      <table class="rank-table">
+        <thead><tr><th>#</th><th>Équipe</th><th title="Points">Pts</th><th title="Joués">J</th><th title="Gagnés">G</th><th title="Perdus">P</th><th title="Différence de paniers">+/-</th></tr></thead>
+        <tbody>
+          <% for (const r of rows) { %>
+            <tr class="<%= r.isUs ? 'is-us' : '' %>">
+              <td><%= r.position %></td>
+              <td class="rank-table-name">
+                <span class="rank-table-team">
+                  <% if (logo(r)) { %><img src="<%= logo(r) %>" alt="" width="24" height="24" loading="lazy"><% } else { %><span class="rank-table-nologo"></span><% } %>
+                  <%= r.name %>
+                </span>
+              </td>
+              <td><strong><%= r.points %></strong></td>
+              <td><%= r.played %></td>
+              <td><%= r.wins %></td>
+              <td><%= r.losses %></td>
+              <td class="<%= r.diff > 0 ? 'pos' : r.diff < 0 ? 'neg' : '' %>"><%= r.diff > 0 ? '+' : '' %><%= r.diff %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% if (team.ffbbUrl) { %><a href="<%= team.ffbbUrl %>/classement" target="_blank" rel="noopener" class="link-arrow">Détail sur le site de la FFBB <%- include('icon', { name: 'external' }) %></a><% } %>
+  </details>
+</section>

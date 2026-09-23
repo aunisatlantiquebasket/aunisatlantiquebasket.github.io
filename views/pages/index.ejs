@@ -1,0 +1,156 @@
+<%- include('../partials/header') %>
+<% const icon = (name) => include('../partials/icon', { name }); %>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <% const [sloganStart, ...sloganEnd] = club.slogan.split(', '); %>
+    <div class="hero-text">
+      <p class="eyebrow eyebrow-light"><%= club.name %> · club de basket</p>
+      <h1><%= sloganStart %><% if (sloganEnd.length) { %>,<br><span><%= sloganEnd.join(', ') %></span><% } %></h1>
+      <p class="hero-lead">Jeunes, seniors ou loisirs, en compétition comme pour le plaisir : il y a une place pour vous au club.</p>
+      <a href="/contact?sujet=Inscription" class="btn btn-primary btn-lg">Nous rejoindre <%- icon('arrow') %></a>
+    </div>
+
+    <section class="next-match" aria-roledescription="carrousel" aria-label="Matchs : <%= hero.title %>" data-carousel>
+      <div class="next-match-head">
+        <span class="capitalize"><%= hero.title %><% if (hero.matches.length > 1) { %> · <%= hero.matches.length %> matchs<% } %></span>
+        <% if (hero.matches.length > 1) { %>
+          <div class="carousel-nav">
+            <button type="button" class="carousel-btn" data-prev aria-label="Match précédent"><%- icon('back') %></button>
+            <span class="carousel-count" aria-hidden="true"><b data-current>1</b> / <%= hero.matches.length %></span>
+            <button type="button" class="carousel-btn" data-next aria-label="Match suivant"><%- icon('arrow') %></button>
+          </div>
+        <% } %>
+      </div>
+
+      <% if (hero.matches.length === 0) { %>
+        <p class="muted">Aucun match programmé pour le moment.</p>
+      <% } else { %>
+        <div class="carousel-track" data-track tabindex="0">
+          <% hero.matches.forEach((m, i) => { %>
+            <% const team = teams.find(t => t.slug === m.teamSlug); %>
+            <% const initials = m.opponent.split(/[\s-]+/).filter(w => /^[A-ZÀ-Ý0-9]/.test(w)).slice(0, 2).map(w => w[0]).join(''); %>
+            <article class="carousel-slide <%= m.home ? 'is-home' : 'is-away' %>" role="group" aria-roledescription="diapositive" aria-label="<%= i + 1 %> sur <%= hero.matches.length %> : <%= m.home ? 'à domicile' : 'à l\'extérieur' %>">
+              <div class="slide-top">
+                <p class="next-match-team"><%= team ? team.name : '' %><% if (m.round) { %> <span>· Journée <%= m.round %></span><% } %></p>
+                <span class="place-pill <%= m.home ? 'home' : 'away' %>"><%- icon(m.home ? 'home' : 'plane') %><%= m.home ? 'À domicile' : 'À l\'extérieur' %></span>
+              </div>
+              <%
+                // Comme sur une affiche : l'équipe qui reçoit à gauche
+                const usSide = { us: true, name: club.shortName, logo: '/img/logo-rond.svg' };
+                const oppSide = { us: false, name: m.opponent, logo: m.opponentLogo };
+                const sides = m.home ? [usSide, oppSide] : [oppSide, usSide];
+              %>
+              <div class="versus">
+                <% sides.forEach((s, j) => { %>
+                  <% if (j === 1) { %><span class="versus-vs">VS</span><% } %>
+                  <div class="side <%= s.us ? 'side-us' : '' %>">
+                    <% if (s.logo) { %>
+                      <img class="<%= s.us ? '' : 'opp-logo' %>" src="<%= s.logo %>" alt="" width="64" height="64" loading="<%= i === 0 ? 'eager' : 'lazy' %>">
+                    <% } else { %>
+                      <span class="avatar"><%= initials %></span>
+                    <% } %>
+                    <span><%= s.name %></span>
+                  </div>
+                <% }) %>
+              </div>
+              <ul class="next-match-info">
+                <li><%- icon('calendar') %> <span class="capitalize"><%= formatDate(m.date) %></span></li>
+                <li><%- icon('pin') %> <a href="<%= mapsUrl(m.venue) %>" target="_blank" rel="noopener"><%= m.venue %></a></li>
+              </ul>
+            </article>
+          <% }) %>
+        </div>
+        <% if (hero.matches.length > 1) { %>
+          <div class="carousel-dots" role="tablist" aria-label="Choisir un match">
+            <% hero.matches.forEach((m, i) => { %>
+              <button type="button" role="tab" class="carousel-dot" data-dot="<%= i %>" aria-label="Match <%= i + 1 %>" aria-selected="<%= i === 0 %>"></button>
+            <% }) %>
+          </div>
+        <% } %>
+      <% } %>
+    </section>
+  </div>
+</section>
+
+<section class="container quick-links" aria-label="Accès rapides">
+  <a href="/calendrier" class="quick-link"><span class="ql-icon"><%- icon('calendar') %></span><span><strong>Calendrier</strong><small>Matchs et résultats</small></span></a>
+  <a href="/equipes" class="quick-link"><span class="ql-icon"><%- icon('users') %></span><span><strong>Nos équipes</strong><small>Jeunes, seniors, loisirs</small></span></a>
+  <a href="/actualites" class="quick-link"><span class="ql-icon"><%- icon('news') %></span><span><strong>Actualités</strong><small>La vie du club</small></span></a>
+  <a href="<%= mapsUrl(club.gym) %>" target="_blank" rel="noopener" class="quick-link"><span class="ql-icon"><%- icon('route') %></span><span><strong>Venir au gymnase</strong><small>Bel Air, Marans</small></span></a>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Au programme</p>
+        <h2>Matchs et résultats</h2>
+      </div>
+      <a href="/calendrier" class="link-arrow">Tout le calendrier <%- icon('arrow') %></a>
+    </div>
+    <%
+      // Ordre chronologique : derniers résultats, prochain match (surligné), puis la suite
+      const fixtures = [...results].reverse().concat(nextMatch ? [nextMatch] : [], upcoming);
+      const teamNameOf = (m) => teams.find(t => t.slug === m.teamSlug)?.name;
+    %>
+    <div class="fixtures-card">
+      <div class="fx-list">
+        <% if (fixtures.length === 0) { %><p class="empty">Aucun match programmé pour le moment.</p><% } %>
+        <% for (const match of fixtures) { %>
+          <%- include('../partials/fixture-row', { match, nextId: nextMatch?.id, teamName: teamNameOf(match) }) %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Le club</p>
+        <h2>Nos équipes</h2>
+      </div>
+      <a href="/equipes" class="link-arrow">Toutes les équipes <%- icon('arrow') %></a>
+    </div>
+    <div class="grid-4">
+      <% for (const team of teams) { %><%- include('../partials/team-card', { team }) %><% } %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="join">
+      <div class="join-text">
+        <p class="eyebrow eyebrow-light">Rejoindre le club</p>
+        <h2>Envie de jouer avec nous ?</h2>
+        <p>Débutant ou confirmé, enfant ou adulte, en compétition ou juste pour le plaisir : il y a une place pour vous.</p>
+        <a href="/contact?sujet=Inscription" class="btn btn-primary btn-lg">Je veux m'inscrire <%- icon('arrow') %></a>
+      </div>
+      <ol class="steps">
+        <li><span class="step-num">1</span><div><strong>Contactez-nous</strong><p>Par le formulaire, par e-mail ou par téléphone.</p></div></li>
+        <li><span class="step-num">2</span><div><strong>Venez essayer</strong><p>Participez à un entraînement pour découvrir le club.</p></div></li>
+        <li><span class="step-num">3</span><div><strong>Inscrivez-vous</strong><p>On vous accompagne pour la licence et l'équipe.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">La vie du club</p>
+        <h2>Actualités</h2>
+      </div>
+      <a href="/actualites" class="link-arrow">Toutes les actualités <%- icon('arrow') %></a>
+    </div>
+    <div class="grid-3">
+      <% for (const article of articles) { %><%- include('../partials/article-card', { article }) %><% } %>
+    </div>
+  </div>
+</section>
+<script src="/js/carousel.js" defer></script>
+<%- include('../partials/footer') %>

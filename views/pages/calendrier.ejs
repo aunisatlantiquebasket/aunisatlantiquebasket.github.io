@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { eyebrow: 'Saison 2026-2027', heading: 'Calendrier &', accent: 'résultats', subtitle: 'Tous les matchs du club, à domicile et à l\'extérieur. Venez nous encourager !' }) %>
+<% const icon = (name) => include('../partials/icon', { name }); %>
+
+<section class="section">
+  <%# Les filtres s'appliquent dans la page (public/js/filters.js) : le site peut ainsi être publié en statique %>
+  <div class="container calendar-wrap" data-filter-scope data-default-view="a-venir">
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <div class="tabs" role="group" aria-label="Type de matchs">
+          <button type="button" data-set="view" data-value="a-venir" class="active">À venir <span class="count" data-count="a-venir"><%= counts.upcoming %></span></button>
+          <button type="button" data-set="view" data-value="resultats">Résultats <span class="count" data-count="resultats"><%= counts.results %></span></button>
+        </div>
+        <div class="tabs place-filter" role="group" aria-label="Filtrer par lieu">
+          <button type="button" data-set="place" data-value="" class="active">Tous</button>
+          <button type="button" data-set="place" data-value="domicile"><span class="fx-place home" aria-hidden="true"><%- icon('home') %></span>Domicile</button>
+          <button type="button" data-set="place" data-value="exterieur"><span class="fx-place away" aria-hidden="true"><%- icon('plane') %></span>Extérieur</button>
+        </div>
+      </div>
+      <div class="chips" role="group" aria-label="Filtrer par équipe">
+        <button type="button" data-set="team" data-value="" class="chip active">Toutes</button>
+        <% for (const t of teams) { %>
+          <button type="button" data-set="team" data-value="<%= t.slug %>" class="chip"><%= t.name %></button>
+        <% } %>
+      </div>
+    </div>
+
+    <% for (const [listView, groups] of [['a-venir', upcomingGroups], ['resultats', resultGroups]]) { %>
+      <div data-list-view="<%= listView %>" <%= listView === 'resultats' ? 'hidden' : '' %>>
+        <% for (const group of groups) { %>
+          <section data-month-group>
+            <h2 class="month"><%= group.month %></h2>
+            <div class="fixtures-card">
+              <div class="fx-list">
+                <% for (const match of group.matches) { %>
+                  <%- include('../partials/fixture-row', { match, nextId, listView, teamName: teamNames[match.teamSlug] }) %>
+                <% } %>
+              </div>
+            </div>
+          </section>
+        <% } %>
+      </div>
+    <% } %>
+
+    <p class="empty" data-empty <%= counts.upcoming ? 'hidden' : '' %>>
+      Aucun match ne correspond à ces filtres pour le moment.
+      <button type="button" class="link-button" data-reset>Voir tous les matchs</button>
+    </p>
+
+    <% if (lastSync) { %>
+      <p class="source-note">Calendrier et résultats officiels synchronisés automatiquement avec la FFBB · mis à jour le <%= formatDate(lastSync) %></p>
+    <% } %>
+  </div>
+</section>
+<script src="/js/filters.js" defer></script>
+<%- include('../partials/footer') %>

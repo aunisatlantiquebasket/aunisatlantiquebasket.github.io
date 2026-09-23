@@ -1,0 +1,385 @@
+[
+  {
+    "slug": "u7",
+    "name": "U7",
+    "category": "Jeunes",
+    "championship": "École de basket",
+    "trainings": [
+      "Mercredi 16h00 – 17h00"
+    ],
+    "trainingVenue": "Saint-Jean-de-Liversay",
+    "players": [],
+    "coach": "Audrey"
+  },
+  {
+    "slug": "u9",
+    "name": "U9",
+    "category": "Jeunes",
+    "championship": "École de basket",
+    "trainings": [
+      "Mardi 17h00 – 18h30"
+    ],
+    "trainingVenue": "Saint-Jean-de-Liversay",
+    "players": [],
+    "coach": "Anaëlle"
+  },
+  {
+    "slug": "u11",
+    "name": "U11",
+    "category": "Jeunes",
+    "championship": "École de basket",
+    "trainings": [
+      "Mercredi 17h00 – 18h30 (2 groupes)",
+      "Vendredi 17h00 – 18h30 (2 groupes)"
+    ],
+    "trainingVenue": "Saint-Jean-de-Liversay",
+    "players": [],
+    "coach": "Jonathan, Jérémy, Clément"
+  },
+  {
+    "slug": "u13-masculins",
+    "name": "U13 Masculins",
+    "category": "Jeunes",
+    "championship": "Départementale masculine U13 (DMU13), poule D",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005377211",
+    "trainings": [
+      "Lundi 18h00 – 19h30",
+      "Mercredi 16h00 – 17h30"
+    ],
+    "players": [],
+    "ffbbId": "200000005377211",
+    "ranking": {
+      "position": 1,
+      "points": 2,
+      "played": 1,
+      "wins": 1,
+      "losses": 0
+    },
+    "standings": [
+      {
+        "position": 1,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 66,
+        "conceded": 20,
+        "diff": 46,
+        "isUs": true
+      },
+      {
+        "position": 2,
+        "name": "La Jarrie 2",
+        "logo": "/img/clubs/3ac01715-4cd6-4609-92df-d82489ba7d18.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 64,
+        "conceded": 49,
+        "diff": 15,
+        "isUs": false
+      },
+      {
+        "position": 3,
+        "name": "CTC Basket Océan 17 - Rochefort BC 2",
+        "logo": "/img/clubs/2a4d39fe-a4a0-4221-8309-71f7115b650b.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 49,
+        "conceded": 64,
+        "diff": -15,
+        "isUs": false
+      },
+      {
+        "position": 4,
+        "name": "Saint-Agnant Basket Club",
+        "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 20,
+        "conceded": 66,
+        "diff": -46,
+        "isUs": false
+      },
+      {
+        "position": 6,
+        "name": "Angoulins UBAC 2",
+        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      }
+    ],
+    "ffbbKey": "U13-M-1",
+    "active": true,
+    "coach": "Alexandre, Julien, Guillaume"
+  },
+  {
+    "slug": "u15-feminines",
+    "name": "U15 Féminines",
+    "category": "Jeunes",
+    "championship": "Départementale féminine U15 (DFU15), poule B",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005377820",
+    "trainings": [
+      "Lundi 19h00 – 20h30",
+      "Mercredi 17h30 – 19h00"
+    ],
+    "players": [],
+    "ffbbId": "200000005377820",
+    "ranking": {
+      "position": 2,
+      "points": 1,
+      "played": 1,
+      "wins": 0,
+      "losses": 1
+    },
+    "standings": [
+      {
+        "position": 1,
+        "name": "Surgères",
+        "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 85,
+        "conceded": 40,
+        "diff": 45,
+        "isUs": false
+      },
+      {
+        "position": 2,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 40,
+        "conceded": 85,
+        "diff": -45,
+        "isUs": true
+      },
+      {
+        "position": 4,
+        "name": "Saint-Jean-d'Angély JLA",
+        "logo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      },
+      {
+        "position": 5,
+        "name": "Jarnac-Champagne",
+        "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      },
+      {
+        "position": 6,
+        "name": "CTC Basket Océan 17 - Saint-Agnant",
+        "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      }
+    ],
+    "ffbbKey": "U15-F-1",
+    "active": true,
+    "coach": "Noé, Jérémie"
+  },
+  {
+    "slug": "seniors-masculins",
+    "name": "Seniors Masculins",
+    "category": "Seniors",
+    "championship": "Départementale masculine seniors - Division 2 (DM2), poule A",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005335854",
+    "trainings": [
+      "Lundi 20h30 – 22h00",
+      "Mercredi 19h00 – 20h30"
+    ],
+    "players": [],
+    "ffbbId": "200000005335854",
+    "ranking": {
+      "position": 8,
+      "points": 1,
+      "played": 1,
+      "wins": 0,
+      "losses": 1
+    },
+    "standings": [
+      {
+        "position": 1,
+        "name": "BC Élan Gémozacais",
+        "logo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 111,
+        "conceded": 33,
+        "diff": 78,
+        "isUs": false
+      },
+      {
+        "position": 2,
+        "name": "Ciré Sports 2",
+        "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 79,
+        "conceded": 37,
+        "diff": 42,
+        "isUs": false
+      },
+      {
+        "position": 3,
+        "name": "Saujon Basket Club 2",
+        "logo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 93,
+        "conceded": 53,
+        "diff": 40,
+        "isUs": false
+      },
+      {
+        "position": 4,
+        "name": "Saint-Rogatien Basket Club 3",
+        "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 78,
+        "conceded": 73,
+        "diff": 5,
+        "isUs": false
+      },
+      {
+        "position": 5,
+        "name": "Angoulins UBAC 2",
+        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 63,
+        "conceded": 59,
+        "diff": 4,
+        "isUs": false
+      },
+      {
+        "position": 6,
+        "name": "Rochefort Basket Club 2",
+        "logo": "/img/clubs/2a4d39fe-a4a0-4221-8309-71f7115b650b.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 59,
+        "conceded": 63,
+        "diff": -4,
+        "isUs": false
+      },
+      {
+        "position": 7,
+        "name": "Marennes Bourcefranc BBMB",
+        "logo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 73,
+        "conceded": 78,
+        "diff": -5,
+        "isUs": false
+      },
+      {
+        "position": 8,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 53,
+        "conceded": 93,
+        "diff": -40,
+        "isUs": true
+      },
+      {
+        "position": 9,
+        "name": "Royan Basket Côte de Beauté 2",
+        "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 37,
+        "conceded": 79,
+        "diff": -42,
+        "isUs": false
+      },
+      {
+        "position": 10,
+        "name": "Surgères",
+        "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 33,
+        "conceded": 111,
+        "diff": -78,
+        "isUs": false
+      }
+    ],
+    "ffbbKey": "SE-M-1",
+    "active": true,
+    "coach": "Dann"
+  },
+  {
+    "slug": "loisirs-mixte",
+    "name": "Loisirs Mixte",
+    "category": "Loisirs",
+    "championship": "Basket loisir, sans championnat : pour jouer dans une ambiance conviviale",
+    "trainings": [
+      "Mercredi 20h00 – 21h30"
+    ],
+    "players": [],
+    "coach": "Christophe"
+  }
+]

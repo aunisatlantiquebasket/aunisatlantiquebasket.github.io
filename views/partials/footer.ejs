@@ -1,0 +1,39 @@
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="/img/logo-rond.svg" alt="" width="56" height="56">
+        <div>
+          <strong><%= club.name %></strong>
+          <p><%= club.slogan %><br>Depuis <%= club.foundedYear %></p>
+        </div>
+      </div>
+      <div>
+        <h3>Le club</h3>
+        <ul>
+          <li><a href="/equipes">Nos équipes</a></li>
+          <li><a href="/calendrier">Calendrier & résultats</a></li>
+          <li><a href="/actualites">Actualités</a></li>
+          <li><a href="/trombinoscope">Trombinoscope</a></li>
+          <% if (club.sportEasyUrl) { %><li><a href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener">Espace membres (SportEasy)</a></li><% } %>
+          <li><a href="/contact?sujet=Inscription">Nous rejoindre</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous trouver</h3>
+        <ul class="footer-contact">
+          <li><%- include('icon', { name: 'pin' }) %><a href="<%= mapsUrl(club.gym) %>" target="_blank" rel="noopener"><%= club.gym %></a></li>
+          <li><%- include('icon', { name: 'mail' }) %><a href="mailto:<%= club.email %>"><%= club.email %></a></li>
+          <li><%- include('icon', { name: 'phone' }) %><a href="tel:<%= club.phone.replace(/\s/g, '') %>"><%= club.phone %></a></li>
+        </ul>
+        <div class="social">
+          <a href="<%= club.social.facebook %>" target="_blank" rel="noopener" aria-label="Facebook"><%- include('icon', { name: 'facebook' }) %></a>
+          <a href="<%= club.social.instagram %>" target="_blank" rel="noopener" aria-label="Instagram"><%- include('icon', { name: 'instagram' }) %></a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">© <%= new Date().getFullYear() %> <%= club.name %> · Siège : <%= club.address %></div>
+  </footer>
+</body>
+</html>

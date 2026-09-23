@@ -1,0 +1,52 @@
+{
+  "bureau": [
+    {
+      "name": "Alexandre Martineau",
+      "role": "Co-président"
+    },
+    {
+      "name": "Anaëlle Viaud",
+      "role": "Co-présidente"
+    },
+    {
+      "name": "Prescillia Laude",
+      "role": "Trésorière"
+    },
+    {
+      "name": "Blanche Doussin",
+      "role": "Secrétaire"
+    }
+  ],
+  "comite": [
+    {
+      "name": "Audrey Figureau",
+      "role": "Membre du comité directeur"
+    },
+    {
+      "name": "Christophe Vermeulen",
+      "role": "Membre du comité directeur"
+    },
+    {
+      "name": "Jérémie Boidin",
+      "role": "Membre du comité directeur"
+    },
+    {
+      "name": "Noé Pequeur",
+      "role": "Membre du comité directeur"
+    },
+    {
+      "name": "Jonathan Martin",
+      "role": "Membre du comité directeur"
+    },
+    {
+      "name": "Damien Ronciere",
+      "role": "Membre du comité directeur"
+    }
+  ],
+  "benevoles": [
+    {
+      "name": "Nicolas Buono",
+      "role": "Responsable matériel"
+    }
+  ]
+}

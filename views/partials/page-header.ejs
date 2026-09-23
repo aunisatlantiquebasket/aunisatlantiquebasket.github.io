@@ -1,0 +1,11 @@
+<%# Bannière des pages intérieures, même style que l'accueil. `accent` : fin du titre, affichée en vert. %>
+<section class="page-header">
+  <div class="container">
+    <% if (typeof back !== 'undefined' && back) { %>
+      <a href="<%= back.href %>" class="back-link"><%- include('icon', { name: 'back' }) %> <%= back.label %></a>
+    <% } %>
+    <% if (typeof eyebrow !== 'undefined' && eyebrow) { %><p class="eyebrow"><%= eyebrow %></p><% } %>
+    <h1><%= heading %><% if (typeof accent !== 'undefined' && accent) { %> <span><%= accent %></span><% } %></h1>
+    <% if (typeof subtitle !== 'undefined' && subtitle) { %><p class="page-subtitle"><%= subtitle %></p><% } %>
+  </div>
+</section>

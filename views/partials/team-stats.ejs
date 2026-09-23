@@ -1,0 +1,25 @@
+<%
+  // Encart "Stats de l'équipe" : 3 anneaux (victoires, points marqués, points encaissés)
+  const total = stats.scored + stats.conceded;
+  const rings = [
+    { value: stats.winPct + '%', label: 'de victoires', sub: `(${stats.wins}V ${stats.losses}D)`, ratio: stats.winPct / 100, cls: 'ring-green' },
+    { value: stats.scored, label: 'points', sub: 'marqués', ratio: total ? stats.scored / total : 0, cls: 'ring-green' },
+    { value: stats.conceded, label: 'points', sub: 'encaissés', ratio: total ? stats.conceded / total : 0, cls: 'ring-slate' },
+  ];
+  const C = 2 * Math.PI * 30;
+%>
+<section class="side-card stats-card">
+  <h2 class="side-card-head"><%- include('icon', { name: 'trophy' }) %> Stats de l'équipe<% if (typeof competition !== 'undefined' && competition) { %> en <%= competition %><% } %></h2>
+  <div class="rings">
+    <% for (const r of rings) { %>
+      <div class="ring <%= r.cls %>">
+        <svg viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="30" class="ring-track"/>
+          <circle cx="36" cy="36" r="30" class="ring-value" stroke-dasharray="<%= (r.ratio * C).toFixed(1) %> <%= C.toFixed(1) %>"/>
+        </svg>
+        <strong><%= r.value %></strong>
+        <span><%= r.label %><br><%= r.sub %></span>
+      </div>
+    <% } %>
+  </div>
+</section>

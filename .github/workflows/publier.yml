@@ -1,0 +1,67 @@
+# Publication automatique du site sur GitHub Pages (gratuit).
+# Toutes les 3 heures, et à chaque modification poussée sur la branche main :
+#   1. synchronisation FFBB (équipes, matchs, scores, classements, logos) ;
+#   2. enregistrement des données mises à jour dans le dépôt (si elles ont changé) ;
+#   3. génération du site statique (npm run build:static) et mise en ligne.
+# Lancement manuel possible : onglet « Actions » du dépôt → « Publier le site » → « Run workflow ».
+
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "15 */3 * * *" # toutes les 3 h (heure UTC), à hh:15
+  workflow_dispatch:
+
+permissions:
+  contents: write # enregistrer les données FFBB mises à jour
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publier
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    env:
+      TZ: Europe/Paris # horaires des matchs, « Ce week-end »…
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Synchroniser avec la FFBB
+        # En cas d'échec (FFBB indisponible…), on publie quand même avec les données précédentes
+        run: npm run sync-ffbb || echo "::warning::Synchronisation FFBB en échec : publication avec les données précédentes"
+
+      - name: Enregistrer les données mises à jour
+        run: |
+          git config user.name "robot-site-aab"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/teams.json data/matches.json public/img/clubs
+          if ! git diff --cached --quiet; then
+            git add data/ffbb-sync.json
+            git commit -m "Données FFBB mises à jour"
+            git push
+          fi
+
+      - name: Générer le site statique
+        run: npm run build:static
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploiement
+        uses: actions/deploy-pages@v4

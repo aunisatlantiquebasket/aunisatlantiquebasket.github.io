@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | <%= club.name %></title>
+  <meta name="description" content="<%= club.name %> : club de basket en Aunis Atlantique. Équipes, calendrier, résultats et inscriptions.">
+  <meta name="theme-color" content="#36424a">
+  <link rel="icon" type="image/svg+xml" href="/img/logo-rond.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand">
+        <img src="/img/logo-rond.svg" alt="" width="44" height="44">
+        <span><%= club.name %></span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Ouvrir le menu">
+        <span class="when-closed"><%- include('icon', { name: 'menu' }) %></span>
+        <span class="when-open"><%- include('icon', { name: 'close' }) %></span>
+      </label>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <%# L'accueil est accessible par le logo, le contact par « Nous rejoindre » et le pied de page %>
+        <% const links = [["/equipes", "Équipes"], ["/calendrier", "Calendrier"], ["/actualites", "Actualités"], ["/trombinoscope", "Le club"]]; %>
+        <% for (const [href, label] of links) { %>
+          <% const active = currentPath.startsWith(href); %>
+          <a href="<%= href %>" class="<%= active ? 'active' : '' %>" <%- active ? 'aria-current="page"' : '' %>><%= label %></a>
+        <% } %>
+        <% if (club.sportEasyUrl) { %>
+          <a href="<%= club.sportEasyUrl %>" class="nav-members" target="_blank" rel="noopener" title="Espace membres (SportEasy)" aria-label="Espace membres (SportEasy)"><%- include('icon', { name: 'login' }) %> Membres</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main id="contenu">

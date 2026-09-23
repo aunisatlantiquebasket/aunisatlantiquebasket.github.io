@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { eyebrow: 'Le club', heading: 'Les visages', accent: 'du club', subtitle: 'Bénévoles, dirigeants et coachs : ils font vivre le club toute la saison.' }) %>
+<%
+  const initials = (name) => name.split(/[\s-]+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join('');
+  const person = (p) => { %>
+    <article class="person">
+      <% if (p.photo) { %>
+        <img class="person-photo" src="<%= p.photo %>" alt="Photo de <%= p.name %>" width="140" height="140" loading="lazy">
+      <% } else { %>
+        <span class="person-photo person-initials" aria-hidden="true"><%= initials(p.name) %></span>
+      <% } %>
+      <h3><%= p.name %></h3>
+      <% if (p.teams && p.teams.length) { %>
+        <ul class="person-teams">
+          <% for (const t of p.teams) { %><li><a href="/equipes/<%= t.slug %>" class="tag tag-team"><%= t.name %></a></li><% } %>
+        </ul>
+      <% } else { %>
+        <p class="person-role"><%= p.role %></p>
+      <% } %>
+    </article>
+<% } %>
+
+<section class="section">
+  <div class="container">
+    <%
+      const groups = [
+        { id: 'bureau', eyebrow: 'Les dirigeants', title: 'Le bureau', people: bureau },
+        { id: 'comite', eyebrow: 'Les dirigeants', title: 'Le comité directeur', people: comite },
+        { id: 'benevoles', eyebrow: 'En coulisses', title: 'Les bénévoles', people: benevoles },
+        { id: 'coachs', eyebrow: 'Sur le terrain', title: 'Les coachs', people: coaches },
+      ];
+    %>
+    <% for (const g of groups) { if (!g.people.length) continue; %>
+      <div class="section-head" id="<%= g.id %>"><div><p class="eyebrow"><%= g.eyebrow %></p><h2><%= g.title %></h2></div></div>
+      <div class="people"><% g.people.forEach(person) %></div>
+    <% } %>
+
+    <div class="trombi-join">
+      <p><strong>Envie de donner un coup de main ?</strong> Le club est animé par des bénévoles : coachs, arbitres, table de marque, organisation… Toute aide est la bienvenue.</p>
+      <a href="/contact?sujet=Autre" class="btn btn-primary">Devenir bénévole</a>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>
