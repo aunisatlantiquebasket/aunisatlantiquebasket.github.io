@@ -59,6 +59,12 @@ p { margin: 0 0 1em; }
 :focus-visible { outline: 3px solid var(--green); outline-offset: 2px; border-radius: 6px; }
 
 .icon { width: 1.15em; height: 1.15em; flex-shrink: 0; }
+/* Logo SportEasy utilisé comme masque : il prend la couleur du texte (survol compris) */
+.icon-sporteasy {
+  display: inline-block; width: 1.7em; background: currentColor; /* logo deux fois plus large que haut */
+  -webkit-mask: url("../img/sporteasy.png") center / contain no-repeat;
+  mask: url("../img/sporteasy.png") center / contain no-repeat;
+}
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: 16px; top: -48px; background: var(--green); color: var(--slate-900); padding: 8px 16px; border-radius: 8px; z-index: 100; font-weight: 600; }
 .skip-link:focus { top: 12px; }
@@ -130,6 +136,7 @@ p { margin: 0 0 1em; }
 .main-nav a.active { color: #fff; background: rgba(134, 189, 64, .18); box-shadow: inset 0 0 0 1px rgba(134, 189, 64, .45); }
 .main-nav a.nav-members { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; border: 1px solid rgba(255, 255, 255, .25); }
 .main-nav a.nav-members .icon { width: 16px; height: 16px; }
+.main-nav a.nav-members .icon-sporteasy { width: 26px; }
 .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
 .nav-toggle-label { display: none; color: #fff; cursor: pointer; padding: 8px; border-radius: 10px; }
 .nav-toggle-label .icon { width: 26px; height: 26px; display: block; }
@@ -483,11 +490,9 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .contact-card strong { font-weight: 600; word-break: break-word; }
 .subject-picker { margin: 18px 0 22px; display: flex; flex-wrap: wrap; gap: 8px; }
 
-.social { display: flex; gap: 10px; margin-top: 14px; }
+.social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 .social a { display: inline-flex; align-items: center; gap: 8px; width: 40px; height: 40px; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, .08); color: #fff; transition: background .15s; }
 .social a:hover { background: var(--green); color: var(--slate-900); }
-.social-lg a { width: auto; height: auto; padding: 10px 16px; border-radius: 999px; background: var(--slate-900); font-weight: 600; }
-.social-lg a:hover { text-decoration: none; }
 
 /* ---------- 404 ---------- */
 .not-found { text-align: center; max-width: 520px; }

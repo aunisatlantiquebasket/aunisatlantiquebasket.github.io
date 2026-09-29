@@ -30,6 +30,7 @@
         <div class="social">
           <a href="<%= club.social.facebook %>" target="_blank" rel="noopener" aria-label="Facebook"><%- include('icon', { name: 'facebook' }) %></a>
           <a href="<%= club.social.instagram %>" target="_blank" rel="noopener" aria-label="Instagram"><%- include('icon', { name: 'instagram' }) %></a>
+          <% if (club.sportEasyUrl) { %><a href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener" aria-label="Espace membres (SportEasy)" title="Espace membres (SportEasy)"><%- include('icon', { name: 'sporteasy' }) %></a><% } %>
         </div>
       </div>
     </div>
