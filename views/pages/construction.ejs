@@ -54,10 +54,9 @@
     <div class="actions">
       <a class="btn-round" href="<%= club.social.facebook %>" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><%- include('../partials/icon', { name: 'facebook' }) %></a>
       <a class="btn-round" href="<%= club.social.instagram %>" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><%- include('../partials/icon', { name: 'instagram' }) %></a>
-      <% if (club.sportEasyUrl) { %><a class="btn-round" href="<%= club.sportEasyUrl %>" data-sporteasy target="_blank" rel="noopener" aria-label="Espace membres (SportEasy)" title="Espace membres (SportEasy)"><img src="/img/sporteasy.png" alt="" width="26" height="13"></a><% } %>
+      <% if (club.sportEasyUrl) { %><a class="btn-round" href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener" aria-label="Espace membres (SportEasy)" title="Espace membres (SportEasy)"><img src="/img/sporteasy.png" alt="" width="26" height="13"></a><% } %>
     </div>
   </main>
   <%- include('../partials/install-banner') %>
-  <%- include('../partials/sporteasy-android') %>
 </body>
 </html>

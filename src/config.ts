@@ -12,8 +12,6 @@ export const club = {
   },
   // Espace membres du club sur SportEasy (convocations, disponibilités…). Vide : lien masqué.
   sportEasyUrl: "https://aunis-atlantique-basket.sporteasy.net/",
-  // Application Android SportEasy : sur Android, le lien « Membres » tente de l'ouvrir (site sinon)
-  sportEasyAndroidPackage: "com.sporteasy.android",
   // Page du club sur competitions.ffbb.com (source des équipes, matchs et résultats)
   ffbbClubPath: "/ligues/naq/comites/0017/clubs/naq0017020",
   // Identifiant du club (organisme) dans les données FFBB, utilisé par l'API de synchronisation

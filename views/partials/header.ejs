@@ -38,7 +38,7 @@
           <a href="<%= href %>" class="<%= active ? 'active' : '' %>" <%- active ? 'aria-current="page"' : '' %>><%= label %></a>
         <% } %>
         <% if (club.sportEasyUrl) { %>
-          <a href="<%= club.sportEasyUrl %>" class="nav-members" data-sporteasy target="_blank" rel="noopener" title="Espace membres (SportEasy)" aria-label="Espace membres (SportEasy)"><%- include('icon', { name: 'login' }) %> Membres</a>
+          <a href="<%= club.sportEasyUrl %>" class="nav-members" target="_blank" rel="noopener" title="Espace membres (SportEasy)" aria-label="Espace membres (SportEasy)"><%- include('icon', { name: 'login' }) %> Membres</a>
         <% } %>
       </nav>
     </div>
