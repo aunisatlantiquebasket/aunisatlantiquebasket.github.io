@@ -51,7 +51,7 @@
       <% } %>
     </div>
 
-    <h2 class="contact-places-title">Nos salles et notre siège</h2>
+    <h2 class="contact-places-title" id="salles">Nos salles et notre siège</h2>
     <div class="contact-places">
       <% for (const g of club.gyms) { %>
         <a class="contact-card" href="<%= mapsUrl(`${g.name}, ${g.address}`) %>" target="_blank" rel="noopener" title="Itinéraire">

@@ -8,23 +8,20 @@
           <p><%= club.slogan %><br>Depuis <%= club.foundedYear %></p>
         </div>
       </div>
+      <%# Pas de reprise du menu (toujours en haut) : seulement des raccourcis qui n'y sont pas %>
       <div>
-        <h3>Le club</h3>
+        <h3>Accès rapide</h3>
         <ul>
-          <li><a href="/equipes">Nos équipes</a></li>
-          <li><a href="/calendrier">Calendrier & résultats</a></li>
-          <li><a href="/evenements">Événements</a></li>
-          <li><a href="/actualites">Actualités</a></li>
-          <li><a href="/trombinoscope">Trombinoscope</a></li>
-          <% if (club.sportEasyUrl) { %><li><a href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener">Espace membres (SportEasy)</a></li><% } %>
-          <li><a href="/contact?sujet=Inscription">Nous rejoindre</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/contact?sujet=Inscription">S'inscrire</a></li>
+          <li><a href="/contact?sujet=B%C3%A9n%C3%A9volat">Devenir bénévole</a></li>
         </ul>
       </div>
       <div>
         <h3>Nous trouver</h3>
         <ul class="footer-contact">
-          <li><%- include('icon', { name: 'pin' }) %><a href="<%= mapsUrl(club.gym) %>" target="_blank" rel="noopener"><%= club.gym %></a></li>
+          <%# Communes des salles du club (config.gyms), la liste détaillée est sur la page Contact %>
+          <% const gymTowns = [...new Set(club.gyms.map((g) => g.address.match(/\d{5}\s+(.+)$/)?.[1] ?? g.address))]; %>
+          <li><%- include('icon', { name: 'pin' }) %><a href="/contact#salles">Nos salles : <%= gymTowns.join(', ') %></a></li>
           <li><%- include('icon', { name: 'mail' }) %><a href="mailto:<%= club.email %>"><%= club.email %></a></li>
         </ul>
         <div class="social">

@@ -39,7 +39,7 @@
 /* ---------- Base ---------- */
 [hidden] { display: none !important; } /* utilisé par les filtres, même sur les éléments en grid/flex */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); } /* ancres sous l'en-tête fixe */
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -525,7 +525,8 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
   .footer-brand { grid-column: 1 / -1; }
 }
 
-@media (max-width: 900px) {
+/* Menu replié (burger) tant que le logo et tous les liens ne tiennent pas sur une ligne (~1030 px) */
+@media (max-width: 1060px) {
   .nav-toggle-label { display: block; }
   .main-nav {
     position: absolute; top: var(--header-h); left: 0; right: 0;
@@ -539,6 +540,9 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
   .nav-toggle:checked ~ .main-nav { display: flex; }
   .nav-toggle:checked + .nav-toggle-label .when-open { display: block; }
   .nav-toggle:checked + .nav-toggle-label .when-closed { display: none; }
+}
+
+@media (max-width: 900px) {
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .section { padding: 56px 0; }
 }
