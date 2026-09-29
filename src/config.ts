@@ -4,8 +4,18 @@ export const club = {
   slogan: "Plus qu'un club, une famille",
   foundedYear: 2023,
   address: "16 rue du Docteur Quoy, 17170 Saint-Jean-de-Liversay",
-  email: "contact@aunisatlantiquebasket.com",
-  gym: "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans",
+  email: "contact@aunisatlantiquebasket.com", // présidence, secrétariat, inscriptions
+  emailSportive: "sportive@aunisatlantiquebasket.com", // organisation des compétitions, commission sportive
+  emailCommunication: "communication@aunisatlantiquebasket.com", // vie associative : événements, sponsors, bénévolat
+  gym: "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans", // salle principale (matchs à domicile)
+  // Toutes les salles du club (page Contact) : adresse complète quand on la connaît, sinon la commune ;
+  // use : à quoi sert la salle (facultatif)
+  gyms: [
+    { name: "Gymnase intercommunal Bel Air", address: "rue de Bel-Air, 17230 Marans", use: "Matchs à domicile, entraînements" },
+    { name: "Gymnase De Gaulle", address: "Avenue du Général de Gaulle, 17230 Marans", use: "Entraînements" },
+    { name: "Complexe sportif intercommunal de Courçon", address: "Rue du Collège, 17170 Courçon", use: "Entraînements" },
+    { name: "Complexe socio-éducatif de Saint-Jean-de-Liversay", address: "Rue du 19 mars, 17170 Saint-Jean-de-Liversay", use: "Entraînements" },
+  ] as { name: string; address: string; use?: string }[],
   social: {
     facebook: "https://www.facebook.com/aunisatlantiquebasket/",
     instagram: "https://www.instagram.com/aunis_atlantique_basket/",

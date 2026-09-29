@@ -1,62 +1,80 @@
 <%- include('../partials/header') %>
 <% const icon = (name) => include('../partials/icon', { name }); %>
 <%- include('../partials/page-header', { eyebrow: 'Contact', heading: 'Parlons', accent: 'basket !', subtitle: 'Une question, une inscription, un partenariat ? Nous vous répondons rapidement.' }) %>
+<%
+  // Pas de formulaire (site statique) : chaque boîte du club a sa carte, avec des e-mails préremplis.
+  // Les liens du site arrivent avec ?sujet=… (Inscription, Renseignements, Bénévolat…) : la carte concernée est mise en avant.
+  const mailto = (to, subject, body) => `mailto:${to}?subject=${encodeURIComponent(`${subject} - ${club.name}`)}&body=${encodeURIComponent(body)}`;
+  const boxes = [
+    {
+      id: 'club', icon: 'users', title: 'Le club', text: 'Inscriptions, renseignements et toutes vos questions sur le club.', to: club.email,
+      subjects: ['Inscription', 'Renseignements', 'Autre'],
+      actions: [
+        { label: "S'inscrire", subject: 'Inscription', body: "Bonjour,\n\nJe souhaite m'inscrire (ou inscrire mon enfant) au club.\nNom et prénom du joueur :\nDate de naissance :\nÉquipe souhaitée (si vous la connaissez) :\n\nMerci !" },
+        { label: 'Poser une question', subject: 'Renseignements', body: "Bonjour,\n\n" },
+      ],
+    },
+    {
+      id: 'sportive', icon: 'ball', title: 'Matchs & compétitions', text: 'Horaires et salles des matchs, dérogations, arbitrage et table de marque.', to: club.emailSportive,
+      subjects: ['Matchs & compétitions'],
+      actions: [{ label: 'Écrire', subject: 'Matchs & compétitions', body: "Bonjour,\n\nÉquipe concernée :\nMatch (date, adversaire) :\n\n" }],
+    },
+    {
+      id: 'vie-associative', icon: 'heart', title: 'Vie associative', text: 'Événements, partenariats et sponsoring, bénévolat.', to: club.emailCommunication,
+      subjects: ['Partenariat', 'Bénévolat'],
+      actions: [
+        { label: 'Écrire', subject: 'Vie associative', body: "Bonjour,\n\n" },
+        { label: 'Devenir bénévole', subject: 'Bénévolat', body: "Bonjour,\n\nJe souhaite donner un coup de main au club (table de marque, buvette, événements…).\nNom et prénom :\n\n" },
+      ],
+    },
+  ];
+%>
 
 <section class="section">
-  <div class="container contact-layout">
-    <aside class="contact-cards">
-      <a class="contact-card" href="mailto:<%= club.email %>">
-        <span class="ql-icon"><%- icon('mail') %></span>
-        <span><small>E-mail</small><strong><%= club.email %></strong></span>
-      </a>
-      <a class="contact-card" href="<%= mapsUrl(club.gym) %>" target="_blank" rel="noopener">
-        <span class="ql-icon"><%- icon('route') %></span>
-        <span><small>Salle (itinéraire)</small><strong><%= club.gym %></strong></span>
-      </a>
+  <div class="container">
+    <p class="contact-intro">Choisissez la bonne boîte : votre messagerie s'ouvre avec un e-mail prêt à compléter.</p>
+    <div class="contact-boxes">
+      <% for (const b of boxes) { %>
+        <article class="contact-box" id="<%= b.id %>" data-subjects="<%= b.subjects.join('|') %>">
+          <div class="contact-box-head">
+            <span class="ql-icon"><%- icon(b.icon) %></span>
+            <h2><%= b.title %></h2>
+          </div>
+          <p><%= b.text %></p>
+          <a class="contact-box-email" href="mailto:<%= b.to %>"><%= b.to %></a>
+          <div class="contact-box-actions">
+            <% b.actions.forEach((a, i) => { %>
+              <a class="btn <%= i === 0 ? 'btn-primary' : 'btn-outline' %>" href="<%= mailto(b.to, a.subject, a.body) %>"><% if (i === 0) { %><%- icon('mail') %> <% } %><%= a.label %></a>
+            <% }) %>
+          </div>
+        </article>
+      <% } %>
+    </div>
+
+    <h2 class="contact-places-title">Nos salles et notre siège</h2>
+    <div class="contact-places">
+      <% for (const g of club.gyms) { %>
+        <a class="contact-card" href="<%= mapsUrl(`${g.name}, ${g.address}`) %>" target="_blank" rel="noopener" title="Itinéraire">
+          <span class="ql-icon"><%- icon('route') %></span>
+          <span><% if (g.use) { %><small><%= g.use %></small><% } %><strong><%= g.name %></strong><span class="contact-card-sub"><%= g.address %></span></span>
+        </a>
+      <% } %>
       <div class="contact-card">
         <span class="ql-icon"><%- icon('pin') %></span>
         <span><small>Siège</small><strong><%= club.address %></strong></span>
       </div>
-    </aside>
-
-    <%
-      // Pas de formulaire (site statique) : un e-mail prérempli selon le sujet
-      const subjects = {
-        Inscription: "Bonjour,\n\nJe souhaite m'inscrire (ou inscrire mon enfant) au club.\nNom et prénom du joueur :\nDate de naissance :\nÉquipe souhaitée (si vous la connaissez) :\n\nMerci !",
-        Renseignements: "Bonjour,\n\n",
-        Partenariat: "Bonjour,\n\nJe vous contacte au sujet d'un partenariat avec le club.\n\n",
-        Autre: "Bonjour,\n\n",
-      };
-      const mailto = (s) => `mailto:${club.email}?subject=${encodeURIComponent(`${s} - ${club.name}`)}&body=${encodeURIComponent(subjects[s])}`;
-    %>
-    <div class="panel contact-panel" data-contact>
-      <h2>Écrivez-nous</h2>
-      <p class="muted">Choisissez le sujet : votre messagerie s'ouvre avec un e-mail prêt à compléter.</p>
-      <div class="subject-picker" role="group" aria-label="Sujet">
-        <% for (const s of Object.keys(subjects)) { %>
-          <button type="button" class="chip <%= s === 'Inscription' ? 'active' : '' %>" data-subject="<%= s %>" data-mailto="<%= mailto(s) %>" aria-pressed="<%= s === 'Inscription' %>"><%= s %></button>
-        <% } %>
-      </div>
-      <div class="contact-actions">
-        <a class="btn btn-primary btn-lg" href="<%= mailto('Inscription') %>" data-mail-link><%- icon('mail') %> Envoyer un e-mail</a>
-      </div>
-      <p class="contact-hint">Pas de messagerie sur cet appareil ? Écrivez-nous à <a href="mailto:<%= club.email %>"><%= club.email %></a>.</p>
     </div>
   </div>
 </section>
 <script>
-  // Sujet choisi (et sujet reçu dans l'adresse, ex. /contact?sujet=Inscription) → lien e-mail prérempli
+  // Sujet reçu dans l'adresse (/contact?sujet=Inscription) → carte correspondante mise en avant
   (() => {
-    const root = document.querySelector("[data-contact]");
-    const link = root.querySelector("[data-mail-link]");
-    const buttons = [...root.querySelectorAll("[data-subject]")];
-    const select = (subject) => {
-      const button = buttons.find((b) => b.dataset.subject === subject) ?? buttons[0];
-      for (const b of buttons) { b.classList.toggle("active", b === button); b.setAttribute("aria-pressed", String(b === button)); }
-      link.href = button.dataset.mailto;
-    };
-    root.addEventListener("click", (e) => { const b = e.target.closest("[data-subject]"); if (b) select(b.dataset.subject); });
-    select(new URLSearchParams(location.search).get("sujet") ?? "Inscription");
+    const subject = new URLSearchParams(location.search).get("sujet");
+    if (!subject) return;
+    const box = [...document.querySelectorAll("[data-subjects]")].find((b) => b.dataset.subjects.split("|").includes(subject));
+    if (!box) return;
+    box.classList.add("is-target");
+    if (matchMedia("(max-width: 1140px)").matches) box.scrollIntoView({ block: "center" }); // cartes empilées sur mobile
   })();
 </script>
 <%- include('../partials/footer') %>

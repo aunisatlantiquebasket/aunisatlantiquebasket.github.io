@@ -40,6 +40,7 @@
           <p class="muted">Horaires bientôt disponibles.</p>
           <a href="/contact?sujet=Renseignements" class="link-arrow">Nous demander les horaires <%- icon('arrow') %></a>
         <% } else { %>
+          <%# Lieux enregistrés « nom, rue, code postal ville » : on affiche le nom, l'itinéraire utilise l'adresse complète %>
           <% const shortPlace = (p) => p.split(',')[0]; %>
           <% const ownPlaces = trainings.some((t) => t.place || t.alternate); %>
           <ul class="check-list trainings">
@@ -51,10 +52,10 @@
                   <% if (t.alternate) { %>
                     <small class="training-where">
                       En alternance : <%= t.alternate.places.map(shortPlace).join(' / ') %><br>
-                      <a href="<%= mapsUrl(t.alternate.next.place) %>" target="_blank" rel="noopener"><%- icon('pin') %><span class="capitalize"><%= t.alternate.next.label %></span> : <strong><%= shortPlace(t.alternate.next.place) %></strong></a>
+                      <a href="<%= mapsUrl(t.alternate.next.place) %>" target="_blank" rel="noopener" title="<%= t.alternate.next.place %>"><%- icon('pin') %><span class="capitalize"><%= t.alternate.next.label %></span> : <strong><%= shortPlace(t.alternate.next.place) %></strong></a>
                     </small>
                   <% } else if (t.place) { %>
-                    <small class="training-where"><a href="<%= mapsUrl(t.place) %>" target="_blank" rel="noopener"><%- icon('pin') %><%= t.place %></a></small>
+                    <small class="training-where"><a href="<%= mapsUrl(t.place) %>" target="_blank" rel="noopener" title="<%= t.place %>"><%- icon('pin') %><%= shortPlace(t.place) %></a></small>
                   <% } %>
                   <% if (t.note) { %><small class="training-where"><%= t.note %></small><% } %>
                 </div>
@@ -63,7 +64,7 @@
           </ul>
           <% if (!ownPlaces) { %>
             <% const venue = team.trainingVenue || club.gym; %>
-            <a class="training-venue" href="<%= mapsUrl(venue) %>" target="_blank" rel="noopener"><%- icon('pin') %><%= venue %></a>
+            <a class="training-venue" href="<%= mapsUrl(venue) %>" target="_blank" rel="noopener" title="<%= venue %>"><%- icon('pin') %><%= shortPlace(venue) %></a>
           <% } %>
         <% } %>
         <% if (team.coach) { %><p class="coach-line"><%= team.coach.includes(',') ? 'Coachs' : 'Coach' %> : <strong><%= team.coach %></strong></p><% } %>

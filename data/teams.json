@@ -7,7 +7,7 @@
     "trainings": [
       "Mercredi 16h00 – 17h00"
     ],
-    "trainingVenue": "Saint-Jean-de-Liversay",
+    "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
     "coach": "Audrey"
   },
@@ -19,7 +19,7 @@
     "trainings": [
       "Mardi 17h00 – 18h30"
     ],
-    "trainingVenue": "Saint-Jean-de-Liversay",
+    "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
     "coach": "Anaëlle"
   },
@@ -32,7 +32,7 @@
       "Mercredi 17h00 – 18h30 (2 groupes)",
       "Vendredi 17h00 – 18h30 (2 groupes)"
     ],
-    "trainingVenue": "Saint-Jean-de-Liversay",
+    "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
     "coach": "Jonathan, Jérémy, Clément"
   },
@@ -48,14 +48,14 @@
         "alternate": {
           "from": "2026-09-21",
           "places": [
-            "Gymnase De Gaulle, Marans",
-            "Gymnase intercommunal Bel Air, Marans"
+            "Gymnase De Gaulle, Avenue du Général de Gaulle, 17230 Marans",
+            "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans"
           ]
         }
       },
       {
         "time": "Mercredi 16h00 – 17h30",
-        "place": "Gymnase intercommunal Bel Air, Marans"
+        "place": "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans"
       }
     ],
     "players": [],
@@ -150,14 +150,14 @@
         "alternate": {
           "from": "2026-09-21",
           "places": [
-            "Gymnase De Gaulle, Marans",
-            "Gymnase intercommunal Bel Air, Marans"
+            "Gymnase De Gaulle, Avenue du Général de Gaulle, 17230 Marans",
+            "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans"
           ]
         }
       },
       {
         "time": "Mercredi 17h30 – 19h00",
-        "place": "Gymnase De Gaulle, Marans"
+        "place": "Gymnase De Gaulle, Avenue du Général de Gaulle, 17230 Marans"
       }
     ],
     "players": [],
@@ -252,14 +252,14 @@
         "alternate": {
           "from": "2026-09-21",
           "places": [
-            "Gymnase De Gaulle, Marans",
-            "Gymnase intercommunal Bel Air, Marans"
+            "Gymnase De Gaulle, Avenue du Général de Gaulle, 17230 Marans",
+            "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans"
           ]
         }
       },
       {
         "time": "Mercredi 19h00 – 20h30",
-        "place": "Gymnase De Gaulle, Marans"
+        "place": "Gymnase De Gaulle, Avenue du Général de Gaulle, 17230 Marans"
       }
     ],
     "players": [],
@@ -415,7 +415,7 @@
     "trainings": [
       "Mercredi 20h00 – 21h30"
     ],
-    "trainingVenue": "Gymnase de Courçon",
+    "trainingVenue": "Complexe sportif intercommunal de Courçon, Rue du Collège, 17170 Courçon",
     "players": [],
     "coach": "Christophe"
   }

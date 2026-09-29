@@ -33,7 +33,7 @@ export interface StandingRow {
 /** Créneau d'entraînement avec un lieu propre (lien d'itinéraire) et/ou une précision */
 export interface Training {
   time: string; // "Lundi 18h00 – 19h30"
-  place?: string; // "Gymnase intercommunal Bel Air, Marans"
+  place?: string; // "Gymnase intercommunal Bel Air, rue de Bel-Air, 17230 Marans" (nom affiché, adresse pour l'itinéraire)
   note?: string; // précision libre
   /**
    * Lieu en alternance d'une semaine sur l'autre : la semaine de `from` a lieu à places[0],
