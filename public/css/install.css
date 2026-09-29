@@ -1,0 +1,36 @@
+/* Invitation à installer l'application (mobile, tablette) : views/partials/install-banner.ejs.
+   Feuille autonome : chargée par le site et par la page « en construction », qui a ses propres styles. */
+.install-banner {
+  position: fixed; z-index: 60; left: 12px; right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  max-width: 560px; margin: 0 auto;
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 40px 14px 14px; border-radius: 16px;
+  background: #1f272d; color: #fff; text-align: left;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 24px 60px rgba(15, 20, 24, .35);
+  animation: install-in .3s ease-out;
+}
+.install-banner > img { flex: none; width: 48px; height: 48px; border-radius: 12px; background: #fff; filter: none; }
+.install-text { flex: 1; display: grid; gap: 2px; font-size: .9rem; line-height: 1.35; color: rgba(255, 255, 255, .8); }
+.install-text strong { font-family: "Outfit", system-ui, sans-serif; font-size: 1rem; color: #fff; }
+.install-text b { color: #fff; font-weight: 600; }
+.install-text .icon { width: 1.05em; height: 1.05em; vertical-align: -.15em; color: #accf79; }
+.install-accept {
+  flex: none; padding: 9px 16px; border: 0; border-radius: 999px; cursor: pointer;
+  font-family: "Outfit", system-ui, sans-serif; font-weight: 600; font-size: .95rem;
+  background: #86bd40; color: #1f272d; box-shadow: 0 6px 18px rgba(134, 189, 64, .35);
+}
+.install-accept:hover { background: #93c94e; }
+.install-close {
+  position: absolute; top: 2px; right: 2px;
+  display: grid; place-items: center; width: 36px; height: 36px; padding: 0;
+  border: 0; border-radius: 50%; background: transparent; color: rgba(255, 255, 255, .7); cursor: pointer;
+}
+.install-close .icon { width: 18px; height: 18px; }
+.install-close:hover { color: #fff; background: rgba(255, 255, 255, .1); }
+.install-banner[hidden], .install-banner [hidden] { display: none !important; }
+/* Tant que le bandeau est affiché, le bas de la page reste accessible au-dessus de lui */
+body:has(.install-banner:not([hidden])) { padding-bottom: 150px; }
+@keyframes install-in { from { transform: translateY(20px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .install-banner { animation: none; } }

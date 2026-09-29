@@ -1,0 +1,12 @@
+  <%# Invitation à installer le site comme une application (mobile et tablette), gérée par js/install.js %>
+  <div class="install-banner" id="install-banner" role="dialog" aria-labelledby="install-title" hidden>
+    <img src="/img/app/icon-192.png" alt="" width="48" height="48">
+    <div class="install-text">
+      <strong id="install-title">L'appli du club</strong>
+      <span data-install-prompt>Résultats et calendrier depuis votre écran d'accueil.</span>
+      <span data-install-ios hidden>Touchez <%- include('icon', { name: 'share' }) %> <b>Partager</b>, puis <b>« Sur l'écran d'accueil »</b>.</span>
+    </div>
+    <button type="button" class="install-accept" data-install-accept>Installer</button>
+    <button type="button" class="install-close" data-install-dismiss aria-label="Plus tard"><%- include('icon', { name: 'close' }) %></button>
+  </div>
+  <script src="/js/install.js" defer></script>

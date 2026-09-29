@@ -62,13 +62,13 @@ try {
   await rm(OUT, { recursive: true, force: true });
 
   if (enConstruction) {
-    // L'application installable (manifeste, service worker, icônes) reste à la racine du domaine :
-    // installée depuis l'aperçu, elle s'ouvre sur l'adresse du site, jamais sur /apercu/
+    // L'application installable (manifeste, service worker, icônes, bandeau) reste à la racine du domaine :
+    // installable aussi depuis la page d'attente, et jamais ouverte sur /apercu/
     const rootManifest = (html: string) =>
       html.replace(`href="${BASE}${APERCU}/manifest.webmanifest"`, `href="${BASE}/manifest.webmanifest"`);
     const count = await buildSite(path.join(OUT, APERCU), BASE + APERCU, (html) => rootManifest(noIndex(html)));
     await cp(path.resolve("public/img/logo-rond.svg"), path.join(OUT, "img/logo-rond.svg"));
-    for (const file of ["manifest.webmanifest", "sw.js", "img/app"]) {
+    for (const file of ["manifest.webmanifest", "sw.js", "img/app", "js/install.js", "css/install.css", "img/sporteasy.png"]) {
       await cp(path.resolve("public", file), path.join(OUT, file), { recursive: true });
     }
     const page = await new Promise<string>((resolve, reject) =>
