@@ -22,6 +22,9 @@ génération du site statique → publication sur GitHub Pages.
   (`git add`, `git commit`, `git push`) : le site en ligne est à jour quelques minutes après.
 - Pour forcer une mise à jour : onglet **Actions** du dépôt → « Publier le site » → **Run workflow**.
 - En cas d'échec de la FFBB, le site est publié quand même avec les données précédentes (avertissement dans Actions).
+- **Site en construction** (`enConstruction` dans `src/config.ts`) : l'adresse du club affiche une page d'attente
+  (`views/pages/construction.ejs`) et le vrai site reste consultable, non référencé par les moteurs de recherche,
+  sur `https://aunisatlantiquebasket.com/apercu/`. Pour ouvrir le site : passer `enConstruction` à `false` et envoyer sur GitHub.
 
 Le site étant statique, les filtres du calendrier et des équipes s'appliquent dans la page (`public/js/filters.js`)
 et la page Contact propose un e-mail prérempli (pas de formulaire, pas de téléphone).

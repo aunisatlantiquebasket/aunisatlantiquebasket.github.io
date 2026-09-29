@@ -16,7 +16,12 @@ export const club = {
   ffbbClubPath: "/ligues/naq/comites/0017/clubs/naq0017020",
 };
 
-export const port = Number(process.env.PORT ?? 3000);
+// Site publié « en construction » : l'accueil en ligne affiche une page d'attente, et le vrai site
+// reste consultable (non référencé) à l'adresse /apercu/ pour le faire valider.
+// Passer à false pour ouvrir le site (ou EN_CONSTRUCTION=0 pour une génération locale).
+export const enConstruction = process.env.EN_CONSTRUCTION ? process.env.EN_CONSTRUCTION !== "0" : true;
+
+export const port =Number(process.env.PORT ?? 3000);
 
 // Synchronisation automatique avec la FFBB (désactivable avec FFBB_SYNC=off)
 export const ffbbSync = {

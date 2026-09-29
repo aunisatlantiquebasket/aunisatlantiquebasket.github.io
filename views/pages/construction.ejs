@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site en construction | <%= club.name %></title>
+  <meta name="description" content="<%= club.name %> : notre nouveau site arrive bientôt.">
+  <meta name="theme-color" content="#36424a">
+  <link rel="icon" type="image/svg+xml" href="/img/logo-rond.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --slate-900: #1f272d; --slate: #36424a; --green: #86bd40; --green-light: #accf79; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 16px;
+      font-family: Inter, system-ui, sans-serif; color: #fff; text-align: center;
+      background: radial-gradient(circle at 20% 0%, rgba(134, 189, 64, .22), transparent 45%), linear-gradient(160deg, var(--slate-900), var(--slate));
+    }
+    main { max-width: 560px; }
+    img { width: 150px; height: 150px; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .35)); }
+    .eyebrow { margin: 28px 0 8px; color: var(--green-light); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
+    h1 { margin: 0; font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(2rem, 7vw, 3rem); line-height: 1.1; }
+    h1 span { color: var(--green); }
+    p { color: rgba(255, 255, 255, .8); line-height: 1.6; }
+    .slogan { font-family: Outfit, sans-serif; font-size: 1.15rem; color: #fff; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+    a.btn { display: inline-block; padding: 12px 22px; border-radius: 999px; font-weight: 600; text-decoration: none; color: #fff; border: 1px solid rgba(255, 255, 255, .35); }
+    a.btn:hover { border-color: #fff; }
+    a.btn-primary { background: var(--green); border-color: var(--green); color: var(--slate-900); }
+    a.btn-primary:hover { background: var(--green-light); border-color: var(--green-light); }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="/img/logo-rond.svg" alt="<%= club.name %>" width="150" height="150">
+    <p class="eyebrow"><%= club.name %></p>
+    <h1>Notre nouveau site arrive <span>bientôt</span></h1>
+    <p class="slogan">« <%= club.slogan %> »</p>
+    <p>Le site du club est en cours de préparation. En attendant, suivez l'actualité du club sur nos réseaux ou écrivez-nous.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:<%= club.email %>"><%= club.email %></a>
+      <a class="btn" href="<%= club.social.facebook %>" target="_blank" rel="noopener">Facebook</a>
+      <a class="btn" href="<%= club.social.instagram %>" target="_blank" rel="noopener">Instagram</a>
+      <% if (club.sportEasyUrl) { %><a class="btn" href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener">Espace membres</a><% } %>
+    </div>
+  </main>
+</body>
+</html>
