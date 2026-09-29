@@ -5,9 +5,8 @@
   <div class="container hero-grid">
     <% const [sloganStart, ...sloganEnd] = club.slogan.split(', '); %>
     <div class="hero-text">
-      <p class="eyebrow eyebrow-light"><%= club.name %> · club de basket</p>
       <h1><%= sloganStart %><% if (sloganEnd.length) { %>,<br><span><%= sloganEnd.join(', ') %></span><% } %></h1>
-      <p class="hero-lead">Jeunes, seniors ou loisirs, en compétition comme pour le plaisir : il y a une place pour vous au club.</p>
+      <p class="hero-lead">Jeunes, seniors ou loisirs, sur le terrain ou comme bénévole : il y a une place pour vous au club.</p>
     </div>
 
     <section class="next-match" aria-roledescription="carrousel" aria-label="Matchs : <%= hero.title %>" data-carousel>
@@ -74,7 +73,7 @@
   <a href="/calendrier" class="quick-link"><span class="ql-icon"><%- icon('calendar') %></span><span><strong>Calendrier</strong><small>Matchs et résultats</small></span></a>
   <a href="/equipes" class="quick-link"><span class="ql-icon"><%- icon('users') %></span><span><strong>Nos équipes</strong><small>Jeunes, seniors, loisirs</small></span></a>
   <a href="/actualites" class="quick-link"><span class="ql-icon"><%- icon('news') %></span><span><strong>Actualités</strong><small>La vie du club</small></span></a>
-  <a href="/contact#salles" class="quick-link"><span class="ql-icon"><%- icon('route') %></span><span><strong>Nos salles</strong><small><%= club.gyms.length %> salles, adresses et itinéraires</small></span></a>
+  <a href="/contact#salles" class="quick-link"><span class="ql-icon"><%- icon('route') %></span><span><strong>Nos salles</strong><small>Adresses et itinéraires</small></span></a>
 </section>
 
 <section class="section">
@@ -142,7 +141,10 @@
         <p class="eyebrow eyebrow-light">Rejoindre le club</p>
         <h2>Envie de jouer avec nous ?</h2>
         <p>Débutant ou confirmé, enfant ou adulte, en compétition ou juste pour le plaisir : il y a une place pour vous.</p>
-        <a href="/contact?sujet=Inscription" class="btn btn-primary btn-lg">Je veux m'inscrire <%- icon('arrow') %></a>
+        <div class="join-actions">
+          <a href="/contact?sujet=Inscription" class="btn btn-primary btn-lg">Je veux m'inscrire <%- icon('arrow') %></a>
+          <a href="/contact?sujet=B%C3%A9n%C3%A9volat" class="btn btn-ghost btn-lg">Devenir bénévole</a>
+        </div>
       </div>
       <ol class="steps">
         <li><span class="step-num">1</span><div><strong>Contactez-nous</strong><p>Par e-mail, depuis la page Contact.</p></div></li>

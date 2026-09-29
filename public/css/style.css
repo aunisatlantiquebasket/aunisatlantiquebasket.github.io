@@ -140,6 +140,9 @@ p { margin: 0 0 1em; }
 .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
 .nav-toggle-label { display: none; color: #fff; cursor: pointer; padding: 8px; border-radius: 10px; }
 .nav-toggle-label .icon { width: 26px; height: 26px; display: block; }
+.header-contact { display: none; margin-left: auto; color: #fff; padding: 8px; border-radius: 10px; }
+.header-contact:hover { background: rgba(255, 255, 255, .08); }
+.header-contact .icon { width: 24px; height: 24px; display: block; }
 .nav-toggle-label .when-open { display: none; }
 .nav-toggle:focus-visible + .nav-toggle-label { outline: 3px solid var(--green); }
 
@@ -276,6 +279,7 @@ p { margin: 0 0 1em; }
 }
 .join h2 { color: #fff; }
 .join-text p { font-size: 1.05rem; margin-bottom: 28px; }
+.join-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .steps li { display: flex; gap: 16px; align-items: flex-start; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .08); border-radius: var(--radius); padding: 18px; }
 .steps strong { color: #fff; font-family: var(--font-display); font-size: 1.05rem; }
@@ -528,6 +532,8 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 /* Menu replié (burger) tant que le logo et tous les liens ne tiennent pas sur une ligne (~1030 px) */
 @media (max-width: 1060px) {
   .nav-toggle-label { display: block; }
+  .header-contact { display: block; }
+  .header-inner { gap: 4px; }
   .main-nav {
     position: absolute; top: var(--header-h); left: 0; right: 0;
     flex-direction: column; align-items: stretch; gap: 4px;
