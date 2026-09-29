@@ -19,28 +19,25 @@
   ],
   "comite": [
     {
-      "name": "Audrey Figureau",
-      "role": "Membre du comité directeur"
+      "name": "Audrey Figureau"
     },
     {
-      "name": "Christophe Vermeulen",
-      "role": "Membre du comité directeur"
+      "name": "Christophe Vermeulen"
     },
     {
-      "name": "Jérémie Boidin",
-      "role": "Membre du comité directeur"
+      "name": "Jérémie Boidin"
     },
     {
-      "name": "Noé Pequeur",
-      "role": "Membre du comité directeur"
+      "name": "Noé Pequeur"
     },
     {
-      "name": "Jonathan Martin",
-      "role": "Membre du comité directeur"
+      "name": "Jonathan Martin"
     },
     {
-      "name": "Damien Ronciere",
-      "role": "Membre du comité directeur"
+      "name": "Damien Ronciere"
+    },
+    {
+      "name": "Nicolas Buono"
     }
   ],
   "commissions": [
@@ -50,20 +47,20 @@
         {
           "label": "Médiation",
           "people": [
-            "Jérémie"
+            "Jérémie Boidin"
           ]
         },
         {
           "label": "Équipement",
           "people": [
-            "Nicolas"
+            "Nicolas Buono"
           ]
         }
       ],
       "members": [
-        "Christophe",
-        "Nicolas",
-        "Jérémie"
+        "Christophe Vermeulen",
+        "Nicolas Buono",
+        "Jérémie Boidin"
       ]
     },
     {
@@ -88,8 +85,8 @@
         {
           "label": "Communication",
           "people": [
-            "Alexandre",
-            "Jonathan"
+            "Alexandre Martineau",
+            "Jonathan Martin"
           ]
         },
         {
@@ -107,10 +104,5 @@
       ]
     }
   ],
-  "benevoles": [
-    {
-      "name": "Nicolas Buono",
-      "role": "Responsable matériel"
-    }
-  ]
+  "benevoles": []
 }

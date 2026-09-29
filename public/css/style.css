@@ -463,23 +463,8 @@ p { margin: 0 0 1em; }
 .person-role { margin: 0; color: var(--green-text); font-weight: 600; font-size: .9rem; }
 .person-teams { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
 .person-teams a:hover { text-decoration: none; background: var(--green-100); }
-.commissions { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 56px; }
-.commission {
-  background: #fff; border: 1px solid var(--border); border-top: 4px solid var(--green);
-  border-radius: var(--radius-lg); padding: 22px 24px 24px;
-}
-.commission h3 { margin: 0 0 14px; font-size: 1.15rem; }
-.commission-roles { margin: 0; display: grid; }
-.commission-roles div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); }
-.commission-roles div:last-child { border-bottom: 0; }
-.commission-roles dt { font-weight: 600; }
-.commission-roles dd { margin: 0; text-align: right; }
-.to-fill { color: var(--muted); font-style: italic; }
-.commission-members { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--border); color: var(--muted); }
-.commission-members strong { color: var(--text); }
-.commission-missions { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.commission-roles + .commission-missions { margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--border); }
-.commission-missions .tag { background: var(--green-50); color: var(--green-text); font-size: .85rem; padding: 5px 12px; }
+.person-commissions { margin-top: 10px; }
+.tag-commission { background: var(--bg-tint); color: var(--slate-700); box-shadow: inset 0 0 0 1px var(--border); }
 .trombi-join {
   display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
   background: var(--green-50); border: 1px solid var(--green-100); border-radius: var(--radius-lg); padding: 24px 28px;

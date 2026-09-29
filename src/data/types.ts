@@ -66,15 +66,16 @@ export interface Match {
 /** Personne du trombinoscope (membre du bureau ou coach) */
 export interface Person {
   name: string;
-  role: string; // "Présidente", "Trésorier"… ou, pour un coach, "Coach"
+  role?: string; // "Présidente", "Trésorier"… ou, pour un coach, "Coach" ; absent : rien sous le nom
   teams?: { name: string; slug: string }[]; // équipes entraînées
   photo?: string; // URL de la photo si un fichier existe dans public/img/trombi/
+  commissions?: string[]; // rôles dans les commissions du club ("Médiation", "La sportive"), calculés
 }
 
 /** Commission du club (data/trombinoscope.json) : postes et responsables, membres, missions */
 export interface Commission {
   name: string; // "Vie associative"
-  roles?: { label: string; people: string[] }[]; // "Communication" → ["Alexandre", "Jonathan"] ; vide : à pourvoir
+  roles?: { label: string; people: string[] }[]; // "Communication" → ["Alexandre Martineau", …] ; vide : pas encore défini, non affiché
   members?: string[]; // membres de la commission
   missions?: string[]; // ce dont la commission s'occupe
 }

@@ -60,12 +60,15 @@ function photoFor(name: string, files: string[]): string | undefined {
 export interface Trombinoscope {
   bureau: Person[];
   comite: Person[];
-  commissions: Commission[];
   benevoles: Person[];
   coaches: Person[];
 }
 
-/** Bureau, comité directeur, commissions et bénévoles (data/trombinoscope.json) ; coachs déduits des équipes */
+/**
+ * Bureau, comité directeur et bénévoles (data/trombinoscope.json) ; coachs déduits des équipes.
+ * Les commissions ne sont pas affichées telles quelles : chaque dirigeant ou bénévole reçoit ses rôles
+ * (« Médiation », « La sportive »…). Un poste sans personne (pas encore défini) n'apparaît pas.
+ */
 export async function getTrombinoscope(): Promise<Trombinoscope> {
   const [data, teams, files] = await Promise.all([
     readJson<Partial<Record<"bureau" | "comite" | "benevoles", Person[]> & { commissions: Commission[] }>>("trombinoscope.json", {}),
@@ -83,11 +86,27 @@ export async function getTrombinoscope(): Promise<Trombinoscope> {
     }
   }
 
-  const withPhoto = (p: Person): Person => ({ ...p, photo: photoFor(p.name, files) });
+  // Rôles de chacun dans les commissions, retrouvés par nom complet (ou prénom s'il est unique)
+  const commissions = data.commissions ?? [];
+  const people = [...(data.bureau ?? []), ...(data.comite ?? []), ...(data.benevoles ?? [])];
+  const roles = new Map<Person, string[]>();
+  const addRole = (name: string, role: string) => {
+    const sameFirstName = name.includes(" ") ? [] : people.filter((p) => p.name.split(" ")[0] === name);
+    const person = people.find((p) => p.name === name) ?? (sameFirstName.length === 1 ? sameFirstName[0] : undefined);
+    if (!person) return console.warn(`Trombinoscope : « ${name} » (commission) introuvable parmi les dirigeants et bénévoles`);
+    const list = roles.get(person) ?? [];
+    if (!list.includes(role)) list.push(role);
+    roles.set(person, list);
+  };
+  for (const c of commissions) {
+    for (const r of c.roles ?? []) for (const name of r.people) addRole(name, r.label);
+    for (const name of c.members ?? []) addRole(name, c.name);
+  }
+
+  const withPhoto = (p: Person): Person => ({ ...p, photo: photoFor(p.name, files), commissions: roles.get(p) });
   return {
     bureau: (data.bureau ?? []).map(withPhoto),
     comite: (data.comite ?? []).map(withPhoto),
-    commissions: data.commissions ?? [],
     benevoles: (data.benevoles ?? []).map(withPhoto),
     coaches: [...coaches.values()].map(withPhoto),
   };
