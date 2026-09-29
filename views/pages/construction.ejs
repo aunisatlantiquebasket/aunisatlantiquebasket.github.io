@@ -43,8 +43,9 @@
       <a class="btn btn-primary" href="mailto:<%= club.email %>"><%= club.email %></a>
       <a class="btn" href="<%= club.social.facebook %>" target="_blank" rel="noopener">Facebook</a>
       <a class="btn" href="<%= club.social.instagram %>" target="_blank" rel="noopener">Instagram</a>
-      <% if (club.sportEasyUrl) { %><a class="btn" href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener">Espace membres</a><% } %>
+      <% if (club.sportEasyUrl) { %><a class="btn" href="<%= club.sportEasyUrl %>" data-sporteasy target="_blank" rel="noopener">Espace membres</a><% } %>
     </div>
   </main>
+  <%- include('../partials/sporteasy-android') %>
 </body>
 </html>

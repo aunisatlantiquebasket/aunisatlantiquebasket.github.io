@@ -16,7 +16,7 @@
           <li><a href="/evenements">Événements</a></li>
           <li><a href="/actualites">Actualités</a></li>
           <li><a href="/trombinoscope">Trombinoscope</a></li>
-          <% if (club.sportEasyUrl) { %><li><a href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener">Espace membres (SportEasy)</a></li><% } %>
+          <% if (club.sportEasyUrl) { %><li><a href="<%= club.sportEasyUrl %>" data-sporteasy target="_blank" rel="noopener">Espace membres (SportEasy)</a></li><% } %>
           <li><a href="/contact?sujet=Inscription">Nous rejoindre</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
@@ -48,5 +48,6 @@
     <button type="button" class="install-close" data-install-dismiss aria-label="Plus tard"><%- include('icon', { name: 'close' }) %></button>
   </div>
   <script src="/js/install.js" defer></script>
+  <%- include('sporteasy-android') %>
 </body>
 </html>

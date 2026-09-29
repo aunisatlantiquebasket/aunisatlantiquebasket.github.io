@@ -1,0 +1,16 @@
+<%# Sur Android, les liens SportEasy ([data-sporteasy]) demandent l'ouverture de l'application SportEasy.
+    SportEasy ne déclare pas de lien d'application : on passe par une adresse « intent » d'Android, qui ouvre
+    l'adresse avec l'application si elle sait la gérer, et sinon ouvre le site (browser_fallback_url).
+    iPhone et ordinateur : lien normal vers le site. %>
+<% if (club.sportEasyUrl && club.sportEasyAndroidPackage) { %>
+<script>
+  (() => {
+    if (!/Android/i.test(navigator.userAgent)) return;
+    for (const link of document.querySelectorAll("a[data-sporteasy]")) {
+      const url = new URL(link.href);
+      link.href = `intent://${url.host}${url.pathname}${url.search}#Intent;scheme=https;package=<%= club.sportEasyAndroidPackage %>;S.browser_fallback_url=${encodeURIComponent(url.href)};end`;
+      link.removeAttribute("target"); // une adresse intent ouverte dans un nouvel onglet le laisserait vide
+    }
+  })();
+</script>
+<% } %>
