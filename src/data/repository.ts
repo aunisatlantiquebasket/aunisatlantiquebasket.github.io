@@ -1,6 +1,6 @@
 import { readdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { Article, ClubEvent, Match, Person, Team } from "./types.js";
+import type { Article, ClubEvent, Commission, Match, Person, Team } from "./types.js";
 
 const dataDir = path.resolve("data");
 
@@ -60,14 +60,15 @@ function photoFor(name: string, files: string[]): string | undefined {
 export interface Trombinoscope {
   bureau: Person[];
   comite: Person[];
+  commissions: Commission[];
   benevoles: Person[];
   coaches: Person[];
 }
 
-/** Bureau, comité directeur et bénévoles (data/trombinoscope.json) ; coachs déduits des équipes */
+/** Bureau, comité directeur, commissions et bénévoles (data/trombinoscope.json) ; coachs déduits des équipes */
 export async function getTrombinoscope(): Promise<Trombinoscope> {
   const [data, teams, files] = await Promise.all([
-    readJson<Partial<Record<"bureau" | "comite" | "benevoles", Person[]>>>("trombinoscope.json", {}),
+    readJson<Partial<Record<"bureau" | "comite" | "benevoles", Person[]> & { commissions: Commission[] }>>("trombinoscope.json", {}),
     getTeams(),
     readdir(TROMBI_DIR).catch(() => [] as string[]),
   ]);
@@ -86,6 +87,7 @@ export async function getTrombinoscope(): Promise<Trombinoscope> {
   return {
     bureau: (data.bureau ?? []).map(withPhoto),
     comite: (data.comite ?? []).map(withPhoto),
+    commissions: data.commissions ?? [],
     benevoles: (data.benevoles ?? []).map(withPhoto),
     coaches: [...coaches.values()].map(withPhoto),
   };

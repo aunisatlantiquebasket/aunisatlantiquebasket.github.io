@@ -22,6 +22,10 @@
 
 <section class="section">
   <div class="container">
+    <div class="trombi-join">
+      <p><strong>Envie de donner un coup de main ?</strong> Le club est animé par des bénévoles : coachs, arbitres, table de marque, organisation… Toute aide est la bienvenue.</p>
+      <a href="/contact?sujet=Autre" class="btn btn-primary">Devenir bénévole</a>
+    </div>
     <%
       const groups = [
         { id: 'bureau', eyebrow: 'Les dirigeants', title: 'Le bureau', people: bureau },
@@ -33,12 +37,35 @@
     <% for (const g of groups) { if (!g.people.length) continue; %>
       <div class="section-head" id="<%= g.id %>"><div><p class="eyebrow"><%= g.eyebrow %></p><h2><%= g.title %></h2></div></div>
       <div class="people"><% g.people.forEach(person) %></div>
+      <% if (g.id === 'comite' && commissions.length) { %>
+        <div class="section-head" id="commissions"><div><p class="eyebrow">L'organisation</p><h2>Les commissions</h2></div></div>
+        <div class="commissions">
+          <% for (const c of commissions) { %>
+            <article class="commission">
+              <h3><%= c.name %></h3>
+              <% if (c.roles && c.roles.length) { %>
+                <dl class="commission-roles">
+                  <% for (const r of c.roles) { %>
+                    <div>
+                      <dt><%= r.label %></dt>
+                      <dd><% if (r.people.length) { %><%= r.people.join(', ') %><% } else { %><span class="to-fill">À pourvoir</span><% } %></dd>
+                    </div>
+                  <% } %>
+                </dl>
+              <% } %>
+              <% if (c.members && c.members.length) { %>
+                <p class="commission-members"><strong>Membres :</strong> <%= c.members.join(', ') %></p>
+              <% } %>
+              <% if (c.missions && c.missions.length) { %>
+                <ul class="commission-missions">
+                  <% for (const m of c.missions) { %><li class="tag"><%= m %></li><% } %>
+                </ul>
+              <% } %>
+            </article>
+          <% } %>
+        </div>
+      <% } %>
     <% } %>
-
-    <div class="trombi-join">
-      <p><strong>Envie de donner un coup de main ?</strong> Le club est animé par des bénévoles : coachs, arbitres, table de marque, organisation… Toute aide est la bienvenue.</p>
-      <a href="/contact?sujet=Autre" class="btn btn-primary">Devenir bénévole</a>
-    </div>
   </div>
 </section>
 <%- include('../partials/footer') %>

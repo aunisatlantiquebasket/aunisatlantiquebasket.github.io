@@ -71,6 +71,14 @@ export interface Person {
   photo?: string; // URL de la photo si un fichier existe dans public/img/trombi/
 }
 
+/** Commission du club (data/trombinoscope.json) : postes et responsables, membres, missions */
+export interface Commission {
+  name: string; // "Vie associative"
+  roles?: { label: string; people: string[] }[]; // "Communication" → ["Alexandre", "Jonathan"] ; vide : à pourvoir
+  members?: string[]; // membres de la commission
+  missions?: string[]; // ce dont la commission s'occupe
+}
+
 /** Événement de la vie du club, hors matchs (loto, assemblée générale, stage, fête du club…) */
 export interface ClubEvent {
   slug: string; // sert d'adresse : /evenements/loto-2026

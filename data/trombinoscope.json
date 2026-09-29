@@ -43,6 +43,70 @@
       "role": "Membre du comité directeur"
     }
   ],
+  "commissions": [
+    {
+      "name": "La sportive",
+      "roles": [
+        {
+          "label": "Médiation",
+          "people": [
+            "Jérémie"
+          ]
+        },
+        {
+          "label": "Équipement",
+          "people": [
+            "Nicolas"
+          ]
+        }
+      ],
+      "members": [
+        "Christophe",
+        "Nicolas",
+        "Jérémie"
+      ]
+    },
+    {
+      "name": "Organisation des compétitions",
+      "roles": [
+        {
+          "label": "Responsables",
+          "people": []
+        }
+      ],
+      "missions": [
+        "Gestion des dérogations",
+        "Réservation des salles",
+        "Organisation des compétitions",
+        "Arbitrage",
+        "Table de marque"
+      ]
+    },
+    {
+      "name": "Vie associative",
+      "roles": [
+        {
+          "label": "Communication",
+          "people": [
+            "Alexandre",
+            "Jonathan"
+          ]
+        },
+        {
+          "label": "Buvette",
+          "people": []
+        },
+        {
+          "label": "Événements",
+          "people": []
+        },
+        {
+          "label": "Sponsoring",
+          "people": []
+        }
+      ]
+    }
+  ],
   "benevoles": [
     {
       "name": "Nicolas Buono",
