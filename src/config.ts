@@ -14,6 +14,8 @@ export const club = {
   sportEasyUrl: "https://aunis-atlantique-basket.sporteasy.net/",
   // Page du club sur competitions.ffbb.com (source des équipes, matchs et résultats)
   ffbbClubPath: "/ligues/naq/comites/0017/clubs/naq0017020",
+  // Identifiant du club (organisme) dans les données FFBB, utilisé par l'API de synchronisation
+  ffbbOrganismeId: "200000002678561",
 };
 
 // Site publié « en construction » : l'accueil en ligne affiche une page d'attente, et le vrai site

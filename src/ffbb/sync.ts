@@ -1,4 +1,5 @@
-// Synchronisation des équipes, matchs, scores et classements depuis le site de la FFBB.
+// Synchronisation des équipes, matchs, scores et classements FFBB.
+// Source : l'API ffbb-api.desimone.fr (voir api.ts), le site competitions.ffbb.com bloquant les robots.
 //
 // Règles de fusion :
 // - les matchs "source: ffbb" sont entièrement gérés ici (recréés à chaque synchro) ;
@@ -14,16 +15,8 @@ import { club } from "../config.js";
 import { readJson, writeJson } from "../data/repository.js";
 import type { Match, Team } from "../data/types.js";
 import { localLogo } from "./logos.js";
-import {
-  ffbbUrl,
-  getClubTeams,
-  getMatchSalle,
-  getStandings,
-  getTeamPage,
-  type FfbbClubTeam,
-  type FfbbEngagementRef,
-  type FfbbRencontre,
-} from "./client.js";
+import { getClubTeams, getMatchSalle, getStandings, getTeamPage } from "./api.js";
+import { ffbbUrl, type FfbbClubTeam, type FfbbEngagementRef, type FfbbRencontre } from "./client.js";
 
 export interface SyncStatus {
   lastAttempt: string;
@@ -67,6 +60,17 @@ function prettify(raw: string, names: Record<string, string>): string {
 function teamName(ref: FfbbEngagementRef, names: Record<string, string>): string {
   const n = prettify(ref.nom, names);
   return ref.numeroEquipe && ref.numeroEquipe !== "1" ? `${n} ${ref.numeroEquipe}` : n;
+}
+
+/** "SAINT-JEAN-D'ANGELY" → "Saint-Jean-d'Angely" (accents : data/ffbb-noms.json) */
+function cityName(raw: string, names: Record<string, string>): string {
+  const clean = raw.trim().replace(/\s+/g, " ");
+  if (names[clean]) return names[clean];
+  if (clean !== clean.toUpperCase()) return clean; // déjà en minuscules
+  return clean
+    .split(" ")
+    .map((w, i) => w.split("-").map((part, j) => titleCaseWord(part, i === 0 && j === 0)).join("-"))
+    .join(" ");
 }
 
 /** "CIRE SPORTS - 2" (libellé du classement) → "Ciré Sports 2" */
@@ -144,7 +148,7 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
     ]);
     const previous = new Map(matches.filter((m) => m.source === "ffbb").map((m) => [m.id, m]));
 
-    const clubTeams = await getClubTeams(club.ffbbClubPath);
+    const clubTeams = await getClubTeams(club.ffbbClubPath, club.ffbbOrganismeId);
     if (clubTeams.length === 0) throw new Error("aucune équipe trouvée sur la page du club FFBB");
     log(`FFBB : ${clubTeams.length} équipe(s) engagée(s)`);
 
@@ -299,6 +303,8 @@ async function venueFor(r: FfbbRencontre, prev: Match | undefined, names: Record
 
   const salle = await getMatchSalle(r.url_competition);
   if (!salle?.nom) return prev?.venue ?? "Salle à confirmer";
+  const nom = prettify(salle.nom, names);
+  if (prev?.venue.startsWith(`${nom},`)) return prev.venue; // même salle : garde la ville déjà bien écrite
   const city = salle.adresse.match(/\d{5}\s+(.+)$/)?.[1] ?? salle.adresse;
-  return city ? `${prettify(salle.nom, names)}, ${city}` : prettify(salle.nom, names);
+  return city ? `${nom}, ${cityName(city, names)}` : nom;
 }

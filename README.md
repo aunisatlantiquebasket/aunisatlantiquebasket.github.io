@@ -31,9 +31,11 @@ et la page Contact propose un e-mail prérempli (pas de formulaire, pas de tél�
 
 ## Synchronisation avec la FFBB
 
-Les équipes engagées, le calendrier, les scores et les classements sont récupérés
-automatiquement sur [competitions.ffbb.com](https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020)
-(la FFBB ne propose pas d'API publique : on lit ses pages publiques).
+Les équipes engagées, le calendrier, les scores et les classements FFBB sont récupérés
+automatiquement via l'API [ffbb-api.desimone.fr](https://ffbb-api.desimone.fr/), un service indépendant
+(non officiel) qui relaie les données de la FFBB. La FFBB ne propose pas d'API publique, et son site
+[competitions.ffbb.com](https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020)
+bloque les robots depuis fin septembre 2026 : il reste la référence pour les liens du site.
 
 - **En ligne** : par le robot de publication, toutes les 3 h.
 - **Sur votre ordinateur** : `npm run sync-ffbb`, ou automatiquement pendant `npm run dev`
@@ -59,7 +61,7 @@ En cas d'erreur (FFBB indisponible, pages modifiées), **rien n'est écrit** : l
 
 **Noms en majuscules** : la FFBB écrit les noms de clubs et de salles en majuscules sans accents.
 Ils sont mis en forme automatiquement ; pour corriger un nom, ajoutez-le dans `data/ffbb-noms.json`
-(`"NOM FFBB": "Nom affiché"`). La correction s'applique à la synchro suivante.
+(`"NOM FFBB": "Nom affiché"`), y compris pour les villes des salles (`"GEMOZAC": "Gémozac"`). La correction s'applique à la synchro suivante.
 
 ## Structure
 
@@ -69,7 +71,8 @@ src/
   config.ts            infos du club, page FFBB du club, réglages de synchro
   data/types.ts        types Team, Match, Article…
   data/repository.ts   lecture/écriture des fichiers JSON
-  ffbb/client.ts       lecture des pages FFBB
+  ffbb/api.ts          lecture des données FFBB (API ffbb-api.desimone.fr)
+  ffbb/client.ts       lecture des pages FFBB (bloquée par la FFBB) et types communs
   ffbb/sync.ts         fusion des données FFBB dans data/
   ffbb/scheduler.ts    synchro automatique
   ffbb/logos.ts        copie locale des logos de clubs, fond blanc rendu transparent
