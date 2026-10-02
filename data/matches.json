@@ -98,9 +98,9 @@
   {
     "id": "ffbb-200000014758255",
     "teamSlug": "u15-feminines",
-    "date": "2026-10-03T15:00:00",
+    "date": "2026-10-03T16:00:00",
     "opponent": "Jarnac-Champagne",
-    "home": false,
+    "home": true,
     "venue": "Salle polyvalente Pierre Babin, Jarnac-Champagne",
     "source": "ffbb",
     "round": 3,
