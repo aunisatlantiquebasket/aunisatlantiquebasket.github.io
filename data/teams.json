@@ -72,13 +72,13 @@
         "position": 1,
         "name": "La Jarrie 2",
         "logo": "/img/clubs/3ac01715-4cd6-4609-92df-d82489ba7d18.png",
-        "points": 4,
-        "played": 2,
-        "wins": 2,
+        "points": 6,
+        "played": 3,
+        "wins": 3,
         "losses": 0,
-        "scored": 162,
-        "conceded": 68,
-        "diff": 94,
+        "scored": 226,
+        "conceded": 93,
+        "diff": 133,
         "isUs": false
       },
       {
@@ -96,6 +96,19 @@
       },
       {
         "position": 3,
+        "name": "Angoulins UBAC 2",
+        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+        "points": 2,
+        "played": 2,
+        "wins": 0,
+        "losses": 2,
+        "scored": 74,
+        "conceded": 121,
+        "diff": -47,
+        "isUs": false
+      },
+      {
+        "position": 4,
         "name": "Saint-Agnant Basket Club",
         "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
         "points": 2,
@@ -105,19 +118,6 @@
         "scored": 39,
         "conceded": 164,
         "diff": -125,
-        "isUs": false
-      },
-      {
-        "position": 4,
-        "name": "Angoulins UBAC 2",
-        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-        "points": 1,
-        "played": 1,
-        "wins": 0,
-        "losses": 1,
-        "scored": 49,
-        "conceded": 57,
-        "diff": -8,
         "isUs": false
       },
       {
