@@ -96,6 +96,32 @@
       },
       {
         "position": 3,
+        "name": "CTC Basket Océan 17 - Rochefort BC 2",
+        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
+        "points": 3,
+        "played": 2,
+        "wins": 1,
+        "losses": 1,
+        "scored": 90,
+        "conceded": 92,
+        "diff": -2,
+        "isUs": false
+      },
+      {
+        "position": 4,
+        "name": "Saint-Agnant Basket Club",
+        "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
+        "points": 3,
+        "played": 3,
+        "wins": 0,
+        "losses": 3,
+        "scored": 67,
+        "conceded": 205,
+        "diff": -138,
+        "isUs": false
+      },
+      {
+        "position": 5,
         "name": "Angoulins UBAC 2",
         "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
         "points": 2,
@@ -105,32 +131,6 @@
         "scored": 74,
         "conceded": 121,
         "diff": -47,
-        "isUs": false
-      },
-      {
-        "position": 4,
-        "name": "Saint-Agnant Basket Club",
-        "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-        "points": 2,
-        "played": 2,
-        "wins": 0,
-        "losses": 2,
-        "scored": 39,
-        "conceded": 164,
-        "diff": -125,
-        "isUs": false
-      },
-      {
-        "position": 5,
-        "name": "CTC Basket Océan 17 - Rochefort BC 2",
-        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-        "points": 1,
-        "played": 1,
-        "wins": 0,
-        "losses": 1,
-        "scored": 49,
-        "conceded": 64,
-        "diff": -15,
         "isUs": false
       }
     ],
