@@ -164,10 +164,10 @@
     "ffbbId": "200000005377820",
     "ranking": {
       "position": 2,
-      "points": 3,
-      "played": 2,
+      "points": 4,
+      "played": 3,
       "wins": 1,
-      "losses": 1
+      "losses": 2
     },
     "standings": [
       {
@@ -187,52 +187,52 @@
         "position": 2,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
-        "points": 3,
-        "played": 2,
+        "points": 4,
+        "played": 3,
         "wins": 1,
-        "losses": 1,
-        "scored": 148,
-        "conceded": 117,
-        "diff": 31,
+        "losses": 2,
+        "scored": 213,
+        "conceded": 183,
+        "diff": 30,
         "isUs": true
       },
       {
         "position": 3,
         "name": "Jarnac-Champagne",
         "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
-        "points": 1,
-        "played": 1,
-        "wins": 0,
+        "points": 3,
+        "played": 2,
+        "wins": 1,
         "losses": 1,
-        "scored": 40,
-        "conceded": 65,
-        "diff": -25,
+        "scored": 106,
+        "conceded": 130,
+        "diff": -24,
         "isUs": false
       },
       {
         "position": 4,
         "name": "Saint-Jean-d'Angély JLA",
         "logo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
+        "points": 3,
+        "played": 2,
+        "wins": 1,
+        "losses": 1,
+        "scored": 94,
+        "conceded": 169,
+        "diff": -75,
+        "isUs": false
+      },
+      {
+        "position": 5,
+        "name": "CTC Basket Océan 17 - Saint-Agnant",
+        "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
         "points": 1,
         "played": 1,
         "wins": 0,
         "losses": 1,
-        "scored": 32,
-        "conceded": 108,
-        "diff": -76,
-        "isUs": false
-      },
-      {
-        "position": 6,
-        "name": "CTC Basket Océan 17 - Saint-Agnant",
-        "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-        "points": 0,
-        "played": 0,
-        "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
+        "scored": 61,
+        "conceded": 62,
+        "diff": -1,
         "isUs": false
       }
     ],
@@ -265,15 +265,28 @@
     "players": [],
     "ffbbId": "200000005335854",
     "ranking": {
-      "position": 7,
-      "points": 3,
-      "played": 2,
+      "position": 4,
+      "points": 4,
+      "played": 3,
       "wins": 1,
-      "losses": 1
+      "losses": 2
     },
     "standings": [
       {
         "position": 1,
+        "name": "Marennes Bourcefranc BBMB",
+        "logo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
+        "points": 5,
+        "played": 3,
+        "wins": 2,
+        "losses": 1,
+        "scored": 231,
+        "conceded": 189,
+        "diff": 42,
+        "isUs": false
+      },
+      {
+        "position": 2,
         "name": "BC Élan Gémozacais",
         "logo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
         "points": 4,
@@ -286,7 +299,7 @@
         "isUs": false
       },
       {
-        "position": 2,
+        "position": 3,
         "name": "Angoulins UBAC 2",
         "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
         "points": 4,
@@ -299,7 +312,20 @@
         "isUs": false
       },
       {
-        "position": 3,
+        "position": 4,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 4,
+        "played": 3,
+        "wins": 1,
+        "losses": 2,
+        "scored": 156,
+        "conceded": 224,
+        "diff": -68,
+        "isUs": true
+      },
+      {
+        "position": 5,
         "name": "Ciré Sports 2",
         "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
         "points": 3,
@@ -312,7 +338,7 @@
         "isUs": false
       },
       {
-        "position": 4,
+        "position": 6,
         "name": "Saujon Basket Club 2",
         "logo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
         "points": 3,
@@ -325,20 +351,7 @@
         "isUs": false
       },
       {
-        "position": 5,
-        "name": "Marennes Bourcefranc BBMB",
-        "logo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-        "points": 3,
-        "played": 2,
-        "wins": 1,
-        "losses": 1,
-        "scored": 152,
-        "conceded": 147,
-        "diff": 5,
-        "isUs": false
-      },
-      {
-        "position": 6,
+        "position": 7,
         "name": "Saint-Rogatien Basket Club 3",
         "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
         "points": 3,
@@ -349,19 +362,6 @@
         "conceded": 150,
         "diff": -13,
         "isUs": false
-      },
-      {
-        "position": 7,
-        "name": "Aunis Atlantique Basket",
-        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
-        "points": 3,
-        "played": 2,
-        "wins": 1,
-        "losses": 1,
-        "scored": 114,
-        "conceded": 145,
-        "diff": -31,
-        "isUs": true
       },
       {
         "position": 8,

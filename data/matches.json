@@ -102,6 +102,10 @@
     "opponent": "Jarnac-Champagne",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 65,
+      "them": 66
+    },
     "source": "ffbb",
     "round": 3,
     "opponentLogo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
@@ -114,6 +118,10 @@
     "opponent": "Marennes Bourcefranc BBMB",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 42,
+      "them": 79
+    },
     "source": "ffbb",
     "round": 3,
     "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
