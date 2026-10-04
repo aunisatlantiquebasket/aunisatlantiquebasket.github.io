@@ -274,6 +274,19 @@
     "standings": [
       {
         "position": 1,
+        "name": "BC Élan Gémozacais",
+        "logo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
+        "points": 6,
+        "played": 3,
+        "wins": 3,
+        "losses": 0,
+        "scored": 247,
+        "conceded": 145,
+        "diff": 102,
+        "isUs": false
+      },
+      {
+        "position": 2,
         "name": "Ciré Sports 2",
         "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
         "points": 5,
@@ -286,7 +299,7 @@
         "isUs": false
       },
       {
-        "position": 2,
+        "position": 3,
         "name": "Marennes Bourcefranc BBMB",
         "logo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
         "points": 5,
@@ -299,7 +312,7 @@
         "isUs": false
       },
       {
-        "position": 3,
+        "position": 4,
         "name": "Saint-Rogatien Basket Club 3",
         "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
         "points": 5,
@@ -309,19 +322,6 @@
         "scored": 208,
         "conceded": 202,
         "diff": 6,
-        "isUs": false
-      },
-      {
-        "position": 4,
-        "name": "BC Élan Gémozacais",
-        "logo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
-        "points": 4,
-        "played": 2,
-        "wins": 2,
-        "losses": 0,
-        "scored": 182,
-        "conceded": 94,
-        "diff": 88,
         "isUs": false
       },
       {
@@ -378,6 +378,19 @@
       },
       {
         "position": 9,
+        "name": "Rochefort Basket Club 2",
+        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
+        "points": 3,
+        "played": 3,
+        "wins": 0,
+        "losses": 3,
+        "scored": 161,
+        "conceded": 184,
+        "diff": -23,
+        "isUs": false
+      },
+      {
+        "position": 10,
         "name": "Surgères",
         "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
         "points": 3,
@@ -387,19 +400,6 @@
         "scored": 126,
         "conceded": 248,
         "diff": -122,
-        "isUs": false
-      },
-      {
-        "position": 10,
-        "name": "Rochefort Basket Club 2",
-        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-        "points": 2,
-        "played": 2,
-        "wins": 0,
-        "losses": 2,
-        "scored": 110,
-        "conceded": 119,
-        "diff": -9,
         "isUs": false
       }
     ],
