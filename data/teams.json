@@ -163,7 +163,7 @@
     "players": [],
     "ffbbId": "200000005377820",
     "ranking": {
-      "position": 2,
+      "position": 3,
       "points": 4,
       "played": 3,
       "wins": 1,
@@ -172,6 +172,19 @@
     "standings": [
       {
         "position": 1,
+        "name": "Jarnac-Champagne",
+        "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
+        "points": 5,
+        "played": 3,
+        "wins": 2,
+        "losses": 1,
+        "scored": 126,
+        "conceded": 130,
+        "diff": -4,
+        "isUs": false
+      },
+      {
+        "position": 2,
         "name": "Surgères",
         "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
         "points": 4,
@@ -184,7 +197,7 @@
         "isUs": false
       },
       {
-        "position": 2,
+        "position": 3,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 4,
@@ -195,19 +208,6 @@
         "conceded": 183,
         "diff": 30,
         "isUs": true
-      },
-      {
-        "position": 3,
-        "name": "Jarnac-Champagne",
-        "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
-        "points": 3,
-        "played": 2,
-        "wins": 1,
-        "losses": 1,
-        "scored": 106,
-        "conceded": 130,
-        "diff": -24,
-        "isUs": false
       },
       {
         "position": 4,
@@ -227,12 +227,12 @@
         "name": "CTC Basket Océan 17 - Saint-Agnant",
         "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
         "points": 1,
-        "played": 1,
+        "played": 2,
         "wins": 0,
         "losses": 1,
         "scored": 61,
-        "conceded": 62,
-        "diff": -1,
+        "conceded": 82,
+        "diff": -21,
         "isUs": false
       }
     ],
