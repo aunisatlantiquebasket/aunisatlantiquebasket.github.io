@@ -134,6 +134,10 @@
     "opponent": "CTC Basket Océan 17 - Rochefort BC 2",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 32,
+      "them": 76
+    },
     "source": "ffbb",
     "round": 4,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
