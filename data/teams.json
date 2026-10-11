@@ -265,7 +265,7 @@
     "players": [],
     "ffbbId": "200000005335854",
     "ranking": {
-      "position": 8,
+      "position": 9,
       "points": 5,
       "played": 4,
       "wins": 1,
@@ -352,6 +352,19 @@
       },
       {
         "position": 7,
+        "name": "Rochefort Basket Club 2",
+        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
+        "points": 5,
+        "played": 4,
+        "wins": 1,
+        "losses": 3,
+        "scored": 243,
+        "conceded": 224,
+        "diff": 19,
+        "isUs": false
+      },
+      {
+        "position": 8,
         "name": "Royan Basket Côte de Beauté 2",
         "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
         "points": 5,
@@ -364,7 +377,7 @@
         "isUs": false
       },
       {
-        "position": 8,
+        "position": 9,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 5,
@@ -377,29 +390,16 @@
         "isUs": true
       },
       {
-        "position": 9,
-        "name": "Rochefort Basket Club 2",
-        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-        "points": 3,
-        "played": 3,
-        "wins": 0,
-        "losses": 3,
-        "scored": 161,
-        "conceded": 184,
-        "diff": -23,
-        "isUs": false
-      },
-      {
         "position": 10,
         "name": "Surgères",
         "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-        "points": 3,
-        "played": 3,
+        "points": 4,
+        "played": 4,
         "wins": 0,
-        "losses": 3,
-        "scored": 126,
-        "conceded": 248,
-        "diff": -122,
+        "losses": 4,
+        "scored": 166,
+        "conceded": 330,
+        "diff": -164,
         "isUs": false
       }
     ],
