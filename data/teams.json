@@ -265,7 +265,7 @@
     "players": [],
     "ffbbId": "200000005335854",
     "ranking": {
-      "position": 7,
+      "position": 8,
       "points": 5,
       "played": 4,
       "wins": 1,
@@ -300,6 +300,19 @@
       },
       {
         "position": 3,
+        "name": "Saujon Basket Club 2",
+        "logo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
+        "points": 7,
+        "played": 4,
+        "wins": 3,
+        "losses": 1,
+        "scored": 289,
+        "conceded": 239,
+        "diff": 50,
+        "isUs": false
+      },
+      {
+        "position": 4,
         "name": "Marennes Bourcefranc BBMB",
         "logo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
         "points": 7,
@@ -312,7 +325,7 @@
         "isUs": false
       },
       {
-        "position": 4,
+        "position": 5,
         "name": "Angoulins UBAC 2",
         "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
         "points": 6,
@@ -325,7 +338,7 @@
         "isUs": false
       },
       {
-        "position": 5,
+        "position": 6,
         "name": "Saint-Rogatien Basket Club 3",
         "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
         "points": 6,
@@ -338,20 +351,20 @@
         "isUs": false
       },
       {
-        "position": 6,
-        "name": "Saujon Basket Club 2",
-        "logo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
+        "position": 7,
+        "name": "Royan Basket Côte de Beauté 2",
+        "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
         "points": 5,
-        "played": 3,
-        "wins": 2,
-        "losses": 1,
-        "scored": 229,
-        "conceded": 183,
-        "diff": 46,
+        "played": 4,
+        "wins": 1,
+        "losses": 3,
+        "scored": 201,
+        "conceded": 261,
+        "diff": -60,
         "isUs": false
       },
       {
-        "position": 7,
+        "position": 8,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 5,
@@ -362,19 +375,6 @@
         "conceded": 305,
         "diff": -93,
         "isUs": true
-      },
-      {
-        "position": 8,
-        "name": "Royan Basket Côte de Beauté 2",
-        "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-        "points": 4,
-        "played": 3,
-        "wins": 1,
-        "losses": 2,
-        "scored": 145,
-        "conceded": 201,
-        "diff": -56,
-        "isUs": false
       },
       {
         "position": 9,
