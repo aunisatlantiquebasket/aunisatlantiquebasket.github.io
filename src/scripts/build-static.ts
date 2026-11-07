@@ -30,10 +30,10 @@ const server = app.listen(0);
 await new Promise<void>((resolve) => server.once("listening", () => resolve()));
 const origin = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
 
-/** Copie les fichiers publics et enregistre chaque page du site dans `dir`, liens préfixés par `base` */
-async function buildSite(dir: string, base: string, transform: (html: string) => string = (h) => h) {
+/** Adresses de toutes les pages du site */
+async function sitePages(): Promise<string[]> {
   const [teams, articles, events] = await Promise.all([getTeams(), getArticles(), getEvents()]);
-  const pages = [
+  return [
     "/",
     "/equipes",
     ...teams.map((t) => `/equipes/${t.slug}`),
@@ -45,7 +45,11 @@ async function buildSite(dir: string, base: string, transform: (html: string) =>
     "/trombinoscope",
     "/contact",
   ];
+}
 
+/** Copie les fichiers publics et enregistre chaque page du site dans `dir`, liens préfixés par `base` */
+async function buildSite(dir: string, base: string, transform: (html: string) => string = (h) => h) {
+  const pages = await sitePages();
   await cp(path.resolve("public"), dir, { recursive: true, filter: (src) => !src.endsWith(".gitkeep") });
   for (const page of pages) {
     const res = await fetch(origin + page);
@@ -94,6 +98,12 @@ try {
     console.log(`Site en construction : page d'attente à la racine, site complet (${count} pages) dans site${APERCU}/`);
   } else {
     const count = await buildSite(OUT, BASE);
+    // Référencement : plan du site pour les moteurs de recherche, et robots.txt qui l'indique
+    const pages = await sitePages();
+    const today = new Date().toISOString().slice(0, 10);
+    const urls = pages.map((p) => `  <url><loc>${club.siteUrl}${BASE}${p === "/" ? "/" : `${p}/`}</loc><lastmod>${today}</lastmod></url>`);
+    await writeFile(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
+    await writeFile(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${club.siteUrl}${BASE}/sitemap.xml\n`);
     // Page d'erreur servie par l'hébergeur pour les adresses inconnues
     const notFound = await fetch(`${origin}/__page-inexistante__`);
     // Anciens liens de validation (/apercu/…) : renvoyés vers la même page du site ouvert

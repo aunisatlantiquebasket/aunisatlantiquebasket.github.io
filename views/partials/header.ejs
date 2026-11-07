@@ -3,11 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %> | <%= club.name %></title>
-  <%# Aperçu des liens partagés (Facebook, Instagram, WhatsApp…) : photo et résumé de l'article, sinon image du club %>
+  <%# Référencement : titre et description propres à chaque page, aperçu des liens partagés (Facebook, WhatsApp…) %>
   <% const shared = typeof article !== 'undefined' ? article : null; %>
-  <% const pageDescription = shared ? shared.summary : `${club.name} : club de basket en Aunis Atlantique. Équipes, calendrier, résultats et inscriptions.`; %>
-  <% const pageTitle = currentPath === '/' ? `${club.name} · ${club.slogan}` : `${title} | ${club.name}`; %>
+  <% const pageTeam = typeof team !== 'undefined' && currentPath.startsWith('/equipes/') ? team : null; %>
+  <% const descriptions = {
+    '/': `${club.name}, club de basket du nord de l'Aunis (Marans, Saint-Jean-de-Liversay, Courçon, 17) : équipes jeunes, seniors et loisirs, calendrier, résultats et inscriptions.`,
+    '/equipes': `Les équipes d'${club.name} : mini-basket U7 à U11, U13, U15, seniors et loisirs. Championnats, horaires d'entraînement et coachs.`,
+    '/calendrier': `Calendrier et résultats de toutes les équipes d'${club.name}, mis à jour automatiquement avec la FFBB.`,
+    '/evenements': `Les événements d'${club.name} : soirées, stages, lotos, assemblées et rendez-vous du club.`,
+    '/actualites': `Les actualités d'${club.name} : matchs, vie du club et annonces.`,
+    '/trombinoscope': `Le bureau, les commissions, les coachs et les bénévoles d'${club.name}.`,
+    '/contact': `Contacter ${club.name} : inscriptions, renseignements, salles de Marans, Saint-Jean-de-Liversay et Courçon.`,
+  }; %>
+  <% const pageDescription = shared ? shared.summary
+    : pageTeam ? `${pageTeam.name} d'${club.name} : calendrier, résultats, classement et horaires d'entraînement.`
+    : descriptions[currentPath] ?? descriptions['/']; %>
+  <% const pageTitle = currentPath === '/' ? `${club.name} · Club de basket à Marans et Saint-Jean-de-Liversay` : `${title} | ${club.name}`; %>
+  <title><%= pageTitle %></title>
   <meta name="description" content="<%= pageDescription %>">
   <link rel="canonical" href="<%= club.siteUrl + currentPath %>">
   <meta property="og:type" content="<%= shared ? 'article' : 'website' %>">
@@ -20,6 +32,15 @@
   <% if (!shared || !shared.image) { %><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><% } %>
   <meta property="og:image:alt" content="<%= club.name %>">
   <meta name="twitter:card" content="summary_large_image">
+  <%# Fiche d'identité du club pour Google (nom du site, logo, adresse, réseaux sociaux) %>
+  <script type="application/ld+json"><%- JSON.stringify([
+    { "@context": "https://schema.org", "@type": "WebSite", name: club.name, alternateName: club.shortName, url: club.siteUrl + '/' },
+    { "@context": "https://schema.org", "@type": "SportsOrganization", name: club.name, alternateName: club.shortName,
+      sport: "Basketball", url: club.siteUrl + '/', logo: club.siteUrl + '/img/app/icon-512.png', image: club.siteUrl + '/img/partage.png',
+      slogan: club.slogan, foundingDate: String(club.foundedYear), email: club.email,
+      address: { "@type": "PostalAddress", streetAddress: "16 rue du Docteur Quoy", postalCode: "17170", addressLocality: "Saint-Jean-de-Liversay", addressCountry: "FR" },
+      sameAs: [club.social.facebook, club.social.instagram] },
+  ]).replace(/</g, '\\u003c') %></script>
   <meta name="theme-color" content="#36424a">
   <link rel="icon" type="image/svg+xml" href="/img/logo-rond.svg">
   <%# Application installable (mobile, tablette) : manifeste, icône iOS, service worker dans js/install.js %>
