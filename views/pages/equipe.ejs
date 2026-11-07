@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 <% const icon = (name) => include('../partials/icon', { name }); %>
 <% const [nameStart, ...nameEnd] = team.name.split(' '); %>
-<%- include('../partials/page-header', { back: { href: '/equipes', label: 'Toutes les équipes' }, eyebrow: team.category, heading: nameStart, accent: nameEnd.join(' '), subtitle: team.championship }) %>
+<%- include('../partials/page-header', { back: { href: '/equipes', label: 'Toutes les équipes' }, eyebrow: team.nickname ? `${team.category} · ✨ ${team.nickname}` : team.category, heading: nameStart, accent: nameEnd.join(' '), subtitle: team.championship }) %>
 <% const hasMatches = upcoming.length > 0 || results.length > 0; %>
 
 <section class="section">

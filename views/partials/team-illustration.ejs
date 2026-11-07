@@ -1,0 +1,68 @@
+<%
+  // Illustration d'une carte équipe : maillot de match du club (noir quadrillé, bordures vert fluo façon filet,
+  // écusson du club)
+  // dans un gymnase, avec la catégorie (U7, U11-1, U13M… SENIORS, LOISIRS) ;
+  // les Loisirs (« les Paillettes ») ont des paillettes sur le mur derrière le maillot.
+  const id = team.slug;
+  // « U13 Masculins » → U13M, « U15 Féminines » → U15F, « U11-2 » → U11-2
+  const cat = team.name.match(/^(U\d+(?:-\d)?)(?:\s+([MF]))?/);
+  const number = cat ? cat[1] + (cat[2] ?? '') : team.category === 'Seniors' ? 'SENIORS' : 'LOISIRS';
+  const loisirs = team.category === 'Loisirs';
+  const green = '#3fe06a';
+  // Mur de plus en plus foncé quand on monte de catégorie : vert clair pour les U7… vert profond pour les seniors
+  const age = Number(team.name.match(/^U(\d+)/)?.[1] ?? 0);
+  const levels = { 7: '#86bd40', 9: '#6aa636', 11: '#528f2d', 13: '#3e7625', 15: '#2e5d1f' };
+  const wallTop = levels[age] ?? (team.category === 'Seniors' ? '#1f4019' : '#2a343b');
+  const spot = '#ffffff';
+%>
+<svg class="team-illustration" viewBox="60 0 280 170" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Maillot <%= team.name %>">
+  <defs>
+    <linearGradient id="wall-<%= id %>" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="<%= wallTop %>"/><stop offset="1" stop-color="#171d21"/></linearGradient>
+    <radialGradient id="spot-<%= id %>" cx="0.5" cy="0" r="0.75"><stop offset="0" stop-color="<%= spot %>" stop-opacity=".2"/><stop offset="1" stop-color="<%= spot %>" stop-opacity="0"/></radialGradient>
+    <linearGradient id="floor-<%= id %>" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c98d55"/><stop offset="1" stop-color="#a86f3d"/></linearGradient>
+    <pattern id="grid-<%= id %>" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#1b2024"/><rect width="2" height="2" fill="#262c31"/></pattern>
+    <pattern id="net-<%= id %>" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="<%= green %>"/><path d="M0 0h6M0 0v6" stroke="#0f5a26" stroke-width="1.2"/></pattern>
+    <% if (loisirs) { %>
+      <%# Mur pailleté : sequins dorés et argentés avec leur reflet, et éclat de lumière en diagonale %>
+      <pattern id="glitter-<%= id %>" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="4" cy="5" r="2.6" fill="#e0a92e"/><circle cx="3.2" cy="4.2" r=".9" fill="#fff6d6"/>
+        <circle cx="14" cy="3" r="2" fill="#cfd5da"/><circle cx="13.4" cy="2.4" r=".7" fill="#fff"/>
+        <circle cx="16" cy="13" r="2.8" fill="#f2c14e"/><circle cx="15.1" cy="12.1" r="1" fill="#fff6d6"/>
+        <circle cx="7" cy="15" r="2.2" fill="#b8862a"/><circle cx="6.3" cy="14.3" r=".8" fill="#ffe7a3"/>
+        <circle cx="10" cy="9.5" r="1.4" fill="#e6eaed"/>
+      </pattern>
+      <linearGradient id="shine-<%= id %>" x1="0" y1="0" x2="1" y2="1"><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ffe7a3" stop-opacity=".18"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <% } %>
+  </defs>
+
+  <%# Gymnase : mur, projecteur, parquet et ligne du terrain %>
+  <rect width="400" height="170" fill="url(#wall-<%= id %>)"/>
+  <rect width="400" height="170" fill="url(#spot-<%= id %>)"/>
+  <% if (loisirs) { %><rect width="400" height="132" fill="url(#glitter-<%= id %>)" opacity=".55"/><rect width="400" height="132" fill="url(#shine-<%= id %>)"/><% } %>
+  <rect y="132" width="400" height="38" fill="url(#floor-<%= id %>)"/>
+  <g stroke="#b37a45" stroke-width="1" opacity=".6"><path d="M0 142h400M0 153h400M0 164h400"/></g>
+  <path d="M120 170a80 26 0 0 1 160 0" fill="none" stroke="#fff" stroke-width="2.5" opacity=".75"/>
+  <ellipse cx="200" cy="158" rx="70" ry="7" fill="#000" opacity=".25"/>
+
+  <%# Maillot %>
+  <g transform="translate(140 14)">
+    <path d="M32 0c6 16 50 16 56 0l15 4c-2 20 4 32 17 38v108H0V42c13-6 19-18 17-38z" fill="url(#grid-<%= id %>)"/>
+    <path d="M32 0l28 30 28-30" fill="none" stroke="url(#net-<%= id %>)" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M17 4c2 20-4 32-17 38M103 4c-2 20 4 32 17 38" fill="none" stroke="url(#net-<%= id %>)" stroke-width="7"/>
+    <path d="M3 48v94M117 48v94" stroke="url(#net-<%= id %>)" stroke-width="5"/>
+    <%# Écusson du club sur la poitrine, côté cœur, comme sur le vrai maillot %>
+    <image href="/img/logo-rond.svg" x="70" y="34" width="28" height="28"/>
+      <text x="60" y="<%= number.length > 5 ? 98 : number.length > 3 ? 100 : 104 %>" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="800" font-size="<%= number.length > 5 ? 19 : number.length > 3 ? 26 : number.length > 2 ? 30 : 34 %>" fill="#fff" stroke="<%= green %>" stroke-width="2" paint-order="stroke"><%= number %></text>
+  </g>
+
+  <% if (loisirs) { %>
+    <%# Grands éclats dorés autour du maillot %>
+    <g fill="#f7d36b" stroke="#fff3c4" stroke-width=".8">
+      <path d="M100 26l3.5 10 10 3.5-10 3.5-3.5 10-3.5-10-10-3.5 10-3.5z"/>
+      <path d="M294 44l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z"/>
+      <path d="M284 98l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+      <path d="M112 92l2 5.5 5.5 2-5.5 2-2 5.5-2-5.5-5.5-2 5.5-2z"/>
+    </g>
+  <% } %>
+
+</svg>

@@ -1,16 +1,16 @@
-<%# Loisirs : les « Paillettes », d'où l'icône %>
-<% const catIcon = { Seniors: 'trophy', Jeunes: 'ball', Loisirs: 'sparkles' }[team.category] || 'users'; %>
 <a href="/equipes/<%= team.slug %>" class="card team-card cat-<%= team.category.toLowerCase() %>">
-  <div class="team-card-icon"><%- include('icon', { name: catIcon }) %></div>
+  <div class="team-card-icon"><%- include('team-illustration', { team }) %></div>
   <div class="card-body">
     <div class="team-card-tags">
-      <span class="tag tag-team"><%= team.category %></span>
+      <%# Surnom de l'équipe (« Les Paillettes ») à la place de la catégorie %>
+      <span class="tag tag-team"><%= team.nickname ? `✨ ${team.nickname}` : team.category %></span>
       <%# Classement d'une phase précédente : pas affiché sur la carte, il ne correspond plus à la compétition en cours %>
       <% if (team.ranking && team.ranking.played > 0 && !team.rankingPhase) { %>
         <span class="tag tag-rank"><%= team.ranking.position %><%= team.ranking.position === 1 ? 'er' : 'e' %> de la poule</span>
       <% } %>
     </div>
-    <h3><%= team.name %></h3>
+    <%# Nom de l'équipe déjà écrit sur le maillot : gardé pour les lecteurs d'écran %>
+    <h3 class="sr-only"><%= team.name %></h3>
     <p class="muted"><%= team.championship %></p>
     <span class="link-arrow">Voir l'équipe <%- include('icon', { name: 'arrow' }) %></span>
   </div>

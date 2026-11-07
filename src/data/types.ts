@@ -1,6 +1,7 @@
 export interface Team {
   slug: string;
   name: string;
+  nickname?: string; // surnom affiché sous le nom ("Les Paillettes")
   category: string;
   coach?: string;
   championship: string;
