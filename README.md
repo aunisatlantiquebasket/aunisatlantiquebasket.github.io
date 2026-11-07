@@ -97,7 +97,8 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
 - **Match amical / hors championnat** : ajouter une entrée dans `data/matches.json` avec `"source": "manual"` ;
   après le match, ajouter `"score": { "us": 80, "them": 72 }`
 - **Actualités** : les publications de la page Facebook du club sont importées automatiquement
-  (`src/facebook/sync.ts` → `data/facebook.json`, photos dans `public/img/facebook/`). Une actualité
+  (`src/facebook/sync.ts` → `data/facebook.json`, photos dans `public/img/facebook/` ; pour un album, toutes
+  les photos sont reprises et affichées en galerie sur la page de l'actualité). Une actualité
   propre au site peut aussi être ajoutée dans `data/articles.json` (le `slug` sert d'URL).
   Sont écartés automatiquement : les posts sans texte (photo seule), les résultats bruts (texte de moins de 200 caractères avec un score), les posts calendrier (au moins deux « 🆚 » ou « 📅 »), déjà sur le site,
   et les doublons (même titre, même photo repérée par son empreinte visuelle, ou texte repris à 70 %

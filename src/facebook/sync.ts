@@ -20,6 +20,25 @@ interface FbPost {
   created_time: string; // "2026-11-05T18:30:00+0000"
   full_picture?: string;
   permalink_url?: string;
+  attachments?: { data: FbAttachment[] };
+}
+interface FbAttachment {
+  media_type?: string; // "photo", "album", "video"…
+  media?: { image?: { src: string } };
+  subattachments?: { data: FbAttachment[] };
+}
+
+/** Toutes les photos d'une publication (album compris), dans l'ordre */
+function photosOf(post: FbPost): string[] {
+  const urls: string[] = [];
+  const walk = (list: FbAttachment[] = []) => {
+    for (const att of list) {
+      if (att.subattachments?.data.length) walk(att.subattachments.data);
+      else if (att.media_type === "photo" && att.media?.image?.src) urls.push(att.media.image.src);
+    }
+  };
+  walk(post.attachments?.data);
+  return urls.length ? urls : post.full_picture ? [post.full_picture] : [];
 }
 
 const exists = (p: string) => access(p).then(() => true, () => false);
@@ -38,10 +57,11 @@ function localIso(utc: string): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:00`;
 }
 
-/** Copie locale de la photo du post (1200 px de large au plus) */
-async function localImage(postId: string, url: string): Promise<string | undefined> {
-  const file = path.join(IMAGE_DIR, `${postId}.jpg`);
-  const publicUrl = `/img/facebook/${postId}.jpg`;
+/** Copie locale d'une photo du post (1200 px de large au plus) : "{post}.jpg", puis "{post}-2.jpg"… */
+async function localImage(postId: string, url: string, index = 0): Promise<string | undefined> {
+  const name = index ? `${postId}-${index + 1}.jpg` : `${postId}.jpg`;
+  const file = path.join(IMAGE_DIR, name);
+  const publicUrl = `/img/facebook/${name}`;
   if (await exists(file)) return publicUrl;
   try {
     const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
@@ -64,13 +84,19 @@ async function toArticle(post: FbPost): Promise<Article | undefined> {
   const title = shorten(lines[0], 90);
   // Première ligne reprise entière en titre : elle n'est pas répétée dans le résumé ni le texte
   const body = title === lines[0] && lines.length > 1 ? lines.slice(1) : lines;
+  const photos: string[] = [];
+  for (const [i, url] of photosOf(post).entries()) {
+    const local = await localImage(postId, url, i);
+    if (local) photos.push(local);
+  }
   return {
     slug: `facebook-${postId}`,
     title,
     date,
     summary: shorten(body.join(" "), 170),
     content: body,
-    image: post.full_picture ? await localImage(postId, post.full_picture) : undefined,
+    image: photos[0],
+    gallery: photos.length > 1 ? photos : undefined,
     sourceUrl: post.permalink_url,
   };
 }
@@ -150,7 +176,8 @@ export function filterPosts(articles: Article[], excluded: string[]): Article[] 
 export async function syncFromFacebook(token = process.env.FB_PAGE_TOKEN): Promise<number> {
   if (!token) throw new Error("jeton FB_PAGE_TOKEN absent (voir le README)");
 
-  const fields = "id,message,created_time,full_picture,permalink_url";
+  const media = "media_type,media{image{src}}";
+  const fields = `id,message,created_time,full_picture,permalink_url,attachments{${media},subattachments.limit(50){${media}}}`;
   // Jeton dans l'en-tête plutôt que dans l'adresse, pour qu'il n'apparaisse dans aucun journal
   const res = await fetch(`${GRAPH_URL}/me/posts?fields=${fields}&limit=${POSTS_PER_SYNC}`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -169,7 +196,7 @@ export async function syncFromFacebook(token = process.env.FB_PAGE_TOKEN): Promi
   const merged = filterPosts(all, excluded);
   await writeJson(DATA_FILE, merged);
   // Photos des publications écartées : supprimées
-  const used = new Set(merged.map((a) => a.image?.split("/").pop()));
+  const used = new Set(merged.flatMap((a) => [a.image, ...(a.gallery ?? [])]).map((url) => url?.split("/").pop()));
   for (const file of await readdir(IMAGE_DIR).catch(() => [])) if (!used.has(file)) await rm(path.join(IMAGE_DIR, file));
   return fetched.length;
 }

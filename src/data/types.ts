@@ -101,6 +101,7 @@ export interface Article {
   summary: string;
   content: string[];
   image?: string; // photo (publications Facebook)
+  gallery?: string[]; // toutes les photos d'un album Facebook (la première est aussi `image`)
   sourceUrl?: string; // publication d'origine sur Facebook
   imageHash?: string; // empreinte visuelle de la photo (repérer une même image publiée plusieurs fois)
 }

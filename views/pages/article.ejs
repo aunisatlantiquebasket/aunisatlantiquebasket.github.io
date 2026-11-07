@@ -4,11 +4,27 @@
   <article class="container prose">
     <%# Publication Facebook : le texte complet suffit, pas de chapeau qui le répéterait %>
     <% if (!article.sourceUrl) { %><p class="lead"><%= article.summary %></p><% } %>
-    <% if (article.image) { %><img class="article-img" src="<%= article.image %>" alt=""><% } %>
+    <% if (article.image && !article.gallery) { %><img class="article-img" src="<%= article.image %>" alt=""><% } %>
     <% for (const paragraph of article.content) { %><p><%= paragraph %></p><% } %>
+    <% if (article.gallery) { %>
+      <%# Album : vignettes, agrandies au clic (public/js/gallery.js) %>
+      <div class="gallery" data-gallery>
+        <% article.gallery.forEach((photo, i) => { %>
+          <a href="<%= photo %>" class="gallery-item" data-index="<%= i %>"><img src="<%= photo %>" alt="Photo <%= i + 1 %> sur <%= article.gallery.length %>" loading="lazy"></a>
+        <% }) %>
+      </div>
+      <dialog class="lightbox" data-lightbox aria-label="Photo agrandie">
+        <img alt="">
+        <button type="button" class="lightbox-close" data-close aria-label="Fermer"><%- include('../partials/icon', { name: 'close' }) %></button>
+        <button type="button" class="lightbox-nav prev" data-step="-1" aria-label="Photo précédente"><%- include('../partials/icon', { name: 'back' }) %></button>
+        <button type="button" class="lightbox-nav next" data-step="1" aria-label="Photo suivante"><%- include('../partials/icon', { name: 'arrow' }) %></button>
+        <span class="lightbox-count" data-count></span>
+      </dialog>
+    <% } %>
     <% if (article.sourceUrl) { %>
       <p><a class="link-arrow" href="<%= article.sourceUrl %>" target="_blank" rel="noopener"><%- include('../partials/icon', { name: 'facebook' }) %> Voir la publication sur Facebook</a></p>
     <% } %>
   </article>
 </section>
+<% if (article.gallery) { %><script src="/js/gallery.js" defer></script><% } %>
 <%- include('../partials/footer') %>
