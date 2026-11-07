@@ -45,7 +45,7 @@ export async function localLogo(assetId: string): Promise<string> {
 }
 
 /** Rend transparents les pixels blancs (ou déjà transparents) connectés aux bords de l'image */
-function removeEdgeWhite(px: Buffer, width: number, height: number): void {
+export function removeEdgeWhite(px: Buffer, width: number, height: number): void {
   const isBackground = (i: number) => {
     const o = i * 4;
     return px[o + 3] < 16 || (px[o] > WHITE_THRESHOLD && px[o + 1] > WHITE_THRESHOLD && px[o + 2] > WHITE_THRESHOLD);

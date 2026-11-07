@@ -30,6 +30,14 @@ génération du site statique → publication sur GitHub Pages.
 Le site étant statique, les filtres du calendrier et des équipes s'appliquent dans la page (`public/js/filters.js`)
 et la page Contact propose un e-mail prérempli (pas de formulaire, pas de téléphone).
 
+## Application installable et icônes du mois
+
+Le site s'installe comme une application sur mobile et tablette (`public/manifest.webmanifest`, `public/sw.js`,
+icônes dans `public/img/app/`). Icônes saisonnières : un logo `assets/icones-app/{mois}.webp` (« octobre » en rose,
+« novembre » avec la moustache…), puis `npm run app-icons` crée `public/img/app/{mois}/` (extérieur du rond
+transparent ; fond blanc pour les icônes Apple et « maskable »). Pendant ce mois, le site publié utilise ces icônes ;
+le reste de l'année, l'icône habituelle.
+
 ## Synchronisation avec la FFBB
 
 Les équipes engagées, le calendrier, les scores et les classements FFBB sont récupérés

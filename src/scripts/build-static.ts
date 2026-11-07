@@ -7,7 +7,7 @@
 
 process.env.TZ ??= "Europe/Paris";
 
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import type { AddressInfo } from "node:net";
 import path from "node:path";
 
@@ -58,6 +58,18 @@ async function buildSite(dir: string, base: string, transform: (html: string) =>
   return pages.length;
 }
 
+/** Icônes de l'application du mois en cours (octobre rose, novembre « Movember »…), si elles existent */
+async function seasonalIcons(): Promise<void> {
+  const month = new Intl.DateTimeFormat("fr-FR", { month: "long" }).format(new Date());
+  const source = path.resolve("public", "img", "app", month);
+  const target = path.join(OUT, "img", "app");
+  for (const file of await readdir(source).catch(() => [])) await cp(path.join(source, file), path.join(target, file));
+  // Les variantes des autres mois ne sont pas publiées
+  for (const entry of await readdir(target, { withFileTypes: true }).catch(() => [])) {
+    if (entry.isDirectory()) await rm(path.join(target, entry.name), { recursive: true });
+  }
+}
+
 try {
   await rm(OUT, { recursive: true, force: true });
 
@@ -89,6 +101,7 @@ try {
     await writeFile(path.join(OUT, "404.html"), withBase(await notFound.text(), BASE).replace("</head>", `${fromApercu}\n</head>`));
     console.log(`Site statique généré dans site/ : ${count} pages + 404.html${BASE ? ` (chemin de base ${BASE})` : ""}`);
   }
+  await seasonalIcons();
 } finally {
   server.close();
 }

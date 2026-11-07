@@ -12,6 +12,7 @@
     "sync-ffbb": "tsx src/scripts/sync-ffbb.ts",
     "sync-ffbb:prod": "node dist/scripts/sync-ffbb.js",
     "sync-facebook": "tsx src/scripts/sync-facebook.ts",
+    "app-icons": "tsx src/scripts/app-icons.ts",
     "build:static": "tsx src/scripts/build-static.ts",
     "preview:static": "tsx src/scripts/preview-static.ts"
   },
