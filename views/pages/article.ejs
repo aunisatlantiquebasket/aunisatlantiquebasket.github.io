@@ -2,8 +2,13 @@
 <%- include('../partials/page-header', { back: { href: '/actualites', label: 'Toutes les actualités' }, eyebrow: formatShortDate(article.date), heading: article.title }) %>
 <section class="section">
   <article class="container prose">
-    <p class="lead"><%= article.summary %></p>
+    <%# Publication Facebook : le texte complet suffit, pas de chapeau qui le répéterait %>
+    <% if (!article.sourceUrl) { %><p class="lead"><%= article.summary %></p><% } %>
+    <% if (article.image) { %><img class="article-img" src="<%= article.image %>" alt=""><% } %>
     <% for (const paragraph of article.content) { %><p><%= paragraph %></p><% } %>
+    <% if (article.sourceUrl) { %>
+      <p><a class="link-arrow" href="<%= article.sourceUrl %>" target="_blank" rel="noopener"><%- include('../partials/icon', { name: 'facebook' }) %> Voir la publication sur Facebook</a></p>
+    <% } %>
   </article>
 </section>
 <%- include('../partials/footer') %>

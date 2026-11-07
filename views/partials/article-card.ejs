@@ -1,11 +1,14 @@
 <a href="/actualites/<%= article.slug %>" class="card article-card">
+  <% if (article.image) { %>
+    <img class="article-card-img" src="<%= article.image %>" alt="" loading="lazy">
+  <% } %>
   <div class="article-card-top">
-    <%- include('icon', { name: 'news' }) %>
+    <%- include('icon', { name: article.sourceUrl ? 'facebook' : 'news' }) %>
     <time datetime="<%= article.date %>"><%= formatShortDate(article.date) %></time>
   </div>
   <div class="card-body">
     <h3><%= article.title %></h3>
-    <p><%= article.summary %></p>
+    <% if (article.summary && article.summary !== article.title) { %><p><%= article.summary %></p><% } %>
     <span class="link-arrow">Lire l'article <%- include('icon', { name: 'arrow' }) %></span>
   </div>
 </a>

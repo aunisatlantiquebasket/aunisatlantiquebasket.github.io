@@ -100,5 +100,7 @@ export interface Article {
   date: string; // ISO 8601
   summary: string;
   content: string[];
+  image?: string; // photo (publications Facebook)
+  sourceUrl?: string; // publication d'origine sur Facebook
 }
 

@@ -96,9 +96,13 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
 - **Coach, entraînements, effectif** : `data/teams.json`
 - **Match amical / hors championnat** : ajouter une entrée dans `data/matches.json` avec `"source": "manual"` ;
   après le match, ajouter `"score": { "us": 80, "them": 72 }`
-- **Nouvelle actualité** : ajouter une entrée dans `data/articles.json` (le `slug` sert d'URL)
-  — en plus des **récapitulatifs automatiques des week-ends** (`src/data/recaps.ts`) : chaque lundi, un article
-  « Résultats du week-end du … » est créé à partir des scores FFBB, avec les matchs du week-end suivant.
+- **Actualités** : les publications de la page Facebook du club sont importées automatiquement
+  (`src/facebook/sync.ts` → `data/facebook.json`, photos dans `public/img/facebook/`). Une actualité
+  propre au site peut aussi être ajoutée dans `data/articles.json` (le `slug` sert d'URL).
+  Jeton d'accès Facebook (une fois) : developers.facebook.com → créer une app « Entreprise » ; dans
+  l'Explorateur de l'API Graph, jeton utilisateur avec `pages_show_list`, `pages_read_engagement`,
+  `pages_read_user_content` ; le prolonger dans le Débogueur de jetons ; `me/accounts` → `access_token`
+  de la page (« Expire : Jamais ») ; l'enregistrer dans GitHub → Settings → Secrets → Actions sous `FB_PAGE_TOKEN`.
 - **Événement hors matchs** (loto, AG, stage, fête…) : ajouter une entrée dans `data/evenements.json` :
   ```json
   { "slug": "loto-2026", "title": "Loto du club", "kind": "Vie du club", "date": "2026-11-21",

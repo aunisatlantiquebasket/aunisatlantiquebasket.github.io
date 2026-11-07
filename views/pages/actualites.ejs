@@ -1,8 +1,12 @@
 <%- include('../partials/header') %>
 <%- include('../partials/page-header', { eyebrow: 'Actualités', heading: 'La vie', accent: 'du club', subtitle: 'Résultats, événements et informations : suivez ce qui se passe au club.' }) %>
 <section class="section">
-  <div class="container grid-3">
-    <% for (const article of articles) { %><%- include('../partials/article-card', { article }) %><% } %>
+  <div class="container">
+    <% if (articles.length === 0) { %>
+      <p class="empty">Les actualités arrivent bientôt. En attendant, suivez-nous sur <a href="<%= club.social.facebook %>" target="_blank" rel="noopener">Facebook</a>.</p>
+    <% } else { %>
+      <div class="grid-3"><% for (const article of articles) { %><%- include('../partials/article-card', { article }) %><% } %></div>
+    <% } %>
   </div>
 </section>
 <%- include('../partials/footer') %>

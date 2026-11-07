@@ -1,6 +1,5 @@
 import { readdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { weekendRecaps } from "./recaps.js";
 import type { Article, ClubEvent, Commission, Match, Person, Team } from "./types.js";
 
 const dataDir = path.resolve("data");
@@ -159,14 +158,10 @@ export async function getEvent(slug: string): Promise<(ClubEvent & { past: boole
   return event && { ...event, past: isEventPast(event) };
 }
 
-/** Articles écrits à la main (data/articles.json) et récapitulatifs automatiques des week-ends */
+/** Articles écrits à la main (data/articles.json) et publications Facebook importées (data/facebook.json) */
 export async function getArticles(): Promise<Article[]> {
-  const [articles, matches, teams] = await Promise.all([
-    readJson<Article[]>("articles.json", []),
-    getMatches(),
-    readJson<Team[]>("teams.json", []),
-  ]);
-  return [...articles, ...weekendRecaps(matches, teams)].sort((a, b) => b.date.localeCompare(a.date));
+  const [articles, facebook] = await Promise.all([readJson<Article[]>("articles.json", []), readJson<Article[]>("facebook.json", [])]);
+  return [...articles, ...facebook].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export async function getArticle(slug: string): Promise<Article | undefined> {
