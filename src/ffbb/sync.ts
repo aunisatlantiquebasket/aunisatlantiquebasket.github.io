@@ -168,6 +168,15 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
         teams.find((t) => t.ffbbId === ct.id) ??
         teams.find((t) => t.ffbbKey === key) ??
         teams.find((t) => !t.ffbbKey && t.ffbbUrl === ffbbUrl(ct.url_competition));
+      // Équipe saisie à la main dans la même catégorie (mini-basket U9, U11…) : la FFBB prime,
+      // l'équipe est reprise sous son nom FFBB en gardant coachs, horaires et effectif (pas de doublon)
+      const manual = !team && teams.find((t) => !t.ffbbId && !t.ffbbKey && t.name === ct.categorie);
+      if (manual) {
+        team = manual;
+        const name = defaultTeamName(ct);
+        log(`FFBB : équipe « ${team.name} » reprise par la FFBB sous le nom « ${name} »`);
+        team.name = name;
+      }
       if (!team) {
         const name = defaultTeamName(ct);
         team = { slug: uniqueSlug(slugify(name), teams), name, category: ct.categorie === "SE" ? "Seniors" : "Jeunes", championship: "", trainings: [], players: [] };

@@ -13,28 +13,36 @@
   },
   {
     "slug": "u9",
-    "name": "U9",
+    "name": "U9 Masculins",
     "category": "Jeunes",
-    "championship": "École de basket",
+    "championship": "Départementale mixte U9 - Division 3 (DXU9-3), poule A",
     "trainings": [
       "Mardi 17h00 – 18h30"
     ],
     "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
-    "coach": "Anaëlle"
+    "coach": "Anaëlle",
+    "ffbbKey": "U9-M-1",
+    "active": true,
+    "ffbbId": "200000005396788",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396788"
   },
   {
     "slug": "u11",
-    "name": "U11",
+    "name": "U11 Masculins",
     "category": "Jeunes",
-    "championship": "École de basket",
+    "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
     "trainings": [
       "Mercredi 17h00 – 18h30 (2 groupes)",
       "Vendredi 17h00 – 18h30 (2 groupes)"
     ],
     "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
-    "coach": "Jonathan, Jérémy, Clément"
+    "coach": "Jonathan, Jérémy, Clément",
+    "ffbbKey": "U11-M-1",
+    "active": true,
+    "ffbbId": "200000005396778",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396778"
   },
   {
     "slug": "u13-masculins",
@@ -62,62 +70,62 @@
     "ffbbId": "200000005377211",
     "ranking": {
       "position": 3,
-      "points": 5,
-      "played": 3,
+      "points": 6,
+      "played": 4,
       "wins": 2,
-      "losses": 1
+      "losses": 2
     },
     "standings": [
       {
         "position": 1,
         "name": "La Jarrie 2",
         "logo": "/img/clubs/3ac01715-4cd6-4609-92df-d82489ba7d18.png",
-        "points": 6,
-        "played": 3,
-        "wins": 3,
+        "points": 8,
+        "played": 4,
+        "wins": 4,
         "losses": 0,
-        "scored": 226,
-        "conceded": 93,
-        "diff": 133,
+        "scored": 322,
+        "conceded": 128,
+        "diff": 194,
         "isUs": false
       },
       {
         "position": 2,
         "name": "CTC Basket Océan 17 - Rochefort BC 2",
         "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-        "points": 5,
-        "played": 3,
-        "wins": 2,
+        "points": 7,
+        "played": 4,
+        "wins": 3,
         "losses": 1,
-        "scored": 166,
-        "conceded": 124,
-        "diff": 42,
+        "scored": 262,
+        "conceded": 145,
+        "diff": 117,
         "isUs": false
       },
       {
         "position": 3,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
-        "points": 5,
-        "played": 3,
+        "points": 6,
+        "played": 4,
         "wins": 2,
-        "losses": 1,
-        "scored": 155,
-        "conceded": 145,
-        "diff": 10,
+        "losses": 2,
+        "scored": 190,
+        "conceded": 241,
+        "diff": -51,
         "isUs": true
       },
       {
         "position": 4,
         "name": "Angoulins UBAC 2",
         "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-        "points": 4,
-        "played": 3,
+        "points": 5,
+        "played": 4,
         "wins": 1,
-        "losses": 2,
-        "scored": 144,
-        "conceded": 167,
-        "diff": -23,
+        "losses": 3,
+        "scored": 165,
+        "conceded": 263,
+        "diff": -98,
         "isUs": false
       },
       {
@@ -164,14 +172,27 @@
     "ffbbId": "200000005377820",
     "ranking": {
       "position": 3,
-      "points": 4,
-      "played": 3,
-      "wins": 1,
+      "points": 6,
+      "played": 4,
+      "wins": 2,
       "losses": 2
     },
     "standings": [
       {
         "position": 1,
+        "name": "Surgères",
+        "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
+        "points": 8,
+        "played": 4,
+        "wins": 4,
+        "losses": 0,
+        "scored": 356,
+        "conceded": 130,
+        "diff": 226,
+        "isUs": false
+      },
+      {
+        "position": 2,
         "name": "Jarnac-Champagne",
         "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
         "points": 7,
@@ -184,55 +205,42 @@
         "isUs": false
       },
       {
-        "position": 2,
-        "name": "Surgères",
-        "logo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-        "points": 6,
-        "played": 3,
-        "wins": 3,
-        "losses": 0,
-        "scored": 253,
-        "conceded": 111,
-        "diff": 142,
-        "isUs": false
-      },
-      {
         "position": 3,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
-        "points": 4,
-        "played": 3,
-        "wins": 1,
+        "points": 6,
+        "played": 4,
+        "wins": 2,
         "losses": 2,
-        "scored": 213,
-        "conceded": 183,
-        "diff": 30,
+        "scored": 308,
+        "conceded": 240,
+        "diff": 68,
         "isUs": true
       },
       {
         "position": 4,
         "name": "Saint-Jean-d'Angély JLA",
         "logo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
-        "points": 4,
-        "played": 3,
+        "points": 5,
+        "played": 4,
         "wins": 1,
-        "losses": 2,
-        "scored": 119,
-        "conceded": 249,
-        "diff": -130,
+        "losses": 3,
+        "scored": 138,
+        "conceded": 352,
+        "diff": -214,
         "isUs": false
       },
       {
         "position": 5,
         "name": "CTC Basket Océan 17 - Saint-Agnant",
         "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-        "points": 2,
-        "played": 3,
+        "points": 3,
+        "played": 4,
         "wins": 0,
-        "losses": 2,
-        "scored": 92,
-        "conceded": 185,
-        "diff": -93,
+        "losses": 3,
+        "scored": 149,
+        "conceded": 280,
+        "diff": -131,
         "isUs": false
       }
     ],
@@ -265,7 +273,7 @@
     "players": [],
     "ffbbId": "200000005335854",
     "ranking": {
-      "position": 9,
+      "position": 8,
       "points": 5,
       "played": 4,
       "wins": 1,
@@ -306,9 +314,9 @@
         "played": 4,
         "wins": 3,
         "losses": 1,
-        "scored": 289,
-        "conceded": 239,
-        "diff": 50,
+        "scored": 229,
+        "conceded": 183,
+        "diff": 46,
         "isUs": false
       },
       {
@@ -365,19 +373,6 @@
       },
       {
         "position": 8,
-        "name": "Royan Basket Côte de Beauté 2",
-        "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-        "points": 5,
-        "played": 4,
-        "wins": 1,
-        "losses": 3,
-        "scored": 201,
-        "conceded": 261,
-        "diff": -60,
-        "isUs": false
-      },
-      {
-        "position": 9,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 5,
@@ -388,6 +383,19 @@
         "conceded": 305,
         "diff": -93,
         "isUs": true
+      },
+      {
+        "position": 9,
+        "name": "Royan Basket Côte de Beauté 2",
+        "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
+        "points": 4,
+        "played": 4,
+        "wins": 1,
+        "losses": 2,
+        "scored": 145,
+        "conceded": 201,
+        "diff": -56,
+        "isUs": false
       },
       {
         "position": 10,
@@ -418,5 +426,17 @@
     "trainingVenue": "Complexe sportif intercommunal de Courçon, Rue du Collège, 17170 Courçon",
     "players": [],
     "coach": "Christophe"
+  },
+  {
+    "slug": "u11-masculins-2",
+    "name": "U11 Masculins 2",
+    "category": "Jeunes",
+    "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
+    "trainings": [],
+    "players": [],
+    "ffbbKey": "U11-M-2",
+    "active": true,
+    "ffbbId": "200000005396779",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396779"
   }
 ]

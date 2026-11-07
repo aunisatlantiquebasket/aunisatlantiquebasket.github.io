@@ -31,7 +31,7 @@ interface ApiEngagement {
   numero_equipe: string; // "" pour l'équipe 1
 }
 interface ApiClassement {
-  id_engagement: ApiEngagement;
+  id_engagement: ApiEngagement; // parfois null dans les données brutes (filtré par loadPoule)
   position: number;
   points: number;
   match_joues: number;
@@ -58,12 +58,16 @@ interface ApiPoule {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(API_URL + path, {
-    headers: { "User-Agent": USER_AGENT },
-    signal: AbortSignal.timeout(30_000),
-  });
-  if (!res.ok) throw new Error(`API FFBB : HTTP ${res.status} sur ${path}`);
-  return (await res.json()) as T;
+  // Le service renvoie parfois des erreurs passagères (502…) : jusqu'à 4 essais espacés
+  for (let attempt = 1; ; attempt++) {
+    const res = await fetch(API_URL + path, {
+      headers: { "User-Agent": USER_AGENT },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (res.ok) return (await res.json()) as T;
+    if (res.status < 500 || attempt === 4) throw new Error(`API FFBB : HTTP ${res.status} sur ${path}`);
+    await new Promise((resolve) => setTimeout(resolve, attempt * 5_000));
+  }
 }
 
 // Données de la synchronisation en cours, rechargées à chaque appel de getClubTeams
@@ -74,7 +78,8 @@ let poules = new Map<string, Promise<ApiPoule>>();
 
 function loadPoule(id: string): Promise<ApiPoule> {
   let p = poules.get(id);
-  if (!p) poules.set(id, (p = get<ApiPoule>(`/poule/${id}`)));
+  // Les lignes de classement sans équipe (engagement retiré…) sont ignorées
+  if (!p) poules.set(id, (p = get<ApiPoule>(`/poule/${id}`).then((poule) => ({ ...poule, classements: (poule.classements ?? []).filter((c) => c.id_engagement) }))));
   return p;
 }
 
@@ -83,6 +88,15 @@ async function findCompetition(label: string, pouleId: string): Promise<ApiCompe
   const results = await get<{ index_uid: string; hits?: ApiCompetition[] }[]>(`/search?query=${encodeURIComponent(label)}`);
   const hits = results.find((r) => r.index_uid === "ffbbserver_competitions")?.hits ?? [];
   return hits.find((c) => c.poules?.some((p) => p.id === pouleId));
+}
+
+/** Compétition déduite de son libellé : "Coupe 17 Michel Château - Seniors Masculins - 1/16ème de Finale" */
+function competitionFromLabel(label: string): ApiCompetition {
+  return {
+    code: "",
+    sexe: /f[ée]minin/i.test(label) ? "Féminin" : /masculin/i.test(label) ? "Masculin" : "",
+    type_competition: /^coupe|troph[ée]e/i.test(label) ? "Coupe" : "Championnat",
+  };
 }
 
 /** Libellé d'une équipe tel qu'écrit dans les rencontres : "SAUJON BASKET CLUB - 2" */
@@ -101,8 +115,9 @@ export async function getClubTeams(clubPath: string, organismeId: string): Promi
 
   const result: FfbbClubTeam[] = [];
   for (const t of teams) {
-    const comp = await findCompetition(t.competition, t.poule_id);
-    if (!comp) throw new Error(`API FFBB : compétition introuvable pour « ${t.competition} »`);
+    // Certaines compétitions (coupes départementales…) sont absentes du moteur de recherche :
+    // on déduit alors sexe et type du libellé, plutôt que de bloquer toute la synchronisation.
+    const comp = (await findCompetition(t.competition, t.poule_id)) ?? competitionFromLabel(t.competition);
     const url = `${clubPath}/equipes/${t.engagement_id}`;
     teamsByPath.set(url, { pouleId: t.poule_id, code: comp.code });
     result.push({
@@ -153,7 +168,8 @@ export async function getTeamPage(teamPath: string): Promise<{ rencontres: FfbbR
     numeroJournee: r.numeroJournee,
     resultatEquipe1: r.resultatEquipe1,
     resultatEquipe2: r.resultatEquipe2,
-    url_competition: `${comitePath}/competitions/${code.toLowerCase()}/match/${r.id}`,
+    // Sans code de compétition, le lien du match renvoie vers la page de l'équipe
+    url_competition: code ? `${comitePath}/competitions/${code.toLowerCase()}/match/${r.id}` : teamPath,
     idEngagementEquipe1: ref(r.nomEquipe1),
     idEngagementEquipe2: ref(r.nomEquipe2),
   }));
