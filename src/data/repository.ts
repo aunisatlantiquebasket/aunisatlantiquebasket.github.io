@@ -21,8 +21,17 @@ export async function writeJson(file: string, data: unknown): Promise<void> {
 }
 
 /** Équipes affichées sur le site (celles qui ne sont plus engagées à la FFBB sont masquées) */
+/** Ordre d'affichage : jeunes par âge (U7, U9, U11-1, U11-2…), puis seniors, puis loisirs */
+function teamOrder(t: Team): number {
+  const age = t.name.match(/^U(\d+)/);
+  if (age) return Number(age[1]);
+  return t.category === "Loisirs" ? 200 : 100;
+}
+
 export async function getTeams(): Promise<Team[]> {
-  return (await readJson<Team[]>("teams.json", [])).filter((t) => t.active !== false);
+  return (await readJson<Team[]>("teams.json", []))
+    .filter((t) => t.active !== false)
+    .sort((a, b) => teamOrder(a) - teamOrder(b) || a.name.localeCompare(b.name, "fr", { numeric: true }));
 }
 
 export async function getTeam(slug: string): Promise<Team | undefined> {
