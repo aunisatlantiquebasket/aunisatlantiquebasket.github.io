@@ -99,6 +99,10 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
 - **Actualités** : les publications de la page Facebook du club sont importées automatiquement
   (`src/facebook/sync.ts` → `data/facebook.json`, photos dans `public/img/facebook/`). Une actualité
   propre au site peut aussi être ajoutée dans `data/articles.json` (le `slug` sert d'URL).
+  Sont écartés automatiquement : les posts calendrier (au moins deux « 🆚 » ou « 📅 »), déjà sur le site,
+  et les doublons (même titre : seule la publication la plus récente est gardée). Pour retirer un post
+  précis, ajouter son identifiant (le nombre après `facebook-` dans l'adresse de l'actualité) dans
+  `data/facebook-exclus.json`.
   Jeton d'accès Facebook (une fois) : developers.facebook.com → créer une app « Entreprise » ; dans
   l'Explorateur de l'API Graph, jeton utilisateur avec `pages_show_list`, `pages_read_engagement`,
   `pages_read_user_content` ; le prolonger dans le Débogueur de jetons ; `me/accounts` → `access_token`

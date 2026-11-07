@@ -76,6 +76,30 @@ async function toArticle(post: FbPost): Promise<Article | undefined> {
   };
 }
 
+/** Publications à ne pas reprendre sur le site, par identifiant de post (data/facebook-exclus.json) */
+const EXCLUDE_FILE = "facebook-exclus.json";
+
+/** Post qui présente le calendrier d'une équipe (au moins deux matchs listés) : déjà sur le site, à jour */
+const isCalendar = (a: Article) => {
+  const text = [a.title, ...a.content].join("\n");
+  return (text.match(/🆚/gu) ?? []).length >= 2 || (text.match(/📅/gu) ?? []).length >= 2;
+};
+const normalizeTitle = (t: string) => t.normalize("NFKD").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
+
+/** Retire calendriers, publications exclues et doublons (même titre : on garde la plus récente) */
+export function filterPosts(articles: Article[], excluded: string[]): Article[] {
+  const seen = new Set<string>();
+  return [...articles]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .filter((a) => {
+      if (isCalendar(a) || excluded.includes(a.slug.replace(/^facebook-/, ""))) return false;
+      const key = normalizeTitle(a.title);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
 /** Récupère les dernières publications de la page ; renvoie le nombre d'articles, ou une erreur */
 export async function syncFromFacebook(token = process.env.FB_PAGE_TOKEN): Promise<number> {
   if (!token) throw new Error("jeton FB_PAGE_TOKEN absent (voir le README)");
@@ -93,7 +117,8 @@ export async function syncFromFacebook(token = process.env.FB_PAGE_TOKEN): Promi
   // Les publications plus anciennes que la fenêtre récupérée sont conservées
   const previous = await readJson<Article[]>(DATA_FILE, []);
   const slugs = new Set(fetched.map((a) => a.slug));
-  const merged = [...fetched, ...previous.filter((a) => !slugs.has(a.slug))].sort((a, b) => b.date.localeCompare(a.date));
+  const excluded = await readJson<string[]>(EXCLUDE_FILE, []);
+  const merged = filterPosts([...fetched, ...previous.filter((a) => !slugs.has(a.slug))], excluded);
   await writeJson(DATA_FILE, merged);
   return fetched.length;
 }
