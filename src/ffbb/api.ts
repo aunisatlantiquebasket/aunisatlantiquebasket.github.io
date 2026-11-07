@@ -124,7 +124,8 @@ export async function getClubTeams(clubPath: string, organismeId: string): Promi
       id: t.engagement_id,
       numeroEquipe: t.team_number || "1",
       categorie: t.competition.match(/\bU\d+\b/)?.[0] ?? "SE",
-      sexe: /^f/i.test(comp.sexe) ? "F" : /^m/i.test(comp.sexe) ? "M" : comp.sexe,
+      // Les compétitions mixtes (mini-basket…) sont annoncées « Masculin » par l'API : on se fie au libellé
+      sexe: /mixte/i.test(t.competition) ? "X" : /^f/i.test(comp.sexe) ? "F" : /^m/i.test(comp.sexe) ? "M" : comp.sexe,
       label: t.competition,
       competition: comp.code,
       poule: comp.poules?.find((p) => p.id === t.poule_id)?.nom ?? "",

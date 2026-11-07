@@ -13,7 +13,7 @@
   },
   {
     "slug": "u9",
-    "name": "U9 Masculins",
+    "name": "U9 Mixte",
     "category": "Jeunes",
     "championship": "Départementale mixte U9 - Division 3 (DXU9-3), poule A",
     "trainings": [
@@ -22,14 +22,14 @@
     "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
     "coach": "Anaëlle",
-    "ffbbKey": "U9-M-1",
+    "ffbbKey": "U9-X-1",
     "active": true,
     "ffbbId": "200000005396788",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396788"
   },
   {
     "slug": "u11",
-    "name": "U11 Masculins",
+    "name": "U11 Mixte",
     "category": "Jeunes",
     "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
     "trainings": [
@@ -39,7 +39,7 @@
     "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
     "coach": "Jonathan",
-    "ffbbKey": "U11-M-1",
+    "ffbbKey": "U11-X-1",
     "active": true,
     "ffbbId": "200000005396778",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396778"
@@ -428,8 +428,8 @@
     "coach": "Christophe"
   },
   {
-    "slug": "u11-masculins-2",
-    "name": "U11 Masculins 2",
+    "slug": "u11-2",
+    "name": "U11 Mixte 2",
     "category": "Jeunes",
     "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
     "trainings": [
@@ -437,7 +437,7 @@
       "Vendredi 17h00 – 18h30"
     ],
     "players": [],
-    "ffbbKey": "U11-M-2",
+    "ffbbKey": "U11-X-2",
     "active": true,
     "ffbbId": "200000005396779",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396779",
