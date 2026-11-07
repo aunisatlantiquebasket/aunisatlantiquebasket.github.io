@@ -57,12 +57,11 @@ async function localImage(postId: string, url: string): Promise<string | undefin
 
 async function toArticle(post: FbPost): Promise<Article | undefined> {
   const text = (post.message ?? "").trim();
-  if (!text && !post.full_picture) return undefined; // partage sans texte ni photo
+  if (!text) return undefined; // photo seule ou partage sans texte : pas d'actualité
   const postId = post.id.split("_").pop()!;
   const date = localIso(post.created_time);
   const lines = text.split(/\n+/).map((l) => l.trim()).filter(Boolean);
-  const dateLabel = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long" }).format(new Date(date));
-  const title = lines.length ? shorten(lines[0], 90) : `Publication du ${dateLabel}`;
+  const title = shorten(lines[0], 90);
   // Première ligne reprise entière en titre : elle n'est pas répétée dans le résumé ni le texte
   const body = title === lines[0] && lines.length > 1 ? lines.slice(1) : lines;
   return {
@@ -86,13 +85,13 @@ const isCalendar = (a: Article) => {
 };
 const normalizeTitle = (t: string) => t.normalize("NFKD").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
 
-/** Retire calendriers, publications exclues et doublons (même titre : on garde la plus récente) */
+/** Retire posts sans texte, calendriers, publications exclues et doublons (même titre : on garde la plus récente) */
 export function filterPosts(articles: Article[], excluded: string[]): Article[] {
   const seen = new Set<string>();
   return [...articles]
     .sort((a, b) => b.date.localeCompare(a.date))
     .filter((a) => {
-      if (isCalendar(a) || excluded.includes(a.slug.replace(/^facebook-/, ""))) return false;
+      if (a.content.length === 0 || isCalendar(a) || excluded.includes(a.slug.replace(/^facebook-/, ""))) return false;
       const key = normalizeTitle(a.title);
       if (seen.has(key)) return false;
       seen.add(key);
