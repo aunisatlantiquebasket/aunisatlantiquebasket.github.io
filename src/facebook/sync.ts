@@ -126,8 +126,8 @@ const SAME_IMAGE_MAX_DISTANCE = 6;
 /** Mots significatifs d'une publication (4 lettres ou plus, sans accents) */
 const wordsOf = (a: Article) =>
   new Set([a.title, ...a.content].join(" ").toLowerCase().normalize("NFD").replace(/\p{M}/gu, "").match(/[a-z0-9]{4,}/g) ?? []);
-/** Part des mots du texte le plus court repris dans l'autre : une même annonce republiée dépasse 70 % */
-const SAME_TEXT_MIN_OVERLAP = 0.7;
+/** Part des mots du texte le plus court repris dans l'autre : une même annonce republiée dépasse 60 % */
+const SAME_TEXT_MIN_OVERLAP = 0.6;
 const overlap = (a: Set<string>, b: Set<string>) => [...a].filter((w) => b.has(w)).length / (Math.min(a.size, b.size) || 1);
 
 /** Calcule l'empreinte des photos qui n'en ont pas encore */

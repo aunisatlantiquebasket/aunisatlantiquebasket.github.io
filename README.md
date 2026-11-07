@@ -101,7 +101,7 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
   les photos sont reprises et affichées en galerie sur la page de l'actualité). Une actualité
   propre au site peut aussi être ajoutée dans `data/articles.json` (le `slug` sert d'URL).
   Sont écartés automatiquement : les posts sans texte (photo seule), les résultats bruts (texte de moins de 200 caractères avec un score), les posts calendrier (au moins deux « 🆚 » ou « 📅 »), déjà sur le site,
-  et les doublons (même titre, même photo repérée par son empreinte visuelle, ou texte repris à 70 %
+  et les doublons (même titre, même photo repérée par son empreinte visuelle, ou texte repris à 60 %
   ou plus : seule la publication la plus récente est gardée). Pour retirer un post
   précis, ajouter son identifiant (le nombre après `facebook-` dans l'adresse de l'actualité) dans
   `data/facebook-exclus.json`.
