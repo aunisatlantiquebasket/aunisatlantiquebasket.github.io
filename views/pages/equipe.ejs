@@ -22,6 +22,10 @@
       <% const season = [...[...results].reverse().map((match) => ({ match, listView: 'resultats' })), ...upcoming.map((match) => ({ match, listView: 'a-venir' }))]; %>
       <% const groups = []; %>
       <% for (const row of season) { const label = row.match.competition || ''; let g = groups.find((x) => x.label === label); if (!g) groups.push(g = { label, rows: [] }); g.rows.push(row); } %>
+      <%# Compétition en cours (matchs à venir) en premier, puis les compétitions terminées, la plus récente d'abord %>
+      <% const lastDate = (g) => g.rows[g.rows.length - 1].match.date; %>
+      <% const ongoing = (g) => g.rows.some((r) => r.listView === 'a-venir'); %>
+      <% groups.sort((a, b) => Number(ongoing(b)) - Number(ongoing(a)) || lastDate(b).localeCompare(lastDate(a))); %>
       <div class="fx-list">
         <% for (const g of groups) { %>
           <% if (groups.length > 1) { %><section data-month-group><h3 class="fx-group"><%= g.label || 'Autres matchs' %></h3><% } %>
