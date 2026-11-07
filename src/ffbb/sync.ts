@@ -86,6 +86,8 @@ const slugify = (s: string) =>
 
 function defaultTeamName(t: FfbbClubTeam): string {
   const cat = t.categorie === "SE" ? "Seniors" : t.categorie;
+  // Équipes mixtes (mini-basket) : catégorie seule, numérotée à partir de la 2e ("U11", "U11-2")
+  if (t.sexe === "X") return t.numeroEquipe && t.numeroEquipe !== "1" ? `${cat}-${t.numeroEquipe}` : cat;
   const gender = t.sexe === "M" ? "Masculins" : t.sexe === "F" ? "Féminines" : "Mixte";
   const num = t.numeroEquipe && t.numeroEquipe !== "1" ? ` ${t.numeroEquipe}` : "";
   return `${cat} ${gender}${num}`;

@@ -13,7 +13,7 @@
   },
   {
     "slug": "u9",
-    "name": "U9 Mixte",
+    "name": "U9",
     "category": "Jeunes",
     "championship": "Départementale mixte U9 - Division 3 (DXU9-3), poule A",
     "trainings": [
@@ -28,8 +28,8 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396788"
   },
   {
-    "slug": "u11",
-    "name": "U11 Mixte",
+    "slug": "u11-1",
+    "name": "U11-1",
     "category": "Jeunes",
     "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
     "trainings": [
@@ -429,7 +429,7 @@
   },
   {
     "slug": "u11-2",
-    "name": "U11 Mixte 2",
+    "name": "U11-2",
     "category": "Jeunes",
     "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
     "trainings": [
