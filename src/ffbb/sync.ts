@@ -348,7 +348,7 @@ async function toMatch(
     date: r.date_rencontre.slice(0, 19),
     opponent: teamName(opponent, names),
     home,
-    venue: await venueFor(r, previous.get(id), names),
+    venue: await venueFor(r, home, previous.get(id), names),
     ...(played ? { score: home ? { us: s1, them: s2 } : { us: s2, them: s1 } } : {}),
     source: "ffbb",
     round: Number(r.numeroJournee) || undefined,
@@ -357,13 +357,19 @@ async function toMatch(
   };
 }
 
-async function venueFor(r: FfbbRencontre, prev: Match | undefined, names: Record<string, string>): Promise<string> {
+// Salle d'un match à domicile tant que la FFBB ne l'a pas indiquée : la salle principale du club
+const HOME_VENUE = "Gymnase intercommunal Bel Air, Marans";
+const UNKNOWN_VENUE = "Salle à confirmer";
+
+async function venueFor(r: FfbbRencontre, home: boolean, prev: Match | undefined, names: Record<string, string>): Promise<string> {
+  const fallback = home ? HOME_VENUE : UNKNOWN_VENUE;
+  if (prev?.venue === UNKNOWN_VENUE) prev = { ...prev, venue: "" };
   const daysAway = (new Date(r.date_rencontre).getTime() - Date.now()) / 86_400_000;
   const needsRefresh = !r.joue && daysAway >= 0 && daysAway <= VENUE_REFRESH_DAYS;
   if (prev?.venue && prev.date === r.date_rencontre.slice(0, 19) && !needsRefresh) return prev.venue;
 
   const salle = await getMatchSalle(r.url_competition);
-  if (!salle?.nom) return prev?.venue ?? "Salle à confirmer";
+  if (!salle?.nom) return prev?.venue || fallback;
   const nom = prettify(salle.nom, names);
   if (prev?.venue.startsWith(`${nom},`)) return prev.venue; // même salle : garde la ville déjà bien écrite
   const city = salle.adresse.match(/\d{5}\s+(.+)$/)?.[1] ?? salle.adresse;
