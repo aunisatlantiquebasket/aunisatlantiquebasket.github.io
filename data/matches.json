@@ -227,6 +227,10 @@
     "opponent": "Angoulins UBAC 2",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 64,
+      "them": 53
+    },
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
