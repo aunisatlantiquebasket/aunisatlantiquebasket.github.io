@@ -157,6 +157,9 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
     const ffbbMatches: Match[] = [];
     const engaged = new Set<Team>(); // équipes trouvées à la FFBB lors de cette synchro
     const matchCount = new Map<string, number>();
+    const clubIds = new Set(clubTeams.map((ct) => ct.id));
+    const teamByEngagement = new Map<string, Team>();
+    const derbies: [Match, string][] = []; // matchs entre deux équipes du club, adversaire à renommer
 
     // Championnat d'abord : c'est lui qui donne l'identifiant, le lien et le classement de l'équipe.
     // Les autres engagements de la même équipe (coupe…) ne font qu'ajouter leurs matchs.
@@ -194,7 +197,19 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
 
       const { rencontres, classement } = await getTeamPage(ct.url_competition);
       const own = rencontres.filter((r) => r.idEngagementEquipe1.id === ct.id || r.idEngagementEquipe2.id === ct.id);
-      for (const r of own) ffbbMatches.push(await toMatch(r, ct.id, team.slug, previous, names));
+      teamByEngagement.set(ct.id, team);
+      for (const r of own) {
+        const other = r.idEngagementEquipe1.id === ct.id ? r.idEngagementEquipe2 : r.idEngagementEquipe1;
+        if (!other.nom?.trim() || /exempt/i.test(other.nom)) continue; // équipe exempte : pas de match ce jour-là
+        const m = await toMatch(r, ct.id, team.slug, previous, names);
+        // Deux équipes du club dans la même poule (U11-1 contre U11-2) : un match pour chacune
+        const otherId = other.id;
+        if (clubIds.has(otherId)) {
+          m.id = `${m.id}-${team.slug}`;
+          derbies.push([m, otherId]);
+        }
+        ffbbMatches.push(m);
+      }
       matchCount.set(team.slug, (matchCount.get(team.slug) ?? 0) + own.length);
 
       if (!primary) {
@@ -243,6 +258,8 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
 
       log(`FFBB : ${team.name} → ${own.length} match(s)${row ? `, ${row.position}e` : ""}${team.standings ? `, poule de ${team.standings.length}` : ""}`);
     }
+
+    for (const [m, otherId] of derbies) m.opponent = teamByEngagement.get(otherId)?.name ?? m.opponent;
 
     // Sécurité : une équipe qui avait des matchs et n'en a plus aucun signale une page FFBB mal lue
     for (const team of engaged) {

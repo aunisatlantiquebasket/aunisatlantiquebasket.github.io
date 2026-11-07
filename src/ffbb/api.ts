@@ -4,6 +4,7 @@
 // les flux de données de la FFBB. Les fonctions renvoient les mêmes structures que client.ts,
 // si bien que la synchronisation (sync.ts) ne dépend pas de la source utilisée.
 
+import { club } from "../config.js";
 import type { FfbbClassement, FfbbClubTeam, FfbbEngagementRef, FfbbRencontre, FfbbSalle, FfbbStandingRow } from "./client.js";
 
 const API_URL = "https://ffbb-api.desimone.fr/api/v1";
@@ -72,7 +73,7 @@ async function get<T>(path: string): Promise<T> {
 
 // Données de la synchronisation en cours, rechargées à chaque appel de getClubTeams
 let comitePath = ""; // "/ligues/naq/comites/0017" (pour les liens vers competitions.ffbb.com)
-let teamsByPath = new Map<string, { pouleId: string; code: string }>();
+let teamsByPath = new Map<string, { pouleId: string; code: string; engagementId: string; number: string }>();
 let venues = new Map<string, string>();
 let poules = new Map<string, Promise<ApiPoule>>();
 
@@ -119,7 +120,7 @@ export async function getClubTeams(clubPath: string, organismeId: string): Promi
     // on déduit alors sexe et type du libellé, plutôt que de bloquer toute la synchronisation.
     const comp = (await findCompetition(t.competition, t.poule_id)) ?? competitionFromLabel(t.competition);
     const url = `${clubPath}/equipes/${t.engagement_id}`;
-    teamsByPath.set(url, { pouleId: t.poule_id, code: comp.code });
+    teamsByPath.set(url, { pouleId: t.poule_id, code: comp.code, engagementId: t.engagement_id, number: t.team_number || "1" });
     result.push({
       id: t.engagement_id,
       numeroEquipe: t.team_number || "1",
@@ -147,15 +148,20 @@ function teamInfo(teamPath: string) {
 
 export async function getTeamPage(teamPath: string): Promise<{ rencontres: FfbbRencontre[]; classement: FfbbClassement[] }> {
   const { pouleId, code } = teamInfo(teamPath);
+  // Équipes du club engagées dans cette poule, par numéro ("1", "2"…)
+  const ourByNumber = new Map([...teamsByPath.values()].filter((t) => t.pouleId === pouleId).map((t) => [t.number, t.engagementId]));
   const poule = await loadPoule(pouleId);
+  const normalize = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim().toUpperCase();
 
   // Les rencontres ne donnent que le nom des équipes : on les relie aux engagements du classement
   const byLabel = new Map(poule.classements.map((c) => [engagementLabel(c.id_engagement), c]));
   const ref = (label: string): FfbbEngagementRef => {
     const c = byLabel.get(label);
     const m = label.match(/^(.*) - (\d+)$/);
+    // Poule sans classement publié (mini-basket…) : notre équipe est reconnue à son nom et son numéro
+    const ours = !c && normalize(m?.[1] ?? label) === normalize(club.name) ? ourByNumber.get(m?.[2] ?? "1") : undefined;
     return {
-      id: c?.id_engagement.id ?? label,
+      id: c?.id_engagement.id ?? ours ?? label,
       nom: c?.id_engagement.nom ?? m?.[1] ?? label,
       numeroEquipe: c?.id_engagement.numero_equipe || m?.[2] || "1",
       idOrganisme: c?.organisme_logo_id ? { id: "", logo: { id: c.organisme_logo_id } } : undefined,
@@ -167,8 +173,9 @@ export async function getTeamPage(teamPath: string): Promise<{ rencontres: FfbbR
     date_rencontre: r.date_rencontre,
     joue: Boolean(r.joue),
     numeroJournee: r.numeroJournee,
-    resultatEquipe1: r.resultatEquipe1,
-    resultatEquipe2: r.resultatEquipe2,
+    // Score absent : null, parfois écrit "None" par l'API
+    resultatEquipe1: r.resultatEquipe1 === "None" ? null : r.resultatEquipe1,
+    resultatEquipe2: r.resultatEquipe2 === "None" ? null : r.resultatEquipe2,
     // Sans code de compétition, le lien du match renvoie vers la page de l'équipe
     url_competition: code ? `${comitePath}/competitions/${code.toLowerCase()}/match/${r.id}` : teamPath,
     idEngagementEquipe1: ref(r.nomEquipe1),

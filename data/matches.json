@@ -96,17 +96,6 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645925"
   },
   {
-    "id": "ffbb-200000014757776",
-    "teamSlug": "u13-masculins",
-    "date": "2026-10-03T13:00:00",
-    "opponent": "",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "source": "ffbb",
-    "round": 3,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757776"
-  },
-  {
     "id": "ffbb-200000014758255",
     "teamSlug": "u15-feminines",
     "date": "2026-10-03T16:00:00",
@@ -153,17 +142,6 @@
     "round": 4,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757790"
-  },
-  {
-    "id": "ffbb-200000014758261",
-    "teamSlug": "u15-feminines",
-    "date": "2026-10-10T15:00:00",
-    "opponent": "",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "source": "ffbb",
-    "round": 4,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758261"
   },
   {
     "id": "ffbb-200000014645935",
@@ -214,6 +192,43 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758267"
   },
   {
+    "id": "ffbb-200000014737574",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-10-31T20:00:00",
+    "opponent": "Marennes Bourcefranc BBMB",
+    "home": true,
+    "venue": "Salle à confirmer",
+    "score": {
+      "us": 0,
+      "them": 20
+    },
+    "source": "ffbb",
+    "round": 13,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005373979"
+  },
+  {
+    "id": "ffbb-200000014939772",
+    "teamSlug": "u13-masculins",
+    "date": "2026-11-07T15:00:00",
+    "opponent": "Angoulins UBAC 2",
+    "home": true,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 1,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+  },
+  {
+    "id": "ffbb-200000014939904",
+    "teamSlug": "u15-feminines",
+    "date": "2026-11-07T17:00:00",
+    "opponent": "Ruelle Basket Club",
+    "home": true,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 1,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
+  },
+  {
     "id": "ffbb-200000014645940",
     "teamSlug": "seniors-masculins",
     "date": "2026-11-07T19:00:00",
@@ -224,6 +239,61 @@
     "round": 5,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645940"
+  },
+  {
+    "id": "ffbb-200000014850086",
+    "teamSlug": "u9",
+    "date": "2026-11-14T13:30:00",
+    "opponent": "Saint-Rogatien Basket Club 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 1,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850086"
+  },
+  {
+    "id": "ffbb-200000014939787",
+    "teamSlug": "u13-masculins",
+    "date": "2026-11-14T15:00:00",
+    "opponent": "Jarnac-Champagne",
+    "home": true,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 2,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+  },
+  {
+    "id": "ffbb-200000014850061-u11-1",
+    "teamSlug": "u11-1",
+    "date": "2026-11-14T17:00:00",
+    "opponent": "U11-2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 1,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850061"
+  },
+  {
+    "id": "ffbb-200000014850061-u11-2",
+    "teamSlug": "u11-2",
+    "date": "2026-11-14T17:00:00",
+    "opponent": "U11-1",
+    "home": false,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 1,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850061"
+  },
+  {
+    "id": "ffbb-200000014939913",
+    "teamSlug": "u15-feminines",
+    "date": "2026-11-14T17:00:00",
+    "opponent": "Saint-Jean-d'Angély JLA",
+    "home": false,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 2,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
   },
   {
     "id": "ffbb-200000014645945",
@@ -238,6 +308,50 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645945"
   },
   {
+    "id": "ffbb-200000014850066",
+    "teamSlug": "u11-2",
+    "date": "2026-11-28T00:00:00",
+    "opponent": "Saint-xandre 2",
+    "home": false,
+    "venue": "Salle polyvalente, Saint-Xandre",
+    "source": "ffbb",
+    "round": 2,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850066"
+  },
+  {
+    "id": "ffbb-200000014850091",
+    "teamSlug": "u9",
+    "date": "2026-11-28T00:00:00",
+    "opponent": "Aytre Basket Ball 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 2,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850091"
+  },
+  {
+    "id": "ffbb-200000014850065",
+    "teamSlug": "u11-1",
+    "date": "2026-11-28T10:30:00",
+    "opponent": "Stade Rochelais Basket 4",
+    "home": false,
+    "venue": "Gymnase du Pas des Laquais, La Rochelle",
+    "source": "ffbb",
+    "round": 2,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850065"
+  },
+  {
+    "id": "ffbb-200000014939802",
+    "teamSlug": "u13-masculins",
+    "date": "2026-11-28T13:00:00",
+    "opponent": "Oleron Basket Club",
+    "home": true,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 3,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+  },
+  {
     "id": "ffbb-200000014645950",
     "teamSlug": "seniors-masculins",
     "date": "2026-11-28T19:00:00",
@@ -250,6 +364,17 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645950"
   },
   {
+    "id": "ffbb-200000014939930",
+    "teamSlug": "u15-feminines",
+    "date": "2026-12-05T13:00:00",
+    "opponent": "CTC Basket Océan 17 - Saint-Agnant",
+    "home": false,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 4,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
+  },
+  {
     "id": "ffbb-200000014645955",
     "teamSlug": "seniors-masculins",
     "date": "2026-12-05T21:00:00",
@@ -260,6 +385,61 @@
     "round": 8,
     "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645955"
+  },
+  {
+    "id": "ffbb-200000014850069",
+    "teamSlug": "u11-1",
+    "date": "2026-12-12T00:00:00",
+    "opponent": "Saint-xandre 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 3,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850069"
+  },
+  {
+    "id": "ffbb-200000014850070",
+    "teamSlug": "u11-2",
+    "date": "2026-12-12T00:00:00",
+    "opponent": "Stade Rochelais Basket 4",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 3,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850070"
+  },
+  {
+    "id": "ffbb-200000014850098",
+    "teamSlug": "u9",
+    "date": "2026-12-12T10:45:00",
+    "opponent": "Ciré Sports 2",
+    "home": false,
+    "venue": "Gymnase Bernard Pougnant, Ciré-d'Aunis",
+    "source": "ffbb",
+    "round": 3,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850098"
+  },
+  {
+    "id": "ffbb-200000014939831",
+    "teamSlug": "u13-masculins",
+    "date": "2026-12-12T13:00:00",
+    "opponent": "Haute Saintonge Basket 2",
+    "home": false,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 5,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+  },
+  {
+    "id": "ffbb-200000014939939",
+    "teamSlug": "u15-feminines",
+    "date": "2026-12-12T17:00:00",
+    "opponent": "Ciré Sports",
+    "home": false,
+    "venue": "Salle à confirmer",
+    "source": "ffbb",
+    "round": 5,
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
   },
   {
     "id": "ffbb-200000014645960",
