@@ -97,6 +97,8 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
 - **Match amical / hors championnat** : ajouter une entrée dans `data/matches.json` avec `"source": "manual"` ;
   après le match, ajouter `"score": { "us": 80, "them": 72 }`
 - **Nouvelle actualité** : ajouter une entrée dans `data/articles.json` (le `slug` sert d'URL)
+  — en plus des **récapitulatifs automatiques des week-ends** (`src/data/recaps.ts`) : chaque lundi, un article
+  « Résultats du week-end du … » est créé à partir des scores FFBB, avec les matchs du week-end suivant.
 - **Événement hors matchs** (loto, AG, stage, fête…) : ajouter une entrée dans `data/evenements.json` :
   ```json
   { "slug": "loto-2026", "title": "Loto du club", "kind": "Vie du club", "date": "2026-11-21",
