@@ -3,7 +3,7 @@
 // démarche dans le README). Les photos sont copiées dans public/img/facebook/ : le site n'appelle
 // jamais Facebook, aucun traceur n'est chargé chez les visiteurs.
 
-import { access, mkdir } from "node:fs/promises";
+import { access, mkdir, readdir, rm } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import { readJson, writeJson } from "../data/repository.js";
@@ -75,6 +75,33 @@ async function toArticle(post: FbPost): Promise<Article | undefined> {
   };
 }
 
+/** Empreinte visuelle (dHash 64 bits) : deux versions réencodées d'une même image restent très proches */
+async function imageHash(publicUrl: string): Promise<string | undefined> {
+  try {
+    const file = path.resolve("public", publicUrl.replace(/^\//, ""));
+    const px = await sharp(file).grayscale().resize(9, 8, { fit: "fill" }).raw().toBuffer();
+    let bits = "";
+    for (let y = 0; y < 8; y++) for (let x = 0; x < 8; x++) bits += px[y * 9 + x] > px[y * 9 + x + 1] ? "1" : "0";
+    return BigInt(`0b${bits}`).toString(16).padStart(16, "0");
+  } catch {
+    return undefined;
+  }
+}
+
+/** Nombre de bits différents entre deux empreintes */
+function distance(a: string, b: string): number {
+  let x = BigInt(`0x${a}`) ^ BigInt(`0x${b}`);
+  let n = 0;
+  for (; x; x >>= 1n) n += Number(x & 1n);
+  return n;
+}
+const SAME_IMAGE_MAX_DISTANCE = 6;
+
+/** Calcule l'empreinte des photos qui n'en ont pas encore */
+export async function addImageHashes(articles: Article[]): Promise<void> {
+  for (const a of articles) if (a.image && !a.imageHash) a.imageHash = await imageHash(a.image);
+}
+
 /** Publications à ne pas reprendre sur le site, par identifiant de post (data/facebook-exclus.json) */
 const EXCLUDE_FILE = "facebook-exclus.json";
 
@@ -90,16 +117,20 @@ const isRawResult = (a: Article) => {
 };
 const normalizeTitle = (t: string) => t.normalize("NFKD").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
 
-/** Retire posts sans texte, résultats bruts, calendriers, publications exclues et doublons (même titre : on garde la plus récente) */
+/** Retire posts sans texte, résultats bruts, calendriers, publications exclues et doublons
+ *  (même titre ou même photo : on garde la plus récente) */
 export function filterPosts(articles: Article[], excluded: string[]): Article[] {
   const seen = new Set<string>();
+  const hashes: string[] = [];
   return [...articles]
     .sort((a, b) => b.date.localeCompare(a.date))
     .filter((a) => {
       if (a.content.length === 0 || isCalendar(a) || isRawResult(a) || excluded.includes(a.slug.replace(/^facebook-/, ""))) return false;
       const key = normalizeTitle(a.title);
       if (seen.has(key)) return false;
+      if (a.imageHash && hashes.some((h) => distance(h, a.imageHash!) <= SAME_IMAGE_MAX_DISTANCE)) return false;
       seen.add(key);
+      if (a.imageHash) hashes.push(a.imageHash);
       return true;
     });
 }
@@ -122,7 +153,12 @@ export async function syncFromFacebook(token = process.env.FB_PAGE_TOKEN): Promi
   const previous = await readJson<Article[]>(DATA_FILE, []);
   const slugs = new Set(fetched.map((a) => a.slug));
   const excluded = await readJson<string[]>(EXCLUDE_FILE, []);
-  const merged = filterPosts([...fetched, ...previous.filter((a) => !slugs.has(a.slug))], excluded);
+  const all = [...fetched, ...previous.filter((a) => !slugs.has(a.slug))];
+  await addImageHashes(all);
+  const merged = filterPosts(all, excluded);
   await writeJson(DATA_FILE, merged);
+  // Photos des publications écartées : supprimées
+  const used = new Set(merged.map((a) => a.image?.split("/").pop()));
+  for (const file of await readdir(IMAGE_DIR).catch(() => [])) if (!used.has(file)) await rm(path.join(IMAGE_DIR, file));
   return fetched.length;
 }
