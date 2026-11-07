@@ -100,8 +100,8 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
   (`src/facebook/sync.ts` → `data/facebook.json`, photos dans `public/img/facebook/`). Une actualité
   propre au site peut aussi être ajoutée dans `data/articles.json` (le `slug` sert d'URL).
   Sont écartés automatiquement : les posts sans texte (photo seule), les résultats bruts (texte de moins de 200 caractères avec un score), les posts calendrier (au moins deux « 🆚 » ou « 📅 »), déjà sur le site,
-  et les doublons (même titre ou même photo, repérée par son empreinte visuelle : seule la publication
-  la plus récente est gardée). Pour retirer un post
+  et les doublons (même titre, même photo repérée par son empreinte visuelle, ou texte repris à 70 %
+  ou plus : seule la publication la plus récente est gardée). Pour retirer un post
   précis, ajouter son identifiant (le nombre après `facebook-` dans l'adresse de l'actualité) dans
   `data/facebook-exclus.json`.
   Jeton d'accès Facebook (une fois) : developers.facebook.com → créer une app « Entreprise » ; dans

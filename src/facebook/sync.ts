@@ -97,6 +97,13 @@ function distance(a: string, b: string): number {
 }
 const SAME_IMAGE_MAX_DISTANCE = 6;
 
+/** Mots significatifs d'une publication (4 lettres ou plus, sans accents) */
+const wordsOf = (a: Article) =>
+  new Set([a.title, ...a.content].join(" ").toLowerCase().normalize("NFD").replace(/\p{M}/gu, "").match(/[a-z0-9]{4,}/g) ?? []);
+/** Part des mots du texte le plus court repris dans l'autre : une même annonce republiée dépasse 70 % */
+const SAME_TEXT_MIN_OVERLAP = 0.7;
+const overlap = (a: Set<string>, b: Set<string>) => [...a].filter((w) => b.has(w)).length / (Math.min(a.size, b.size) || 1);
+
 /** Calcule l'empreinte des photos qui n'en ont pas encore */
 export async function addImageHashes(articles: Article[]): Promise<void> {
   for (const a of articles) if (a.image && !a.imageHash) a.imageHash = await imageHash(a.image);
@@ -118,10 +125,11 @@ const isRawResult = (a: Article) => {
 const normalizeTitle = (t: string) => t.normalize("NFKD").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
 
 /** Retire posts sans texte, résultats bruts, calendriers, publications exclues et doublons
- *  (même titre ou même photo : on garde la plus récente) */
+ *  (même titre, même photo ou même texte : on garde la plus récente) */
 export function filterPosts(articles: Article[], excluded: string[]): Article[] {
   const seen = new Set<string>();
   const hashes: string[] = [];
+  const texts: Set<string>[] = [];
   return [...articles]
     .sort((a, b) => b.date.localeCompare(a.date))
     .filter((a) => {
@@ -129,7 +137,10 @@ export function filterPosts(articles: Article[], excluded: string[]): Article[] 
       const key = normalizeTitle(a.title);
       if (seen.has(key)) return false;
       if (a.imageHash && hashes.some((h) => distance(h, a.imageHash!) <= SAME_IMAGE_MAX_DISTANCE)) return false;
+      const words = wordsOf(a);
+      if (texts.some((t) => overlap(t, words) >= SAME_TEXT_MIN_OVERLAP)) return false;
       seen.add(key);
+      texts.push(words);
       if (a.imageHash) hashes.push(a.imageHash);
       return true;
     });
