@@ -4,7 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %> | <%= club.name %></title>
-  <meta name="description" content="<%= club.name %> : club de basket en Aunis Atlantique. Équipes, calendrier, résultats et inscriptions.">
+  <%# Aperçu des liens partagés (Facebook, Instagram, WhatsApp…) : photo et résumé de l'article, sinon image du club %>
+  <% const shared = typeof article !== 'undefined' ? article : null; %>
+  <% const pageDescription = shared ? shared.summary : `${club.name} : club de basket en Aunis Atlantique. Équipes, calendrier, résultats et inscriptions.`; %>
+  <% const pageTitle = currentPath === '/' ? `${club.name} · ${club.slogan}` : `${title} | ${club.name}`; %>
+  <meta name="description" content="<%= pageDescription %>">
+  <link rel="canonical" href="<%= club.siteUrl + currentPath %>">
+  <meta property="og:type" content="<%= shared ? 'article' : 'website' %>">
+  <meta property="og:site_name" content="<%= club.name %>">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="<%= club.siteUrl + currentPath %>">
+  <meta property="og:title" content="<%= pageTitle %>">
+  <meta property="og:description" content="<%= pageDescription %>">
+  <meta property="og:image" content="<%= club.siteUrl + (shared && shared.image ? shared.image : '/img/partage.png') %>">
+  <% if (!shared || !shared.image) { %><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><% } %>
+  <meta property="og:image:alt" content="<%= club.name %>">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#36424a">
   <link rel="icon" type="image/svg+xml" href="/img/logo-rond.svg">
   <%# Application installable (mobile, tablette) : manifeste, icône iOS, service worker dans js/install.js %>

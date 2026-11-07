@@ -4,6 +4,7 @@ export const club = {
   slogan: "Plus qu'un club, une famille",
   foundedYear: 2023,
   address: "16 rue du Docteur Quoy, 17170 Saint-Jean-de-Liversay",
+  siteUrl: "https://aunisatlantiquebasket.com", // adresse publique (aperçus des liens partagés sur Facebook…)
   email: "contact@aunisatlantiquebasket.com", // présidence, secrétariat, inscriptions
   emailSportive: "sportive@aunisatlantiquebasket.com", // organisation des compétitions, commission sportive
   emailCommunication: "communication@aunisatlantiquebasket.com", // vie associative : événements, sponsors, bénévolat
