@@ -270,18 +270,22 @@ p { margin: 0 0 1em; }
 .article-card-img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
 .article-card p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .article-img { display: block; width: 100%; height: auto; border-radius: var(--radius); margin: 0 0 24px; }
-.album { position: relative; margin: 0 0 24px; border-radius: var(--radius); overflow: hidden; background: var(--slate-900); }
-.album-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+/* Album : même rendu qu'une photo seule (.article-img), photos à faire glisser */
+.album { position: relative; margin: 0 0 24px; border-radius: var(--radius); overflow: hidden; }
+.album-track { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; transition: height .25s ease; }
 .album-track::-webkit-scrollbar { display: none; }
 .album-track:focus-visible { outline: 3px solid var(--green); outline-offset: -3px; }
-.album-slide { flex: 0 0 100%; scroll-snap-align: start; display: grid; place-items: center; aspect-ratio: 4 / 3; cursor: zoom-in; }
-.album-slide img { width: 100%; height: 100%; object-fit: contain; }
-.album-nav { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(15, 20, 24, .55); color: #fff; cursor: pointer; }
-.album-nav:hover { background: rgba(15, 20, 24, .8); }
-.album-nav .icon { width: 20px; height: 20px; }
+.album-slide { flex: 0 0 100%; scroll-snap-align: start; cursor: zoom-in; }
+.album-slide img { display: block; width: 100%; height: auto; }
+.album-nav { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .85); color: var(--slate-900); box-shadow: var(--shadow-sm); cursor: pointer; opacity: 0; transition: opacity .2s; }
+.album:hover .album-nav, .album:focus-within .album-nav { opacity: 1; }
+@media (hover: none) { .album-nav { display: none; } }
+.album-nav .icon { width: 18px; height: 18px; }
 .album-nav.prev { left: 12px; }
 .album-nav.next { right: 12px; }
-.album-count { position: absolute; bottom: 12px; right: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(15, 20, 24, .65); color: #fff; font-size: .82rem; font-weight: 600; }
+.album-dots { position: absolute; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
+.album-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, .55); box-shadow: 0 0 2px rgba(0, 0, 0, .4); transition: background .2s, transform .2s; }
+.album-dots span.on { background: #fff; transform: scale(1.25); }
 .lightbox { max-width: none; max-height: none; width: 100vw; height: 100dvh; margin: 0; padding: 0; border: 0; background: rgba(15, 20, 24, .94); color: #fff; }
 .lightbox[open] { display: grid; place-items: center; }
 .lightbox::backdrop { background: transparent; }

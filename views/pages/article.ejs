@@ -5,16 +5,16 @@
     <%# Publication Facebook : le texte complet suffit, pas de chapeau qui le répéterait %>
     <% if (!article.sourceUrl) { %><p class="lead"><%= article.summary %></p><% } %>
     <% if (article.gallery) { %>
-      <%# Album : carrousel (glisser au doigt, flèches), photo agrandie au clic (public/js/gallery.js) %>
+      <%# Album : présenté comme une photo seule, à faire glisser (flèches au survol, points), agrandie au clic (public/js/gallery.js) %>
       <div class="album" data-album>
         <div class="album-track" data-track tabindex="0" aria-label="Album de <%= article.gallery.length %> photos">
           <% article.gallery.forEach((photo, i) => { %>
-            <a href="<%= photo %>" class="album-slide" data-index="<%= i %>"><img src="<%= photo %>" alt="Photo <%= i + 1 %> sur <%= article.gallery.length %>" <%- i ? 'loading="lazy"' : '' %>></a>
+            <a href="<%= photo %>" class="album-slide" data-index="<%= i %>"><img src="<%= photo %>" alt="Photo <%= i + 1 %> sur <%= article.gallery.length %>"></a>
           <% }) %>
         </div>
         <button type="button" class="album-nav prev" data-move="-1" aria-label="Photo précédente"><%- include('../partials/icon', { name: 'back' }) %></button>
         <button type="button" class="album-nav next" data-move="1" aria-label="Photo suivante"><%- include('../partials/icon', { name: 'arrow' }) %></button>
-        <span class="album-count"><span data-current>1</span> / <%= article.gallery.length %></span>
+        <div class="album-dots" aria-hidden="true"><% article.gallery.forEach((_, i) => { %><span class="<%= i ? '' : 'on' %>"></span><% }) %></div>
       </div>
       <dialog class="lightbox" data-lightbox aria-label="Photo agrandie">
         <img alt="">
