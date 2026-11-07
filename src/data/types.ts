@@ -59,6 +59,7 @@ export interface Match {
   score?: { us: number; them: number };
   source?: "ffbb" | "manual"; // "ffbb" : géré par la synchronisation, ne pas modifier à la main
   round?: number; // numéro de journée
+  competition?: string; // "Phase 1", "Phase 2", "Coupe 17 Michel Château, 1/16ème de finale"… (équipes à plusieurs compétitions)
   opponentLogo?: string;
   ffbbUrl?: string;
 }

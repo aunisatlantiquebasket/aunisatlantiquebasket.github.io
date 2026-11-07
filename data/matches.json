@@ -13,7 +13,8 @@
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757746"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757746",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014758244",
@@ -29,7 +30,8 @@
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758244"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758244",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014645920",
@@ -45,7 +47,8 @@
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645920"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645920",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014757761",
@@ -61,7 +64,8 @@
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757761"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757761",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014758250",
@@ -77,7 +81,8 @@
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758250"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758250",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014645925",
@@ -93,7 +98,8 @@
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645925"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645925",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014758255",
@@ -109,7 +115,8 @@
     "source": "ffbb",
     "round": 3,
     "opponentLogo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758255"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758255",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014645930",
@@ -125,7 +132,8 @@
     "source": "ffbb",
     "round": 3,
     "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645930"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645930",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014757790",
@@ -141,7 +149,8 @@
     "source": "ffbb",
     "round": 4,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757790"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757790",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014645935",
@@ -157,7 +166,8 @@
     "source": "ffbb",
     "round": 4,
     "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645935"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645935",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014757805",
@@ -173,7 +183,8 @@
     "source": "ffbb",
     "round": 5,
     "opponentLogo": "/img/clubs/3ac01715-4cd6-4609-92df-d82489ba7d18.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757805"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757805",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014758267",
@@ -189,7 +200,8 @@
     "source": "ffbb",
     "round": 5,
     "opponentLogo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758267"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dfu15/match/200000014758267",
+    "competition": "Phase 1"
   },
   {
     "id": "ffbb-200000014737574",
@@ -204,7 +216,9 @@
     },
     "source": "ffbb",
     "round": 13,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005373979"
+    "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005373979",
+    "competition": "Coupe 17 Michel Château, 1/16ème de finale"
   },
   {
     "id": "ffbb-200000014939772",
@@ -215,7 +229,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 1,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+    "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014939904",
@@ -226,7 +242,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 1,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
+    "opponentLogo": "/img/clubs/6a0c5fb5-b934-4442-bf42-22d5695f073b.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014645940",
@@ -238,7 +256,8 @@
     "source": "ffbb",
     "round": 5,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645940"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645940",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014850086",
@@ -249,6 +268,7 @@
     "venue": "Gymnase intercommunal Bel Air, Marans",
     "source": "ffbb",
     "round": 1,
+    "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850086"
   },
   {
@@ -260,7 +280,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 2,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+    "opponentLogo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014850061-u11-1",
@@ -271,6 +293,7 @@
     "venue": "Gymnase intercommunal Bel Air, Marans",
     "source": "ffbb",
     "round": 1,
+    "opponentLogo": "/img/logo-rond.svg",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850061"
   },
   {
@@ -282,6 +305,7 @@
     "venue": "Gymnase intercommunal Bel Air, Marans",
     "source": "ffbb",
     "round": 1,
+    "opponentLogo": "/img/logo-rond.svg",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850061"
   },
   {
@@ -293,7 +317,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 2,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
+    "opponentLogo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014645945",
@@ -305,7 +331,8 @@
     "source": "ffbb",
     "round": 6,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645945"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645945",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014850066",
@@ -316,6 +343,7 @@
     "venue": "Salle polyvalente, Saint-Xandre",
     "source": "ffbb",
     "round": 2,
+    "opponentLogo": "/img/clubs/43b7bb88-2c53-4b8c-9e3a-f6165ead7128.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850066"
   },
   {
@@ -327,6 +355,7 @@
     "venue": "Gymnase intercommunal Bel Air, Marans",
     "source": "ffbb",
     "round": 2,
+    "opponentLogo": "/img/clubs/6f1b0943-26b1-42e7-a771-cc37754a632d.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850091"
   },
   {
@@ -338,6 +367,7 @@
     "venue": "Gymnase du Pas des Laquais, La Rochelle",
     "source": "ffbb",
     "round": 2,
+    "opponentLogo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850065"
   },
   {
@@ -349,7 +379,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 3,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+    "opponentLogo": "/img/clubs/9b9afd4b-a20b-44d8-83de-c951d62dea3d.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014645950",
@@ -361,7 +393,8 @@
     "source": "ffbb",
     "round": 7,
     "opponentLogo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645950"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645950",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014939930",
@@ -372,7 +405,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 4,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
+    "opponentLogo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014645955",
@@ -384,7 +419,8 @@
     "source": "ffbb",
     "round": 8,
     "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645955"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645955",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014850069",
@@ -395,6 +431,7 @@
     "venue": "Gymnase intercommunal Bel Air, Marans",
     "source": "ffbb",
     "round": 3,
+    "opponentLogo": "/img/clubs/43b7bb88-2c53-4b8c-9e3a-f6165ead7128.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850069"
   },
   {
@@ -406,6 +443,7 @@
     "venue": "Gymnase intercommunal Bel Air, Marans",
     "source": "ffbb",
     "round": 3,
+    "opponentLogo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850070"
   },
   {
@@ -417,6 +455,7 @@
     "venue": "Gymnase Bernard Pougnant, Ciré-d'Aunis",
     "source": "ffbb",
     "round": 3,
+    "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850098"
   },
   {
@@ -428,7 +467,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 5,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
+    "opponentLogo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014939939",
@@ -439,7 +480,9 @@
     "venue": "Salle à confirmer",
     "source": "ffbb",
     "round": 5,
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769"
+    "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
+    "competition": "Phase 2"
   },
   {
     "id": "ffbb-200000014645960",
@@ -451,7 +494,8 @@
     "source": "ffbb",
     "round": 9,
     "opponentLogo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645960"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645960",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645965",
@@ -463,7 +507,8 @@
     "source": "ffbb",
     "round": 10,
     "opponentLogo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645965"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645965",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645970",
@@ -475,7 +520,8 @@
     "source": "ffbb",
     "round": 11,
     "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645970"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645970",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645975",
@@ -487,7 +533,8 @@
     "source": "ffbb",
     "round": 12,
     "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645975"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645975",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645980",
@@ -499,7 +546,8 @@
     "source": "ffbb",
     "round": 13,
     "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645980"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645980",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645985",
@@ -511,7 +559,8 @@
     "source": "ffbb",
     "round": 14,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645985"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645985",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645990",
@@ -523,7 +572,8 @@
     "source": "ffbb",
     "round": 15,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645990"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645990",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014645995",
@@ -535,7 +585,8 @@
     "source": "ffbb",
     "round": 16,
     "opponentLogo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645995"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645995",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014646000",
@@ -547,7 +598,8 @@
     "source": "ffbb",
     "round": 17,
     "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646000"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646000",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014646005",
@@ -559,6 +611,7 @@
     "source": "ffbb",
     "round": 18,
     "opponentLogo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646005"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646005",
+    "competition": "Championnat"
   }
 ]

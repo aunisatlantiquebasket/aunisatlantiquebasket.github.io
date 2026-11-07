@@ -103,6 +103,19 @@ function uniqueSlug(base: string, teams: Team[]): string {
   return slug;
 }
 
+/** Nom court de la compétition pour regrouper les matchs d'une équipe : "Phase 2", "Coupe 17 Michel Château, 1/16ème de finale" */
+function competitionLabel(t: FfbbClubTeam): string {
+  const phase = t.label.match(/phase\s*(\d+)/i);
+  if (phase) return `Phase ${phase[1]}`;
+  if (t.type === "DIV") return "Championnat";
+  // "Coupe 17 Michel Château - Seniors Masculins - 1/16ème de Finale" : sans la catégorie
+  return t.label
+    .split(" - ")
+    .filter((part) => !/\b(seniors?|U\d+|masculin|f[ée]minin|mixte)/i.test(part))
+    .join(", ")
+    .replace(/Finale\b/, "finale");
+}
+
 function championship(t: FfbbClubTeam): string {
   return [`${t.label} (${t.competition})`, t.phase, t.poule?.replace(/^Poule/, "poule")].filter(Boolean).join(", ");
 }
@@ -163,7 +176,9 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
 
     // Championnat d'abord : c'est lui qui donne l'identifiant, le lien et le classement de l'équipe.
     // Les autres engagements de la même équipe (coupe…) ne font qu'ajouter leurs matchs.
-    const ordered = [...clubTeams].sort((a, b) => Number(b.type === "DIV") - Number(a.type === "DIV"));
+    // Phases du championnat dans l'ordre (phase 1, phase 2…), la dernière disponible donnant le classement
+    const phaseOf = (t: FfbbClubTeam) => Number(t.label.match(/phase\s*(\d+)/i)?.[1] ?? 1);
+    const ordered = [...clubTeams].sort((a, b) => Number(b.type === "DIV") - Number(a.type === "DIV") || phaseOf(a) - phaseOf(b));
 
     for (const ct of ordered) {
       const key = ffbbKey(ct);
@@ -202,6 +217,7 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
         const other = r.idEngagementEquipe1.id === ct.id ? r.idEngagementEquipe2 : r.idEngagementEquipe1;
         if (!other.nom?.trim() || /exempt/i.test(other.nom)) continue; // équipe exempte : pas de match ce jour-là
         const m = await toMatch(r, ct.id, team.slug, previous, names);
+        m.competition = competitionLabel(ct);
         // Deux équipes du club dans la même poule (U11-1 contre U11-2) : un match pour chacune
         const otherId = other.id;
         if (clubIds.has(otherId)) {
@@ -212,7 +228,10 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
       }
       matchCount.set(team.slug, (matchCount.get(team.slug) ?? 0) + own.length);
 
-      if (!primary) {
+      // Phase suivante du championnat : son classement remplace celui de la phase précédente
+      // dès que la FFBB l'a publié avec au moins un match joué par l'équipe
+      const nextPhase = !primary && ct.type === "DIV" && Number(classement.find((c) => c.idEngagement.id === ct.id)?.matchJoues) > 0;
+      if (!primary && !nextPhase) {
         log(`FFBB : ${team.name} → ${own.length} match(s) en « ${ct.label} »`);
         continue;
       }
@@ -259,7 +278,21 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
       log(`FFBB : ${team.name} → ${own.length} match(s)${row ? `, ${row.position}e` : ""}${team.standings ? `, poule de ${team.standings.length}` : ""}`);
     }
 
-    for (const [m, otherId] of derbies) m.opponent = teamByEngagement.get(otherId)?.name ?? m.opponent;
+    for (const [m, otherId] of derbies) {
+      m.opponent = teamByEngagement.get(otherId)?.name ?? m.opponent;
+      m.opponentLogo = "/img/logo-rond.svg";
+    }
+
+    // Compétitions d'une équipe : le championnat devient « Phase 1 » quand une phase 2 existe ;
+    // une seule compétition : pas de regroupement, l'étiquette est retirée
+    for (const team of engaged) {
+      const own = ffbbMatches.filter((m) => m.teamSlug === team.slug);
+      const labels = new Set(own.map((m) => m.competition));
+      for (const m of own) {
+        if (labels.size < 2) delete m.competition;
+        else if (m.competition === "Championnat" && [...labels].some((l) => l?.startsWith("Phase"))) m.competition = "Phase 1";
+      }
+    }
 
     // Sécurité : une équipe qui avait des matchs et n'en a plus aucun signale une page FFBB mal lue
     for (const team of engaged) {

@@ -342,6 +342,8 @@ p { margin: 0 0 1em; }
 .fixtures-title { font-family: var(--font-display); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .02em; margin: 0; color: var(--slate-900); }
 .fixtures-title::after { content: ""; display: block; width: 36px; height: 4px; background: var(--green); border-radius: 4px; margin-top: 4px; }
 .fx-list > .empty { margin: 20px; }
+.fx-group { margin: 0; padding: 10px 20px; background: var(--bg-tint); border-bottom: 1px solid var(--border); color: var(--green-text); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.fx-list > section + section .fx-group { border-top: 1px solid var(--border); }
 
 .fx {
   position: relative;

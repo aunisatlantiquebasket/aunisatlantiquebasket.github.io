@@ -18,9 +18,16 @@
           <button type="button" data-set="view" data-value="resultats">Résultats <span class="count" data-count="resultats"><%= results.length %></span></button>
         </div>
       </div>
+      <%# Équipe engagée dans plusieurs compétitions (phase 1 / phase 2, coupe…) : un intertitre par compétition %>
+      <% const season = [...[...results].reverse().map((match) => ({ match, listView: 'resultats' })), ...upcoming.map((match) => ({ match, listView: 'a-venir' }))]; %>
+      <% const groups = []; %>
+      <% for (const row of season) { const label = row.match.competition || ''; let g = groups.find((x) => x.label === label); if (!g) groups.push(g = { label, rows: [] }); g.rows.push(row); } %>
       <div class="fx-list">
-        <% for (const match of [...results].reverse()) { %><%- include('../partials/fixture-row', { match, nextId, listView: 'resultats' }) %><% } %>
-        <% for (const match of upcoming) { %><%- include('../partials/fixture-row', { match, nextId, listView: 'a-venir' }) %><% } %>
+        <% for (const g of groups) { %>
+          <% if (groups.length > 1) { %><section data-month-group><h3 class="fx-group"><%= g.label || 'Autres matchs' %></h3><% } %>
+          <% for (const { match, listView } of g.rows) { %><%- include('../partials/fixture-row', { match, nextId, listView }) %><% } %>
+          <% if (groups.length > 1) { %></section><% } %>
+        <% } %>
         <p class="empty" data-empty hidden>Aucun match dans cette sélection pour le moment.</p>
       </div>
     </div>

@@ -18,6 +18,7 @@ interface ApiTeam {
 }
 interface ApiMatch {
   ffbbMatchId: string;
+  opponentLogo?: string | null; // "/api/v1/assets/{id du logo}"
   location: string; // "GYMNASE MUNICIPAL, Rue du Stade, 17700 SURGERES"
 }
 interface ApiCompetition {
@@ -75,6 +76,7 @@ async function get<T>(path: string): Promise<T> {
 let comitePath = ""; // "/ligues/naq/comites/0017" (pour les liens vers competitions.ffbb.com)
 let teamsByPath = new Map<string, { pouleId: string; code: string; engagementId: string; number: string }>();
 let venues = new Map<string, string>();
+let opponentLogos = new Map<string, string>(); // id du match → id du logo de l'adversaire
 let poules = new Map<string, Promise<ApiPoule>>();
 
 function loadPoule(id: string): Promise<ApiPoule> {
@@ -113,6 +115,7 @@ export async function getClubTeams(clubPath: string, organismeId: string): Promi
     get<{ matches: ApiMatch[] }>(`/club/${organismeId}/matches`),
   ]);
   venues = new Map(matches.map((m) => [m.ffbbMatchId, m.location]));
+  opponentLogos = new Map(matches.flatMap((m) => (m.opponentLogo ? [[m.ffbbMatchId, m.opponentLogo.split("/").pop()!] as [string, string]] : [])));
 
   const result: FfbbClubTeam[] = [];
   for (const t of teams) {
@@ -168,6 +171,12 @@ export async function getTeamPage(teamPath: string): Promise<{ rencontres: FfbbR
     };
   };
 
+  // Logo de l'adversaire sans classement publié (phase 2, mini-basket…) : repris de la liste des matchs du club
+  const withLogo = (e: FfbbEngagementRef, matchId: string): FfbbEngagementRef => {
+    const logo = opponentLogos.get(matchId);
+    return e.idOrganisme || !logo || [...ourByNumber.values()].includes(e.id) ? e : { ...e, idOrganisme: { id: "", logo: { id: logo } } };
+  };
+
   const rencontres = poule.rencontres.map((r) => ({
     id: r.id,
     date_rencontre: r.date_rencontre,
@@ -178,8 +187,8 @@ export async function getTeamPage(teamPath: string): Promise<{ rencontres: FfbbR
     resultatEquipe2: r.resultatEquipe2 === "None" ? null : r.resultatEquipe2,
     // Sans code de compétition, le lien du match renvoie vers la page de l'équipe
     url_competition: code ? `${comitePath}/competitions/${code.toLowerCase()}/match/${r.id}` : teamPath,
-    idEngagementEquipe1: ref(r.nomEquipe1),
-    idEngagementEquipe2: ref(r.nomEquipe2),
+    idEngagementEquipe1: withLogo(ref(r.nomEquipe1), r.id),
+    idEngagementEquipe2: withLogo(ref(r.nomEquipe2), r.id),
   }));
   const classement = poule.classements.map((c) => ({
     idEngagement: { id: c.id_engagement.id },
