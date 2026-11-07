@@ -9,7 +9,7 @@ import sharp from "sharp";
 import { readJson, writeJson } from "../data/repository.js";
 import type { Article } from "../data/types.js";
 
-const GRAPH_URL = "https://graph.facebook.com/v23.0";
+export const GRAPH_URL = "https://graph.facebook.com/v23.0";
 const DATA_FILE = "facebook.json";
 const IMAGE_DIR = path.resolve("public", "img", "facebook");
 const POSTS_PER_SYNC = 30;
@@ -44,7 +44,7 @@ function photosOf(post: FbPost): string[] {
 const exists = (p: string) => access(p).then(() => true, () => false);
 
 /** Coupe un texte au dernier mot entier avant `max` caractères */
-function shorten(text: string, max: number): string {
+export function shorten(text: string, max: number): string {
   if (text.length <= max) return text;
   const cut = text.slice(0, max);
   return `${cut.slice(0, Math.max(cut.lastIndexOf(" "), max * 0.6)).replace(/[\s,;:.!?-]+$/, "")}…`;
@@ -57,23 +57,27 @@ function localIso(utc: string): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:00`;
 }
 
-/** Copie locale d'une photo du post (1200 px de large au plus) : "{post}.jpg", puis "{post}-2.jpg"… */
-async function localImage(postId: string, url: string, index = 0): Promise<string | undefined> {
-  const name = index ? `${postId}-${index + 1}.jpg` : `${postId}.jpg`;
-  const file = path.join(IMAGE_DIR, name);
-  const publicUrl = `/img/facebook/${name}`;
+/** Copie locale d'une photo Facebook (1200 px de large au plus) dans public/img/{folder}/{name} ; renvoie son adresse */
+export async function saveImage(url: string, folder: string, name: string): Promise<string | undefined> {
+  const dir = path.resolve("public", "img", folder);
+  const file = path.join(dir, name);
+  const publicUrl = `/img/${folder}/${name}`;
   if (await exists(file)) return publicUrl;
   try {
     const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    await mkdir(IMAGE_DIR, { recursive: true });
+    await mkdir(dir, { recursive: true });
     await sharp(Buffer.from(await res.arrayBuffer())).rotate().resize({ width: 1200, withoutEnlargement: true }).jpeg({ quality: 80 }).toFile(file);
     return publicUrl;
   } catch (err) {
-    console.warn(`Facebook : photo du post ${postId} non récupérée (${err instanceof Error ? err.message : err})`);
+    console.warn(`Facebook : photo ${name} non récupérée (${err instanceof Error ? err.message : err})`);
     return undefined;
   }
 }
+
+/** Photo d'un post : "{post}.jpg", puis "{post}-2.jpg"… */
+const localImage = (postId: string, url: string, index = 0) =>
+  saveImage(url, "facebook", index ? `${postId}-${index + 1}.jpg` : `${postId}.jpg`);
 
 async function toArticle(post: FbPost): Promise<Article | undefined> {
   const text = (post.message ?? "").trim();

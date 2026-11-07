@@ -683,7 +683,11 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 
 /* ---------- Événements ---------- */
 .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.event-card { flex-direction: row; gap: 18px; padding: 20px; align-items: flex-start; }
+.event-card { overflow: hidden; }
+.event-card-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.event-cover { aspect-ratio: 16 / 9; object-fit: cover; }
+.event-card-main { display: flex; gap: 18px; padding: 20px; align-items: flex-start; }
+.event-body .muted { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .event-card.is-past { opacity: .75; }
 .event-date {
   flex-shrink: 0; width: 64px; padding: 10px 0; border-radius: 14px; text-align: center;

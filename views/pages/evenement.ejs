@@ -4,6 +4,8 @@
 <section class="section">
   <div class="container event-page">
     <article class="prose">
+      <%# Couverture recadrée en bandeau comme sur Facebook (le bas des affiches porte souvent un téléphone) %>
+      <% if (event.image) { %><img class="article-img event-cover" src="<%= event.image %>" alt=""<% if (event.imageFocus !== undefined) { %> style="object-position: 50% <%= event.imageFocus %>%"<% } %>><% } %>
       <p class="lead"><%= event.summary %></p>
       <% for (const paragraph of event.description ?? []) { %><p><%= paragraph %></p><% } %>
     </article>
@@ -17,6 +19,7 @@
       <% if (!event.past) { %>
         <a class="btn btn-primary" href="<%= calendarUrl(event) %>" target="_blank" rel="noopener"><%- icon('calendar') %> Ajouter à mon agenda</a>
       <% } %>
+      <% if (event.sourceUrl) { %><a class="link-arrow" href="<%= event.sourceUrl %>" target="_blank" rel="noopener"><%- icon('facebook') %> Voir l'événement sur Facebook</a><% } %>
       <a class="link-arrow" href="/contact?sujet=Renseignements">Une question ? Écrivez-nous <%- icon('arrow') %></a>
     </aside>
   </div>

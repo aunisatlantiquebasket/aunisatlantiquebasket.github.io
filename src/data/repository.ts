@@ -140,7 +140,7 @@ export async function getPastMatches(limit?: number): Promise<Match[]> {
   return limit ? past.slice(0, limit) : past;
 }
 
-// ---------- Événements (data/evenements.json) ----------
+// ---------- Événements (data/evenements.json saisis à la main, data/facebook-evenements.json importés) ----------
 
 /** Un événement reste « à venir » jusqu'à la fin de son dernier jour */
 const isEventPast = (e: ClubEvent) => {
@@ -148,13 +148,18 @@ const isEventPast = (e: ClubEvent) => {
   return new Date(y, m - 1, d + 1).getTime() <= Date.now();
 };
 
+async function allEvents(): Promise<ClubEvent[]> {
+  const [manual, facebook] = await Promise.all([readJson<ClubEvent[]>("evenements.json", []), readJson<ClubEvent[]>("facebook-evenements.json", [])]);
+  return [...manual, ...facebook];
+}
+
 export async function getEvents(): Promise<{ upcoming: ClubEvent[]; past: ClubEvent[] }> {
-  const events = (await readJson<ClubEvent[]>("evenements.json", [])).sort((a, b) => a.date.localeCompare(b.date));
+  const events = (await allEvents()).sort((a, b) => a.date.localeCompare(b.date));
   return { upcoming: events.filter((e) => !isEventPast(e)), past: events.filter(isEventPast).reverse() };
 }
 
 export async function getEvent(slug: string): Promise<(ClubEvent & { past: boolean }) | undefined> {
-  const event = (await readJson<ClubEvent[]>("evenements.json", [])).find((e) => e.slug === slug);
+  const event = (await allEvents()).find((e) => e.slug === slug);
   return event && { ...event, past: isEventPast(event) };
 }
 

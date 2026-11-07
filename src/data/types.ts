@@ -94,6 +94,9 @@ export interface ClubEvent {
   place?: string; // "Salle des fêtes, Saint-Jean-de-Liversay" (lien d'itinéraire)
   summary: string; // phrase courte pour la liste
   description?: string[]; // paragraphes de la page de l'événement
+  image?: string; // photo de couverture (événements Facebook)
+  imageFocus?: number; // hauteur du centre d'intérêt de la photo, en % (cadrage de la couverture Facebook)
+  sourceUrl?: string; // événement d'origine sur Facebook
 }
 
 export interface Article {

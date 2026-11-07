@@ -118,7 +118,10 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
   l'Explorateur de l'API Graph, jeton utilisateur avec `pages_show_list`, `pages_read_engagement`,
   `pages_read_user_content` ; le prolonger dans le Débogueur de jetons ; `me/accounts` → `access_token`
   de la page (« Expire : Jamais ») ; l'enregistrer dans GitHub → Settings → Secrets → Actions sous `FB_PAGE_TOKEN`.
-- **Événement hors matchs** (loto, AG, stage, fête…) : ajouter une entrée dans `data/evenements.json` :
+- **Événements** : ceux de la page Facebook du club sont importés automatiquement avec le même jeton
+  (`src/facebook/events.ts` → `data/facebook-evenements.json`, couvertures dans `public/img/evenements/`,
+  recadrées en bandeau). Les lignes contenant un numéro de téléphone et les lignes de hashtags sont retirées.
+  Un événement absent de Facebook peut être ajouté à la main dans `data/evenements.json` :
   ```json
   { "slug": "loto-2026", "title": "Loto du club", "kind": "Vie du club", "date": "2026-11-21",
     "endDate": "2026-11-22", "time": "19h00", "place": "Salle des fêtes, Saint-Jean-de-Liversay",

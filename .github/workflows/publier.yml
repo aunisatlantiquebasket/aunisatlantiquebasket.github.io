@@ -46,7 +46,7 @@ jobs:
         run: |
           npm run sync-ffbb || echo "::warning::Synchronisation FFBB en échec, publication avec les données précédentes"
 
-      - name: Importer les publications Facebook
+      - name: Importer les publications et les événements Facebook
         # Jeton de la page : secret FB_PAGE_TOKEN (démarche dans le README). Sans jeton ou en cas
         # d'échec, on publie avec les actualités précédentes.
         run: |
@@ -58,7 +58,7 @@ jobs:
         run: |
           git config user.name "robot-site-aab"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/teams.json data/matches.json public/img/clubs data/facebook.json public/img/facebook
+          git add data/teams.json data/matches.json public/img/clubs data/facebook.json public/img/facebook data/facebook-evenements.json public/img/evenements
           if ! git diff --cached --quiet; then
             git add data/ffbb-sync.json
             git commit -m "Données FFBB et Facebook mises à jour"
