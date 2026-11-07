@@ -11,7 +11,11 @@
 
     <% if (past.length) { %>
       <div class="section-head events-past-head"><div><p class="eyebrow">Déjà passés</p><h2>Ils ont eu lieu</h2></div></div>
-      <div class="events-grid"><% for (const event of past) { %><%- include('../partials/event-card', { event, isPast: true }) %><% } %></div>
+      <%# Regroupés par année, de la plus récente à la plus ancienne %>
+      <% for (const year of [...new Set(past.map((e) => e.date.slice(0, 4)))]) { %>
+        <h3 class="events-year"><%= year %></h3>
+        <div class="events-grid"><% for (const event of past.filter((e) => e.date.startsWith(year))) { %><%- include('../partials/event-card', { event, isPast: true }) %><% } %></div>
+      <% } %>
     <% } %>
   </div>
 </section>

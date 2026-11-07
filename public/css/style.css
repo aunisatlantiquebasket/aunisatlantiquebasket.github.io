@@ -701,6 +701,9 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .event-when .icon { width: 14px; height: 14px; margin-top: 3px; color: var(--green-text); }
 .event-body .muted { margin: 8px 0 0; font-size: .9rem; }
 .events-past-head { margin-top: 56px; }
+.events-year { display: flex; align-items: center; gap: 14px; margin: 32px 0 16px; font-size: 1.3rem; color: var(--green-text); }
+.events-year::after { content: ""; flex: 1; height: 1px; background: var(--border, #dde3e7); }
+.events-past-head + .events-year { margin-top: 0; }
 .event-page { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 40px; align-items: start; }
 .event-info { display: grid; gap: 16px; }
 .event-info .tag { justify-self: start; margin: 0; }
