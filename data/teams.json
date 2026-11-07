@@ -33,12 +33,12 @@
     "category": "Jeunes",
     "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
     "trainings": [
-      "Mercredi 17h00 – 18h30 (2 groupes)",
-      "Vendredi 17h00 – 18h30 (2 groupes)"
+      "Mercredi 17h00 – 18h30",
+      "Vendredi 17h00 – 18h30"
     ],
     "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
     "players": [],
-    "coach": "Jonathan, Jérémy, Clément",
+    "coach": "Jonathan",
     "ffbbKey": "U11-M-1",
     "active": true,
     "ffbbId": "200000005396778",
@@ -432,11 +432,16 @@
     "name": "U11 Masculins 2",
     "category": "Jeunes",
     "championship": "Départementale mixte U11 - Division 3 (DXU11-3), poule A",
-    "trainings": [],
+    "trainings": [
+      "Mercredi 17h00 – 18h30",
+      "Vendredi 17h00 – 18h30"
+    ],
     "players": [],
     "ffbbKey": "U11-M-2",
     "active": true,
     "ffbbId": "200000005396779",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396779"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396779",
+    "coach": "Jérémy, Clément",
+    "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay"
   }
 ]
