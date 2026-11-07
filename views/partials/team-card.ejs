@@ -1,4 +1,5 @@
-<% const catIcon = { Seniors: 'trophy', Jeunes: 'ball', Loisirs: 'heart' }[team.category] || 'users'; %>
+<%# Loisirs : les « Paillettes », d'où l'icône %>
+<% const catIcon = { Seniors: 'trophy', Jeunes: 'ball', Loisirs: 'sparkles' }[team.category] || 'users'; %>
 <a href="/equipes/<%= team.slug %>" class="card team-card cat-<%= team.category.toLowerCase() %>">
   <div class="team-card-icon"><%- include('icon', { name: catIcon }) %></div>
   <div class="card-body">
