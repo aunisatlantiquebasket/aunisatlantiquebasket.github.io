@@ -83,15 +83,20 @@ const isCalendar = (a: Article) => {
   const text = [a.title, ...a.content].join("\n");
   return (text.match(/🆚/gu) ?? []).length >= 2 || (text.match(/📅/gu) ?? []).length >= 2;
 };
+/** Résultat brut : texte très court qui donne un score (« Victoire 66-20 💪 » sur un visuel de score) */
+const isRawResult = (a: Article) => {
+  const text = [a.title, ...a.content].join(" ");
+  return text.length < 200 && /\b\d{1,3}\s*[-–:à]\s*\d{1,3}\b/.test(text);
+};
 const normalizeTitle = (t: string) => t.normalize("NFKD").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
 
-/** Retire posts sans texte, calendriers, publications exclues et doublons (même titre : on garde la plus récente) */
+/** Retire posts sans texte, résultats bruts, calendriers, publications exclues et doublons (même titre : on garde la plus récente) */
 export function filterPosts(articles: Article[], excluded: string[]): Article[] {
   const seen = new Set<string>();
   return [...articles]
     .sort((a, b) => b.date.localeCompare(a.date))
     .filter((a) => {
-      if (a.content.length === 0 || isCalendar(a) || excluded.includes(a.slug.replace(/^facebook-/, ""))) return false;
+      if (a.content.length === 0 || isCalendar(a) || isRawResult(a) || excluded.includes(a.slug.replace(/^facebook-/, ""))) return false;
       const key = normalizeTitle(a.title);
       if (seen.has(key)) return false;
       seen.add(key);
