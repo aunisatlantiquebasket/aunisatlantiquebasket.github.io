@@ -62,12 +62,15 @@ async function toArticle(post: FbPost): Promise<Article | undefined> {
   const date = localIso(post.created_time);
   const lines = text.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   const dateLabel = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long" }).format(new Date(date));
+  const title = lines.length ? shorten(lines[0], 90) : `Publication du ${dateLabel}`;
+  // Première ligne reprise entière en titre : elle n'est pas répétée dans le résumé ni le texte
+  const body = title === lines[0] && lines.length > 1 ? lines.slice(1) : lines;
   return {
     slug: `facebook-${postId}`,
-    title: lines.length ? shorten(lines[0], 90) : `Publication du ${dateLabel}`,
+    title,
     date,
-    summary: shorten(lines.join(" "), 170),
-    content: lines,
+    summary: shorten(body.join(" "), 170),
+    content: body,
     image: post.full_picture ? await localImage(postId, post.full_picture) : undefined,
     sourceUrl: post.permalink_url,
   };

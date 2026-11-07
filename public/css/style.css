@@ -267,7 +267,7 @@ p { margin: 0 0 1em; }
 
 .article-card-top { display: flex; align-items: center; gap: 10px; padding: 16px 22px; background: linear-gradient(135deg, var(--green-50), var(--green-100)); color: var(--green-text); font-weight: 600; font-size: .9rem; }
 .article-card p { color: var(--muted); }
-.article-card-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.article-card-img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
 .article-card p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .article-img { display: block; width: 100%; height: auto; border-radius: var(--radius); margin: 0 0 24px; }
 
