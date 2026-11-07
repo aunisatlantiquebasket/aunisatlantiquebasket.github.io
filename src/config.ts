@@ -30,8 +30,8 @@ export const club = {
 
 // Site publié « en construction » : l'accueil en ligne affiche une page d'attente, et le vrai site
 // reste consultable (non référencé) à l'adresse /apercu/ pour le faire valider.
-// Passer à false pour ouvrir le site (ou EN_CONSTRUCTION=0 pour une génération locale).
-export const enConstruction = process.env.EN_CONSTRUCTION ? process.env.EN_CONSTRUCTION !== "0" : true;
+// Site ouvert au public depuis le 7 novembre 2026 ; repasser à true (ou EN_CONSTRUCTION=1) pour la page d'attente.
+export const enConstruction = process.env.EN_CONSTRUCTION ? process.env.EN_CONSTRUCTION !== "0" : false;
 
 export const port =Number(process.env.PORT ?? 3000);
 

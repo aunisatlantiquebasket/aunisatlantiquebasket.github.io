@@ -84,7 +84,9 @@ try {
     const count = await buildSite(OUT, BASE);
     // Page d'erreur servie par l'hébergeur pour les adresses inconnues
     const notFound = await fetch(`${origin}/__page-inexistante__`);
-    await writeFile(path.join(OUT, "404.html"), withBase(await notFound.text(), BASE));
+    // Anciens liens de validation (/apercu/…) : renvoyés vers la même page du site ouvert
+    const fromApercu = `<script>if (location.pathname.startsWith("${BASE}${APERCU}/")) location.replace(location.pathname.replace("${APERCU}/", "/") + location.search + location.hash);</script>`;
+    await writeFile(path.join(OUT, "404.html"), withBase(await notFound.text(), BASE).replace("</head>", `${fromApercu}\n</head>`));
     console.log(`Site statique généré dans site/ : ${count} pages + 404.html${BASE ? ` (chemin de base ${BASE})` : ""}`);
   }
 } finally {

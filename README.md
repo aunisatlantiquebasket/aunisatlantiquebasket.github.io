@@ -24,7 +24,8 @@ génération du site statique → publication sur GitHub Pages.
 - En cas d'échec de la FFBB, le site est publié quand même avec les données précédentes (avertissement dans Actions).
 - **Site en construction** (`enConstruction` dans `src/config.ts`) : l'adresse du club affiche une page d'attente
   (`views/pages/construction.ejs`) et le vrai site reste consultable, non référencé par les moteurs de recherche,
-  sur `https://aunisatlantiquebasket.com/apercu/`. Pour ouvrir le site : passer `enConstruction` à `false` et envoyer sur GitHub.
+  sur `https://aunisatlantiquebasket.com/apercu/`. Site ouvert au public depuis le 7 novembre 2026 (`enConstruction: false`) ;
+  les anciens liens `/apercu/…` sont redirigés vers la même page.
 
 Le site étant statique, les filtres du calendrier et des équipes s'appliquent dans la page (`public/js/filters.js`)
 et la page Contact propose un e-mail prérempli (pas de formulaire, pas de téléphone).
