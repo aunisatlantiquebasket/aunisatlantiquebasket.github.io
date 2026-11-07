@@ -14,6 +14,7 @@ export interface Team {
   ffbbUrl?: string; // fiche de l'équipe sur competitions.ffbb.com
   ranking?: { position: number; points: number; played: number; wins: number; losses: number };
   standings?: StandingRow[]; // classement complet de la poule
+  rankingPhase?: number; // renseigné quand le classement est celui d'une phase précédente (phase suivante sans classement)
 }
 
 export interface StandingRow {

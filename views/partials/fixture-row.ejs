@@ -28,7 +28,8 @@
       <span class="fx-avatar"><%= initials %></span>
     <% } %>
     <div class="fx-opp-text">
-      <% if (showTeam) { %><span class="fx-team"><%= teamName %></span><% } %>
+      <%# Avec le nom de l'équipe (accueil, calendrier) : toute la ligne mène à la page de l'équipe %>
+      <% if (showTeam) { %><a class="fx-team fx-link" href="/equipes/<%= match.teamSlug %>"><%= teamName %></a><% } %>
       <strong><%= match.opponent %></strong>
       <a class="fx-venue" href="<%= mapsUrl(match.venue) %>" target="_blank" rel="noopener"><%- include('icon', { name: 'pin' }) %><%= match.venue %></a>
     </div>

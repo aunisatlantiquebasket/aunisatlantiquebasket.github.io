@@ -28,7 +28,7 @@
       <% groups.sort((a, b) => Number(ongoing(b)) - Number(ongoing(a)) || lastDate(b).localeCompare(lastDate(a))); %>
       <div class="fx-list">
         <% for (const g of groups) { %>
-          <% if (groups.length > 1) { %><section data-month-group><h3 class="fx-group"><%= g.label || 'Autres matchs' %></h3><% } %>
+          <% if (groups.length > 1) { %><section data-month-group class="fx-section"><h3 class="fx-group"><span><%= g.label || 'Autres matchs' %></span><span class="fx-group-status <%= ongoing(g) ? 'on' : '' %>"><%= ongoing(g) ? 'En cours' : 'Terminée' %></span></h3><% } %>
           <% for (const { match, listView } of g.rows) { %><%- include('../partials/fixture-row', { match, nextId, listView }) %><% } %>
           <% if (groups.length > 1) { %></section><% } %>
         <% } %>

@@ -4,7 +4,8 @@
   <div class="card-body">
     <div class="team-card-tags">
       <span class="tag tag-team"><%= team.category %></span>
-      <% if (team.ranking && team.ranking.played > 0) { %>
+      <%# Classement d'une phase précédente : pas affiché sur la carte, il ne correspond plus à la compétition en cours %>
+      <% if (team.ranking && team.ranking.played > 0 && !team.rankingPhase) { %>
         <span class="tag tag-rank"><%= team.ranking.position %><%= team.ranking.position === 1 ? 'er' : 'e' %> de la poule</span>
       <% } %>
     </div>

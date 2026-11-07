@@ -373,8 +373,11 @@ p { margin: 0 0 1em; }
 .fixtures-title { font-family: var(--font-display); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .02em; margin: 0; color: var(--slate-900); }
 .fixtures-title::after { content: ""; display: block; width: 36px; height: 4px; background: var(--green); border-radius: 4px; margin-top: 4px; }
 .fx-list > .empty { margin: 20px; }
-.fx-group { margin: 0; padding: 10px 20px; background: var(--bg-tint); border-bottom: 1px solid var(--border); color: var(--green-text); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.fx-list > section + section .fx-group { border-top: 1px solid var(--border); }
+/* Compétitions d'une équipe (phase 1 / phase 2, coupe) : bandeau de titre et séparation nette */
+.fx-group { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 14px 20px; background: var(--slate-800); color: #fff; font-family: var(--font-display); font-size: .95rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.fx-group-status { padding: 3px 10px; border-radius: 999px; background: rgba(255, 255, 255, .14); color: rgba(255, 255, 255, .8); font-family: var(--font-body); font-size: .7rem; letter-spacing: .04em; }
+.fx-group-status.on { background: var(--green); color: var(--slate-900); }
+.fx-list > .fx-section + .fx-section { border-top: 10px solid var(--bg-tint); }
 
 .fx {
   position: relative;
@@ -407,6 +410,14 @@ p { margin: 0 0 1em; }
 .fx-venue { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fx-venue .icon { width: 12px; height: 12px; }
 .fx-venue:hover { color: var(--green-text); }
+/* Ligne cliquable vers l'équipe : le lien du nom couvre toute la ligne, l'itinéraire reste cliquable au-dessus */
+.fx:has(.fx-link) { position: relative; cursor: pointer; }
+.fx-link { text-decoration: none; }
+.fx-link::after { content: ""; position: absolute; inset: 0; }
+.fx-link:focus-visible { outline: none; }
+.fx:has(.fx-link:focus-visible) { outline: 3px solid var(--green); outline-offset: -3px; }
+.fx:has(.fx-link) .fx-venue { position: relative; z-index: 1; }
+.fx:has(.fx-link):hover .fx-opp strong { color: var(--green-text); }
 
 .fx-score { display: flex; align-items: center; gap: 8px; padding-left: 16px; border-left: 1px solid var(--border); }
 .fx-score .box {

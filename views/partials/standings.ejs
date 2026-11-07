@@ -8,7 +8,7 @@
   const logo = (r) => r.isUs ? '/img/logo-rond.svg' : r.logo;
 %>
 <section class="side-card standings-card">
-  <h2 class="side-card-title">Classement officiel<% if (poule) { %> · <%= poule %><% } %></h2>
+  <h2 class="side-card-title"><%= team.rankingPhase ? `Classement phase ${team.rankingPhase}` : 'Classement officiel' %><% if (poule) { %> · <%= poule %><% } %></h2>
   <ol class="rank-list">
     <% shortList.forEach((r, i) => { %>
       <% if (i > 0 && r.position - shortList[i - 1].position > 1) { %><li class="rank-gap" aria-hidden="true">···</li><% } %>

@@ -144,7 +144,8 @@
     ],
     "ffbbKey": "U13-M-1",
     "active": true,
-    "coach": "Alexandre, Julien, Guillaume"
+    "coach": "Alexandre, Julien, Guillaume",
+    "rankingPhase": 1
   },
   {
     "slug": "u15-feminines",
@@ -246,7 +247,8 @@
     ],
     "ffbbKey": "U15-F-1",
     "active": true,
-    "coach": "Noé, Jérémie"
+    "coach": "Noé, Jérémie",
+    "rankingPhase": 1
   },
   {
     "slug": "seniors-masculins",

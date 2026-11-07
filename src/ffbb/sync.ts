@@ -178,6 +178,8 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
     // Les autres engagements de la même équipe (coupe…) ne font qu'ajouter leurs matchs.
     // Phases du championnat dans l'ordre (phase 1, phase 2…), la dernière disponible donnant le classement
     const phaseOf = (t: FfbbClubTeam) => Number(t.label.match(/phase\s*(\d+)/i)?.[1] ?? 1);
+    const latestPhase = new Map<Team, number>(); // dernière phase du championnat où l'équipe est engagée
+    const rankingPhase = new Map<Team, number>(); // phase dont le classement est affiché
     const ordered = [...clubTeams].sort((a, b) => Number(b.type === "DIV") - Number(a.type === "DIV") || phaseOf(a) - phaseOf(b));
 
     for (const ct of ordered) {
@@ -230,11 +232,13 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
 
       // Phase suivante du championnat : son classement remplace celui de la phase précédente
       // dès que la FFBB l'a publié avec au moins un match joué par l'équipe
+      if (ct.type === "DIV") latestPhase.set(team, Math.max(latestPhase.get(team) ?? 0, phaseOf(ct)));
       const nextPhase = !primary && ct.type === "DIV" && Number(classement.find((c) => c.idEngagement.id === ct.id)?.matchJoues) > 0;
       if (!primary && !nextPhase) {
         log(`FFBB : ${team.name} → ${own.length} match(s) en « ${ct.label} »`);
         continue;
       }
+      rankingPhase.set(team, phaseOf(ct));
       team.ffbbId = ct.id;
       team.ffbbUrl = ffbbUrl(ct.url_competition);
       team.championship = championship(ct);
@@ -285,6 +289,12 @@ async function runSync(log: (msg: string) => void): Promise<SyncStatus> {
 
     // Compétitions d'une équipe : le championnat devient « Phase 1 » quand une phase 2 existe ;
     // une seule compétition : pas de regroupement, l'étiquette est retirée
+    // Nouvelle phase commencée sans classement publié : celui affiché est celui de la phase précédente
+    for (const team of engaged) {
+      if ((latestPhase.get(team) ?? 0) > (rankingPhase.get(team) ?? 0)) team.rankingPhase = rankingPhase.get(team);
+      else delete team.rankingPhase;
+    }
+
     for (const team of engaged) {
       const own = ffbbMatches.filter((m) => m.teamSlug === team.slug);
       const labels = new Set(own.map((m) => m.competition));
