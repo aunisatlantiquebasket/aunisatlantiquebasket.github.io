@@ -34,6 +34,23 @@
     "competition": "Phase 1"
   },
   {
+    "id": "ffbb-200000014645920",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-09-20T13:00:00",
+    "opponent": "Saujon Basket Club 2",
+    "home": false,
+    "venue": "Gymnase Noël Meunier, Saujon",
+    "score": {
+      "us": 53,
+      "them": 93
+    },
+    "source": "ffbb",
+    "round": 1,
+    "opponentLogo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645920",
+    "competition": "Championnat"
+  },
+  {
     "id": "ffbb-200000014757761",
     "teamSlug": "u13-masculins",
     "date": "2026-09-26T13:00:00",
@@ -68,6 +85,23 @@
     "competition": "Phase 1"
   },
   {
+    "id": "ffbb-200000014645925",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-09-26T19:00:00",
+    "opponent": "Surgères",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 61,
+      "them": 52
+    },
+    "source": "ffbb",
+    "round": 2,
+    "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645925",
+    "competition": "Championnat"
+  },
+  {
     "id": "ffbb-200000014758255",
     "teamSlug": "u15-feminines",
     "date": "2026-10-03T16:00:00",
@@ -85,6 +119,23 @@
     "competition": "Phase 1"
   },
   {
+    "id": "ffbb-200000014645930",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-10-03T19:00:00",
+    "opponent": "Marennes Bourcefranc BBMB",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 42,
+      "them": 79
+    },
+    "source": "ffbb",
+    "round": 3,
+    "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645930",
+    "competition": "Championnat"
+  },
+  {
     "id": "ffbb-200000014757790",
     "teamSlug": "u13-masculins",
     "date": "2026-10-10T14:00:00",
@@ -100,6 +151,23 @@
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757790",
     "competition": "Phase 1"
+  },
+  {
+    "id": "ffbb-200000014645935",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-10-10T21:00:00",
+    "opponent": "Ciré Sports 2",
+    "home": false,
+    "venue": "Gymnase Bernard Pougnant, Ciré-d'Aunis",
+    "score": {
+      "us": 56,
+      "them": 81
+    },
+    "source": "ffbb",
+    "round": 4,
+    "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645935",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014757805",
@@ -149,7 +217,8 @@
     "source": "ffbb",
     "round": 13,
     "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005373979"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005373979",
+    "competition": "Coupe 17 Michel Château, 1/16ème de finale"
   },
   {
     "id": "ffbb-200000014939772",
@@ -184,6 +253,23 @@
     "opponentLogo": "/img/clubs/6a0c5fb5-b934-4442-bf42-22d5695f073b.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
     "competition": "Phase 2"
+  },
+  {
+    "id": "ffbb-200000014645940",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-11-07T19:00:00",
+    "opponent": "Angoulins UBAC 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 66,
+      "them": 53
+    },
+    "source": "ffbb",
+    "round": 5,
+    "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645940",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014850086",
@@ -248,6 +334,19 @@
     "competition": "Phase 2"
   },
   {
+    "id": "ffbb-200000014645945",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-11-14T21:00:00",
+    "opponent": "Rochefort Basket Club 2",
+    "home": false,
+    "venue": "Gymnase Grimaux, Rochefort",
+    "source": "ffbb",
+    "round": 6,
+    "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645945",
+    "competition": "Championnat"
+  },
+  {
     "id": "ffbb-200000014850066",
     "teamSlug": "u11-2",
     "date": "2026-11-28T00:00:00",
@@ -286,7 +385,7 @@
   {
     "id": "ffbb-200000014939802",
     "teamSlug": "u13-masculins",
-    "date": "2026-11-28T13:00:00",
+    "date": "2026-11-28T15:00:00",
     "opponent": "Oleron Basket Club",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
@@ -295,6 +394,19 @@
     "opponentLogo": "/img/clubs/9b9afd4b-a20b-44d8-83de-c951d62dea3d.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
     "competition": "Phase 2"
+  },
+  {
+    "id": "ffbb-200000014645950",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-11-28T19:00:00",
+    "opponent": "Royan Basket Côte de Beauté 2",
+    "home": false,
+    "venue": "Salle du COSEC, Royan",
+    "source": "ffbb",
+    "round": 7,
+    "opponentLogo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645950",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014939930",
@@ -308,6 +420,19 @@
     "opponentLogo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
     "competition": "Phase 2"
+  },
+  {
+    "id": "ffbb-200000014645955",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-12-05T21:00:00",
+    "opponent": "Saint-Rogatien Basket Club 3",
+    "home": false,
+    "venue": "Salle Josette & Philippe Pinaud, Saint-Rogatien",
+    "source": "ffbb",
+    "round": 8,
+    "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645955",
+    "competition": "Championnat"
   },
   {
     "id": "ffbb-200000014850069",
@@ -370,5 +495,135 @@
     "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423769",
     "competition": "Phase 2"
+  },
+  {
+    "id": "ffbb-200000014645960",
+    "teamSlug": "seniors-masculins",
+    "date": "2026-12-12T19:00:00",
+    "opponent": "BC Élan Gémozacais",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 9,
+    "opponentLogo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645960",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645965",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-01-09T19:00:00",
+    "opponent": "Saujon Basket Club 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 10,
+    "opponentLogo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645965",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645970",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-01-17T15:30:00",
+    "opponent": "Surgères",
+    "home": false,
+    "venue": "Gymnase municipal, Surgères",
+    "source": "ffbb",
+    "round": 11,
+    "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645970",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645975",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-01-30T19:00:00",
+    "opponent": "Marennes Bourcefranc BBMB",
+    "home": false,
+    "venue": "Salle omnisports, Marennes-Hiers-Brouage",
+    "source": "ffbb",
+    "round": 12,
+    "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645975",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645980",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-02-06T19:00:00",
+    "opponent": "Ciré Sports 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 13,
+    "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645980",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645985",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-03-06T18:30:00",
+    "opponent": "Angoulins UBAC 2",
+    "home": false,
+    "venue": "Gymnase Louis Ferrand, Angoulins",
+    "source": "ffbb",
+    "round": 14,
+    "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645985",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645990",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-03-13T19:00:00",
+    "opponent": "Rochefort Basket Club 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 15,
+    "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645990",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014645995",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-03-27T19:00:00",
+    "opponent": "Royan Basket Côte de Beauté 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 16,
+    "opponentLogo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645995",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014646000",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-04-03T19:00:00",
+    "opponent": "Saint-Rogatien Basket Club 3",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 17,
+    "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646000",
+    "competition": "Championnat"
+  },
+  {
+    "id": "ffbb-200000014646005",
+    "teamSlug": "seniors-masculins",
+    "date": "2027-04-10T20:00:00",
+    "opponent": "BC Élan Gémozacais",
+    "home": false,
+    "venue": "Complexe omnisports Beauplants, Gémozac",
+    "source": "ffbb",
+    "round": 18,
+    "opponentLogo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646005",
+    "competition": "Championnat"
   }
 ]
