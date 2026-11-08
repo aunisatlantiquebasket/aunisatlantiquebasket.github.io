@@ -129,6 +129,15 @@ public/                CSS, scripts, logos (img/clubs : adversaires, générés 
   ```
   `endDate`, `time`, `place`, `kind` et `description` sont facultatifs. L'événement passe tout seul dans
   « Déjà passés » le lendemain de son dernier jour ; les 3 prochains s'affichent sur l'accueil.
+- **Aider aux matchs** (`/aider-aux-matchs`) : les inscriptions (responsable de salle, arbitres,
+  marqueur, chronométreur réservés aux licenciés ; buvette ouverte à tous) sont écrites dans le planning
+  des matchs à domicile, une feuille Google du club, par le script `apps-script/benevoles.gs`. Ce script ajoute
+  aussi au planning, toutes les heures, les matchs à domicile publiés par le site (`/aider-aux-matchs/matchs.json`).
+  Mise en place (une fois) : fichier au format Google Sheets (pas .xlsx) → Extensions → Apps Script → coller
+  le script → exécuter `installer` (autoriser) → Déployer → Nouveau déploiement → Application Web, exécuter
+  en tant que « Moi », accès « Tout le monde » → copier l'adresse `…/exec` dans `benevoles.apiUrl`
+  (`src/config.ts`). Après une modification du script : Déployer → Gérer les déploiements → modifier →
+  Nouvelle version (l'adresse ne change pas). Aperçu local sans feuille : `BENEVOLES_API=demo npm run build:static`.
 - **Trombinoscope** (`/trombinoscope`) :
   - les **coachs** sont repris automatiquement du champ `coach` de chaque équipe (`data/teams.json`, plusieurs noms séparés par des virgules) ;
   - le **bureau**, le **comité directeur** et les **bénévoles** se complètent dans `data/trombinoscope.json`

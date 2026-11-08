@@ -41,3 +41,25 @@ export const ffbbSync = {
   enabled: process.env.FFBB_SYNC !== "off",
   intervalHours: Number(process.env.FFBB_SYNC_HOURS ?? 3),
 };
+
+// Inscriptions des bénévoles aux matchs à domicile (page /aider-aux-matchs). Les inscriptions sont enregistrées
+// dans le planning des matchs à domicile (feuille Google du club) par un script Apps Script
+// (apps-script/benevoles.gs, démarche dans le README). Postes du match réservés aux licenciés (licence: true).
+// apiUrl : adresse de l'application web du script ; vide = page affichée sans inscription possible ;
+// "demo" = inscriptions simulées dans le navigateur (aperçu local).
+// Les postes et leur nombre de places doivent rester identiques à ceux du script.
+export const benevoles = {
+  // Page cachée tant que false : en ligne, mais sans lien (menu, accueil, calendrier, pied de page),
+  // hors du plan du site et non référencée ; accessible seulement par son adresse
+  visible: false,
+  apiUrl: process.env.BENEVOLES_API ?? "https://script.google.com/macros/s/AKfycbwK3OezZTeOuV59Ps8jR4A38AU56_KcnYZQ_l9ZUX4ykDCkvbyVjYONzhDL6D3OJ0v1iw/exec",
+  // Retrait par le site impossible dans les dernières heures avant le match (même valeur que dans le script)
+  cancelDelayHours: 72,
+  roles: [
+    { id: "salle", label: "Responsable de salle", places: 1, licence: true },
+    { id: "arbitre", label: "Arbitres", one: "Arbitre", places: 2, licence: true },
+    { id: "marqueur", label: "Marqueur", places: 1, licence: true },
+    { id: "chrono", label: "Chronométreur", places: 1, licence: true },
+    { id: "buvette", label: "Buvette", places: 2, needed: 1 }, // ouverte à tous
+  ] as { id: string; label: string; places: number; needed?: number; licence?: boolean; one?: string }[],
+};

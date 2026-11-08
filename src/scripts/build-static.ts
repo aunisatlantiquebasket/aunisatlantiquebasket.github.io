@@ -23,7 +23,7 @@ const withBase = (html: string, base: string) => (base ? html.replace(/\b(href|s
 const noIndex = (html: string) => html.replace("<head>", '<head>\n  <meta name="robots" content="noindex, nofollow">');
 
 const { app } = await import("../server.js");
-const { club, enConstruction } = await import("../config.js");
+const { benevoles, club, enConstruction } = await import("../config.js");
 const { getArticles, getEvents, getTeams } = await import("../data/repository.js");
 
 const server = app.listen(0);
@@ -38,6 +38,7 @@ async function sitePages(): Promise<string[]> {
     "/equipes",
     ...teams.map((t) => `/equipes/${t.slug}`),
     "/calendrier",
+    "/aider-aux-matchs",
     "/actualites",
     ...articles.map((a) => `/actualites/${a.slug}`),
     "/evenements",
@@ -99,10 +100,13 @@ try {
   } else {
     const count = await buildSite(OUT, BASE);
     // Référencement : plan du site pour les moteurs de recherche, et robots.txt qui l'indique
-    const pages = await sitePages();
+    // Page « Aider aux matchs » cachée : générée, mais absente du plan du site
+    const pages = (await sitePages()).filter((p) => benevoles.visible || p !== "/aider-aux-matchs");
     const today = new Date().toISOString().slice(0, 10);
     const urls = pages.map((p) => `  <url><loc>${club.siteUrl}${BASE}${p === "/" ? "/" : `${p}/`}</loc><lastmod>${today}</lastmod></url>`);
     await writeFile(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
+    // Matchs à domicile pour le planning des bénévoles (lu par le script de la feuille Google du club)
+    await writeFile(path.join(OUT, "aider-aux-matchs", "matchs.json"), await (await fetch(`${origin}/aider-aux-matchs/matchs.json`)).text());
     await writeFile(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${club.siteUrl}${BASE}/sitemap.xml\n`);
     // Page d'erreur servie par l'hébergeur pour les adresses inconnues
     const notFound = await fetch(`${origin}/__page-inexistante__`);

@@ -5,6 +5,7 @@
 <section class="section">
   <%# Les filtres s'appliquent dans la page (public/js/filters.js) : le site peut ainsi être publié en statique %>
   <div class="container calendar-wrap" data-filter-scope data-default-view="a-venir">
+    <% if (benevoles.visible) { %><a href="/aider-aux-matchs" class="vol-callout"><%- icon('heart') %><span><strong>Matchs à domicile : on a besoin de vous !</strong> Arbitre, table de marque, buvette… inscrivez-vous comme bénévole.</span><%- icon('arrow') %></a><% } %>
     <div class="toolbar">
       <div class="toolbar-row">
         <div class="tabs" role="group" aria-label="Type de matchs">

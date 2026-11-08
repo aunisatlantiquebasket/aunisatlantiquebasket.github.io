@@ -1,7 +1,7 @@
 import express, { type NextFunction, type Request, type Response } from "express";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { club, port } from "./config.js";
+import { benevoles, club, port } from "./config.js";
 import {
   getArticle,
   getArticles,
@@ -166,6 +166,7 @@ function groupByMonth(matches: Match[]): { month: string; matches: Match[] }[] {
 // Variables et helpers disponibles dans toutes les vues
 app.use((req, res, next) => {
   res.locals.club = club;
+  res.locals.benevoles = benevoles;
   res.locals.currentPath = req.path;
   res.locals.formatDate = (iso: string) => dateFormat.format(new Date(iso));
   res.locals.formatShortDate = (iso: string) => shortDateFormat.format(new Date(iso));
@@ -254,6 +255,54 @@ app.get("/calendrier", async (_req, res) => {
     nextId: upcoming[0]?.id,
     lastSync: syncStatus?.lastSuccess,
   });
+});
+
+// Inscriptions des bénévoles : matchs à domicile à venir et passés, regroupés par jour (public/js/benevoles.js)
+app.get("/aider-aux-matchs", async (_req, res) => {
+  const [teams, upcoming, past] = await Promise.all([getTeams(), getUpcomingMatches(), getPastMatches()]);
+  const names = Object.fromEntries(teams.map((t) => [t.slug, t.name]));
+  const byDay = (matches: Match[]) => {
+    const days: { label: string; matches: (Match & { teamName: string })[] }[] = [];
+    for (const m of matches.filter((m) => m.home)) {
+      const label = dayFormat.format(new Date(m.date));
+      let day = days.find((d) => d.label === label);
+      if (!day) days.push((day = { label, matches: [] }));
+      day.matches.push({ ...m, teamName: names[m.teamSlug] ?? m.teamSlug });
+    }
+    for (const d of days) d.matches.sort((a, b) => a.date.localeCompare(b.date)); // dans la journée : par heure
+    return days;
+  };
+  // Passés : du plus récent au plus ancien
+  res.render("pages/benevoles", { title: "Aider aux matchs à domicile", days: byDay(upcoming), pastDays: byDay(past), benevoles });
+});
+
+/** Équipe telle qu'écrite dans le planning du club : « U13 Masculins » → U13M, « U11-2 », « Séniors » */
+const planningTeam = (t: Team) => {
+  const cat = t.name.match(/^(U\d+(?:-\d)?)(?:\s+([MF]))?/);
+  return cat ? cat[1] + (cat[2] ?? "") : t.category === "Seniors" ? "Séniors" : t.category;
+};
+
+// Matchs à domicile de la saison, lus par le script de la feuille Google du club pour tenir son planning à jour.
+// Les matchs passés (passe: true) servent seulement à relier les lignes déjà saisies (historique des postes).
+app.get("/aider-aux-matchs/matchs.json", async (_req, res) => {
+  const [teams, upcoming, past] = await Promise.all([getTeams(), getUpcomingMatches(), getPastMatches()]);
+  const pastIds = new Set(past.map((m) => m.id));
+  res.json(
+    [...[...past].reverse(), ...upcoming]
+      .filter((m) => m.home)
+      .map((m) => {
+        const team = teams.find((t) => t.slug === m.teamSlug);
+        const [date, time] = m.date.split("T");
+        return {
+          id: m.id,
+          date, // "2026-11-14"
+          heure: time.startsWith("00:00") ? "" : time.slice(0, 5), // vide : horaire pas encore fixé
+          equipe: team ? planningTeam(team) : m.teamSlug,
+          adversaire: m.opponent,
+          ...(pastIds.has(m.id) ? { passe: true } : {}),
+        };
+      }),
+  );
 });
 
 app.get("/evenements", async (_req, res) => {

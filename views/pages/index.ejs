@@ -72,7 +72,11 @@
 <section class="container quick-links" aria-label="Accès rapides">
   <a href="/calendrier" class="quick-link"><span class="ql-icon"><%- icon('calendar') %></span><span><strong>Calendrier</strong><small>Matchs et résultats</small></span></a>
   <a href="/equipes" class="quick-link"><span class="ql-icon"><%- icon('users') %></span><span><strong>Nos équipes</strong><small>Jeunes, seniors, loisirs</small></span></a>
-  <a href="/actualites" class="quick-link"><span class="ql-icon"><%- icon('news') %></span><span><strong>Actualités</strong><small>La vie du club</small></span></a>
+  <% if (benevoles.visible) { %>
+    <a href="/aider-aux-matchs" class="quick-link"><span class="ql-icon"><%- icon('heart') %></span><span><strong>Aider aux matchs</strong><small>Table, arbitrage, buvette</small></span></a>
+  <% } else { %>
+    <a href="/actualites" class="quick-link"><span class="ql-icon"><%- icon('news') %></span><span><strong>Actualités</strong><small>La vie du club</small></span></a>
+  <% } %>
   <a href="/contact#salles" class="quick-link"><span class="ql-icon"><%- icon('route') %></span><span><strong>Nos salles</strong><small>Adresses et itinéraires</small></span></a>
 </section>
 

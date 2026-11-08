@@ -1,0 +1,35 @@
+<%# Matchs à domicile regroupés par jour, page « Aider aux matchs ». past : lecture seule (qui a tenu chaque poste). %>
+<% const icon = (name) => include('icon', { name }); %>
+<% if (days.length === 0) { %><p class="empty"><%= empty %></p><% } %>
+<% for (const day of days) { %>
+  <section class="vol-day-block">
+    <h2 class="vol-day capitalize"><%= day.label %></h2>
+    <div class="vol-grid">
+      <% for (const m of day.matches) { %>
+        <article class="card vol-match<%= past ? ' is-past' : '' %>" data-match="<%= m.id %>" <%= past ? 'data-past' : '' %> data-info="<%= JSON.stringify({ date: m.date, equipe: m.teamName, adversaire: m.opponent }) %>">
+          <header class="vol-match-head">
+            <p class="vol-match-top"><span class="vol-time"><%= formatTime(m.date) %></span><a class="vol-team" href="/equipes/<%= m.teamSlug %>"><%= m.teamName %></a><% if (m.score) { %><span class="vol-score"><%= m.score.us %> – <%= m.score.them %></span><% } %></p>
+            <h3><span>contre</span> <%= m.opponent %></h3>
+            <%# Gymnase indiqué seulement s'il ne s'agit pas de la salle habituelle des matchs à domicile %>
+            <% if (!/bel air/i.test(m.venue)) { %><p class="event-when"><%- icon('pin') %><%= m.venue %></p><% } %>
+            <%# Remplissage : postes pourvus sur postes nécessaires (public/js/benevoles.js) %>
+            <% if (!past) { %><div class="vol-progress" data-progress hidden><span class="vol-progress-bar"><span data-bar></span></span><span class="vol-progress-text" data-progress-text></span></div><% } %>
+          </header>
+          <ul class="vol-roles">
+            <% for (const role of benevoles.roles) { %>
+              <li class="vol-role" data-role="<%= role.id %>">
+                <span class="vol-role-label"><%= role.label %></span>
+                <% if (role.id === 'arbitre') { %><span class="vol-officiels" data-officiels hidden>Arbitres officiels désignés</span><% } %>
+                <span class="vol-slots">
+                  <% for (let i = 0; i < role.places; i++) { %>
+                    <button type="button" class="vol-slot" data-slot <%= benevoles.apiUrl && !past ? '' : 'disabled' %>><%= past ? '—' : "Je m'inscris" %></button>
+                  <% } %>
+                </span>
+              </li>
+            <% } %>
+          </ul>
+        </article>
+      <% } %>
+    </div>
+  </section>
+<% } %>

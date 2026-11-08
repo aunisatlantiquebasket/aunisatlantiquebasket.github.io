@@ -1,0 +1,69 @@
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { eyebrow: 'Matchs à domicile', heading: 'On a besoin', accent: 'de vous !', subtitle: 'Chaque match à domicile a besoin de 6 à 7 bénévoles. Donnez un coup de main : inscrivez-vous en un clic sur un poste libre.' }) %>
+<% const icon = (name) => include('../partials/icon', { name }); %>
+<section class="section">
+  <div class="container vol" data-vol data-api="<%= benevoles.apiUrl %>" data-roles="<%= JSON.stringify(benevoles.roles) %>" data-delay="<%= benevoles.cancelDelayHours %>" data-contact="<%= club.emailSportive %>">
+    <% if (!benevoles.apiUrl) { %>
+      <p class="empty">Les inscriptions en ligne ouvrent bientôt. En attendant, <a href="/contact?sujet=B%C3%A9n%C3%A9volat">écrivez-nous</a> pour proposer votre aide.</p>
+    <% } %>
+    <div class="vol-intro">
+      <%# Replié sur téléphone (public/js/benevoles.js) pour arriver tout de suite aux matchs ; ouvert sur ordinateur %>
+      <details class="vol-how" open data-how>
+        <summary><h2>Comment ça marche ?</h2><span class="vol-how-toggle" aria-hidden="true"></span></summary>
+        <ol>
+          <li><span class="step-num">1</span><div><strong>Choisissez un match</strong><p>Les matchs à domicile sont classés par date.</p></div></li>
+          <li><span class="step-num">2</span><div><strong>Cliquez sur un poste libre</strong><p>Le bouton <span class="vol-slot vol-demo">Je m'inscris</span> en face du poste choisi.</p></div></li>
+          <li><span class="step-num">3</span><div><strong>Indiquez votre prénom et votre nom</strong><p>C'est noté dans le planning du club. Pour vous retirer, cliquez sur votre nom (jusqu'à <%= benevoles.cancelDelayHours %> h avant le match).</p></div></li>
+        </ol>
+        <p class="vol-rule">Arbitres, table de marque et responsable de salle : réservés aux licenciés. Buvette : ouverte à tous.</p>
+        <p class="vol-legend">
+          <span class="vol-slot vol-demo">Je m'inscris</span> poste libre
+          <span class="vol-slot vol-demo is-taken">Clara L.</span> poste pris
+          <span class="vol-slot vol-demo is-mine">Vous ✕</span> votre inscription
+        </p>
+      </details>
+    </div>
+
+    <p class="vol-status" data-status hidden></p>
+    <div class="tabs vol-tabs" role="group" aria-label="Matchs">
+      <button type="button" class="active" data-show="avenir">À venir <span class="count"><%= days.reduce((n, d) => n + d.matches.length, 0) %></span></button>
+      <button type="button" data-show="passes">Passés <span class="count"><%= pastDays.reduce((n, d) => n + d.matches.length, 0) %></span></button>
+    </div>
+    <div data-list="avenir">
+      <%- include('../partials/vol-days', { days, past: false, empty: 'Aucun match à domicile programmé pour le moment.' }) %>
+    </div>
+    <div data-list="passes" hidden>
+      <%- include('../partials/vol-days', { days: pastDays, past: true, empty: 'Aucun match à domicile joué pour le moment.' }) %>
+    </div>
+
+    <dialog class="vol-dialog" data-dialog aria-labelledby="vol-dialog-title">
+      <form method="dialog" data-form>
+        <header class="vol-dialog-head">
+          <p class="vol-dialog-role" data-role-label></p>
+          <h2 id="vol-dialog-title" data-match-label></h2>
+          <p class="vol-dialog-when"><span><%- icon('calendar') %><span class="capitalize" data-when-day></span></span><span class="vol-dialog-hour" data-when-hour><%- icon('clock') %><span></span></span></p>
+          <button type="button" class="vol-dialog-close" data-cancel aria-label="Fermer"><%- icon('close') %></button>
+        </header>
+        <div class="vol-dialog-body">
+          <div class="vol-field">
+            <label for="vol-nom">Votre prénom et votre nom</label>
+            <div class="vol-input">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="vol-nom" name="nom" required maxlength="60" autocomplete="off" autocapitalize="words" enterkeyhint="done" placeholder="Ex. : Clara Laude" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="vol-suggest">
+            </div>
+            <input type="hidden" name="licencie">
+            <ul id="vol-suggest" class="vol-suggest" role="listbox" hidden data-suggest></ul>
+          </div>
+          <p class="vol-hint" data-hint></p>
+          <%# Champ piège invisible : rempli seulement par les robots %>
+          <label class="vol-trap" aria-hidden="true">Site <input name="site" tabindex="-1" autocomplete="off"></label>
+          <p class="vol-error" data-error hidden></p>
+          <button type="submit" class="btn btn-primary btn-lg vol-submit" data-submit>Je m'inscris</button>
+          <p class="vol-privacy">Sur le site, seuls votre prénom et l'initiale de votre nom sont affichés.</p>
+        </div>
+      </form>
+    </dialog>
+  </div>
+</section>
+<script src="/js/benevoles.js" defer></script>
+<%- include('../partials/footer') %>
