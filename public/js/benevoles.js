@@ -152,7 +152,7 @@
       const entry = store.get(MINE).find((m) => m.id === btn.dataset.id);
       if (!entry) return;
       if (locked(card)) {
-        showStatus(`Le match a lieu dans moins de ${root.dataset.delay} h : vous ne pouvez plus vous retirer depuis le site. Prévenez le club à ${root.dataset.contact}.`);
+        showStatus(`Le match a lieu dans moins de ${root.dataset.delay} h : vous ne pouvez plus vous retirer depuis le site. Prévenez le club.`);
         status.scrollIntoView({ behavior: "smooth", block: "center" });
         return;
       }

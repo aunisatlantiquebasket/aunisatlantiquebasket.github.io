@@ -785,10 +785,10 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .vol-how li p { margin: 2px 0 0; font-size: .9rem; color: var(--muted); }
 .vol-how .step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: #fff; font-weight: 800; }
 .vol-demo { cursor: default; padding: 2px 10px; font-size: .8rem; }
-.vol-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 18px 0 0; font-size: .85rem; color: var(--muted); }
-.vol-legend .vol-slot:not(:first-child) { margin-left: 8px; }
 @media (max-width: 800px) { .vol-how ol { grid-template-columns: 1fr; gap: 14px; } }
-.vol-rule { margin: 16px 0 0; font-size: .88rem; font-weight: 600; color: var(--green-text); }
+.vol-rule { display: flex; align-items: center; gap: 12px; margin: 18px 0 0; padding: 12px 16px; border-radius: var(--radius-sm); background: var(--slate-900); color: #dfe6ea; font-size: .92rem; }
+.vol-rule strong { color: #fff; }
+.vol-rule-icon { flex-shrink: 0; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: var(--slate-900); font-weight: 800; }
 .vol-callout { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding: 14px 18px; border-radius: var(--radius); background: var(--green-50); border: 1px solid var(--green-100); color: var(--slate-900); }
 .vol-callout:hover { text-decoration: none; border-color: var(--green); }
 .vol-callout > .icon { flex-shrink: 0; color: var(--green-text); }

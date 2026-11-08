@@ -2,7 +2,7 @@
 <%- include('../partials/page-header', { eyebrow: 'Matchs à domicile', heading: 'On a besoin', accent: 'de vous !', subtitle: 'Chaque match à domicile a besoin de 6 à 7 bénévoles. Donnez un coup de main : inscrivez-vous en un clic sur un poste libre.' }) %>
 <% const icon = (name) => include('../partials/icon', { name }); %>
 <section class="section">
-  <div class="container vol" data-vol data-api="<%= benevoles.apiUrl %>" data-roles="<%= JSON.stringify(benevoles.roles) %>" data-delay="<%= benevoles.cancelDelayHours %>" data-contact="<%= club.emailSportive %>">
+  <div class="container vol" data-vol data-api="<%= benevoles.apiUrl %>" data-roles="<%= JSON.stringify(benevoles.roles) %>" data-delay="<%= benevoles.cancelDelayHours %>">
     <% if (!benevoles.apiUrl) { %>
       <p class="empty">Les inscriptions en ligne ouvrent bientôt. En attendant, <a href="/contact?sujet=B%C3%A9n%C3%A9volat">écrivez-nous</a> pour proposer votre aide.</p>
     <% } %>
@@ -13,14 +13,9 @@
         <ol>
           <li><span class="step-num">1</span><div><strong>Choisissez un match</strong><p>Les matchs à domicile sont classés par date.</p></div></li>
           <li><span class="step-num">2</span><div><strong>Cliquez sur un poste libre</strong><p>Le bouton <span class="vol-slot vol-demo">Je m'inscris</span> en face du poste choisi.</p></div></li>
-          <li><span class="step-num">3</span><div><strong>Indiquez votre prénom et votre nom</strong><p>C'est noté dans le planning du club. Pour vous retirer, cliquez sur votre nom (jusqu'à <%= benevoles.cancelDelayHours %> h avant le match).</p></div></li>
+          <li><span class="step-num">3</span><div><strong>Indiquez votre prénom et votre nom</strong><p>C'est noté dans le planning du club. Pour vous retirer, cliquez sur votre nom.</p></div></li>
         </ol>
-        <p class="vol-rule">Arbitres, table de marque et responsable de salle : réservés aux licenciés. Buvette : ouverte à tous.</p>
-        <p class="vol-legend">
-          <span class="vol-slot vol-demo">Je m'inscris</span> poste libre
-          <span class="vol-slot vol-demo is-taken">Clara L.</span> poste pris
-          <span class="vol-slot vol-demo is-mine">Vous ✕</span> votre inscription
-        </p>
+        <p class="vol-rule"><span class="vol-rule-icon" aria-hidden="true">!</span><span><strong>Retrait impossible dans les <%= benevoles.cancelDelayHours %> h avant le match.</strong> Passé ce délai, prévenez le club.</span></p>
       </details>
     </div>
 
@@ -59,7 +54,7 @@
           <label class="vol-trap" aria-hidden="true">Site <input name="site" tabindex="-1" autocomplete="off"></label>
           <p class="vol-error" data-error hidden></p>
           <button type="submit" class="btn btn-primary btn-lg vol-submit" data-submit>Je m'inscris</button>
-          <p class="vol-privacy">Sur le site, seuls votre prénom et l'initiale de votre nom sont affichés.</p>
+          <p class="vol-privacy">Retrait possible jusqu'à <%= benevoles.cancelDelayHours %> h avant le match. Sur le site, seuls votre prénom et l'initiale de votre nom sont affichés.</p>
         </div>
       </form>
     </dialog>
