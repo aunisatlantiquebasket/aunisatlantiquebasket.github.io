@@ -51,7 +51,7 @@ export const ffbbSync = {
 export const benevoles = {
   // Page cachée tant que false : en ligne, mais sans lien (menu, accueil, calendrier, pied de page),
   // hors du plan du site et non référencée ; accessible seulement par son adresse
-  visible: false,
+  visible: true,
   apiUrl: process.env.BENEVOLES_API ?? "https://script.google.com/macros/s/AKfycbwK3OezZTeOuV59Ps8jR4A38AU56_KcnYZQ_l9ZUX4ykDCkvbyVjYONzhDL6D3OJ0v1iw/exec",
   // Retrait par le site impossible dans les dernières heures avant le match (même valeur que dans le script)
   cancelDelayHours: 72,
