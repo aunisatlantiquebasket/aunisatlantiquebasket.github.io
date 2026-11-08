@@ -28,7 +28,7 @@
         <div class="social">
           <a href="<%= club.social.facebook %>" target="_blank" rel="noopener" aria-label="Facebook"><%- include('icon', { name: 'facebook' }) %></a>
           <a href="<%= club.social.instagram %>" target="_blank" rel="noopener" aria-label="Instagram"><%- include('icon', { name: 'instagram' }) %></a>
-          <% if (club.sportEasyUrl) { %><a href="<%= club.sportEasyUrl %>" target="_blank" rel="noopener" aria-label="Espace membres (SportEasy)" title="Espace membres (SportEasy)"><%- include('icon', { name: 'sporteasy' }) %></a><% } %>
+          <% if (club.sportEasyUrl) { %><a href="<%= club.sportEasyUrl %>" data-sporteasy target="_blank" rel="noopener" aria-label="Espace membres (SportEasy)" title="Espace membres (SportEasy)"><%- include('icon', { name: 'sporteasy' }) %></a><% } %>
         </div>
       </div>
     </div>
@@ -36,5 +36,17 @@
   </footer>
 
   <%- include('install-banner') %>
+  <% if (club.sportEasyUrl) { %>
+  <%# Android : le lien « Membres » essaie d'ouvrir l'application SportEasy (com.sporteasy.android) ;
+      si elle ne s'ouvre pas, le navigateur affiche le site SportEasy comme avant. Rien ne change sur iPhone
+      (SportEasy ne permet pas d'ouvrir son application depuis un lien). %>
+  <script>
+    if (/Android/i.test(navigator.userAgent)) {
+      const url = new URL(<%- JSON.stringify(club.sportEasyUrl) %>);
+      const intent = `intent://${url.host}${url.pathname}#Intent;scheme=https;package=com.sporteasy.android;S.browser_fallback_url=${encodeURIComponent(url.href)};end`;
+      document.querySelectorAll("[data-sporteasy]").forEach((a) => { a.href = intent; a.removeAttribute("target"); });
+    }
+  </script>
+  <% } %>
 </body>
 </html>
