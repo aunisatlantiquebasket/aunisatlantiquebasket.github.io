@@ -25,7 +25,68 @@
     "ffbbKey": "U9-X-1",
     "active": true,
     "ffbbId": "200000005396788",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396788"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396788",
+    "ranking": {
+      "position": 3,
+      "points": 0,
+      "played": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "standings": [
+      {
+        "position": 1,
+        "name": "Aytre Basket Ball 2",
+        "logo": "/img/clubs/6f1b0943-26b1-42e7-a771-cc37754a632d.png",
+        "points": 3,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 66,
+        "conceded": 13,
+        "diff": 53,
+        "isUs": false
+      },
+      {
+        "position": 2,
+        "name": "Ciré Sports 2",
+        "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 13,
+        "conceded": 66,
+        "diff": -53,
+        "isUs": false
+      },
+      {
+        "position": 3,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": true
+      },
+      {
+        "position": 4,
+        "name": "Saint-Rogatien Basket Club 2",
+        "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      }
+    ]
   },
   {
     "slug": "u11-1",
@@ -171,7 +232,7 @@
     "players": [],
     "ffbbId": "200000005423769",
     "ranking": {
-      "position": 1,
+      "position": 2,
       "points": 2,
       "played": 1,
       "wins": 1,
@@ -180,6 +241,19 @@
     "standings": [
       {
         "position": 1,
+        "name": "Ciré Sports",
+        "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+        "points": 2,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 107,
+        "conceded": 22,
+        "diff": 85,
+        "isUs": false
+      },
+      {
+        "position": 2,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 2,
@@ -192,7 +266,7 @@
         "isUs": true
       },
       {
-        "position": 2,
+        "position": 3,
         "name": "Ruelle Basket Club",
         "logo": "/img/clubs/6a0c5fb5-b934-4442-bf42-22d5695f073b.png",
         "points": 1,
@@ -205,29 +279,16 @@
         "isUs": false
       },
       {
-        "position": 3,
-        "name": "Ciré Sports",
-        "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
-        "points": 0,
-        "played": 0,
-        "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
-        "isUs": false
-      },
-      {
         "position": 4,
         "name": "CTC Basket Océan 17 - Saint-Agnant",
         "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-        "points": 0,
-        "played": 0,
+        "points": 1,
+        "played": 1,
         "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
+        "losses": 1,
+        "scored": 22,
+        "conceded": 107,
+        "diff": -85,
         "isUs": false
       },
       {
