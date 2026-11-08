@@ -37,13 +37,12 @@
 
   <%- include('install-banner') %>
   <% if (club.sportEasyUrl) { %>
-  <%# Android : le lien « Membres » essaie d'ouvrir l'application SportEasy (com.sporteasy.android) ;
-      si elle ne s'ouvre pas, le navigateur affiche le site SportEasy comme avant. Rien ne change sur iPhone
-      (SportEasy ne permet pas d'ouvrir son application depuis un lien). %>
+  <%# Android : le lien « Membres » ouvre l'application SportEasy par son adresse sporteasy:// (testé sur Android) ;
+      si elle n'est pas installée, le navigateur affiche le site SportEasy. Rien ne change sur iPhone. %>
   <script>
     if (/Android/i.test(navigator.userAgent)) {
-      const url = new URL(<%- JSON.stringify(club.sportEasyUrl) %>);
-      const intent = `intent://${url.host}${url.pathname}#Intent;scheme=https;package=com.sporteasy.android;S.browser_fallback_url=${encodeURIComponent(url.href)};end`;
+      const site = <%- JSON.stringify(club.sportEasyUrl) %>;
+      const intent = `intent://#Intent;scheme=sporteasy;package=com.sporteasy.android;S.browser_fallback_url=${encodeURIComponent(site)};end`;
       document.querySelectorAll("[data-sporteasy]").forEach((a) => { a.href = intent; a.removeAttribute("target"); });
     }
   </script>
