@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Test SportEasy</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 20px 16px; background: #f5f7f3; color: #1f272d; }
+    h1 { font-size: 1.3rem; margin: 0 0 8px; }
+    p { margin: 0 0 18px; color: #5d6b75; font-size: .95rem; }
+    a { display: block; margin: 0 0 12px; padding: 16px; border-radius: 12px; background: #1f272d; color: #fff; text-decoration: none; font-weight: 700; font-size: 1.05rem; }
+    small { display: block; margin-top: 4px; font-weight: 400; color: #b7c2c9; font-size: .8rem; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <!-- Page de test temporaire (non liée, non référencée) : quelle forme de lien ouvre l'application SportEasy sur Android ? -->
+  <h1>Test : ouvrir l'application SportEasy</h1>
+  <p>Touchez chaque bouton, puis revenez ici. Notez pour chacun ce qui s'ouvre : l'application, le site SportEasy, le Play Store, ou rien.</p>
+  <a href="intent://aunis-atlantique-basket.sporteasy.net/#Intent;scheme=https;package=com.sporteasy.android;end">Bouton 1<small>adresse du club, sans repli</small></a>
+  <a href="intent://app.sporteasy.net/#Intent;scheme=https;package=com.sporteasy.android;end">Bouton 2<small>app.sporteasy.net</small></a>
+  <a href="intent://www.sporteasy.net/fr/#Intent;scheme=https;package=com.sporteasy.android;end">Bouton 3<small>www.sporteasy.net</small></a>
+  <a href="intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.sporteasy.android;end">Bouton 4<small>lancement de l'application</small></a>
+  <a href="intent://#Intent;package=com.sporteasy.android;end">Bouton 5<small>application seule</small></a>
+  <a href="sporteasy://">Bouton 6<small>sporteasy://</small></a>
+</body>
+</html>
