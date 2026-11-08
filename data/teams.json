@@ -273,7 +273,7 @@
     "players": [],
     "ffbbId": "200000005335854",
     "ranking": {
-      "position": 7,
+      "position": 8,
       "points": 7,
       "played": 5,
       "wins": 2,
@@ -308,6 +308,19 @@
       },
       {
         "position": 3,
+        "name": "Ciré Sports 2",
+        "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+        "points": 8,
+        "played": 5,
+        "wins": 3,
+        "losses": 2,
+        "scored": 345,
+        "conceded": 273,
+        "diff": 72,
+        "isUs": false
+      },
+      {
+        "position": 4,
         "name": "Saint-Rogatien Basket Club 3",
         "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
         "points": 8,
@@ -320,7 +333,7 @@
         "isUs": false
       },
       {
-        "position": 4,
+        "position": 5,
         "name": "Saujon Basket Club 2",
         "logo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
         "points": 8,
@@ -333,20 +346,20 @@
         "isUs": false
       },
       {
-        "position": 5,
-        "name": "Ciré Sports 2",
-        "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
+        "position": 6,
+        "name": "Rochefort Basket Club 2",
+        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
         "points": 7,
-        "played": 4,
-        "wins": 3,
-        "losses": 1,
-        "scored": 297,
-        "conceded": 205,
-        "diff": 92,
+        "played": 5,
+        "wins": 2,
+        "losses": 3,
+        "scored": 311,
+        "conceded": 272,
+        "diff": 39,
         "isUs": false
       },
       {
-        "position": 6,
+        "position": 7,
         "name": "Angoulins UBAC 2",
         "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
         "points": 7,
@@ -359,7 +372,7 @@
         "isUs": false
       },
       {
-        "position": 7,
+        "position": 8,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 7,
@@ -370,19 +383,6 @@
         "conceded": 358,
         "diff": -80,
         "isUs": true
-      },
-      {
-        "position": 8,
-        "name": "Rochefort Basket Club 2",
-        "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-        "points": 5,
-        "played": 4,
-        "wins": 1,
-        "losses": 3,
-        "scored": 243,
-        "conceded": 224,
-        "diff": 19,
-        "isUs": false
       },
       {
         "position": 9,

@@ -1,22 +1,5 @@
 [
   {
-    "id": "ffbb-200000014757746",
-    "teamSlug": "u13-masculins",
-    "date": "2026-09-19T13:00:00",
-    "opponent": "Saint-Agnant Basket Club",
-    "home": false,
-    "venue": "Salle des sports, Saint-Agnant",
-    "score": {
-      "us": 66,
-      "them": 20
-    },
-    "source": "ffbb",
-    "round": 1,
-    "opponentLogo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757746",
-    "competition": "Phase 1"
-  },
-  {
     "id": "ffbb-200000014758244",
     "teamSlug": "u15-feminines",
     "date": "2026-09-19T16:00:00",
@@ -47,25 +30,7 @@
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645920",
-    "competition": "Championnat"
-  },
-  {
-    "id": "ffbb-200000014757761",
-    "teamSlug": "u13-masculins",
-    "date": "2026-09-26T13:00:00",
-    "opponent": "Angoulins UBAC 2",
-    "home": false,
-    "venue": "Gymnase Louis Ferrand, Angoulins",
-    "score": {
-      "us": 57,
-      "them": 49
-    },
-    "source": "ffbb",
-    "round": 2,
-    "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757761",
-    "competition": "Phase 1"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645920"
   },
   {
     "id": "ffbb-200000014758250",
@@ -98,8 +63,7 @@
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645925",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645925"
   },
   {
     "id": "ffbb-200000014758255",
@@ -132,25 +96,7 @@
     "source": "ffbb",
     "round": 3,
     "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645930",
-    "competition": "Championnat"
-  },
-  {
-    "id": "ffbb-200000014757790",
-    "teamSlug": "u13-masculins",
-    "date": "2026-10-10T14:00:00",
-    "opponent": "CTC Basket Océan 17 - Rochefort BC 2",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "score": {
-      "us": 32,
-      "them": 76
-    },
-    "source": "ffbb",
-    "round": 4,
-    "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757790",
-    "competition": "Phase 1"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645930"
   },
   {
     "id": "ffbb-200000014645935",
@@ -166,25 +112,7 @@
     "source": "ffbb",
     "round": 4,
     "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645935",
-    "competition": "Championnat"
-  },
-  {
-    "id": "ffbb-200000014757805",
-    "teamSlug": "u13-masculins",
-    "date": "2026-10-17T09:00:00",
-    "opponent": "La Jarrie 2",
-    "home": false,
-    "venue": "Gymnase Jacky Héraud, La Jarrie",
-    "score": {
-      "us": 35,
-      "them": 96
-    },
-    "source": "ffbb",
-    "round": 5,
-    "opponentLogo": "/img/clubs/3ac01715-4cd6-4609-92df-d82489ba7d18.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dmu13/match/200000014757805",
-    "competition": "Phase 1"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645935"
   },
   {
     "id": "ffbb-200000014758267",
@@ -204,23 +132,6 @@
     "competition": "Phase 1"
   },
   {
-    "id": "ffbb-200000014737574",
-    "teamSlug": "seniors-masculins",
-    "date": "2026-10-31T20:00:00",
-    "opponent": "Marennes Bourcefranc BBMB",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "score": {
-      "us": 0,
-      "them": 20
-    },
-    "source": "ffbb",
-    "round": 13,
-    "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005373979",
-    "competition": "Coupe 17 Michel Château, 1/16ème de finale"
-  },
-  {
     "id": "ffbb-200000014939772",
     "teamSlug": "u13-masculins",
     "date": "2026-11-07T15:00:00",
@@ -234,8 +145,7 @@
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
-    "competition": "Phase 2"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
   },
   {
     "id": "ffbb-200000014939904",
@@ -268,8 +178,7 @@
     "source": "ffbb",
     "round": 5,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645940",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645940"
   },
   {
     "id": "ffbb-200000014850086",
@@ -293,8 +202,7 @@
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
-    "competition": "Phase 2"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
   },
   {
     "id": "ffbb-200000014850061-u11-1",
@@ -343,8 +251,7 @@
     "source": "ffbb",
     "round": 6,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645945",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645945"
   },
   {
     "id": "ffbb-200000014850066",
@@ -392,8 +299,7 @@
     "source": "ffbb",
     "round": 3,
     "opponentLogo": "/img/clubs/9b9afd4b-a20b-44d8-83de-c951d62dea3d.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
-    "competition": "Phase 2"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
   },
   {
     "id": "ffbb-200000014645950",
@@ -405,8 +311,7 @@
     "source": "ffbb",
     "round": 7,
     "opponentLogo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645950",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645950"
   },
   {
     "id": "ffbb-200000014939930",
@@ -431,8 +336,7 @@
     "source": "ffbb",
     "round": 8,
     "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645955",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645955"
   },
   {
     "id": "ffbb-200000014850069",
@@ -480,8 +384,7 @@
     "source": "ffbb",
     "round": 5,
     "opponentLogo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
-    "competition": "Phase 2"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728"
   },
   {
     "id": "ffbb-200000014939939",
@@ -506,8 +409,7 @@
     "source": "ffbb",
     "round": 9,
     "opponentLogo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645960",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645960"
   },
   {
     "id": "ffbb-200000014645965",
@@ -519,8 +421,7 @@
     "source": "ffbb",
     "round": 10,
     "opponentLogo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645965",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645965"
   },
   {
     "id": "ffbb-200000014645970",
@@ -532,8 +433,7 @@
     "source": "ffbb",
     "round": 11,
     "opponentLogo": "/img/clubs/caf28633-fc09-4f43-a950-81da7ccf5b33.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645970",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645970"
   },
   {
     "id": "ffbb-200000014645975",
@@ -545,8 +445,7 @@
     "source": "ffbb",
     "round": 12,
     "opponentLogo": "/img/clubs/fd8cd0bc-6424-4850-9044-7b63db7439c2.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645975",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645975"
   },
   {
     "id": "ffbb-200000014645980",
@@ -558,8 +457,7 @@
     "source": "ffbb",
     "round": 13,
     "opponentLogo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645980",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645980"
   },
   {
     "id": "ffbb-200000014645985",
@@ -571,8 +469,7 @@
     "source": "ffbb",
     "round": 14,
     "opponentLogo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645985",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645985"
   },
   {
     "id": "ffbb-200000014645990",
@@ -584,8 +481,7 @@
     "source": "ffbb",
     "round": 15,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645990",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645990"
   },
   {
     "id": "ffbb-200000014645995",
@@ -597,8 +493,7 @@
     "source": "ffbb",
     "round": 16,
     "opponentLogo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645995",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014645995"
   },
   {
     "id": "ffbb-200000014646000",
@@ -610,8 +505,7 @@
     "source": "ffbb",
     "round": 17,
     "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646000",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646000"
   },
   {
     "id": "ffbb-200000014646005",
@@ -623,7 +517,6 @@
     "source": "ffbb",
     "round": 18,
     "opponentLogo": "/img/clubs/f29e2599-0d38-4a39-9225-f9b8505abb1b.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646005",
-    "competition": "Championnat"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dm2/match/200000014646005"
   }
 ]
