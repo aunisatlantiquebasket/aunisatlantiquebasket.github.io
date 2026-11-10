@@ -359,18 +359,6 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850066"
   },
   {
-    "id": "ffbb-200000014850091",
-    "teamSlug": "u9",
-    "date": "2026-11-28T00:00:00",
-    "opponent": "Aytre Basket Ball 2",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "source": "ffbb",
-    "round": 2,
-    "opponentLogo": "/img/clubs/6f1b0943-26b1-42e7-a771-cc37754a632d.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850091"
-  },
-  {
     "id": "ffbb-200000014850065",
     "teamSlug": "u11-1",
     "date": "2026-11-28T10:30:00",
@@ -381,6 +369,18 @@
     "round": 2,
     "opponentLogo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850065"
+  },
+  {
+    "id": "ffbb-200000014850091",
+    "teamSlug": "u9",
+    "date": "2026-11-28T13:30:00",
+    "opponent": "Aytre Basket Ball 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 2,
+    "opponentLogo": "/img/clubs/6f1b0943-26b1-42e7-a771-cc37754a632d.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu9-3/match/200000014850091"
   },
   {
     "id": "ffbb-200000014939802",
