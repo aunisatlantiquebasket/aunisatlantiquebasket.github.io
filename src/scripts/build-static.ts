@@ -32,7 +32,7 @@ const origin = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
 
 /** Adresses de toutes les pages du site */
 async function sitePages(): Promise<string[]> {
-  const [teams, articles, events] = await Promise.all([getTeams(), getArticles(), getEvents()]);
+  const [teams, articles, events] = await Promise.all([getTeams(), getArticles(), getEvents(true)]);
   return [
     "/",
     "/equipes",
@@ -101,7 +101,9 @@ try {
     const count = await buildSite(OUT, BASE);
     // Référencement : plan du site pour les moteurs de recherche, et robots.txt qui l'indique
     // Page « Aider aux matchs » cachée : générée, mais absente du plan du site
-    const pages = (await sitePages()).filter((p) => benevoles.visible || p !== "/aider-aux-matchs");
+    // Pages accessibles seulement par leur lien (page « Aider aux matchs » cachée, événements non listés) : hors du plan du site
+    const unlisted = new Set([...(benevoles.visible ? [] : ["/aider-aux-matchs"]), ...(await getEvents(true)).upcoming.concat((await getEvents(true)).past).filter((e) => e.unlisted).map((e) => `/evenements/${e.slug}`)]);
+    const pages = (await sitePages()).filter((p) => !unlisted.has(p));
     const today = new Date().toISOString().slice(0, 10);
     const urls = pages.map((p) => `  <url><loc>${club.siteUrl}${BASE}${p === "/" ? "/" : `${p}/`}</loc><lastmod>${today}</lastmod></url>`);
     await writeFile(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);

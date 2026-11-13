@@ -154,8 +154,9 @@ async function allEvents(): Promise<ClubEvent[]> {
   return [...manual, ...facebook.filter((f) => !manual.some((m) => m.date === f.date))];
 }
 
-export async function getEvents(): Promise<{ upcoming: ClubEvent[]; past: ClubEvent[] }> {
-  const events = (await allEvents()).sort((a, b) => a.date.localeCompare(b.date));
+/** Événements affichés dans les listes ; includeUnlisted : aussi ceux accessibles seulement par leur lien (génération du site) */
+export async function getEvents(includeUnlisted = false): Promise<{ upcoming: ClubEvent[]; past: ClubEvent[] }> {
+  const events = (await allEvents()).filter((e) => includeUnlisted || !e.unlisted).sort((a, b) => a.date.localeCompare(b.date));
   return { upcoming: events.filter((e) => !isEventPast(e)), past: events.filter(isEventPast).reverse() };
 }
 

@@ -103,6 +103,7 @@ export interface ClubEvent {
   registrationUrl?: string; // page d'inscription (HelloAsso)
   registrationWidget?: string; // formulaire d'inscription HelloAsso intégré à la fiche
   featured?: boolean; // mis en avant sur l'accueil jusqu'à l'événement
+  unlisted?: boolean; // accessible seulement par son lien : absent des listes (accueil, Événements), du plan du site et de Google
   hideOnHome?: boolean; // absent de l'accueil (« Prochains événements ») : seulement dans la page Événements et par son lien
 }
 

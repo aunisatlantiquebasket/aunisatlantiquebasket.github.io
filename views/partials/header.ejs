@@ -21,7 +21,7 @@
     : descriptions[currentPath] ?? descriptions['/']; %>
   <% const pageTitle = currentPath === '/' ? `${club.name} · Club de basket à Marans et Saint-Jean-de-Liversay` : `${title} | ${club.name}`; %>
   <title><%= pageTitle %></title>
-  <% if (currentPath.startsWith('/aider-aux-matchs') && !benevoles.visible) { %><meta name="robots" content="noindex, nofollow"><% } %>
+  <% if ((currentPath.startsWith('/aider-aux-matchs') && !benevoles.visible) || (typeof noindex !== 'undefined' && noindex)) { %><meta name="robots" content="noindex, nofollow"><% } %>
   <meta name="description" content="<%= pageDescription %>">
   <link rel="canonical" href="<%= club.siteUrl + currentPath %>">
   <meta property="og:type" content="<%= shared ? 'article' : 'website' %>">

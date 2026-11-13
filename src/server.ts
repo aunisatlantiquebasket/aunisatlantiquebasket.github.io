@@ -320,7 +320,7 @@ app.get("/evenements", async (_req, res) => {
 app.get("/evenements/:slug", async (req, res, next) => {
   const event = await getEvent(req.params.slug);
   if (!event) return next();
-  res.render("pages/evenement", { title: event.title, event });
+  res.render("pages/evenement", { title: event.title, event, noindex: !!event.unlisted });
 });
 
 app.get("/trombinoscope", async (_req, res) => {
