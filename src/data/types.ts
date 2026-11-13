@@ -97,6 +97,13 @@ export interface ClubEvent {
   image?: string; // photo de couverture (événements Facebook)
   imageFocus?: number; // hauteur du centre d'intérêt de la photo, en % (cadrage de la couverture Facebook)
   sourceUrl?: string; // événement d'origine sur Facebook
+  banner?: string; // bandeau très large (1920 × 250) au-dessus de la fiche, sur ordinateur (visuel 16/9 sur téléphone)
+  price?: string; // participation : "7 €"
+  registrationDeadline?: string; // inscription obligatoire jusqu'à ce jour inclus, "2026-12-06"
+  registrationUrl?: string; // page d'inscription (HelloAsso)
+  registrationWidget?: string; // formulaire d'inscription HelloAsso intégré à la fiche
+  featured?: boolean; // mis en avant sur l'accueil jusqu'à l'événement
+  hideOnHome?: boolean; // absent de l'accueil (« Prochains événements ») : seulement dans la page Événements et par son lien
 }
 
 export interface Article {

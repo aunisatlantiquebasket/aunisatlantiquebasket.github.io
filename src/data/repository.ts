@@ -150,7 +150,8 @@ const isEventPast = (e: ClubEvent) => {
 
 async function allEvents(): Promise<ClubEvent[]> {
   const [manual, facebook] = await Promise.all([readJson<ClubEvent[]>("evenements.json", []), readJson<ClubEvent[]>("facebook-evenements.json", [])]);
-  return [...manual, ...facebook];
+  // Même événement publié aussi sur Facebook (même jour) : la fiche saisie à la main, plus complète, est gardée
+  return [...manual, ...facebook.filter((f) => !manual.some((m) => m.date === f.date))];
 }
 
 export async function getEvents(): Promise<{ upcoming: ClubEvent[]; past: ClubEvent[] }> {

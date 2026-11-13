@@ -1,11 +1,16 @@
 <%- include('../partials/header') %>
 <% const icon = (name) => include('../partials/icon', { name }); %>
+<% const open = !event.past && registrationOpen(event) && !!event.registrationWidget; %>
 <%- include('../partials/page-header', { back: { href: '/evenements', label: 'Tous les événements' }, eyebrow: event.kind || 'Événement', heading: event.title }) %>
-<section class="section">
+<% if (event.banner) { %>
+  <%# Bandeau sur ordinateur ; sur téléphone il deviendrait illisible : le visuel 16/9 de la fiche le remplace %>
+  <div class="container event-banner"><img src="<%= event.banner %>" alt="<%= event.title %> : <%= formatEventDate(event) %><%= event.time ? ', ' + event.time : '' %><%= event.place ? ', ' + event.place : '' %>"></div>
+<% } %>
+<section class="section<%= event.banner ? ' has-banner' : '' %>">
   <div class="container event-page">
     <article class="prose">
-      <%# Couverture recadrée en bandeau comme sur Facebook (le bas des affiches porte souvent un téléphone) %>
-      <% if (event.image) { %><img class="article-img event-cover" src="<%= event.image %>" alt=""<% if (event.imageFocus !== undefined) { %> style="object-position: 50% <%= event.imageFocus %>%"<% } %>><% } %>
+      <%# Couverture en bandeau (événements Facebook : recadrée comme sur Facebook, le bas des affiches porte souvent un téléphone) %>
+      <% if (event.image) { %><img class="article-img event-cover<%= event.banner ? ' is-mobile-only' : '' %>" src="<%= event.image %>" alt=""<% if (event.imageFocus !== undefined) { %> style="object-position: 50% <%= event.imageFocus %>%"<% } %>><% } %>
       <p class="lead"><%= event.summary %></p>
       <% for (const paragraph of event.description ?? []) { %><p><%= paragraph %></p><% } %>
     </article>
@@ -15,13 +20,40 @@
         <li><%- icon('calendar') %><span class="capitalize"><%= formatEventDate(event) %></span></li>
         <% if (event.time) { %><li><%- icon('clock') %><span><%= event.time %></span></li><% } %>
         <% if (event.place) { %><li><%- icon('pin') %><a href="<%= mapsUrl(event.place) %>" target="_blank" rel="noopener"><%= event.place %></a></li><% } %>
+        <% if (event.price) { %><li><%- icon('ticket') %><span>Participation : <strong><%= event.price %></strong></span></li><% } %>
+        <% if (event.registrationDeadline) { %><li><%- icon('check') %><span>Inscription obligatoire avant le <strong><%= formatDeadline(event) %></strong></span></li><% } %>
       </ul>
+      <% if (open) { %>
+        <a class="btn btn-primary" href="#inscription">Je m'inscris <%- icon('arrow') %></a>
+      <% } else if (event.registrationWidget && !event.past) { %>
+        <p class="tag tag-away">Inscriptions closes</p>
+      <% } %>
       <% if (!event.past) { %>
-        <a class="btn btn-primary" href="<%= calendarUrl(event) %>" target="_blank" rel="noopener"><%- icon('calendar') %> Ajouter à mon agenda</a>
+        <a class="btn <%= open ? 'btn-outline' : 'btn-primary' %>" href="<%= calendarUrl(event) %>" target="_blank" rel="noopener"><%- icon('calendar') %> Ajouter à mon agenda</a>
       <% } %>
       <% if (event.sourceUrl) { %><a class="link-arrow" href="<%= event.sourceUrl %>" target="_blank" rel="noopener"><%- icon('facebook') %> Voir l'événement sur Facebook</a><% } %>
       <a class="link-arrow" href="/contact?sujet=Renseignements">Une question ? Écrivez-nous <%- icon('arrow') %></a>
     </aside>
   </div>
+  <% if (open) { %>
+    <%# Inscription sur le site : formulaire HelloAsso (paiement sécurisé) sous la fiche, sur toute la largeur %>
+    <div class="container">
+      <section class="event-registration" id="inscription" aria-labelledby="inscription-titre">
+        <h2 id="inscription-titre">Inscription</h2>
+        <script>
+          // Hauteur du formulaire HelloAsso ajustée à son contenu, d'après les messages qu'il envoie : écoute installée
+          // avant le formulaire pour n'en manquer aucun (sinon il garde 750 px et affiche sa propre barre de défilement)
+          window.addEventListener("message", (e) => {
+            const frame = document.getElementById("haWidget");
+            if (!frame || e.source !== frame.contentWindow) return; // message venant bien de ce formulaire
+            if (!/^https:\/\/([a-z0-9-]+\.)*helloasso\.com$/.test(e.origin)) return; // et de HelloAsso
+            const height = Number(e.data && typeof e.data === "object" ? e.data.height : NaN);
+            if (Number.isFinite(height) && height >= 200 && height <= 10000) frame.style.height = `${Math.ceil(height)}px`;
+          });
+        </script>
+        <iframe id="haWidget" class="ha-widget" src="<%= event.registrationWidget %>" title="Inscription au <%= event.title.charAt(0).toLowerCase() + event.title.slice(1) %> — <%= club.name %>" style="width: 100%; height: 750px; border: none;" scrolling="no" allow="payment 'self' https://paymenthub.helloassopay.com https://helloasso.com"></iframe>
+      </section>
+    </div>
+  <% } %>
 </section>
 <%- include('../partials/footer') %>

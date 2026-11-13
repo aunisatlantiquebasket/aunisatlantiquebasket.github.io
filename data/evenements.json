@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "slug": "repas-de-noel-2026",
+    "title": "Repas de Noël",
+    "kind": "Vie du club",
+    "date": "2026-12-18",
+    "time": "19 h",
+    "place": "Salle des fêtes, Saint-Jean-de-Liversay",
+    "summary": "🎄 Cette année, le club fête Noël en famille ! Licenciés, parents, bénévoles et partenaires : on vous attend pour un grand repas convivial et chaleureux.",
+    "image": "/img/evenements-club/repas-noel-2026.jpg",
+    "price": "7 €",
+    "registrationDeadline": "2026-12-06",
+    "registrationUrl": "https://www.helloasso.com/associations/aunis-atlantique-basket/evenements/repas-de-noel",
+    "registrationWidget": "https://www.helloasso.com/associations/aunis-atlantique-basket/evenements/repas-de-noel/widget",
+    "hideOnHome": true,
+    "description": [
+      "Après des semaines de matchs, d'entraînements et d'encouragements au bord du terrain, place à la fête ! Le temps d'une soirée, on range les ballons et on se retrouve autour de la même table, petits et grands, joueurs, coachs et supporters.",
+      "Une seule consigne : s'inscrire avant le 6 décembre, pour que chacun ait sa place à table. Réservez vite votre soirée et venez nombreux, on compte sur vous ! 💚"
+    ],
+    "banner": "/img/evenements-club/repas-noel-2026-banniere.jpg"
+  }
+]

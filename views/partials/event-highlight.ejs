@@ -1,0 +1,24 @@
+<%# Grande carte d'un événement à venir : visuel entier à gauche, informations et boutons à droite %>
+<% const icon = (name) => include('icon', { name }); %>
+<article class="featured-event<%= event.image ? '' : ' no-visual' %>">
+  <% if (event.image) { %><a href="/evenements/<%= event.slug %>" class="featured-event-visual"><img src="<%= event.image %>" alt="<%= event.title %> : <%= formatEventDate(event) %><%= event.time ? ', ' + event.time : '' %>"<% if (event.sourceUrl && event.imageFocus !== undefined) { %> style="object-position: 50% <%= event.imageFocus %>%"<% } %>></a><% } %>
+  <div class="featured-event-body">
+    <p class="eyebrow"><%= typeof eyebrow !== 'undefined' ? eyebrow : (event.kind || 'Événement') %></p>
+    <h2><a href="/evenements/<%= event.slug %>"><%= event.title %></a></h2>
+    <% if (event.summary) { %><p class="muted"><%= event.summary %></p><% } %>
+    <ul class="event-facts">
+      <li><%- icon('calendar') %><span><span class="capitalize"><%= formatEventDate(event) %></span><%= event.time ? ' · ' + event.time : '' %></span></li>
+      <% if (event.place) { %><li><%- icon('pin') %><span><%= event.place %></span></li><% } %>
+      <% if (event.price) { %><li><%- icon('ticket') %><span>Participation : <strong><%= event.price %></strong></span></li><% } %>
+      <% if (event.registrationDeadline) { %><li><%- icon('check') %><span>Inscription obligatoire <strong>avant le <%= formatDeadline(event) %></strong></span></li><% } %>
+    </ul>
+    <div class="featured-event-actions">
+      <%# Un seul bouton vers le haut de la fiche : « Je m'inscris » tant que l'inscription est ouverte, sinon « Voir la fiche » %>
+      <% if (event.registrationUrl && registrationOpen(event)) { %>
+        <a class="btn btn-primary" href="/evenements/<%= event.slug %>">Je m'inscris <%- icon('arrow') %></a>
+      <% } else { %>
+        <a class="btn btn-outline" href="/evenements/<%= event.slug %>">Voir la fiche <%- icon('arrow') %></a>
+      <% } %>
+    </div>
+  </div>
+</article>

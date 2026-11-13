@@ -77,6 +77,13 @@
   <% if (!benevoles.visible) { %><a href="/contact#salles" class="quick-link"><span class="ql-icon"><%- icon('route') %></span><span><strong>Nos salles</strong><small>Adresses et itinéraires</small></span></a><% } %>
 </section>
 
+<% if (featured) { %>
+<%# Événement mis en avant (featured) jusqu'à sa date %>
+<section class="container featured-wrap" aria-label="À la une : <%= featured.title %>">
+<%- include('../partials/event-highlight', { event: featured, eyebrow: 'À la une' }) %>
+</section>
+<% } %>
+
 <section class="section">
   <div class="container">
     <div class="section-head">

@@ -179,6 +179,13 @@ app.use((req, res, next) => {
   res.locals.eventDay = (e: ClubEvent) => localDate(e.date).getDate();
   res.locals.eventMonth = (e: ClubEvent) => eventMonthFormat.format(localDate(e.date)).replace(".", "");
   res.locals.calendarUrl = calendarUrl;
+  // Inscription encore possible : jusqu'à la fin du jour limite (ou du jour de l'événement)
+  res.locals.registrationOpen = (e: ClubEvent) => {
+    const last = localDate(e.registrationDeadline ?? e.date);
+    last.setDate(last.getDate() + 1);
+    return Date.now() < last.getTime();
+  };
+  res.locals.formatDeadline = (e: ClubEvent) => (e.registrationDeadline ? fmt({ weekday: "long", day: "numeric", month: "long" }).format(localDate(e.registrationDeadline)) : "");
   res.locals.mapsUrl = (place: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
   next();
 });
@@ -201,7 +208,8 @@ app.get("/", async (_req, res) => {
     lastResults: lastWeekend(results),
     nextMatches: { title: hero.title, matches: [...hero.matches].sort((a, b) => a.date.localeCompare(b.date)) },
     articles: articles.slice(0, 3),
-    events: events.upcoming.slice(0, 3),
+    events: events.upcoming.filter((e) => !e.hideOnHome).slice(0, 3),
+    featured: events.upcoming.find((e) => e.featured), // mis en avant en haut de l'accueil jusqu'à l'événement
   });
 });
 

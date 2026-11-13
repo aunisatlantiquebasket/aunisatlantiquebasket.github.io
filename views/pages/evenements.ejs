@@ -6,7 +6,7 @@
     <% if (upcoming.length === 0) { %>
       <p class="empty">Aucun événement programmé pour le moment. Suivez-nous sur <a href="<%= club.social.facebook %>" target="_blank" rel="noopener">Facebook</a> pour ne rien manquer.</p>
     <% } else { %>
-      <div class="events-grid"><% for (const event of upcoming) { %><%- include('../partials/event-card', { event }) %><% } %></div>
+      <div class="events-upcoming"><% for (const event of upcoming) { %><%- include('../partials/event-highlight', { event }) %><% } %></div>
     <% } %>
 
     <% if (past.length) { %>

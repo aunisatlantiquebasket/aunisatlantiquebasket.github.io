@@ -824,3 +824,43 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .vol-officiels { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: var(--slate-900); color: var(--green-light); font-size: .82rem; font-weight: 700; }
 .vol-officiels::before { content: "✓"; }
 .vol-officiels[hidden], .vol-slots[hidden] { display: none; }
+
+/* ---------- Événement mis en avant (accueil) et fiche enrichie ---------- */
+.featured-wrap { margin-top: 32px; }
+.featured-event { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); border-radius: var(--radius-lg); overflow: hidden; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.featured-event-visual { display: flex; align-items: center; background: #f7ecd3; }
+.featured-event-visual img { display: block; width: 100%; height: auto; }
+.featured-event .capitalize { display: inline-block; }
+.featured-event-body { display: grid; align-content: center; gap: 12px; padding: 28px 32px; }
+.featured-event-body h2 { margin: 0; }
+.featured-event-body .eyebrow, .featured-event-body .muted { margin: 0; }
+.featured-event-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+@media (max-width: 900px) { .featured-event { grid-template-columns: 1fr; } .featured-event-body { padding: 22px 20px; } }
+.event-info .btn { justify-content: center; }
+.events-upcoming { display: grid; gap: 24px; }
+.featured-event h2 a { color: inherit; }
+.featured-event.no-visual { grid-template-columns: 1fr; }
+.event-when .capitalize, .event-facts .capitalize { display: inline-block; }
+.event-registration { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); scroll-margin-top: 90px; }
+.event-registration h2 { margin: 0 0 12px; }
+/* Hauteur de départ du formulaire HelloAsso (il n'envoie sa hauteur qu'après interaction) : assez pour sa première étape,
+   sans barre de défilement interne ; ses messages l'agrandissent ensuite si besoin */
+.event-registration .ha-widget { display: block; min-height: 940px; }
+@media (max-width: 760px) { .event-registration .ha-widget { min-height: 1300px; } }
+.event-banner { margin-top: 28px; }
+.event-banner img { display: block; width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.section.has-banner { padding-top: 36px; }
+.event-cover.is-mobile-only { display: none; }
+@media (max-width: 760px) {
+  .event-banner { display: none; }
+  .section.has-banner { padding-top: 24px; }
+  .event-cover.is-mobile-only { display: block; }
+}
+/* Fiche d'événement sur téléphone : image, puis l'encadré d'informations (inscription, agenda), puis le texte */
+@media (max-width: 900px) {
+  .event-page { display: flex; flex-direction: column; gap: 0; }
+  .event-page > .prose { display: contents; }
+  .event-page > .prose > * { order: 3; }
+  .event-page > .prose > .event-cover { order: 1; }
+  .event-page > .event-info { order: 2; margin: 0 0 24px; }
+}
