@@ -14,7 +14,7 @@ import {
   getUpcomingMatches,
   readJson,
 } from "./data/repository.js";
-import type { ClubEvent, Match, Team } from "./data/types.js";
+import type { ClubEvent, Match, Shop, Team } from "./data/types.js";
 import { startFfbbAutoSync } from "./ffbb/scheduler.js";
 import { STATUS_FILE, type SyncStatus } from "./ffbb/sync.js";
 
@@ -164,7 +164,10 @@ function groupByMonth(matches: Match[]): { month: string; matches: Match[] }[] {
 }
 
 // Variables et helpers disponibles dans toutes les vues
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  // Boutique dans le menu, sauf si elle est accessible seulement par son lien
+  const shop = await readJson<Shop | null>("boutique.json", null);
+  res.locals.shopListed = !!shop && !shop.unlisted;
   res.locals.club = club;
   res.locals.benevoles = benevoles;
   res.locals.currentPath = req.path;
@@ -190,6 +193,12 @@ app.use((req, res, next) => {
   next();
 });
 
+/** Fin de la vente de la boutique, format court : « 27 nov. à 19 h » */
+const shopClosesShort = (shop: Shop) => {
+  const closes = new Date(shop.closes);
+  return `${fmt({ day: "numeric", month: "short" }).format(closes)} à ${fmt({ hour: "numeric" }).format(closes)}`;
+};
+
 app.get("/", async (_req, res) => {
   const [teams, upcoming, results, articles, events] = await Promise.all([
     getTeams(),
@@ -198,6 +207,11 @@ app.get("/", async (_req, res) => {
     getArticles(),
     getEvents(),
   ]);
+  // Carte « Boutique » dans la bannière de l'accueil, tant que la vente est ouverte
+  const shopData = await readJson<Shop | null>("boutique.json", null);
+  const shop = shopData && !shopData.unlisted && Date.now() < new Date(shopData.closes).getTime()
+    ? { closes: shopData.closes, closesShort: shopClosesShort(shopData) }
+    : null;
   const hero = nextWeekend(upcoming); // carrousel de la bannière : matchs du week-end qui arrive
   res.render("pages/index", {
     title: "Accueil",
@@ -210,6 +224,7 @@ app.get("/", async (_req, res) => {
     articles: articles.slice(0, 3),
     events: events.upcoming.filter((e) => !e.hideOnHome).slice(0, 3),
     featured: events.upcoming.find((e) => e.featured), // mis en avant en haut de l'accueil jusqu'à l'événement
+    shop,
   });
 });
 
@@ -335,6 +350,20 @@ app.get("/actualites/:slug", async (req, res, next) => {
   const article = await getArticle(req.params.slug);
   if (!article) return next();
   res.render("pages/article", { title: article.title, article });
+});
+
+app.get("/boutique", async (_req, res, next) => {
+  const shop = await readJson<Shop | null>("boutique.json", null);
+  if (!shop) return next();
+  const closes = new Date(shop.closes);
+  res.render("pages/boutique", {
+    title: "Boutique",
+    shop,
+    noindex: !!shop.unlisted,
+    open: Date.now() < closes.getTime(),
+    closesShort: shopClosesShort(shop),
+    closesLabel: fmt({ weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" }).format(closes).replace(":", " h ").replace(" h 00", " h"),
+  });
 });
 
 app.get("/contact", (_req, res) => {

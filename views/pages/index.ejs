@@ -7,6 +7,18 @@
     <div class="hero-text">
       <h1><%= sloganStart %><% if (sloganEnd.length) { %>,<br><span><%= sloganEnd.join(', ') %></span><% } %></h1>
       <p class="hero-lead">Jeunes, seniors ou loisirs, sur le terrain ou comme bénévole : il y a une place pour vous au club.</p>
+      <% if (shop) { %>
+        <%# Boutique ouverte : carte retirée dans le navigateur passé la date (le site statique n'est pas régénéré à l'heure pile) %>
+        <a href="/boutique" class="hero-shop" data-closes="<%= shop.closes %>">
+          <span class="hero-shop-icon"><%- icon('bag') %></span>
+          <span class="hero-shop-text">
+            <strong>La boutique est ouverte</strong>
+            <small>Jusqu'au <%= shop.closesShort %></small>
+          </span>
+          <span class="hero-shop-arrow"><span class="hero-shop-cta">Voir la boutique</span><%- icon('arrow') %></span>
+        </a>
+        <script>(() => { const a = document.currentScript.previousElementSibling; if (Date.now() >= new Date(a.dataset.closes).getTime()) a.remove(); })();</script>
+      <% } %>
     </div>
 
     <section class="next-match" aria-roledescription="carrousel" aria-label="Matchs : <%= hero.title %>" data-carousel>

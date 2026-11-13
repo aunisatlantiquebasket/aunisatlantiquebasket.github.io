@@ -1,0 +1,196 @@
+{
+  "unlisted": true,
+  "url": "https://app.grinta.eu/aunis-atlantique-basket/adult/official",
+  "closes": "2026-11-27T19:00:00+01:00",
+  "products": [
+    {
+      "category": "adulte",
+      "name": "T-shirt coton",
+      "brand": "Fruit of the Loom",
+      "price": "15 €",
+      "oldPrice": "18 €",
+      "image": "/img/boutique/t-shirt-coton-adulte-fruit-of-the-loom.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/t-shirt-coton-adulte-fruit-of-the-loom?color=VERT+LIME"
+    },
+    {
+      "category": "adulte",
+      "name": "Maillot d'entraînement",
+      "brand": "Aunis Atlantique Basket",
+      "price": "16 €",
+      "oldPrice": "19 €",
+      "image": "/img/boutique/maillot-entrainement-adultes.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/maillot-entrainement-adultes?color=VERT+LIME"
+    },
+    {
+      "category": "adulte",
+      "name": "Sweat à capuche",
+      "brand": "Kariban",
+      "price": "31 €",
+      "oldPrice": "41 €",
+      "image": "/img/boutique/sweat-capuche-kariban-adulte.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/sweat-capuche-kariban?color=VERT+LIME"
+    },
+    {
+      "category": "adulte",
+      "name": "Veste à capuche",
+      "brand": "Kariban",
+      "price": "42,50 €",
+      "oldPrice": "59 €",
+      "image": "/img/boutique/veste-capuche-adultes-kariban.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/veste-capuche-adultes-kariban?color=NOIR+"
+    },
+    {
+      "category": "adulte",
+      "name": "Pantalon molleton",
+      "brand": "Kariban",
+      "price": "25 €",
+      "oldPrice": "34 €",
+      "image": "/img/boutique/pantalon-molleton-adultes-kariban.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/pantalon-molleton-adultes-kariban?color=NOIR+"
+    },
+    {
+      "category": "adulte",
+      "name": "Veste à capuche molleton",
+      "brand": "Nike",
+      "price": "49,49 €",
+      "oldPrice": "68,99 €",
+      "image": "/img/boutique/nike-park-men-s-fleece-full-zip-soccer-hoodie-adulte.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-park-men-s-fleece-full-zip-soccer-hoodie-8cb3c502-28ed-4367-8e05-42c7147d3cd4?color=BLACK%2FWHITE"
+    },
+    {
+      "category": "adulte",
+      "name": "Sweat à capuche",
+      "brand": "Nike",
+      "price": "45,99 €",
+      "oldPrice": "63,99 €",
+      "image": "/img/boutique/nike-park-men-s-fleece-pullover-soccer-hoodie-adulte.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-park-men-s-fleece-pullover-soccer-hoodie-7f4c2fad-d0e2-4b0d-8a26-7ab2f9cc22ae?color=BLACK%2FWHITE"
+    },
+    {
+      "category": "adulte",
+      "name": "Pantalon molleton",
+      "brand": "Nike",
+      "price": "38,99 €",
+      "oldPrice": "53,99 €",
+      "image": "/img/boutique/nike-park-men-s-fleece-soccer-pants-adulte.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-park-men-s-fleece-soccer-pants-2d1db61d-6a3d-4eb6-a813-a8c5d831766a?color=BLACK%2FWHITE"
+    },
+    {
+      "category": "adulte",
+      "name": "Doudoune",
+      "brand": "Nike",
+      "price": "80,99 €",
+      "oldPrice": "113,99 €",
+      "image": "/img/boutique/nike-therma-fit-park-men-s-full-zip-hooded-soccer-jacket-adulte.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-therma-fit-park-men-s-full-zip-hooded-soccer-jacket-7c476bb0-216d-4e2c-a7a7-380d69430318?color=BLACK%2FWHITE%2FWHITE"
+    },
+    {
+      "category": "adulte",
+      "name": "Casquette",
+      "brand": "Aunis Atlantique Basket",
+      "price": "9,50 €",
+      "oldPrice": "12 €",
+      "image": "/img/boutique/casquette-adulte-aunis-atlantique-basket.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/casquette-adulte-aunis-atlantique-basket?color=noir"
+    },
+    {
+      "category": "enfant",
+      "name": "T-shirt coton",
+      "brand": "Aunis Atlantique Basket",
+      "price": "14 €",
+      "oldPrice": "17 €",
+      "image": "/img/boutique/t-shirt-coton-enfant.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/t-shirt-coton-enfant-26cd60ac-f31e-44ac-bfd1-22eaf5054a77?color=vert+lime"
+    },
+    {
+      "category": "enfant",
+      "name": "Maillot d'entraînement",
+      "brand": "Aunis Atlantique Basket",
+      "price": "15 €",
+      "oldPrice": "18 €",
+      "image": "/img/boutique/maillot-entrainement-enfant.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/maillot-entrainement-enfant?color=Vert+LIME"
+    },
+    {
+      "category": "enfant",
+      "name": "Sweat à capuche",
+      "brand": "Kariban",
+      "price": "29 €",
+      "oldPrice": "38 €",
+      "image": "/img/boutique/sweat-capuche-enfant-kariban.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/sweat-capuche-enfant-kariban?color=NOIR+"
+    },
+    {
+      "category": "enfant",
+      "name": "Veste à capuche",
+      "brand": "Kariban",
+      "price": "35,50 €",
+      "oldPrice": "49 €",
+      "image": "/img/boutique/veste-capuche-enfant-kariban.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/veste-capuche-enfant-kariban?color=NOIR+"
+    },
+    {
+      "category": "enfant",
+      "name": "Pantalon molleton",
+      "brand": "Kariban",
+      "price": "21 €",
+      "oldPrice": "28 €",
+      "image": "/img/boutique/pantalon-molleton-enfant-kariban.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/pantalon-molleton-enfant-kariban?color=NOIR+"
+    },
+    {
+      "category": "enfant",
+      "name": "Sweat à capuche",
+      "brand": "Nike",
+      "price": "42,49 €",
+      "oldPrice": "58,99 €",
+      "image": "/img/boutique/nike-park-big-kids-fleece-pullover-soccer-hoodie-enfant.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-park-big-kids-fleece-pullover-soccer-hoodie-901e8467-4774-4fc4-b37f-090d2854ab70?color=BLACK%2FWHITE"
+    },
+    {
+      "category": "enfant",
+      "name": "Veste à capuche molleton",
+      "brand": "Nike",
+      "price": "45,99 €",
+      "oldPrice": "63,99 €",
+      "image": "/img/boutique/nike-park-kids-fleece-full-zip-soccer-hoodie-enfant.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-park-kids-fleece-full-zip-soccer-hoodie-3d2a047d-723e-4ffa-a4c7-600a585aec6f?color=BLACK%2FWHITE"
+    },
+    {
+      "category": "enfant",
+      "name": "Pantalon molleton",
+      "brand": "Nike",
+      "price": "35,49 €",
+      "oldPrice": "48,99 €",
+      "image": "/img/boutique/nike-park-big-kids-fleece-soccer-pants-enfant.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-park-big-kids-fleece-soccer-pants-1e2380eb-d1d8-477f-a636-c48a49b7f71c?color=BLACK%2FWHITE"
+    },
+    {
+      "category": "enfant",
+      "name": "Doudoune",
+      "brand": "Nike",
+      "price": "73,99 €",
+      "oldPrice": "103,99 €",
+      "image": "/img/boutique/nike-therma-fit-park-fall-big-kids-soccer-jacket-enfant.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/nike-therma-fit-park-fall-big-kids-soccer-jacket-7fadf82b-89dd-429a-9696-187b81313457?color=BLACK%2FWHITE%2FWHITE"
+    },
+    {
+      "category": "enfant",
+      "name": "Casquette",
+      "brand": "Aunis Atlantique Basket",
+      "price": "9,50 €",
+      "oldPrice": "12 €",
+      "image": "/img/boutique/casquette-enfant-aunis-atlantique-basket.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/casquette-enfant-aunis-atlantique-basket?color=NOIR+"
+    },
+    {
+      "category": "tous",
+      "name": "Sac à dos Fiopack",
+      "brand": "Kappa",
+      "price": "32 €",
+      "oldPrice": "40 €",
+      "image": "/img/boutique/sac-a-dos-fiopack.webp",
+      "url": "https://app.grinta.eu/aunis-atlantique-basket/official/products/sac-a-dos-fiopack-5ac0bd8a-4c79-4537-b3c9-1398e1b87298?color=NOIR"
+    }
+  ]
+}

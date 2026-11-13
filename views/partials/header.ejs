@@ -72,7 +72,7 @@
       </label>
       <nav class="main-nav" aria-label="Navigation principale">
         <%# L'accueil est accessible par le logo %>
-        <% const links = [["/equipes", "Équipes"], ["/calendrier", "Calendrier"], ["/evenements", "Événements"], ...(benevoles.visible ? [["/aider-aux-matchs", "Aider aux matchs"]] : []), ["/actualites", "Actualités"], ["/trombinoscope", "Le club"], ["/contact", "Contact"]]; %>
+        <% const links = [["/equipes", "Équipes"], ["/calendrier", "Calendrier"], ["/evenements", "Événements"], ...(benevoles.visible ? [["/aider-aux-matchs", "Aider aux matchs"]] : []), ["/actualites", "Actualités"], ...(shopListed ? [["/boutique", "Boutique"]] : []), ["/trombinoscope", "Le club"], ["/contact", "Contact"]]; %>
         <% for (const [href, label] of links) { %>
           <% const active = currentPath.startsWith(href); %>
           <a href="<%= href %>" class="<%= active ? 'active' : '' %>" <%- active ? 'aria-current="page"' : '' %>><%= label %></a>

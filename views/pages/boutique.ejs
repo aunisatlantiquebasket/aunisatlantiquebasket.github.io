@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+<% const icon = (name) => include('../partials/icon', { name }); %>
+<% const inTab = (tab) => shop.products.filter((p) => p.category === tab || p.category === 'tous'); %>
+<%- include('../partials/page-header', { eyebrow: 'Boutique officielle', heading: 'Aux couleurs', accent: 'du club', subtitle: 'T-shirts, maillots, sweats, vestes, doudounes… Équipez-vous en vert et noir, pour le terrain comme pour les tribunes.' }) %>
+<%# La vente se fait sur Grinta (qui interdit d'afficher sa boutique dans une autre page) : vitrine ici, commande là-bas.
+    Ouverte / fermée : calculé à la génération puis recalculé dans le navigateur, le site statique n'étant pas régénéré à l'heure pile. %>
+<section class="section shop<%= open ? '' : ' is-closed' %>" data-shop data-closes="<%= shop.closes %>">
+  <div class="container">
+    <div class="shop-status panel">
+      <div class="shop-status-open">
+        <%# Date complète sur ordinateur, abrégée sur téléphone pour tenir sur une ligne %>
+        <p class="shop-status-title"><%- icon('clock') %><span>Commandes <span class="is-desktop-only">ouvertes </span>jusqu'au <strong class="is-desktop-only"><%= closesLabel %></strong><strong class="is-mobile-only"><%= closesShort %></strong></span></p>
+        <p class="shop-status-help">Cliquez sur un article pour choisir la taille et commander en ligne.</p>
+      </div>
+      <div class="shop-status-closed">
+        <p class="shop-status-title">La boutique est fermée pour le moment</p>
+        <p>Les commandes sont groupées : elle rouvrira à la prochaine vente. Une question ? <a href="/contact?sujet=Boutique">Écrivez-nous</a>.</p>
+      </div>
+      <a class="btn btn-primary shop-order" href="<%= shop.url %>" target="_blank" rel="noopener"><%- icon('bag') %> Toute la boutique</a>
+    </div>
+
+    <div class="tabs shop-tabs" role="group" aria-label="Articles">
+      <button type="button" class="active" data-show="adulte">Adulte <span class="count"><%= inTab('adulte').length %></span></button>
+      <button type="button" data-show="enfant">Enfant <span class="count"><%= inTab('enfant').length %></span></button>
+    </div>
+    <% for (const tab of ['adulte', 'enfant']) { %>
+      <ul class="shop-grid" data-list="<%= tab %>"<%= tab === 'adulte' ? '' : ' hidden' %>>
+        <% for (const p of inTab(tab)) { %>
+          <li class="shop-item">
+            <a href="<%= p.url %>" target="_blank" rel="noopener">
+              <span class="shop-photo"><img src="<%= p.image %>" alt="" loading="lazy"></span>
+              <span class="shop-brand"><%= p.brand %></span>
+              <span class="shop-name"><%= p.name %></span>
+              <span class="shop-price"><strong><%= p.price %></strong><% if (p.oldPrice) { %> <s aria-label="au lieu de <%= p.oldPrice %>"><%= p.oldPrice %></s><% } %></span>
+              <span class="shop-order shop-cta">Commander <%- icon('external') %></span>
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    <% } %>
+  </div>
+</section>
+<script>
+  (() => {
+    const root = document.querySelector("[data-shop]");
+    if (Date.now() >= new Date(root.dataset.closes).getTime()) root.classList.add("is-closed");
+    root.querySelector(".shop-tabs").addEventListener("click", (e) => {
+      const tab = e.target.closest("[data-show]");
+      if (!tab) return;
+      root.querySelectorAll(".shop-tabs [data-show]").forEach((b) => b.classList.toggle("active", b === tab));
+      root.querySelectorAll("[data-list]").forEach((l) => (l.hidden = l.dataset.list !== tab.dataset.show));
+    });
+  })();
+</script>
+<%- include('../partials/footer') %>

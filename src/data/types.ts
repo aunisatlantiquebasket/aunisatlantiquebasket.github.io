@@ -119,3 +119,25 @@ export interface Article {
   imageHash?: string; // empreinte visuelle de la photo (repérer une même image publiée plusieurs fois)
 }
 
+
+/** Boutique du club (vente en ligne sur Grinta, présentée en vitrine sur le site) : data/boutique.json */
+export interface Shop {
+  /** Accessible seulement par son lien : absente du menu, de l'accueil et du plan du site, non référencée */
+  unlisted?: boolean;
+  /** Boutique Grinta, où se passent les commandes */
+  url: string;
+  /** Fermeture de la vente groupée (date ISO avec fuseau) */
+  closes: string;
+  products: {
+    /** "adulte", "enfant" ou "tous" (affiché dans les deux onglets) */
+    category: "adulte" | "enfant" | "tous";
+    name: string;
+    brand: string;
+    price: string;
+    /** Prix public, affiché barré */
+    oldPrice?: string;
+    image: string;
+    /** Fiche de l'article sur Grinta */
+    url: string;
+  }[];
+}

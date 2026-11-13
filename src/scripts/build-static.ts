@@ -24,7 +24,7 @@ const noIndex = (html: string) => html.replace("<head>", '<head>\n  <meta name="
 
 const { app } = await import("../server.js");
 const { benevoles, club, enConstruction } = await import("../config.js");
-const { getArticles, getEvents, getTeams } = await import("../data/repository.js");
+const { getArticles, getEvents, getTeams, readJson } = await import("../data/repository.js");
 
 const server = app.listen(0);
 await new Promise<void>((resolve) => server.once("listening", () => resolve()));
@@ -44,6 +44,7 @@ async function sitePages(): Promise<string[]> {
     "/evenements",
     ...[...events.upcoming, ...events.past].map((e) => `/evenements/${e.slug}`),
     "/trombinoscope",
+    "/boutique",
     "/contact",
   ];
 }
@@ -101,8 +102,9 @@ try {
     const count = await buildSite(OUT, BASE);
     // Référencement : plan du site pour les moteurs de recherche, et robots.txt qui l'indique
     // Page « Aider aux matchs » cachée : générée, mais absente du plan du site
-    // Pages accessibles seulement par leur lien (page « Aider aux matchs » cachée, événements non listés) : hors du plan du site
-    const unlisted = new Set([...(benevoles.visible ? [] : ["/aider-aux-matchs"]), ...(await getEvents(true)).upcoming.concat((await getEvents(true)).past).filter((e) => e.unlisted).map((e) => `/evenements/${e.slug}`)]);
+    // Pages accessibles seulement par leur lien (page « Aider aux matchs » cachée, boutique et événements non listés) : hors du plan du site
+    const shop = await readJson<{ unlisted?: boolean } | null>("boutique.json", null);
+    const unlisted = new Set([...(benevoles.visible ? [] : ["/aider-aux-matchs"]), ...(shop?.unlisted ? ["/boutique"] : []), ...(await getEvents(true)).upcoming.concat((await getEvents(true)).past).filter((e) => e.unlisted).map((e) => `/evenements/${e.slug}`)]);
     const pages = (await sitePages()).filter((p) => !unlisted.has(p));
     const today = new Date().toISOString().slice(0, 10);
     const urls = pages.map((p) => `  <url><loc>${club.siteUrl}${BASE}${p === "/" ? "/" : `${p}/`}</loc><lastmod>${today}</lastmod></url>`);
