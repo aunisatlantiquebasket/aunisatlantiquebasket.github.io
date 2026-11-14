@@ -3,18 +3,22 @@
 <% const inTab = (tab) => shop.products.filter((p) => p.category === tab || p.category === 'tous'); %>
 <%- include('../partials/page-header', { eyebrow: 'Boutique officielle', heading: 'Aux couleurs', accent: 'du club', subtitle: 'T-shirts, maillots, sweats, vestes, doudounes… Équipez-vous en vert et noir, pour le terrain comme pour les tribunes.' }) %>
 <%# La vente se fait sur Grinta (qui interdit d'afficher sa boutique dans une autre page) : vitrine ici, commande là-bas.
-    Ouverte / fermée : calculé à la génération puis recalculé dans le navigateur, le site statique n'étant pas régénéré à l'heure pile. %>
-<section class="section shop<%= open ? '' : ' is-closed' %>" data-shop data-closes="<%= shop.closes %>">
+    Bandeau « Livraison avant Noël » jusqu'à la date limite : calculé à la génération puis recalculé dans le navigateur,
+    le site statique n'étant pas régénéré à l'heure pile. Boutique fermée : seulement si `closed` est indiqué. %>
+<section class="section shop<%= open ? '' : ' is-closed' %><%= beforeChristmas ? '' : ' is-after-xmas' %>" data-shop<% if (shop.christmasDeadline) { %> data-deadline="<%= shop.christmasDeadline %>"<% } %>>
   <div class="container">
     <div class="shop-status panel">
       <div class="shop-status-open">
         <%# Date complète sur ordinateur, abrégée sur téléphone pour tenir sur une ligne %>
-        <p class="shop-status-title"><%- icon('clock') %><span>Commandes <span class="is-desktop-only">ouvertes </span>jusqu'au <strong class="is-desktop-only"><%= closesLabel %></strong><strong class="is-mobile-only"><%= closesShort %></strong></span></p>
+        <% if (shop.christmasDeadline) { %>
+          <p class="shop-status-title shop-xmas"><%- icon('gift') %><span><span class="is-desktop-only">Livraison avant Noël : commandez avant le <strong><%= deadlineLabel %></strong></span><span class="is-mobile-only">Livraison Noël : avant le <strong><%= deadlineShort %></strong></span></span></p>
+        <% } %>
+        <p class="shop-status-title shop-open-title"><%- icon('bag') %><span>La boutique du club est ouverte</span></p>
         <p class="shop-status-help">Cliquez sur un article pour choisir la taille et commander en ligne.</p>
       </div>
       <div class="shop-status-closed">
         <p class="shop-status-title">La boutique est fermée pour le moment</p>
-        <p>Les commandes sont groupées : elle rouvrira à la prochaine vente. Une question ? <a href="/contact?sujet=Boutique">Écrivez-nous</a>.</p>
+        <p>Elle rouvrira prochainement. Une question ? <a href="/contact?sujet=Boutique">Écrivez-nous</a>.</p>
       </div>
       <a class="btn btn-primary shop-order" href="<%= shop.url %>" target="_blank" rel="noopener"><%- icon('bag') %> Toute la boutique</a>
     </div>
@@ -43,7 +47,7 @@
 <script>
   (() => {
     const root = document.querySelector("[data-shop]");
-    if (Date.now() >= new Date(root.dataset.closes).getTime()) root.classList.add("is-closed");
+    if (root.dataset.deadline && Date.now() >= new Date(root.dataset.deadline).getTime()) root.classList.add("is-after-xmas");
     root.querySelector(".shop-tabs").addEventListener("click", (e) => {
       const tab = e.target.closest("[data-show]");
       if (!tab) return;

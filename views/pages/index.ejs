@@ -8,16 +8,17 @@
       <h1><%= sloganStart %><% if (sloganEnd.length) { %>,<br><span><%= sloganEnd.join(', ') %></span><% } %></h1>
       <p class="hero-lead">Jeunes, seniors ou loisirs, sur le terrain ou comme bénévole : il y a une place pour vous au club.</p>
       <% if (shop) { %>
-        <%# Boutique ouverte : carte retirée dans le navigateur passé la date (le site statique n'est pas régénéré à l'heure pile) %>
-        <a href="/boutique" class="hero-shop" data-closes="<%= shop.closes %>">
+        <%# Boutique ouverte : carte dans la bannière ; « commandez avant le … pour Noël » jusqu'à la date limite
+            (remplacé dans le navigateur passé la date, le site statique n'étant pas régénéré à l'heure pile) %>
+        <a href="/boutique" class="hero-shop"<% if (shop.deadline) { %> data-deadline="<%= shop.deadline %>"<% } %>>
           <span class="hero-shop-icon"><%- icon('bag') %></span>
           <span class="hero-shop-text">
             <strong>La boutique est ouverte</strong>
-            <small>Jusqu'au <%= shop.closesShort %></small>
+            <small><% if (shop.deadline) { %><span class="hero-shop-long">Pour Noël, commandez avant le <%= shop.deadlineShort %></span><span class="hero-shop-short">Livraison Noël : avant le <%= shop.deadlineShort %></span><% } else { %>Aux couleurs du club<% } %></small>
           </span>
           <span class="hero-shop-arrow"><span class="hero-shop-cta">Voir la boutique</span><%- icon('arrow') %></span>
         </a>
-        <script>(() => { const a = document.currentScript.previousElementSibling; if (Date.now() >= new Date(a.dataset.closes).getTime()) a.remove(); })();</script>
+        <script>(() => { const a = document.currentScript.previousElementSibling; if (a.dataset.deadline && Date.now() >= new Date(a.dataset.deadline).getTime()) a.querySelector("small").textContent = "Aux couleurs du club"; })();</script>
       <% } %>
     </div>
 

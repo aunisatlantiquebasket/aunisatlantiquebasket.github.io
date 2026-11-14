@@ -871,6 +871,8 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .shop-status .shop-status-title { color: var(--text); font-weight: 600; font-size: 1.05rem; display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
 .shop-status-title svg { color: var(--green-text); flex: none; margin-top: 3px; }
 .shop-status-title .is-mobile-only { display: none; }
+.shop-open-title, .shop.is-after-xmas .shop-xmas { display: none !important; }
+.shop.is-after-xmas .shop-open-title { display: flex !important; }
 .shop-status-closed, .shop.is-closed .shop-status-open, .shop.is-closed .shop-order { display: none; }
 .shop.is-closed .shop-status-closed { display: block; }
 .shop.is-closed .shop-status { border-left-color: var(--slate-500); }
@@ -912,6 +914,7 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
 .hero-shop-text { display: flex; flex-direction: column; min-width: 0; }
 .hero-shop-text strong { font-weight: 600; font-size: 1.12rem; }
 .hero-shop-text small { color: var(--green-light); font-size: .92rem; }
+.hero-shop-short { display: none; }
 .hero-shop-arrow { display: inline-flex; align-items: center; gap: 8px; flex: none; margin-left: auto; padding: 10px 16px; border-radius: 999px; background: var(--green); color: var(--slate-900); font-weight: 600; font-size: .92rem; transition: background .2s; }
 .hero-shop:hover .hero-shop-arrow { background: var(--green-light); }
 .hero-shop-arrow svg { width: 17px; height: 17px; transition: transform .2s; }
@@ -924,4 +927,6 @@ a.contact-card:hover { text-decoration: none; border-color: var(--green); box-sh
   .hero-shop-text small { font-size: .88rem; }
   .hero-shop-arrow { width: 34px; height: 34px; padding: 0; justify-content: center; }
   .hero-shop-cta { display: none; }
+  .hero-shop-long { display: none; }
+  .hero-shop-short { display: inline; }
 }

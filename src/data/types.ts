@@ -126,8 +126,10 @@ export interface Shop {
   unlisted?: boolean;
   /** Boutique Grinta, où se passent les commandes */
   url: string;
-  /** Fermeture de la vente groupée (date ISO avec fuseau) */
-  closes: string;
+  /** Date limite de commande pour être livré avant Noël (date ISO avec fuseau) ; la boutique reste ouverte après */
+  christmasDeadline?: string;
+  /** Boutique fermée (à indiquer à la main) : page « fermée », plus de carte sur l'accueil */
+  closed?: boolean;
   products: {
     /** "adulte", "enfant" ou "tous" (affiché dans les deux onglets) */
     category: "adulte" | "enfant" | "tous";

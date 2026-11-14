@@ -193,11 +193,8 @@ app.use(async (req, res, next) => {
   next();
 });
 
-/** Fin de la vente de la boutique, format court : « 27 nov. à 19 h » */
-const shopClosesShort = (shop: Shop) => {
-  const closes = new Date(shop.closes);
-  return `${fmt({ day: "numeric", month: "short" }).format(closes)} à ${fmt({ hour: "numeric" }).format(closes)}`;
-};
+/** Date limite de commande pour Noël, format court : « 27 nov. » (vide s'il n'y en a pas) */
+const shopDeadlineShort = (shop: Shop) => (shop.christmasDeadline ? fmt({ day: "numeric", month: "short" }).format(new Date(shop.christmasDeadline)) : "");
 
 app.get("/", async (_req, res) => {
   const [teams, upcoming, results, articles, events] = await Promise.all([
@@ -209,8 +206,8 @@ app.get("/", async (_req, res) => {
   ]);
   // Carte « Boutique » dans la bannière de l'accueil, tant que la vente est ouverte
   const shopData = await readJson<Shop | null>("boutique.json", null);
-  const shop = shopData && !shopData.unlisted && Date.now() < new Date(shopData.closes).getTime()
-    ? { closes: shopData.closes, closesShort: shopClosesShort(shopData) }
+  const shop = shopData && !shopData.unlisted && !shopData.closed
+    ? { deadline: shopData.christmasDeadline && Date.now() < new Date(shopData.christmasDeadline).getTime() ? shopData.christmasDeadline : null, deadlineShort: shopDeadlineShort(shopData) }
     : null;
   const hero = nextWeekend(upcoming); // carrousel de la bannière : matchs du week-end qui arrive
   res.render("pages/index", {
@@ -355,14 +352,16 @@ app.get("/actualites/:slug", async (req, res, next) => {
 app.get("/boutique", async (_req, res, next) => {
   const shop = await readJson<Shop | null>("boutique.json", null);
   if (!shop) return next();
-  const closes = new Date(shop.closes);
+  const deadline = shop.christmasDeadline ? new Date(shop.christmasDeadline) : null;
   res.render("pages/boutique", {
     title: "Boutique",
     shop,
     noindex: !!shop.unlisted,
-    open: Date.now() < closes.getTime(),
-    closesShort: shopClosesShort(shop),
-    closesLabel: fmt({ weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" }).format(closes).replace(":", " h ").replace(" h 00", " h"),
+    open: !shop.closed,
+    // Bandeau « Livraison avant Noël » jusqu'à la date limite de commande
+    beforeChristmas: !!deadline && Date.now() < deadline.getTime(),
+    deadlineShort: shopDeadlineShort(shop),
+    deadlineLabel: deadline ? fmt({ weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" }).format(deadline).replace(":", " h ").replace(" h 00", " h") : "",
   });
 });
 
