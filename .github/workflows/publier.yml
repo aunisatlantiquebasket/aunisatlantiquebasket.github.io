@@ -1,5 +1,5 @@
 # Publication automatique du site sur GitHub Pages (gratuit).
-# Toutes les 3 heures, et à chaque modification poussée sur la branche main :
+# Toutes les 3 heures (toutes les heures le week-end après-midi et soir), et à chaque modification poussée sur la branche main :
 #   1. synchronisation FFBB (équipes, matchs, scores, classements, logos) ;
 #   2. enregistrement des données mises à jour dans le dépôt (si elles ont changé) ;
 #   3. génération du site statique (npm run build:static) et mise en ligne.
@@ -12,6 +12,9 @@ on:
     branches: [main]
   schedule:
     - cron: "15 */3 * * *" # toutes les 3 h (heure UTC), à hh:15
+    # Week-end, quand tombent les scores : en plus, toutes les heures de 12 h à 23 h UTC (13 h à minuit en hiver),
+    # GitHub sautant souvent des passages planifiés
+    - cron: "45 12-23 * * 6,0"
   workflow_dispatch:
 
 permissions:
