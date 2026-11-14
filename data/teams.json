@@ -28,10 +28,10 @@
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396788",
     "ranking": {
       "position": 3,
-      "points": 0,
-      "played": 0,
+      "points": 1,
+      "played": 1,
       "wins": 0,
-      "losses": 0
+      "losses": 1
     },
     "standings": [
       {
@@ -49,6 +49,32 @@
       },
       {
         "position": 2,
+        "name": "Saint-Rogatien Basket Club 2",
+        "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
+        "points": 3,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 30,
+        "conceded": 4,
+        "diff": 26,
+        "isUs": false
+      },
+      {
+        "position": 3,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 4,
+        "conceded": 30,
+        "diff": -26,
+        "isUs": true
+      },
+      {
+        "position": 4,
         "name": "Ciré Sports 2",
         "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
         "points": 1,
@@ -58,32 +84,6 @@
         "scored": 13,
         "conceded": 66,
         "diff": -53,
-        "isUs": false
-      },
-      {
-        "position": 3,
-        "name": "Aunis Atlantique Basket",
-        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
-        "points": 0,
-        "played": 0,
-        "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
-        "isUs": true
-      },
-      {
-        "position": 4,
-        "name": "Saint-Rogatien Basket Club 2",
-        "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
-        "points": 0,
-        "played": 0,
-        "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
         "isUs": false
       }
     ]
@@ -130,7 +130,7 @@
     "players": [],
     "ffbbId": "200000005423728",
     "ranking": {
-      "position": 2,
+      "position": 3,
       "points": 2,
       "played": 1,
       "wins": 1,
@@ -139,6 +139,19 @@
     "standings": [
       {
         "position": 1,
+        "name": "Angoulins UBAC 2",
+        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+        "points": 3,
+        "played": 2,
+        "wins": 1,
+        "losses": 1,
+        "scored": 99,
+        "conceded": 108,
+        "diff": -9,
+        "isUs": false
+      },
+      {
+        "position": 2,
         "name": "Oleron Basket Club",
         "logo": "/img/clubs/9b9afd4b-a20b-44d8-83de-c951d62dea3d.png",
         "points": 2,
@@ -151,7 +164,7 @@
         "isUs": false
       },
       {
-        "position": 2,
+        "position": 3,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
         "points": 2,
@@ -164,20 +177,20 @@
         "isUs": true
       },
       {
-        "position": 3,
-        "name": "Angoulins UBAC 2",
-        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+        "position": 4,
+        "name": "Haute Saintonge Basket 2",
+        "logo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
         "points": 1,
         "played": 1,
         "wins": 0,
         "losses": 1,
-        "scored": 53,
-        "conceded": 64,
-        "diff": -11,
+        "scored": 44,
+        "conceded": 46,
+        "diff": -2,
         "isUs": false
       },
       {
-        "position": 4,
+        "position": 5,
         "name": "Jarnac-Champagne",
         "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
         "points": 1,
@@ -187,19 +200,6 @@
         "scored": 45,
         "conceded": 59,
         "diff": -14,
-        "isUs": false
-      },
-      {
-        "position": 5,
-        "name": "Haute Saintonge Basket 2",
-        "logo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
-        "points": 0,
-        "played": 0,
-        "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
         "isUs": false
       }
     ],

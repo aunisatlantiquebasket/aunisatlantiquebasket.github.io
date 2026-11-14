@@ -278,6 +278,10 @@
     "opponent": "Saint-Rogatien Basket Club 2",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 4,
+      "them": 30
+    },
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
