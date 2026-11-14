@@ -430,6 +430,19 @@
       },
       {
         "position": 3,
+        "name": "Angoulins UBAC 2",
+        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
+        "points": 9,
+        "played": 6,
+        "wins": 3,
+        "losses": 3,
+        "scored": 378,
+        "conceded": 381,
+        "diff": -3,
+        "isUs": false
+      },
+      {
+        "position": 4,
         "name": "Ciré Sports 2",
         "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
         "points": 8,
@@ -442,7 +455,7 @@
         "isUs": false
       },
       {
-        "position": 4,
+        "position": 5,
         "name": "Saint-Rogatien Basket Club 3",
         "logo": "/img/clubs/ae760c7b-9544-410c-9ded-1aec8d772450.png",
         "points": 8,
@@ -455,7 +468,7 @@
         "isUs": false
       },
       {
-        "position": 5,
+        "position": 6,
         "name": "Saujon Basket Club 2",
         "logo": "/img/clubs/d9d5354a-5c5c-4470-a446-972883ad169b.png",
         "points": 8,
@@ -468,7 +481,7 @@
         "isUs": false
       },
       {
-        "position": 6,
+        "position": 7,
         "name": "Rochefort Basket Club 2",
         "logo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
         "points": 7,
@@ -478,19 +491,6 @@
         "scored": 311,
         "conceded": 272,
         "diff": 39,
-        "isUs": false
-      },
-      {
-        "position": 7,
-        "name": "Angoulins UBAC 2",
-        "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
-        "points": 7,
-        "played": 5,
-        "wins": 2,
-        "losses": 3,
-        "scored": 307,
-        "conceded": 316,
-        "diff": -9,
         "isUs": false
       },
       {
@@ -510,13 +510,13 @@
         "position": 9,
         "name": "Royan Basket Côte de Beauté 2",
         "logo": "/img/clubs/52ed1311-e741-41c6-b3c3-593ae830f676.png",
-        "points": 5,
-        "played": 5,
+        "points": 6,
+        "played": 6,
         "wins": 1,
-        "losses": 3,
-        "scored": 198,
-        "conceded": 262,
-        "diff": -64,
+        "losses": 4,
+        "scored": 263,
+        "conceded": 333,
+        "diff": -70,
         "isUs": false
       },
       {
