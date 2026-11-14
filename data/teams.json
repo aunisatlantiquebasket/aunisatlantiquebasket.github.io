@@ -103,7 +103,68 @@
     "ffbbKey": "U11-X-1",
     "active": true,
     "ffbbId": "200000005396778",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396778"
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396778",
+    "ranking": {
+      "position": 1,
+      "points": 3,
+      "played": 1,
+      "wins": 1,
+      "losses": 0
+    },
+    "standings": [
+      {
+        "position": 1,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 3,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 48,
+        "conceded": 5,
+        "diff": 43,
+        "isUs": true
+      },
+      {
+        "position": 2,
+        "name": "Aunis Atlantique Basket 2",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 5,
+        "conceded": 48,
+        "diff": -43,
+        "isUs": false
+      },
+      {
+        "position": 3,
+        "name": "Stade Rochelais Basket 4",
+        "logo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      },
+      {
+        "position": 4,
+        "name": "Saint-xandre 2",
+        "logo": "/img/clubs/43b7bb88-2c53-4b8c-9e3a-f6165ead7128.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      }
+    ]
   },
   {
     "slug": "u13-masculins",
@@ -130,15 +191,28 @@
     "players": [],
     "ffbbId": "200000005423728",
     "ranking": {
-      "position": 3,
-      "points": 2,
-      "played": 1,
-      "wins": 1,
+      "position": 1,
+      "points": 4,
+      "played": 2,
+      "wins": 2,
       "losses": 0
     },
     "standings": [
       {
         "position": 1,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 4,
+        "played": 2,
+        "wins": 2,
+        "losses": 0,
+        "scored": 138,
+        "conceded": 105,
+        "diff": 33,
+        "isUs": true
+      },
+      {
+        "position": 2,
         "name": "Angoulins UBAC 2",
         "logo": "/img/clubs/a30df6b8-8bc0-40b5-a36d-64a1a93a3c9a.png",
         "points": 3,
@@ -151,7 +225,7 @@
         "isUs": false
       },
       {
-        "position": 2,
+        "position": 3,
         "name": "Oleron Basket Club",
         "logo": "/img/clubs/9b9afd4b-a20b-44d8-83de-c951d62dea3d.png",
         "points": 2,
@@ -164,20 +238,20 @@
         "isUs": false
       },
       {
-        "position": 3,
-        "name": "Aunis Atlantique Basket",
-        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "position": 4,
+        "name": "Jarnac-Champagne",
+        "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
         "points": 2,
-        "played": 1,
-        "wins": 1,
-        "losses": 0,
-        "scored": 64,
-        "conceded": 53,
-        "diff": 11,
-        "isUs": true
+        "played": 2,
+        "wins": 0,
+        "losses": 2,
+        "scored": 97,
+        "conceded": 133,
+        "diff": -36,
+        "isUs": false
       },
       {
-        "position": 4,
+        "position": 5,
         "name": "Haute Saintonge Basket 2",
         "logo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
         "points": 1,
@@ -187,19 +261,6 @@
         "scored": 44,
         "conceded": 46,
         "diff": -2,
-        "isUs": false
-      },
-      {
-        "position": 5,
-        "name": "Jarnac-Champagne",
-        "logo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
-        "points": 1,
-        "played": 1,
-        "wins": 0,
-        "losses": 1,
-        "scored": 45,
-        "conceded": 59,
-        "diff": -14,
         "isUs": false
       }
     ],
@@ -233,9 +294,9 @@
     "ffbbId": "200000005423769",
     "ranking": {
       "position": 2,
-      "points": 2,
-      "played": 1,
-      "wins": 1,
+      "points": 4,
+      "played": 2,
+      "wins": 2,
       "losses": 0
     },
     "standings": [
@@ -243,43 +304,56 @@
         "position": 1,
         "name": "Ciré Sports",
         "logo": "/img/clubs/6786ecf4-f8a6-49ef-921b-3ca41c43c477.png",
-        "points": 2,
-        "played": 1,
-        "wins": 1,
+        "points": 4,
+        "played": 2,
+        "wins": 2,
         "losses": 0,
-        "scored": 107,
-        "conceded": 22,
-        "diff": 85,
+        "scored": 202,
+        "conceded": 68,
+        "diff": 134,
         "isUs": false
       },
       {
         "position": 2,
         "name": "Aunis Atlantique Basket",
         "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
-        "points": 2,
-        "played": 1,
-        "wins": 1,
+        "points": 4,
+        "played": 2,
+        "wins": 2,
         "losses": 0,
-        "scored": 89,
-        "conceded": 51,
-        "diff": 38,
+        "scored": 204,
+        "conceded": 86,
+        "diff": 118,
         "isUs": true
       },
       {
         "position": 3,
         "name": "Ruelle Basket Club",
         "logo": "/img/clubs/6a0c5fb5-b934-4442-bf42-22d5695f073b.png",
-        "points": 1,
-        "played": 1,
+        "points": 2,
+        "played": 2,
         "wins": 0,
-        "losses": 1,
-        "scored": 51,
-        "conceded": 89,
-        "diff": -38,
+        "losses": 2,
+        "scored": 97,
+        "conceded": 184,
+        "diff": -87,
         "isUs": false
       },
       {
         "position": 4,
+        "name": "Saint-Jean-d'Angély JLA",
+        "logo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 35,
+        "conceded": 115,
+        "diff": -80,
+        "isUs": false
+      },
+      {
+        "position": 5,
         "name": "CTC Basket Océan 17 - Saint-Agnant",
         "logo": "/img/clubs/272f92c7-fd68-4b28-a873-8f98f0b6d2bb.png",
         "points": 1,
@@ -289,19 +363,6 @@
         "scored": 22,
         "conceded": 107,
         "diff": -85,
-        "isUs": false
-      },
-      {
-        "position": 6,
-        "name": "Saint-Jean-d'Angély JLA",
-        "logo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
-        "points": 0,
-        "played": 0,
-        "wins": 0,
-        "losses": 0,
-        "scored": 0,
-        "conceded": 0,
-        "diff": 0,
         "isUs": false
       }
     ],
@@ -504,6 +565,67 @@
     "ffbbId": "200000005396779",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005396779",
     "coach": "Jérémy, Clément",
-    "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay"
+    "trainingVenue": "Complexe socio-éducatif de Saint-Jean-de-Liversay, Rue du 19 mars, 17170 Saint-Jean-de-Liversay",
+    "ranking": {
+      "position": 2,
+      "points": 1,
+      "played": 1,
+      "wins": 0,
+      "losses": 1
+    },
+    "standings": [
+      {
+        "position": 1,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 3,
+        "played": 1,
+        "wins": 1,
+        "losses": 0,
+        "scored": 48,
+        "conceded": 5,
+        "diff": 43,
+        "isUs": false
+      },
+      {
+        "position": 2,
+        "name": "Aunis Atlantique Basket",
+        "logo": "/img/clubs/92df6cec-055e-4020-b4e8-132576e90bc4.png",
+        "points": 1,
+        "played": 1,
+        "wins": 0,
+        "losses": 1,
+        "scored": 5,
+        "conceded": 48,
+        "diff": -43,
+        "isUs": true
+      },
+      {
+        "position": 3,
+        "name": "Stade Rochelais Basket 4",
+        "logo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      },
+      {
+        "position": 4,
+        "name": "Saint-xandre 2",
+        "logo": "/img/clubs/43b7bb88-2c53-4b8c-9e3a-f6165ead7128.png",
+        "points": 0,
+        "played": 0,
+        "wins": 0,
+        "losses": 0,
+        "scored": 0,
+        "conceded": 0,
+        "diff": 0,
+        "isUs": false
+      }
+    ]
   }
 ]

@@ -294,6 +294,10 @@
     "opponent": "Jarnac-Champagne",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 74,
+      "them": 52
+    },
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/20c253d3-a7b5-4f2f-b8a0-9d5099448ad6.png",
@@ -307,6 +311,10 @@
     "opponent": "U11-2",
     "home": true,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 48,
+      "them": 5
+    },
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/logo-rond.svg",
@@ -319,6 +327,10 @@
     "opponent": "U11-1",
     "home": false,
     "venue": "Gymnase intercommunal Bel Air, Marans",
+    "score": {
+      "us": 5,
+      "them": 48
+    },
     "source": "ffbb",
     "round": 1,
     "opponentLogo": "/img/logo-rond.svg",
@@ -331,6 +343,10 @@
     "opponent": "Saint-Jean-d'Angély JLA",
     "home": false,
     "venue": "Salle à confirmer",
+    "score": {
+      "us": 115,
+      "them": 35
+    },
     "source": "ffbb",
     "round": 2,
     "opponentLogo": "/img/clubs/cc3cdbcf-7074-4a39-9c88-a956785aae7a.png",
@@ -467,7 +483,7 @@
     "teamSlug": "u9",
     "date": "2026-12-12T10:45:00",
     "opponent": "Ciré Sports 2",
-    "home": false,
+    "home": true,
     "venue": "Gymnase Bernard Pougnant, Ciré-d'Aunis",
     "source": "ffbb",
     "round": 3,
