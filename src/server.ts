@@ -354,7 +354,8 @@ app.get("/boutique", async (_req, res, next) => {
   if (!shop) return next();
   const deadline = shop.christmasDeadline ? new Date(shop.christmasDeadline) : null;
   res.render("pages/boutique", {
-    title: "Boutique",
+    title: "Boutique officielle",
+    shareImage: "/img/partage-boutique.png",
     shop,
     noindex: !!shop.unlisted,
     open: !shop.closed,

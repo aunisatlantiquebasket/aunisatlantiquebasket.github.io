@@ -14,6 +14,7 @@
     '/evenements': `Les événements d'${club.name} : soirées, stages, lotos, assemblées et rendez-vous du club.`,
     '/actualites': `Les actualités d'${club.name} : matchs, vie du club et annonces.`,
     '/trombinoscope': `Le bureau, les commissions, les coachs et les bénévoles d'${club.name}.`,
+    '/boutique': `La boutique officielle d'${club.name} : t-shirts, maillots, sweats, vestes, doudounes et casquettes aux couleurs du club, tailles adultes et enfants, prix club.`,
     '/contact': `Contacter ${club.name} : inscriptions, renseignements, salles de Marans, Saint-Jean-de-Liversay et Courçon.`,
   }; %>
   <% const pageDescription = shared ? shared.summary
@@ -30,7 +31,9 @@
   <meta property="og:url" content="<%= club.siteUrl + currentPath %>">
   <meta property="og:title" content="<%= pageTitle %>">
   <meta property="og:description" content="<%= pageDescription %>">
-  <meta property="og:image" content="<%= club.siteUrl + (shared && shared.image ? shared.image : '/img/partage.png') %>">
+  <%# Visuel de partage : image de l'article, visuel propre à la page (shareImage, 1200×630) ou visuel du club %>
+  <% const pageShareImage = typeof shareImage !== 'undefined' ? shareImage : null; %>
+  <meta property="og:image" content="<%= club.siteUrl + (shared && shared.image ? shared.image : pageShareImage ?? '/img/partage.png') %>">
   <% if (!shared || !shared.image) { %><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><% } %>
   <meta property="og:image:alt" content="<%= club.name %>">
   <meta name="twitter:card" content="summary_large_image">
