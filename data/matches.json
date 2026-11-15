@@ -360,6 +360,10 @@
     "opponent": "Rochefort Basket Club 2",
     "home": false,
     "venue": "Gymnase Grimaux, Rochefort",
+    "score": {
+      "us": 54,
+      "them": 79
+    },
     "source": "ffbb",
     "round": 6,
     "opponentLogo": "/img/clubs/9d4fcdff-cd76-4a7d-bb9b-659b2087ce92.png",
