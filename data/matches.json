@@ -455,18 +455,6 @@
     "competition": "Championnat"
   },
   {
-    "id": "ffbb-200000014850069",
-    "teamSlug": "u11-1",
-    "date": "2026-12-12T00:00:00",
-    "opponent": "Saint-xandre 2",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "source": "ffbb",
-    "round": 3,
-    "opponentLogo": "/img/clubs/43b7bb88-2c53-4b8c-9e3a-f6165ead7128.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850069"
-  },
-  {
     "id": "ffbb-200000014850070",
     "teamSlug": "u11-2",
     "date": "2026-12-12T00:00:00",
@@ -502,6 +490,18 @@
     "opponentLogo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
     "competition": "Phase 2"
+  },
+  {
+    "id": "ffbb-200000014850069",
+    "teamSlug": "u11-1",
+    "date": "2026-12-12T17:00:00",
+    "opponent": "Saint-xandre 2",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 3,
+    "opponentLogo": "/img/clubs/43b7bb88-2c53-4b8c-9e3a-f6165ead7128.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850069"
   },
   {
     "id": "ffbb-200000014939939",
