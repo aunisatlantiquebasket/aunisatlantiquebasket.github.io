@@ -459,18 +459,6 @@
     "competition": "Championnat"
   },
   {
-    "id": "ffbb-200000014850070",
-    "teamSlug": "u11-2",
-    "date": "2026-12-12T00:00:00",
-    "opponent": "Stade Rochelais Basket 4",
-    "home": true,
-    "venue": "Gymnase intercommunal Bel Air, Marans",
-    "source": "ffbb",
-    "round": 3,
-    "opponentLogo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
-    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850070"
-  },
-  {
     "id": "ffbb-200000014850098",
     "teamSlug": "u9",
     "date": "2026-12-12T10:45:00",
@@ -494,6 +482,18 @@
     "opponentLogo": "/img/clubs/db85d375-5644-418c-babf-94d5a01e1ff4.png",
     "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/clubs/naq0017020/equipes/200000005423728",
     "competition": "Phase 2"
+  },
+  {
+    "id": "ffbb-200000014850070",
+    "teamSlug": "u11-2",
+    "date": "2026-12-12T15:00:00",
+    "opponent": "Stade Rochelais Basket 4",
+    "home": true,
+    "venue": "Gymnase intercommunal Bel Air, Marans",
+    "source": "ffbb",
+    "round": 3,
+    "opponentLogo": "/img/clubs/4b960841-5d7e-4b4d-b892-6cef90e7e17a.png",
+    "ffbbUrl": "https://competitions.ffbb.com/ligues/naq/comites/0017/competitions/dxu11-3/match/200000014850070"
   },
   {
     "id": "ffbb-200000014850069",

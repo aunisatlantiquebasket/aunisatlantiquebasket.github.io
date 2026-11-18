@@ -1,7 +1,6 @@
 {
-  "lastAttempt": "2026-11-16T19:34:07.933Z",
-  "lastSuccess": "2026-11-15T22:46:48.550Z",
+  "lastAttempt": "2026-11-18T00:56:13.493Z",
+  "lastSuccess": "2026-11-18T00:56:13.493Z",
   "teams": 9,
-  "matches": 44,
-  "error": "API FFBB : HTTP 502 sur /club/200000002678561/teams"
+  "matches": 44
 }
